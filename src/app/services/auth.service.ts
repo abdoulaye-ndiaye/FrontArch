@@ -20,10 +20,22 @@ export class AuthService {
           let tokenStr = "Bearer " + userData.token;
           console.log(tokenStr);
           sessionStorage.setItem("token", tokenStr);
-          sessionStorage.setItem("role", userData.role);
+          sessionStorage.setItem("profil", userData.profil);
           sessionStorage.setItem("id", userData.id);
           return userData;
         })
       );
   }
+
+  isUserLoggedIn() {
+    let user = sessionStorage.getItem("email");
+    console.log(!(user === null));
+    return !(user === null);
+  }
+
+  logOut() {
+    sessionStorage.removeItem("email");
+    sessionStorage.removeItem("token");
+  }
 }
+
