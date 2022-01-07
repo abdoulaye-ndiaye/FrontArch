@@ -11,12 +11,12 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) { }
 
-  authenticate(email:string, password:string) {
+  authenticate(login:string, password:string) {
     return this.httpClient
-      .post<any>(`${environment.apiUrl}/login`, { email, password })
+      .post<any>(`${environment.apiUrl}/login`, { login, password })
       .pipe(
         map(userData => {
-          sessionStorage.setItem("email", userData.email);
+          sessionStorage.setItem("login", userData.login);
           let tokenStr = "Bearer " + userData.token;
           console.log(tokenStr);
           sessionStorage.setItem("token", tokenStr);
@@ -26,15 +26,33 @@ export class AuthService {
         })
       );
   }
+  RegisterEtudiant( dateNaissance:string, lieuNaissance:string, numTel:string, nom:string, prenom:string, profil:string, email:string, password:string, login:string) {
+    return this.httpClient
+      .post<any>(`${environment.apiUrl}/etudiant`, { dateNaissance, lieuNaissance, numTel, nom, prenom, profil, email, password, login })
+      .pipe(
+        map(userData => {
+          return userData;
+        })
+      );
+  }
+  RegisterProf(numTel:string, nom:string, prenom:string, profil:string, email:string, password:string, login:string) {
+    return this.httpClient
+      .post<any>(`${environment.apiUrl}/professeur`, { numTel, nom, prenom, profil, email, password, login })
+      .pipe(
+        map(userData => {
+          return userData;
+        })
+      );
+  }
 
   isUserLoggedIn() {
-    let user = sessionStorage.getItem("email");
+    let user = sessionStorage.getItem("login");
     console.log(!(user === null));
     return !(user === null);
   }
 
   logOut() {
-    sessionStorage.removeItem("email");
+    sessionStorage.removeItem("login");
     sessionStorage.removeItem("token");
   }
 }

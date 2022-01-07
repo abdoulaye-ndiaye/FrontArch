@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBulder.group({
-      email : ['',Validators.required],
+      login : ['',Validators.required],
       password :['',Validators.required]
     })
   }
@@ -41,9 +41,9 @@ export class LoginComponent implements OnInit {
     this.submitted=true;
     
     if (this.loginForm.invalid) {
-      return;
+       return;
     } else {
-      this.authService.authenticate(this.loginForm.value.email, this.loginForm.value.password).subscribe(
+      this.authService.authenticate(this.loginForm.value.login, this.loginForm.value.password).subscribe(
         results=>{
           console.log(results)
           if (results.code) {
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem("token", tokenStr);
             sessionStorage.setItem("role", results.role);
             sessionStorage.setItem("id", results.id);
-            sessionStorage.setItem("email", results.email);
+            sessionStorage.setItem("login", results.login);
             this.router.navigate(['/acceuil']);
           }
         },

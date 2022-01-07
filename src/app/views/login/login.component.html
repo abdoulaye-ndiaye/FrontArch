@@ -11,10 +11,10 @@
 								<form [formGroup]='loginForm' (ngSubmit)= 'onSubmit()'>
 								 <div class="form-group">
 									<div >
-										<label class="form-label text-left" >Email</label>
-										<input type="email" formControlName="email" class="form-control" placeholder="exemple@email.com">
-										<div *ngIf="submitted && f['email'].errors" class=" input-group mb-3 invalid-feedback">
-											<div *ngIf="f['email'].errors['required']"> vueillez saisir votre email </div>
+										<label class="form-label text-left" >Login</label>
+										<input type="email" formControlName="login" class="form-control" placeholder="exemple">
+										<div *ngIf="submitted && f['login'].errors" class=" input-group mb-3 invalid-feedback">
+											<div *ngIf="f['login'].errors['required']"> vueillez saisir votre login </div>
 										</div>
 									</div>
 									<div >
