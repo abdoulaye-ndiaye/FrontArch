@@ -12,6 +12,8 @@ import { MustMatch } from '../../services/_helpers/must-match.validator';
 })
 export class RegisterComponent implements OnInit {
   RegisterForm : FormGroup;
+  a = '';
+
   submitted = false;
   returnUrl : string;
   message = '';
@@ -23,6 +25,10 @@ export class RegisterComponent implements OnInit {
     private authService : AuthService,
   ) { }
 
+    choix(){
+      this.a='etu';
+    }
+ 
   ngOnInit(): void {
     this.RegisterForm = this.formBulder.group({
       profil :['',Validators.required],
@@ -44,6 +50,7 @@ export class RegisterComponent implements OnInit {
   get value(){
     return this.RegisterForm.controls;
   }
+
 
   onSubmit(){
     this.submitted =true;

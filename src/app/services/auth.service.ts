@@ -55,5 +55,18 @@ export class AuthService {
     sessionStorage.removeItem("login");
     sessionStorage.removeItem("token");
   }
+
+  getEncadreur(idProf:string) {
+    return this.httpClient
+      .get<any>(`${environment.apiUrl}/etudiant/projet/${idProf}`);
+  }
+  getEtudiant(idEtudiant:string) {
+    return this.httpClient
+      .get<any>(`${environment.apiUrl}/etudiant/projet/${idEtudiant}`);
+  }
+  getProjets() {
+    return this.httpClient
+      .get<any>(`${environment.apiUrl}/projet`);
+  }
 }
 
