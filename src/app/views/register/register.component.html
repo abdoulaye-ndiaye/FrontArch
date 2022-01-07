@@ -10,6 +10,16 @@
                             <img src="../../../assets/images/brand/logo1.png" class="header-brand-img mb-2 mt-2 mt-lg-0 " alt="logo">
                             <h3 class="text-center">Créer un compte</h3>
                             <form [formGroup]='RegisterForm' (ngSubmit)= 'onSubmit()'>
+                                <label for="inputNom">Profil</label>
+                                    <div class="input-group">
+                                    
+                                    <select  aria-label="Default select example" id="select1" formControlName="profil" class="form-control">
+                                        <option selected>-- Veuillez selectionner un profil --</option>
+                                        <option value="ETUDIANT">Etudiant</option>
+                                        <option value="PROF">Professeur</option>
+                                      </select>
+                               
+                                </div>
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="inputNom">Nom</label>

@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.RegisterForm = this.formBulder.group({
+      profil :['',Validators.required],
       dateNaissance :['',Validators.required],
       lieuNaissance :['',Validators.required],
       numTel :['',[Validators.required, Validators.maxLength(9)]],
@@ -51,29 +52,58 @@ export class RegisterComponent implements OnInit {
       return ;
     }else{
       console.log(this.RegisterForm.value.email,this.RegisterForm.value.password);
-      this.authService.RegisterEtudiant(
-                                this.RegisterForm.value.dateNaissance,
-                                this.RegisterForm.value.lieuNaissance,
-                                this.RegisterForm.value.numTel,
-                                this.RegisterForm.value.nom,
-                                this.RegisterForm.value.prenom,
-                                "ETUDIANT",
-                                this.RegisterForm.value.email,
-                                this.RegisterForm.value.password,
-                                this.RegisterForm.value.login)
-                      .subscribe(
-                        resultat => { 
-                          console.log({resultat: resultat})
-                          this.submitted = false;
-                          this.router.navigate(['/login']);
-                          
-                        },
-                        error =>{
-                          console.log(error);
-                          this.message = 'email ou mot de passe incorrect';
-                        }
-                      )
-                      alert('inscription reussie');
+
+      if(this.RegisterForm.value.profil=='ETUDIANT')
+      {
+                    this.authService.RegisterEtudiant(
+                      this.RegisterForm.value.dateNaissance,
+                      this.RegisterForm.value.lieuNaissance,
+                      this.RegisterForm.value.numTel,
+                      this.RegisterForm.value.nom,
+                      this.RegisterForm.value.prenom,
+                      "ETUDIANT",
+                      this.RegisterForm.value.email,
+                      this.RegisterForm.value.password,
+                      this.RegisterForm.value.login)
+            .subscribe(
+              resultat => { 
+                console.log({resultat: resultat})
+                this.submitted = false;
+                this.router.navigate(['/login']);
+                
+              },
+              error =>{
+                console.log(error);
+                this.message = 'email ou mot de passe incorrect';
+              }
+            )
+            alert('inscription etudiant reussie');
+      }
+      else
+      {
+                    this.authService.RegisterProf(
+                      this.RegisterForm.value.numTel,
+                      this.RegisterForm.value.nom,
+                      this.RegisterForm.value.prenom,
+                      "PROF",
+                      this.RegisterForm.value.email,
+                      this.RegisterForm.value.password,
+                      this.RegisterForm.value.login)
+            .subscribe(
+              resultat => { 
+                console.log({resultat: resultat})
+                this.submitted = false;
+                this.router.navigate(['/login']);
+                
+              },
+              error =>{
+                console.log(error);
+                this.message = 'email ou mot de passe incorrect';
+              }
+            )
+            alert('inscription professeur reussie');
+      }
+      
  
     }
   
