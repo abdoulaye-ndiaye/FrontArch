@@ -26,8 +26,10 @@ export class AcceuilComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getProjets().subscribe(data => {
       this.allProjets = data;
-    });
+      
+    }); 
   }
+   
   
 }
   

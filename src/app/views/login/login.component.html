@@ -11,10 +11,11 @@
 								<form [formGroup]='loginForm' (ngSubmit)= 'onSubmit()'>
 								 <div class="form-group">
 									<div >
-										<label class="form-label text-left" >Login</label>
-										<input type="email" formControlName="login" class="form-control" placeholder="exemple">
-										<div *ngIf="submitted && f['login'].errors" class=" input-group mb-3 invalid-feedback">
-											<div *ngIf="f['login'].errors['required']"> vueillez saisir votre login </div>
+										<label class="form-label text-left" >email</label>
+										<input type="email" formControlName="email" class="form-control" placeholder="exemple@gmail.com">
+										<div *ngIf="submitted && f['email'].errors" class=" input-group mb-3 invalid-feedback">
+											<div *ngIf="f['email'].errors['required']"> vueillez saisir votre email </div>
+											<div *ngIf="f['email'].errors['email']"> votre email est invalide </div>
 										</div>
 									</div>
 									<div >
@@ -26,7 +27,7 @@
 									</div>
 									<p style="color: red;">{{ message }}</p>
 									<div class="text-center">
-										<button type="submit" class="btn btn-blue" >Connexion</button>&nbsp;&nbsp;
+										<button type="submit" class="btn btn-blue" >Connexion</button> &nbsp;&nbsp;
 										<button type="reset" class="btn btn-danger">Annuler</button>
 									</div>
 								 </div>

@@ -14,7 +14,8 @@ export class LoginComponent implements OnInit {
   loginForm : FormGroup;
   submitted = false;
   returnUrl : string;
-  message = '';
+  
+  message ='';
   hide = true;
   constructor(
     private authService: AuthService,
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBulder.group({
-      login : ['',Validators.required],
+      email : ['',[Validators.required, Validators.email]],
       password :['',Validators.required]
     })
   }
@@ -41,27 +42,27 @@ export class LoginComponent implements OnInit {
     this.submitted=true;
     
     if (this.loginForm.invalid) {
-       return;
+       return ;
     } else {
-      this.authService.authenticate(this.loginForm.value.login, this.loginForm.value.password).subscribe(
-        results=>{
-          console.log(results)
-          if (results.code) {
-            this.message="Login et/ou mot de passe incorrect !"
+      this.authService.authenticate(this.loginForm.value.email, this.loginForm.value.password).subscribe(
+        result=>{
+          console.log(result);
+          if (result.code) {
+            this.message ='Email et/ou mot de passe incorrect !';
           }else{
-            console.log('role:'+results.role);
-            let tokenStr = "Bearer " + results.token;
+            console.log('profil:'+result.profil);
+            let tokenStr = "Bearer " + result.token;
             console.log(tokenStr);
             sessionStorage.setItem("token", tokenStr);
-            sessionStorage.setItem("role", results.role);
-            sessionStorage.setItem("id", results.id);
-            sessionStorage.setItem("login", results.login);
+            sessionStorage.setItem("profil", result.profil);
+            sessionStorage.setItem("id", result.id);
+            sessionStorage.setItem("email", result.email);
             this.router.navigate(['/acceuil']);
           }
         },
         error=>{
           console.log(error);
-          this.message="Login et/ou mot de passe incorrect !"
+          this.message ='Email et/ou mot de passe incorrect !';
         }
       );
       

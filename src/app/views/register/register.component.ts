@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { MustMatch } from '../../services/_helpers/must-match.validator';
+import { style } from '@angular/animations';
 
 
 @Component({
@@ -12,7 +13,6 @@ import { MustMatch } from '../../services/_helpers/must-match.validator';
 })
 export class RegisterComponent implements OnInit {
   RegisterForm : FormGroup;
-  a = '';
 
   submitted = false;
   returnUrl : string;
@@ -25,9 +25,7 @@ export class RegisterComponent implements OnInit {
     private authService : AuthService,
   ) { }
 
-    choix(){
-      this.a='etu';
-    }
+    
  
   ngOnInit(): void {
     this.RegisterForm = this.formBulder.group({
@@ -42,8 +40,11 @@ export class RegisterComponent implements OnInit {
       confirmPassword:['',Validators.required],
       login :['',Validators.required],
     }, {validator: MustMatch('password', 'confirmPassword')})
+
+
   }
 
+  
   get f() { return this.RegisterForm.controls; }
 
 
@@ -119,5 +120,7 @@ export class RegisterComponent implements OnInit {
     this.submitted = false;
     this.RegisterForm.reset();
 }
+
+ 
 
 }

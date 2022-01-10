@@ -13,7 +13,7 @@
                                 <label for="inputNom">Profil</label>
                                     <div class="input-group">
                                     
-                                    <select  aria-label="Default select example" id="profil" formControlName="profil" class="form-control">
+                                    <select  aria-label="Default select example" id="profil" formControlName="profil" class="form-control" >
                                         <option selected >-- Veuillez selectionner un profil --</option>
                                         <option value="ETUDIANT">Etudiant</option>
                                         <option value="PROF">Professeur</option>
@@ -36,15 +36,15 @@
                                     </div>
                                 </div>
                                 </div>
-                                <div class="choix">
-                                <label for="inputCity">Date Naissance</label>
+                                <div class="choix" >
+                                <label for="inputCity">Date Naissance </label>
                                 <div class="input-group">
                                     
                                     <div class="input-group-prepend">
                                         <div class="input-group-text">
                                             <i class="fas fa-calendar tx-16 lh-0 op-6"></i>
                                         </div>
-                                    </div><input class="form-control fc-datepicker hasDatepicker" formControlName="dateNaissance"  placeholder="(2021-12-30)" autocomplete="dateNaissance"  [ngClass]="{ 'is-invalid': submitted && f['dateNaissance'].errors }" required>
+                                    </div><input class="form-control fc-datepicker hasDatepicker" formControlName="dateNaissance"  placeholder="(2021-12-30)" autocomplete="dateNaissance"  [ngClass]="{ 'is-invalid': submitted && f['dateNaissance'].errors }" required >
                                     <div *ngIf="submitted && f['dateNaissance'].errors" class=" input-group mb-3 invalid-feedback">
                                         <div *ngIf="f['dateNaissance'].errors['required']"> vueillez saisir votre date de Naissance </div>
                                      </div>
@@ -52,7 +52,7 @@
                                 <div class="form-row">
                                   <div class="form-group col-md-6">
                                     <label for="inputPrenom">Lieu Naissance</label>
-                                    <input type="text" class="form-control" formControlName="lieuNaissance"  placeholder="kaolack" autocomplete="lieuNaissance"  [ngClass]="{ 'is-invalid': submitted && f['lieuNaissance'].errors }" required>
+                                    <input type="text" class="form-control" formControlName="lieuNaissance"  placeholder="kaolack" autocomplete="lieuNaissance"  [ngClass]="{ 'is-invalid': submitted && f['lieuNaissance'].errors }" required >
                                     <div *ngIf="submitted && f['lieuNaissance'].errors" class=" input-group mb-3 invalid-feedback">
                                         <div *ngIf="f['lieuNaissance'].errors['required']"> vueillez saisir votre lieu de Naissance </div>
                                      </div>
@@ -73,7 +73,7 @@
                                       <input type="email" formControlName="email" class="form-control" placeholder="Email" autocomplete="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" required>
                                       <div *ngIf="submitted && f['email'].errors" class=" input-group mb-3 invalid-feedback">
                                         <div *ngIf="f['email'].errors['required']">vueillez saisir votre email</div>
-                                        <div *ngIf="f['email'].errors['maxLength']">votre email est invalide </div>
+                                        <div *ngIf="f['email'].errors['email']">votre email est invalide </div>
                                       </div>
                                     </div>
                                     <div class="form-group col-md-6">
@@ -121,4 +121,3 @@
     </div>
 </div>
 </div>
-
