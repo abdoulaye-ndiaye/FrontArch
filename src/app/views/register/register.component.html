@@ -1,124 +1,283 @@
 <div class="login-img bg-gradient-dark">
-<div class="page">
+  <div class="page">
     <div class="custompage">
-        <div class="custom-content  mt-0">
-            
+      <div class="custom-content mt-0">
+        <div class="row">
+          <div class="col-lg-8 d-block mx-auto">
             <div class="row">
-                <div class="col-lg-8 d-block mx-auto">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <img src="../../../assets/images/brand/logo1.png" class="header-brand-img mb-2 mt-2 mt-lg-0 " alt="logo">
-                            <h3 class="text-center">Créer un compte</h3>
-                            <form [formGroup]='RegisterForm' (ngSubmit)= 'onSubmit()'>
-                                <label for="inputNom">Profil</label>
-                                    <div class="input-group">
-                                    
-                                    <select  aria-label="Default select example" id="profil" formControlName="profil" class="form-control">
-                                        <option selected >-- Veuillez selectionner un profil --</option>
-                                        <option value="ETUDIANT">Etudiant</option>
-                                        <option value="PROF">Professeur</option>
-                                      </select>
-                               
-                                </div>
-                                <div class="form-row">
-                                  <div class="form-group col-md-6">
-                                    <label for="inputNom">Nom</label>
-                                    <input type="text" formControlName="nom" class="form-control" placeholder="Nom" autocomplete="nom"  [ngClass]="{ 'is-invalid': submitted && f['nom'].errors }" required>
-                                    <div *ngIf="submitted && f['nom'].errors" class=" input-group mb-3 invalid-feedback">
-                                        <div *ngIf="f['nom'].errors['required']"> vueillez saisir votre nom </div>
-                                    </div>
-                                </div>
-                                  <div class="form-group col-md-6">
-                                    <label for="inputPrenom">Prenom</label>
-                                    <input type="text" formControlName="prenom" class="form-control" placeholder="Prenoms" autocomplete="prenom"  [ngClass]="{ 'is-invalid': submitted && f['prenom'].errors }" required>
-                                    <div *ngIf="submitted && f['prenom'].errors" class=" input-group mb-3 invalid-feedback">
-                                        <div *ngIf="f['prenom'].errors['required']"> vueillez saisir votre prenom </div>
-                                    </div>
-                                </div>
-                                </div>
-                                <div class="choix">
-                                <label for="inputCity">Date Naissance</label>
-                                <div class="input-group">
-                                    
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            <i class="fas fa-calendar tx-16 lh-0 op-6"></i>
-                                        </div>
-                                    </div><input class="form-control fc-datepicker hasDatepicker" formControlName="dateNaissance"  placeholder="(2021-12-30)" autocomplete="dateNaissance"  [ngClass]="{ 'is-invalid': submitted && f['dateNaissance'].errors }" required>
-                                    <div *ngIf="submitted && f['dateNaissance'].errors" class=" input-group mb-3 invalid-feedback">
-                                        <div *ngIf="f['dateNaissance'].errors['required']"> vueillez saisir votre date de Naissance </div>
-                                     </div>
-                                </div><br/>
-                                <div class="form-row">
-                                  <div class="form-group col-md-6">
-                                    <label for="inputPrenom">Lieu Naissance</label>
-                                    <input type="text" class="form-control" formControlName="lieuNaissance"  placeholder="kaolack" autocomplete="lieuNaissance"  [ngClass]="{ 'is-invalid': submitted && f['lieuNaissance'].errors }" required>
-                                    <div *ngIf="submitted && f['lieuNaissance'].errors" class=" input-group mb-3 invalid-feedback">
-                                        <div *ngIf="f['lieuNaissance'].errors['required']"> vueillez saisir votre lieu de Naissance </div>
-                                     </div>
-                                </div>
-                                  <div class="form-group col-md-6">
-                                    <label for="inputLogin">Login</label>
-                                    <input type="text" formControlName="login" class="form-control" placeholder="login" autocomplete="login" [ngClass]="{ 'is-invalid': submitted && f['login'].errors }" required>
-                                    <div *ngIf="submitted && f['login'].errors" class=" input-group mb-3 invalid-feedback">
-                                        <div *ngIf="f['login'].errors['required']">vueillez saisir votre login</div>
-                                        <div *ngIf="f['login'].errors['maxLength']">votre email est invalide </div>
-                                      </div>
-                                </div>
-                                </div>
-                            </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                      <label for="inputEmail4">Email</label>
-                                      <input type="email" formControlName="email" class="form-control" placeholder="Email" autocomplete="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" required>
-                                      <div *ngIf="submitted && f['email'].errors" class=" input-group mb-3 invalid-feedback">
-                                        <div *ngIf="f['email'].errors['required']">vueillez saisir votre email</div>
-                                        <div *ngIf="f['email'].errors['maxLength']">votre email est invalide </div>
-                                      </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                      <label for="inputNumTel">Numèro de Télèphone</label>
-                                      <input type="number" formControlName="numTel" class="form-control" placeholder="Tel" autocomplete="numTel" [ngClass]="{ 'is-invalid': submitted && f['numTel'].errors }" required>
-                                      <div *ngIf="submitted && f['numTel'].errors" class=" input-group mb-3 invalid-feedback">
-                                        <div *ngIf="f['numTel'].errors['required']"> vueillez saisir votre numero de telephone </div>
-                                        <div *ngIf="f['numTel'].errors['maxLength']"> la longueur est superieur à 9 chiffres</div>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Mot de pass</label>
-                                        <input type="password" id="password1" formControlName="password" class="form-control" placeholder="Mot de pass" autocomplete="new-password" [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }" required>
-                                        <div *ngIf="submitted && f['password'].errors" class=" input-group mb-3 invalid-feedback">
-                                          <div *ngIf="f['password'].errors['required']">vueillez saisir votre mot de passe</div>
-                                          <div *ngIf="f['password'].errors['minLength']">Mot de passe inferieur à 6</div>
-                                      </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                      <label for="inputPassword4">Confirmer le mot de pass</label>
-                                      <input type="password" id="password2" formControlName="confirmPassword" class="form-control" placeholder="Repeter le mot de pass" autocomplete="new-password" [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }" required >
-                                      <div *ngIf="submitted && f['confirmPassword'].errors" class="input-group mb-3 invalid-feedback ">
-                                        <div *ngIf="f['confirmPassword'].errors['required']">vueillez confirmer votre mot de passe </div>
-                                        <div *ngIf="f['confirmPassword'].errors['mustMatch']">vueillez saisir des mots de passe identiques</div>
-                                    </div>
-                                    </div>
-                                  </div>
-                           
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-blue">S'inscrire</button>&nbsp;&nbsp;
-                                    <button type="reset" class="btn btn-danger">Annuler</button>
-                                </div>
-                            </form>
-                                <div class="text-center text-muted mt-3">
-                                    Avez vous déja un compte? <a routerLink="/login">Se connecter</a>
-                                </div>
-                             
+              <div class="col-md-12">
+                <img
+                  src="../../../assets/images/brand/logo1.png"
+                  class="header-brand-img mb-2 mt-2 mt-lg-0"
+                  alt="logo"
+                />
+                <h3 class="text-center">Créer un compte</h3>
+                <form [formGroup]="RegisterForm" (ngSubmit)="onSubmit()">
+                  <label for="inputNom">Profil</label>
+                  <div class="input-group">
+                    <select
+                      aria-label="Default select example"
+                      id="profil"
+                      formControlName="profil"
+                      class="form-control"
+                      (change)="onChangeProfil($event)"
+                    >
+                      <option value="">
+                        -- Veuillez selectionner un profil --
+                      </option>
+                      <option value="ETUDIANT">Etudiant</option>
+                      <option value="PROF">Professeur</option>
+                    </select>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputNom">Nom</label>
+                      <input
+                        type="text"
+                        formControlName="nom"
+                        class="form-control"
+                        placeholder="Nom"
+                        autocomplete="nom"
+                        [ngClass]="{
+                          'is-invalid': submitted && f['nom'].errors
+                        }"
+                        required
+                      />
+                      <div
+                        *ngIf="submitted && f['nom'].errors"
+                        class="input-group mb-3 invalid-feedback"
+                      >
+                        <div *ngIf="f['nom'].errors['required']">
+                          vueillez saisir votre nom
                         </div>
+                      </div>
                     </div>
-                </div>
-            </div>       
-        </div>
-    </div>
-</div>
-</div>
+                    <div class="form-group col-md-6">
+                      <label for="inputPrenom">Prenom</label>
+                      <input
+                        type="text"
+                        formControlName="prenom"
+                        class="form-control"
+                        placeholder="Prenoms"
+                        autocomplete="prenom"
+                        [ngClass]="{
+                          'is-invalid': submitted && f['prenom'].errors
+                        }"
+                        required
+                      />
+                      <div
+                        *ngIf="submitted && f['prenom'].errors"
+                        class="input-group mb-3 invalid-feedback"
+                      >
+                        <div *ngIf="f['prenom'].errors['required']">
+                          vueillez saisir votre prenom
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="choix" *ngIf="profil !== 'PROF'">
+                    <label for="inputCity">Date Naissance</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">
+                          <i class="fas fa-calendar tx-16 lh-0 op-6"></i>
+                        </div>
+                      </div>
+                      <input
+                        type="date"
+                        class="form-control fc-datepicker hasDatepicker"
+                        formControlName="dateNaissance"
+                        autocomplete="dateNaissance"
+                        [ngClass]="{
+                          'is-invalid': submitted && f['dateNaissance'].errors
+                        }"
+                        required
+                      />
+                      <div
+                        *ngIf="submitted && f['dateNaissance'].errors"
+                        class="input-group mb-3 invalid-feedback"
+                      >
+                        <div *ngIf="f['dateNaissance'].errors['required']">
+                          vueillez saisir votre date de Naissance
+                        </div>
+                      </div>
+                    </div>
+                    <br />
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputPrenom">Lieu Naissance</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="lieuNaissance"
+                          placeholder="kaolack"
+                          autocomplete="lieuNaissance"
+                          [ngClass]="{
+                            'is-invalid': submitted && f['lieuNaissance'].errors
+                          }"
+                          required
+                        />
+                        <div
+                          *ngIf="submitted && f['lieuNaissance'].errors"
+                          class="input-group mb-3 invalid-feedback"
+                        >
+                          <div *ngIf="f['lieuNaissance'].errors['required']">
+                            vueillez saisir votre lieu de Naissance
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputLogin">Login</label>
+                        <input
+                          type="text"
+                          formControlName="login"
+                          class="form-control"
+                          placeholder="login"
+                          autocomplete="login"
+                          [ngClass]="{
+                            'is-invalid': submitted && f['login'].errors
+                          }"
+                          required
+                        />
+                        <div
+                          *ngIf="submitted && f['login'].errors"
+                          class="input-group mb-3 invalid-feedback"
+                        >
+                          <div *ngIf="f['login'].errors['required']">
+                            vueillez saisir votre login
+                          </div>
+                          <div *ngIf="f['login'].errors['maxLength']">
+                            votre email est invalide
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputEmail4">Email</label>
+                      <input
+                        type="email"
+                        formControlName="email"
+                        class="form-control"
+                        placeholder="Email"
+                        autocomplete="email"
+                        [ngClass]="{
+                          'is-invalid': submitted && f['email'].errors
+                        }"
+                        required
+                      />
+                      <div
+                        *ngIf="submitted && f['email'].errors"
+                        class="input-group mb-3 invalid-feedback"
+                      >
+                        <div *ngIf="f['email'].errors['required']">
+                          vueillez saisir votre email
+                        </div>
+                        <div *ngIf="f['email'].errors['maxLength']">
+                          votre email est invalide
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputNumTel">Numèro de Télèphone</label>
+                      <input
+                        type="number"
+                        formControlName="numTel"
+                        class="form-control"
+                        placeholder="Tel"
+                        autocomplete="numTel"
+                        [ngClass]="{
+                          'is-invalid': submitted && f['numTel'].errors
+                        }"
+                        required
+                      />
+                      <div
+                        *ngIf="submitted && f['numTel'].errors"
+                        class="input-group mb-3 invalid-feedback"
+                      >
+                        <div *ngIf="f['numTel'].errors['required']">
+                          vueillez saisir votre numero de telephone
+                        </div>
+                        <div *ngIf="f['numTel'].errors['maxLength']">
+                          la longueur est superieur à 9 chiffres
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label for="inputPassword4">Mot de pass</label>
+                      <input
+                        type="password"
+                        id="password1"
+                        formControlName="password"
+                        class="form-control"
+                        placeholder="Mot de pass"
+                        autocomplete="new-password"
+                        [ngClass]="{
+                          'is-invalid': submitted && f['confirmPassword'].errors
+                        }"
+                        required
+                      />
+                      <div
+                        *ngIf="submitted && f['password'].errors"
+                        class="input-group mb-3 invalid-feedback"
+                      >
+                        <div *ngIf="f['password'].errors['required']">
+                          vueillez saisir votre mot de passe
+                        </div>
+                        <div *ngIf="f['password'].errors['minLength']">
+                          Mot de passe inferieur à 6
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="inputPassword4"
+                        >Confirmer le mot de pass</label
+                      >
+                      <input
+                        type="password"
+                        id="password2"
+                        formControlName="confirmPassword"
+                        class="form-control"
+                        placeholder="Repeter le mot de pass"
+                        autocomplete="new-password"
+                        [ngClass]="{
+                          'is-invalid': submitted && f['confirmPassword'].errors
+                        }"
+                        required
+                      />
+                      <div
+                        *ngIf="submitted && f['confirmPassword'].errors"
+                        class="input-group mb-3 invalid-feedback"
+                      >
+                        <div *ngIf="f['confirmPassword'].errors['required']">
+                          vueillez confirmer votre mot de passe
+                        </div>
+                        <div *ngIf="f['confirmPassword'].errors['mustMatch']">
+                          vueillez saisir des mots de passe identiques
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-blue">
+                      S'inscrire</button
+                    >&nbsp;&nbsp;
+                    <button type="reset" class="btn btn-danger">Annuler</button>
+                  </div>
+                </form>
+                <div class="text-center text-muted mt-3">
+                  Avez vous déja un compte?
+                  <a routerLink="/login">Se connecter</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
