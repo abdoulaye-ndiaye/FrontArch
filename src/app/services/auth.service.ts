@@ -11,12 +11,12 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) { }
 
-  authenticate(login:string, password:string) {
+  authenticate(email:string, password:string) {
     return this.httpClient
-      .post<any>(`${environment.apiUrl}/login`, { login, password })
+      .post<any>(`${environment.apiUrl}/login`, { email, password })
       .pipe(
         map(userData => {
-          sessionStorage.setItem("login", userData.login);
+          sessionStorage.setItem("email", userData.email);
           let tokenStr = "Bearer " + userData.token;
           console.log(tokenStr);
           sessionStorage.setItem("token", tokenStr);
@@ -62,7 +62,7 @@ export class AuthService {
   }
   getEtudiant(idEtudiant:string) {
     return this.httpClient
-      .get<any>(`${environment.apiUrl}/etudiant/projet/${idEtudiant}`);
+      .get<any>(`${environment.apiUrl}/etudiant/${idEtudiant}`);
   }
   getProjets() {
     return this.httpClient

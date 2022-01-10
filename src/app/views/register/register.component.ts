@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { MustMatch } from '../../services/_helpers/must-match.validator';
+import { style } from '@angular/animations';
 
 export enum EnumProfil {
   ETUDIANT = 'ETUDIANT',
