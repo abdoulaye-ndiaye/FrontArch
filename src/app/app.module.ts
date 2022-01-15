@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BasicAuthInterceptorService } from './services/_helpers/basic-auth-interceptor.service';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
+import {DataTablesModule} from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     HttpClientModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataTablesModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass : BasicAuthInterceptorService , multi:true},

@@ -31,9 +31,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     private authService: AuthService
   ) {}
 
-  choix() {
-    this.a = 'etu';
-  }
+
 
   ngOnInit(): void {
     this.RegisterForm = this.formBulder.group(
