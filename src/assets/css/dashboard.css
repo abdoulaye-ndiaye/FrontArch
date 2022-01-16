@@ -2566,17 +2566,17 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	border: 0;
 }
 .dropdown-item:hover, .dropdown-item:focus {
-	color: #6512ae;
+	color: #2f39c0;
 	text-decoration: none;
 	background-color: #f8f9fa;
 }
 .dropdown-item.active, .dropdown-item:active {
-	color: #6512ae;
+	color: #2f39c0;
 	text-decoration: none;
 	background-color: rgba(152, 166, 173, 0.1) ;
 }
 .dropdown-item.disabled, .dropdown-item:disabled {
-	color: #6512ae;
+	color: #2f39c0;
 	background-color: transparent;
 }
 .dropdown-menu.show {
@@ -20913,7 +20913,7 @@ svg {
 /*-----51. Back to Top-----*/
 
 #back-to-top {
-	background: #6512ae ;
+	background: #007fff ;
 	color: #fff;
 	position: fixed;
 	bottom: 20px;
@@ -20935,9 +20935,9 @@ svg {
 }
 
 #back-to-top:hover {
-	background: #fff;
-	color: #6512ae ;
-	border: 2px solid #6512ae ;
+	background: #007fff;
+	color: #fff ;
+	border: 2px solid #007fff ;
 }
 .tabs-menu ul li a{
 	padding:10px 20px 11px 20px;

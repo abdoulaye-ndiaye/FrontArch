@@ -14,13 +14,15 @@ import { BasicAuthInterceptorService } from './services/_helpers/basic-auth-inte
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import {DataTablesModule} from 'angular-datatables';
+import { HomeComponent } from './views/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AcceuilComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

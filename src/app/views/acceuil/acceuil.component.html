@@ -84,8 +84,8 @@
       <div class="container ">
         <div class="card m-5 p-3">
             <div class="card-body">
-              <div>LA LISTE DES MEMOIRES</div>
-                <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions" >
+              <div align="center">LA LISTE DES MEMOIRES</div>
+                <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions"  [dtTrigger]="dtTrigger" >
                     <thead>
                     <tr>
                         <th>Projet</th>
@@ -101,49 +101,117 @@
                         <td>{{ projet.sujet }}</td>
                         <td>{{ projet.description }}</td>
                         <td>{{ projet.date_fin }}</td>
+                        <td>{{ projet.date_fin }}</td>
                         <td>test</td>
-                        <td>test</td>
-                        <td><a href="#" class="btn btn-pill btn-info">Télécharger</a></td>
+                        <td><a href="#" class="btn btn-pill btn-info"><i class="mdi mdi-arrow-collapse-down"></i></a></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
     
         </div>
-    
-
+   
       
     </div>
 
       <div class="container ">
         <div class="card m-5 p-3">
             <div class="card-body">
-              <div>LA LISTE DES ARTICLES</div>
-                <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions" >
+              <div align="center">LA LISTE DES ARTICLES</div>
+                <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
                     <thead>
                     <tr>
-                        <th>Projet</th>
+                        <th>Sujet</th>
                         <th>Description</th>
-                        <th>Date soutenance</th>
-                        <th>Etudiant</th>
-                        <th>Prof Encadreur</th>
+                        <th>Date sortie</th>
+                        <th>Professeur</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let projet of allProjets">
-                        <td>{{ projet.sujet }}</td>
-                        <td>{{ projet.description }}</td>
-                        <td>{{ projet.date_fin }}</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td><a href="#" class="btn btn-pill btn-info">Télécharger</a></td>
+                    <tr>
+                        <td>Blockchain</td>
+                        <td>Introduction générale sur la blockchain, technologie des cryptomonaies</td>
+                        <td>14/01/2022</td>
+                        <td>Mme Kassé</td>
+                        <td><a href="#" class="btn btn-pill btn-info"><i class="mdi mdi-arrow-collapse-down"></i></a></td>
                     </tr>
+                    <tr>
+                      <td>les Graphes</td>
+                      <td>Python, l'utilisation des graphes dans la prévision d'actions</td>
+                      <td>04/01/2022</td>
+                      <td>Mr Bass</td>
+                      <td><a href="#" class="btn btn-pill btn-info"><i class="mdi mdi-arrow-collapse-down"></i></a></td>
+                  </tr>
+                  <tr>
+                    <td>Datatables</td>
+                    <td>Optimisation de l'affichage des tableaux de données en Angular</td>
+                    <td>11/05/2019</td>
+                    <td>Vito Ndiaye</td>
+                    <td><a href="#" class="btn btn-pill btn-info"><i class="mdi mdi-arrow-collapse-down"></i></a></td>
+                </tr>
+                <tr>
+                  <td>GitHub</td>
+                  <td>Création et utilisation d'un compte git pour des projets </td>
+                  <td>14/08/2020</td>
+                  <td>Mr Mbacké</td>
+                  <td><a href="#" class="btn btn-pill btn-info"><i class="mdi mdi-arrow-collapse-down"></i></a></td>
+              </tr>
+              <tr>
+                <td>IA</td>
+                <td>Programmation de plusieurs drones pour des vols coordonnés</td>
+                <td>14/01/2016</td>
+                <td>Mr Ass Tako</td>
+                <td><a href="#" class="btn btn-pill btn-info"><i class="mdi mdi-arrow-collapse-down"></i></a></td>
+            </tr>
+            <tr>
+              <td>Analytics</td>
+              <td>Utilisation de l'outil Google Analytics pour l'optimisation du SEO des sites</td>
+              <td>14/01/2021</td>
+              <td>Mr SESAF</td>
+              <td><a href="#" class="btn btn-pill btn-info"><i class="mdi mdi-arrow-collapse-down"></i></a></td>
+          </tr>
+          <tr>
+            <td>Analytics</td>
+            <td>Utilisation de l'outil Google Analytics pour l'optimisation du SEO des sites</td>
+            <td>14/01/2021</td>
+            <td>Mr SESAF</td>
+            <td><a href="#" class="btn btn-pill btn-info"><i class="mdi mdi-arrow-collapse-down"></i></a></td>
+        </tr>
+        <tr>
+          <td>Analytics</td>
+          <td>Utilisation de l'outil Google Analytics pour l'optimisation du SEO des sites</td>
+          <td>14/01/2021</td>
+          <td>Mr SESAF</td>
+          <td><a href="#" class="btn btn-pill btn-info"><i class="mdi mdi-arrow-collapse-down"></i></a></td>
+      </tr>
+      <tr>
+        <td>Analytics</td>
+        <td>Utilisation de l'outil Google Analytics pour l'optimisation du SEO des sites</td>
+        <td>14/01/2021</td>
+        <td>Mr SESAF</td>
+        <td><a href="#" class="btn btn-pill btn-info"><i class="mdi mdi-arrow-collapse-down"></i></a></td>
+    </tr>
+    <tr>
+      <td>Analytics</td>
+      <td>Utilisation de l'outil Google Analytics pour l'optimisation du SEO des sites</td>
+      <td>14/01/2021</td>
+      <td>Mr SESAF</td>
+      <td><a href="#" class="btn btn-pill btn-info"><i class="mdi mdi-arrow-collapse-down"></i></a></td>
+  </tr>
+  <tr>
+    <td>Analytics</td>
+    <td>Utilisation de l'outil Google Analytics pour l'optimisation du SEO des sites</td>
+    <td>14/01/2021</td>
+    <td>Mr SESAF</td>
+    <td><a href="#" class="btn btn-pill btn-info"><i class="mdi mdi-arrow-collapse-down"></i></a></td>
+</tr>
                     </tbody>
                 </table>
             </div>
     
         </div>
+        
     
 
       <!--footer-->
@@ -151,7 +219,7 @@
         <div class="container">
           <div class="row align-items-center flex-row-reverse">
             <div class="col-lg-12 col-sm-12 mt-3 mt-lg-0 text-center">
-              Copyright © 2021 <a href="#">UADB</a>.&nbsp;&nbsp; Designed by
+              Copyright © 2022 <a href="#">UADB</a>.&nbsp;&nbsp; Designed by
               <a href="#">Sidy TRAORE & Abdoulaye NDIAYE</a>&nbsp;&nbsp; All
               rights reserved.
             </div>

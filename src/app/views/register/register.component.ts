@@ -15,7 +15,7 @@ export enum EnumProfil {
   selector: 'app-register',
   templateUrl: './register.component.html',
 })
-export class RegisterComponent implements OnInit, AfterViewInit {
+export class RegisterComponent implements OnInit {
   RegisterForm: FormGroup;
   a = '';
   profil = EnumProfil.ETUDIANT;
@@ -75,6 +75,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
       );
 
       if (this.RegisterForm.value.profil == EnumProfil.ETUDIANT) {
+        
         this.authService
           .RegisterEtudiant(
             this.RegisterForm.value.dateNaissance,

@@ -3,18 +3,20 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
-import {Subject} from 'rxjs';
+import { Subject } from 'rxjs';
+import { TestBed } from '@angular/core/testing';
 
 
 @Component({
   selector: 'app-acceuil',
   templateUrl: './acceuil.component.html'
 })
-export class AcceuilComponent implements OnInit, OnDestroy {
+export class AcceuilComponent implements OnInit{
 
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
 
+  prof:any;
   allProjets: any;
   adminForm : FormGroup;
   submitted = false;
@@ -29,23 +31,23 @@ export class AcceuilComponent implements OnInit, OnDestroy {
     private authService : AuthService,
   ) { }
 
+
+
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
       lengthMenu : [5, 10, 25],
-      processing: true
+      processing: true,
+      retrieve: true,
     };
     this.authService.getProjets().subscribe(data => {
       this.allProjets = data;
-      this.dtTrigger.next;
-      
+      this.dtTrigger.next(data);
     }); 
+   
   }
    
-  ngOnDestroy(): void {
-    this.dtTrigger.unsubscribe();
-  }
   
 }
 

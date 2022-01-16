@@ -56,9 +56,9 @@ export class AuthService {
     sessionStorage.removeItem("token");
   }
 
-  getEncadreur(idProf:string) {
+  getProfesseur(idProf:string) {
     return this.httpClient
-      .get<any>(`${environment.apiUrl}/etudiant/projet/${idProf}`);
+      .get<any>(`${environment.apiUrl}/professeur/${idProf}`);
   }
   getEtudiant(idEtudiant:string) {
     return this.httpClient
@@ -67,6 +67,11 @@ export class AuthService {
   getProjets() {
     return this.httpClient
       .get<any>(`${environment.apiUrl}/projet`);
+      
+  }
+  getCompte(idCompte:string) {
+    return this.httpClient
+      .get<any>(`${environment.apiUrl}/compte/${idCompte}`);
   }
 }
 

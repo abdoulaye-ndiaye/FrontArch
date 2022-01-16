@@ -1,0 +1,221 @@
+<div class="page">
+    <div class="page-main">
+        <!-- Navbar-->
+        <header class="app-header header">
+
+            <!-- Navbar Right Menu-->
+            <div class="container-fluid">
+                <div class="d-flex">
+                    <a class="header-brand" routerLink="/acceuil">
+                        <img alt="logo" class="header-brand-img" src="../../../assets/images/brand/logo1.png">
+                    </a>
+
+                    <div class="d-flex ml-auto">
+                        <p align="center">
+                          UNIVERSITE ALIOUNE DIOP DE BAMBEY<br />
+                          UFR SATIC - DEPARTEMENT TIC
+                        </p>
+                      </div>
+                    <!-- Sidebar toggle button-->
+                   
+                    <div class="d-flex order-lg-2 ml-auto">
+                        
+                      
+
+                        <div class="dropdown d-none d-md-flex">
+                            <a class="nav-link icon" data-toggle="dropdown"><i class="fe fe-mail"></i> <span class="pulse bg-success" aria-hidden="true"></span></a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                <a class="dropdown-item text-center" href="#">2 Nouveaux Messages</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item d-flex pb-3" href="#">
+                                    <span class="avatar brround mr-3 align-self-center" style="background-image: url(../../../assets/images/users/male/41.jpg)"></span>
+                                    <div>
+                                        <strong>Sidy :</strong> Salut! j'ai besoin de vous...
+                                        <div class="small text-muted">
+                                            Il y'a 3 heures 
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex pb-3" href="#"><span class="avatar brround mr-3 align-self-center" style="background-image: url(../../../assets/images/users/female/1.jpg)"></span>
+                                    <div>
+                                        <strong>Laye :</strong> Nouveaux modifis sur le fichier...
+                                        <div class="small text-muted">
+                                            Il y'a 5 heures
+                                        </div>
+                                    </div>
+                                </a>
+                               
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-center" href="#">Voir tous les messages</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <a class="nav-link pr-0 leading-none d-flex" data-toggle="dropdown" href="#">
+                                <span class="avatar avatar-md brround" style="background-image: url(../../../assets/images/avatar.jpeg)"></span>
+                                <span class="ml-2 d-none d-lg-block">
+                                    <span class="text-dark"><strong>{{compte.prenom }} {{compte.nom}}</strong></span>
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                <a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-mail"></i> Mes messages</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" (click)="deconnexion()"><i class="dropdown-icon fe fe-power"></i> Déconnection</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sidebar menu-->
+        <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+        <aside class="app-sidebar">
+            <div class="app-sidebar__user">
+                
+            </div>
+            <ul class="side-menu">
+                <li class="slide">
+                    <a class="side-menu__item active" data-toggle="slide" href="#"><i class="side-menu__icon si si-home"></i><span class="side-menu__label">Acceuil</span></a>
+                    
+                </li>
+                <li>
+                    <a class="side-menu__item" routerLink="/home"><i class="side-menu__icon si si-folder-alt"></i><span class="side-menu__label">Mon Projet</span></a>
+                </li>
+            
+                <li class="slide">
+                    <a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon si si-arrow-down-circle"></i><span class="side-menu__label">Download Rapports<br/> Rapporteurs</span></a>   
+                </li>
+             
+              <li class="slide">
+                <a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon si si-plus"></i><span class="side-menu__label">Upload Mémoire</span></a>   
+            </li>
+                <li class="slide">
+                  <a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon si si-plus"></i><span class="side-menu__label">Upload Demande<br/> autorisation</span></a>   
+              </li>
+              <li class="slide">
+                <a class="side-menu__item" data-toggle="slide" href="#"><i class="side-menu__icon si si-arrow-down-circle"></i><span class="side-menu__label">Download autorisation</span></a>   
+              </li>
+              
+            </ul>
+        </aside>
+        <!--side-menu-->
+
+        <div class=" app-content my-3 my-md-5">
+            <div class="side-app">
+                <br/>
+            </div>
+            <div class="container">
+                <div class="main-body">
+                    <div class="row d-flex justify-content-center" >
+                        <div class="col-xl-6 ">
+                            <div class="card bg-success">
+                                <div class="card-body">
+                                    <div class="success-box">
+                                        <i class="si si-emotsmile"></i>
+                                        <h4>Bienvenue !</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                      <div class="row gutters-sm">
+                        <div class="col-md-4 mb-3">
+                           
+                          <div class="card">
+                              
+                            <div class="card-body">
+                                
+                              <div class="d-flex flex-column align-items-center text-center">
+                                <img src="../../../assets/images/avatar.jpeg" alt="Admin" class="rounded-circle" width="150">
+                                <div class="mt-3">
+                                  <h4>{{compte.prenom }} {{compte.nom}}</h4>
+                                  <p class="text-secondary mb-1">{{compte.profil }}</p>
+                                  <p class="text-muted font-size-sm">Université Alioune Diop de Bambey</p>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                       
+                        </div>
+                        <div class="col-md-8">
+                          <div class="card mb-3">
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <h6 class="mb-0">Nom Complet</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{compte.prenom }} {{compte.nom}}
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <h6 class="mb-0">Email</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{compte.email }}
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <h6 class="mb-0">Téléphone</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{compte.numTel }}
+                                </div>
+                              </div>
+                          <!--     <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <h6 class="mb-0">Date de Naissance</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{compte.dateNaissance }}
+                                </div>
+                              </div>
+                              <hr>
+                              <div class="row">
+                                <div class="col-sm-3">
+                                  <h6 class="mb-0">Lieu de Naissance</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary">
+                                    {{compte.LieuNaissance }}
+                                </div>
+                              </div>
+                              -->
+                            </div>
+                          </div>
+            
+                         
+            
+            
+            
+                        </div>
+                      </div>
+            
+                    </div>
+                </div>
+            
+            <!--footer-->
+            <footer class="footer">
+                <div class="container">
+                  <div class="row align-items-center flex-row-reverse">
+                    <div class="col-lg-12 col-sm-12 mt-3 mt-lg-0 text-center">
+                      Copyright © 2022 <a href="#">UADB</a>.&nbsp;&nbsp; Designed by
+                      <a href="#">Sidy TRAORE & Abdoulaye NDIAYE</a>&nbsp;&nbsp; All
+                      rights reserved.
+                    </div>
+                  </div>
+                </div>
+              </footer>
+            <!-- End Footer-->
+        </div>
+    </div>
+</div>		
+
+<!-- Back to top -->
+<a href="#top" id="back-to-top" style="display: inline;"><i class="fas fa-angle-up"></i></a>
