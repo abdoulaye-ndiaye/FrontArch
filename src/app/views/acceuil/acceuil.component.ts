@@ -16,7 +16,7 @@ export class AcceuilComponent implements OnInit{
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
 
-  prof:any;
+  prof:string;
   allProjets: any;
   adminForm : FormGroup;
   submitted = false;
@@ -31,7 +31,14 @@ export class AcceuilComponent implements OnInit{
     private authService : AuthService,
   ) { }
 
-
+  encadreur(id:string){
+    this.authService.getEncadreur(id).subscribe(data => {
+      this.prof = data.prenom;
+      this.prof+=" ";
+      this.prof+=data.nom; 
+    }); 
+    return this.prof
+  }
 
   ngOnInit(): void {
     this.dtOptions = {

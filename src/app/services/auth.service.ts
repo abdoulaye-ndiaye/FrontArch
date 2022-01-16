@@ -67,6 +67,10 @@ export class AuthService {
     return this.httpClient
       .get<any>(`${environment.apiUrl}/professeur/${idProf}`);
   }
+  getEncadreur(idProjet:string) {
+    return this.httpClient
+      .get<any>(`${environment.apiUrl}/encadreur/projet/${idProjet}`);
+  }
   getEtudiant(idEtudiant:string) {
     return this.httpClient
       .get<any>(`${environment.apiUrl}/etudiant/${idEtudiant}`);

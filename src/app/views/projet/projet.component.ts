@@ -10,6 +10,7 @@ export class ProjetComponent implements OnInit {
 
   compte: any;
   a:string;
+ 
 
   constructor(
     private router : Router,
@@ -20,6 +21,7 @@ export class ProjetComponent implements OnInit {
     this.authService.logOut();
     this.router.navigate(['/home']);
   }
+  
 
   ngOnInit(): void {
     this.a= sessionStorage.getItem("id") as string;

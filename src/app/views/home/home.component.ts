@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   a: string;
   dateNaissance:string;
   lieuNaissance:string;
+  profil= sessionStorage.getItem("profil");
 
   constructor(
     private router : Router,
