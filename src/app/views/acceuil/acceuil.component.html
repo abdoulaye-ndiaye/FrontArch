@@ -20,14 +20,32 @@
               </p>
             </div>
             <!-- Sidebar toggle button-->
+           
             <div class="d-flex order-lg-2 ml-auto">
+              <div *ngIf="!profil">
               <a routerLink="/login">
                 <button type="button" class="btn bg-gradient">
                   <i class="fe fe-plus mr-2 text-black"></i>Se connecter
                 </button></a
               >
             </div>
-            
+            <div *ngIf="profil">
+              
+            <div class="dropdown">
+                <a class="nav-link pr-0 leading-none d-flex" data-toggle="dropdown" href="#">
+                    <span class="avatar avatar-md brround" style="background-image: url(../../../assets/images/avatar.jpeg)"></span>
+                    <span class="ml-2 d-none d-lg-block">
+                        <span class="text-dark"><strong>{{prenom }} {{nom}}</strong></span>
+                    </span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                    <a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-mail"></i> Mes messages</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#" (click)="deconnexion()"><i class="dropdown-icon fe fe-power"></i> Déconnection</a>
+                </div>
+            </div>
+            </div>
+          </div>
           </div>
         </div>
       </header>

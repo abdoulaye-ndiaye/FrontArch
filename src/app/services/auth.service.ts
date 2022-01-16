@@ -22,6 +22,8 @@ export class AuthService {
           sessionStorage.setItem("token", tokenStr);
           sessionStorage.setItem("profil", userData.profil);
           sessionStorage.setItem("id", userData.id);
+          sessionStorage.setItem("nom", userData.nom);
+          sessionStorage.setItem("prenom", userData.prenom);
           sessionStorage.setItem("dateNaissance", userData.dateNaissance);
           sessionStorage.setItem("lieuNaissance", userData.lieuNaissance);
 
@@ -59,6 +61,8 @@ export class AuthService {
     sessionStorage.removeItem("email");
     sessionStorage.removeItem("profil");
     sessionStorage.removeItem("id");
+    sessionStorage.removeItem("nom");
+    sessionStorage.removeItem("prenom");
     sessionStorage.removeItem("dateNaissance");
     sessionStorage.removeItem("lieuNaissance");
   }

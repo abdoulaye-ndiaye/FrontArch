@@ -1916,8 +1916,8 @@ a.btn.disabled, fieldset:disabled a.btn {
 }
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show>.btn-primary.dropdown-toggle {
 	color: #fff;
-	background-color: #6512ae;
-	border-color: #6512ae;
+	background-color: #3a20ce;
+	border-color: #3a20ce;
 }
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .show>.btn-primary.dropdown-toggle:focus {
 	box-shadow: 0 0 0 2px rgba(242,242,242, 0.1);
@@ -2150,8 +2150,8 @@ a.btn.disabled, fieldset:disabled a.btn {
 }
 .btn-outline-primary:not(:disabled):not(.disabled):active, .btn-outline-primary:not(:disabled):not(.disabled).active, .show>.btn-outline-primary.dropdown-toggle {
 	color: #fff;
-	background-color: #6512ae ;
-	border-color: #6512ae ;
+	background-color: #3a20ce ;
+	border-color: #3a20ce ;
 }
 .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus, .show>.btn-outline-primary.dropdown-toggle:focus {
 	box-shadow: 0 0 0 2px rgba(242,242,242, 0.1);
@@ -3338,7 +3338,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
     color: #56667a  !important;
 }
 .accordionjs .acc_section.acc_active > .acc_head {
-    background: #6512ae;
+    background: #3a20ce;
 }
 .sweet-alert button {
 	background-color: #6512ae !important;
@@ -3350,7 +3350,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
      box-shadow: none;
 }
  .addui-slider .addui-slider-track .addui-slider-handle.addui-slider-handle-active .addui-slider-value {
-     background: #6512ae;
+     background: #3a20ce;
 }
  .addui-slider .addui-slider-track {
      background: #6512ae;
@@ -3359,7 +3359,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
      background: #6512ae;
 }
  .addui-slider .addui-slider-track .addui-slider-handle.addui-slider-handle-active {
-     background: #6512ae;
+     background: #3a20ce;
      box-shadow:none;
 }
  .addui-slider .addui-slider-track .addui-slider-range {

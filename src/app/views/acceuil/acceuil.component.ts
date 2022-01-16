@@ -23,6 +23,10 @@ export class AcceuilComponent implements OnInit{
   returnUrl : string;
   message = '';
   hide = true;
+  profil= sessionStorage.getItem("profil");
+  nom= sessionStorage.getItem("nom");
+  prenom= sessionStorage.getItem("prenom");
+
 
   constructor(
     private formBulder : FormBuilder,
@@ -31,6 +35,10 @@ export class AcceuilComponent implements OnInit{
     private authService : AuthService,
   ) { }
 
+  deconnexion(){
+    this.authService.logOut();
+    this.router.navigate(['/home']);
+  }
   encadreur(id:string){
     this.authService.getEncadreur(id).subscribe(data => {
       this.prof = data.prenom;
