@@ -15,6 +15,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import {DataTablesModule} from 'angular-datatables';
 import { HomeComponent } from './views/home/home.component';
+import { ProjetComponent } from './views/projet/projet.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HomeComponent } from './views/home/home.component';
     AcceuilComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    ProjetComponent
   ],
   imports: [
     BrowserModule,

@@ -75,11 +75,11 @@
             </div>
             <ul class="side-menu">
                 <li class="slide">
-                    <a class="side-menu__item active" data-toggle="slide" href="#"><i class="side-menu__icon si si-home"></i><span class="side-menu__label">Acceuil</span></a>
+                    <a class="side-menu__item active" data-toggle="slide" routerLink="/home"><i class="side-menu__icon si si-home"></i><span class="side-menu__label">Acceuil</span></a>
                     
                 </li>
                 <li>
-                    <a class="side-menu__item" routerLink="/home"><i class="side-menu__icon si si-folder-alt"></i><span class="side-menu__label">Mon Projet</span></a>
+                    <a class="side-menu__item" routerLink="/projet"><i class="side-menu__icon si si-folder-alt"></i><span class="side-menu__label">Mon Projet</span></a>
                 </li>
             
                 <li class="slide">
@@ -168,13 +168,13 @@
                                     {{compte.numTel }}
                                 </div>
                               </div>
-                          <!--     <hr>
+                              <hr>
                               <div class="row">
                                 <div class="col-sm-3">
                                   <h6 class="mb-0">Date de Naissance</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    {{compte.dateNaissance }}
+                                    {{dateNaissance }}
                                 </div>
                               </div>
                               <hr>
@@ -183,10 +183,10 @@
                                   <h6 class="mb-0">Lieu de Naissance</h6>
                                 </div>
                                 <div class="col-sm-9 text-secondary">
-                                    {{compte.LieuNaissance }}
+                                    {{lieuNaissance }}
                                 </div>
                               </div>
-                              -->
+                            
                             </div>
                           </div>
             

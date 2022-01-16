@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
+import { AuthGuard } from './services/auth.guard';
 import { AcceuilComponent } from './views/acceuil/acceuil.component';
 import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
+import { ProjetComponent } from './views/projet/projet.component';
 import { RegisterComponent } from './views/register/register.component';
 
 const routes: Routes = [
@@ -37,7 +39,16 @@ const routes: Routes = [
     component: HomeComponent,
     data: {
       title: 'Home'
-    }
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'projet',
+    component: ProjetComponent,
+    data: {
+      title: 'Projet'
+    },
+    canActivate:[AuthGuard]
   },
   
   { path: '**', component: AcceuilComponent }

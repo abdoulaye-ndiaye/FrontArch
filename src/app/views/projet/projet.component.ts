@@ -3,15 +3,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html'
+  selector: 'app-projet',
+  templateUrl: './projet.component.html'
 })
-export class HomeComponent implements OnInit {
+export class ProjetComponent implements OnInit {
 
   compte: any;
-  a: string;
-  dateNaissance:string;
-  lieuNaissance:string;
+  a:string;
 
   constructor(
     private router : Router,
@@ -24,17 +22,11 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-      this.a= sessionStorage.getItem("id") as string;
-      this.dateNaissance=sessionStorage.getItem("dateNaissance") as string;
-      this.lieuNaissance=sessionStorage.getItem("lieuNaissance") as string;
-      
+    this.a= sessionStorage.getItem("id") as string;
     this.authService.getCompte(this.a).subscribe(data => {
       this.compte = data;
       
     }); 
-    
-   
   }
 
 }

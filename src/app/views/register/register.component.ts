@@ -45,7 +45,6 @@ export class RegisterComponent implements OnInit {
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', Validators.required],
-        login: ['', Validators.required],
       },
       { validator: MustMatch('password', 'confirmPassword') }
     );
@@ -67,7 +66,7 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
 
     if (this.RegisterForm.invalid) {
-      return;
+      return console.log("invalid");
     } else {
       console.log(
         this.RegisterForm.value.email,
@@ -85,8 +84,7 @@ export class RegisterComponent implements OnInit {
             this.RegisterForm.value.prenom,
             EnumProfil.ETUDIANT,
             this.RegisterForm.value.email,
-            this.RegisterForm.value.password,
-            this.RegisterForm.value.login
+            this.RegisterForm.value.password
           )
           .subscribe(
             (resultat) => {
@@ -108,8 +106,7 @@ export class RegisterComponent implements OnInit {
             this.RegisterForm.value.prenom,
             EnumProfil.PROF,
             this.RegisterForm.value.email,
-            this.RegisterForm.value.password,
-            this.RegisterForm.value.login
+            this.RegisterForm.value.password
           )
           .subscribe(
             (resultat) => {

@@ -22,22 +22,25 @@ export class AuthService {
           sessionStorage.setItem("token", tokenStr);
           sessionStorage.setItem("profil", userData.profil);
           sessionStorage.setItem("id", userData.id);
+          sessionStorage.setItem("dateNaissance", userData.dateNaissance);
+          sessionStorage.setItem("lieuNaissance", userData.lieuNaissance);
+
           return userData;
         })
       );
   }
-  RegisterEtudiant( dateNaissance:string, lieuNaissance:string, numTel:string, nom:string, prenom:string, profil:string, email:string, password:string, login:string) {
+  RegisterEtudiant( dateNaissance:string, lieuNaissance:string, numTel:string, nom:string, prenom:string, profil:string, email:string, password:string) {
     return this.httpClient
-      .post<any>(`${environment.apiUrl}/etudiant`, { dateNaissance, lieuNaissance, numTel, nom, prenom, profil, email, password, login })
+      .post<any>(`${environment.apiUrl}/etudiant`, { dateNaissance, lieuNaissance, numTel, nom, prenom, profil, email, password })
       .pipe(
         map(userData => {
           return userData;
         })
       );
   }
-  RegisterProf(numTel:string, nom:string, prenom:string, profil:string, email:string, password:string, login:string) {
+  RegisterProf(numTel:string, nom:string, prenom:string, profil:string, email:string, password:string) {
     return this.httpClient
-      .post<any>(`${environment.apiUrl}/professeur`, { numTel, nom, prenom, profil, email, password, login })
+      .post<any>(`${environment.apiUrl}/professeur`, { numTel, nom, prenom, profil, email, password })
       .pipe(
         map(userData => {
           return userData;
@@ -46,14 +49,18 @@ export class AuthService {
   }
 
   isUserLoggedIn() {
-    let user = sessionStorage.getItem("login");
+    let user = sessionStorage.getItem("token");
     console.log(!(user === null));
     return !(user === null);
   }
 
   logOut() {
-    sessionStorage.removeItem("login");
     sessionStorage.removeItem("token");
+    sessionStorage.removeItem("email");
+    sessionStorage.removeItem("profil");
+    sessionStorage.removeItem("id");
+    sessionStorage.removeItem("dateNaissance");
+    sessionStorage.removeItem("lieuNaissance");
   }
 
   getProfesseur(idProf:string) {
