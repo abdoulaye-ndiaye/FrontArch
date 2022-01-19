@@ -26,6 +26,7 @@ export class AuthService {
           sessionStorage.setItem("prenom", userData.prenom);
           sessionStorage.setItem("dateNaissance", userData.dateNaissance);
           sessionStorage.setItem("lieuNaissance", userData.lieuNaissance);
+          sessionStorage.setItem("idEtu", userData.idEtu);
 
           return userData;
         })
@@ -61,6 +62,7 @@ export class AuthService {
     sessionStorage.removeItem("email");
     sessionStorage.removeItem("profil");
     sessionStorage.removeItem("id");
+    sessionStorage.removeItem("idEtu");
     sessionStorage.removeItem("nom");
     sessionStorage.removeItem("prenom");
     sessionStorage.removeItem("dateNaissance");
@@ -83,6 +85,33 @@ export class AuthService {
     return this.httpClient
       .get<any>(`${environment.apiUrl}/projet`);
       
+  }
+  getProjetByIdEtudiant(idEtu:string) {
+    return this.httpClient
+      .get<any>(`${environment.apiUrl}/projet/etudiant/${idEtu}`);
+      
+  }
+  downloadRapport(idRapport:string): void {
+    this.httpClient
+    .get(`${environment.apiUrl}/download-rapport/${idRapport}`, { responseType: 'blob'})
+    .subscribe(res => {
+      window.open(window.URL.createObjectURL(res));
+    });
+  }
+  downloadAutorisation(idAutorisation:string): void {
+    this.httpClient
+    .get(`${environment.apiUrl}/download-autorisation/${idAutorisation}`, { responseType: 'blob'})
+    .subscribe(res => {
+      window.open(window.URL.createObjectURL(res));
+    });
+  }
+  getRapport() {
+    return this.httpClient
+      .get<any>(`${environment.apiUrl}/rapportRapporteur`);
+  }
+  getAutorisation() {
+    return this.httpClient
+      .get<any>(`${environment.apiUrl}/autorisation`);
   }
   getCompte(idCompte:string) {
     return this.httpClient

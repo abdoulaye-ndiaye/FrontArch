@@ -16,6 +16,10 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import {DataTablesModule} from 'angular-datatables';
 import { HomeComponent } from './views/home/home.component';
 import { ProjetComponent } from './views/projet/projet.component';
+import { UploadMemoireComponent } from './views/upload-memoire/upload-memoire.component';
+import { DownloadRapportComponent } from './views/download-rapport/download-rapport.component';
+import { UploadDemandeAutorisationComponent } from './views/upload-demande-autorisation/upload-demande-autorisation.component';
+import { DownloadAutorisationComponent } from './views/download-autorisation/download-autorisation.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { ProjetComponent } from './views/projet/projet.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ProjetComponent
+    ProjetComponent,
+    UploadMemoireComponent,
+    DownloadRapportComponent,
+    UploadDemandeAutorisationComponent,
+    DownloadAutorisationComponent
   ],
   imports: [
     BrowserModule,

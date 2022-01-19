@@ -39,6 +39,8 @@
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                  <a class="dropdown-item" routerLink="/home"><i class="dropdown-icon fe fe-user"></i> Mon Espace</a>
+                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-mail"></i> Mes messages</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#" (click)="deconnexion()"><i class="dropdown-icon fe fe-power"></i> Déconnection</a>
@@ -49,9 +51,8 @@
           </div>
         </div>
       </header>
-
       <div class="page-header">
-        <img src="../../../assets/images/2022-01-12 15.00.34.jpg">
+        <img src="../../../assets/images/banniere.jpg">
       </div>
 
       <!--side-menu-->
@@ -99,7 +100,7 @@
       </div>
 
     
-      <div class="container ">
+      <div class="row mr-5 ml-5">
         <div class="card m-5 p-3">
             <div class="card-body">
               <div align="center">LA LISTE DES MEMOIRES</div>
@@ -128,11 +129,10 @@
             </div>
     
         </div>
-   
-      
-    </div>
+      </div>
+    
 
-      <div class="container ">
+      <div class="row mr-5 ml-5">
         <div class="card m-5 p-3">
             <div class="card-body">
               <div align="center">LA LISTE DES ARTICLES</div>
@@ -229,7 +229,7 @@
             </div>
     
         </div>
-        
+      </div>
     
 
       <!--footer-->
@@ -245,7 +245,6 @@
         </div>
       </footer>
       <!-- End Footer-->
-    </div>
   </div>
 
   <!-- Back to top -->

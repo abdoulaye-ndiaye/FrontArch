@@ -1,21 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-
 @Component({
-  selector: 'app-projet',
-  templateUrl: './projet.component.html'
+  selector: 'app-download-autorisation',
+  templateUrl: './download-autorisation.component.html'
 })
-export class ProjetComponent implements OnInit {
+export class DownloadAutorisationComponent implements OnInit {
 
-  projet: any;
-  compte:any;
-  encadreur:any;
+  allAutorisations:any;
+  submitted = false;
+  compte: any;
   a:string;
-  b:string;
-  c:string;
- 
-
   constructor(
     private router : Router,
     private authService : AuthService,
@@ -25,27 +20,21 @@ export class ProjetComponent implements OnInit {
     this.authService.logOut();
     this.router.navigate(['/home']);
   }
-  
 
   ngOnInit(): void {
     this.a= sessionStorage.getItem("id") as string;
-    this.b= sessionStorage.getItem("idEtu") as string;
-    
-    this.authService.getProjetByIdEtudiant(this.b).subscribe(data => {
-      this.c=data._id;
-      this.projet = data;
-      
-    }); 
-    console.log(this.c);
     this.authService.getCompte(this.a).subscribe(data => {
       this.compte = data;
       
     }); 
-    
-    this.authService.getEncadreur(this.c).subscribe(data => {
-      this.encadreur = data;
-      
-    }); 
+    this.authService.getAutorisation().subscribe(data => {
+      this.allAutorisations = data;
+    });
   }
+
+  onSubmit(idAutorisation:string) {
+    this.submitted =true;    
+      this.authService.downloadAutorisation(idAutorisation);
+    }
 
 }
