@@ -98,6 +98,13 @@ export class AuthService {
       window.open(window.URL.createObjectURL(res));
     });
   }
+  downloadMemoire(idRapport:string): void {
+    this.httpClient
+    .get(`${environment.apiUrl}/download-memoire/${idRapport}`, { responseType: 'blob'})
+    .subscribe(res => {
+      window.open(window.URL.createObjectURL(res));
+    });
+  }
   downloadAutorisation(idAutorisation:string): void {
     this.httpClient
     .get(`${environment.apiUrl}/download-autorisation/${idAutorisation}`, { responseType: 'blob'})
@@ -112,6 +119,10 @@ export class AuthService {
   getAutorisation() {
     return this.httpClient
       .get<any>(`${environment.apiUrl}/autorisation`);
+  }
+  getMemoire() {
+    return this.httpClient
+      .get<any>(`${environment.apiUrl}/memoire`);
   }
   getCompte(idCompte:string) {
     return this.httpClient

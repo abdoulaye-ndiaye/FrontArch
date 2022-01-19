@@ -3,6 +3,7 @@ import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { AuthGuard } from './services/auth.guard';
 import { AcceuilComponent } from './views/acceuil/acceuil.component';
 import { DownloadAutorisationComponent } from './views/download-autorisation/download-autorisation.component';
+import { DownloadMemoireComponent } from './views/download-memoire/download-memoire.component';
 import { DownloadRapportComponent } from './views/download-rapport/download-rapport.component';
 import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
@@ -83,6 +84,14 @@ const routes: Routes = [
     component: DownloadAutorisationComponent,
     data: {
       title: 'Download-Autorisation'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'download-memoire',
+    component: DownloadMemoireComponent,
+    data: {
+      title: 'Download-Memoire'
     },
     canActivate:[AuthGuard]
   },

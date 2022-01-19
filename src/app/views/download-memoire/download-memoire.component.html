@@ -81,117 +81,69 @@
         </li>
     
         <li class="slide">
-            <a class="side-menu__item" data-toggle="slide" routerLink="/download-rapport"><i class="side-menu__icon fas fa-file-download"></i><span class="side-menu__label">Download Rapports<br/> Rapporteurs</span></a>   
+            <a class="side-menu__item " data-toggle="slide" routerLink="/download-rapport"><i class="side-menu__icon fas fa-file-download"></i><span class="side-menu__label">Download Rapports<br/> Rapporteurs</span></a>   
         </li>
         <li class="slide">
-          <a class="side-menu__item " data-toggle="slide" routerLink="/download-memoire"><i class="side-menu__icon fas fa-file-download"></i><span class="side-menu__label">Download Memoire</span></a>   
-      </li>
+            <a class="side-menu__item active" data-toggle="slide" routerLink="/download-memoire"><i class="side-menu__icon fas fa-file-download"></i><span class="side-menu__label">Download Memoire</span></a>   
+        </li>
      
       <li class="slide">
-        <a class="side-menu__item active" data-toggle="slide" routerLink="/upload-memoire"><i class="side-menu__icon fas fa-file-import"></i><span class="side-menu__label">Upload Mémoire</span></a>   
+        <a class="side-menu__item" data-toggle="slide" routerLink="/upload-memoire"><i class="side-menu__icon fas fa-file-import"></i><span class="side-menu__label">Upload Mémoire</span></a>   
     </li>
         <li class="slide">
           <a class="side-menu__item" data-toggle="slide" routerLink="/upload-demande-autorisation"><i class="side-menu__icon fas fa-file-import"></i><span class="side-menu__label">Upload Demande<br/> autorisation</span></a>   
       </li>
       <li class="slide">
-        <a class="side-menu__item" data-toggle="slide" routerLink="/download-autorisation"><i class="side-menu__icon fas fa-file-download"></i><span class="side-menu__label">Download autorisation</span></a>   
+        <a class="side-menu__item " data-toggle="slide" routerLink="/download-autorisation"><i class="side-menu__icon fas fa-file-download"></i><span class="side-menu__label">Download autorisation</span></a>   
       </li>
       
     </ul>
 </aside>
-<!--side-menu-->
 
-
-<style>
-    .files input {
-      outline: 2px dashed #92b0b3;
-      outline-offset: -10px;
-      -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
-      transition: outline-offset .15s ease-in-out, background-color .15s linear;
-      padding: 120px 0px 85px 35%;
-      text-align: center !important;
-      margin: 50;
-      width: 100% !important;
-    }
-  
-    .files input:focus {
-      outline: 2px dashed #92b0b3;
-      outline-offset: -10px;
-      -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
-      transition: outline-offset .15s ease-in-out, background-color .15s linear;
-      border: 1px solid #92b0b3;
-    }
-  
-    .files:after {
-      pointer-events: none;
-      position: absolute;
-      top: 60px;
-      left: 0;
-      width: 50px;
-      right: 0;
-      height: 56px;
-      content: "";
-      background-image: url(https://image.flaticon.com/icons/png/128/109/109612.png);
-      display: block;
-      margin: 0 auto;
-      background-size: 100%;
-      background-repeat: no-repeat;
-    }
-  
-    .color input {
-      background-color: #f1f1f1;
-    }
-  
-    .files:before {
-      position: absolute;
-      bottom: 10px;
-      left: 0;
-      pointer-events: none;
-      width: 100%;
-      right: 0;
-      height: 57px;
-      content: " GLISSEZ VOTRE FICHIER ICI ";
-      display: block;
-      margin: 0 auto;
-      margin-bottom: 30px;
-      margin-top: 20px;
-      color: #2ea591;
-      font-weight: 600;
-      text-transform: capitalize;
-      text-align: center;
-    }
-  </style>
-  
-  <div class=" app-content my-3 my-md-5">
+<div class=" app-content my-3 my-md-5">
     <div class="side-app">
         <br/>
     </div>
   <div class=" container justify-content-center">
-    <div class="row">
-      <div class="col-md-6 ">
-        <form [formGroup]='uploadMemoireForm' (ngSubmit)='envoyer()' enctype="multipart/form-data">
-          <div class="form-group files color">
-            <h2>Uploader votre memoire </h2>
-            <input type="file" formControlName="image" class="form-control" (change)="onChange($event)">
-          </div>
-          <div class="form-group files color" hidden>
-            <h2>Hidden </h2>
-            <input type="text" formControlName="hide" class="form-control">
-          </div>
-          <div>
-            <button type="submit" class="btn btn-primary px-4" (click)="refresh()">Soumettre</button>
-          </div>
-        </form>
+<div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i>
+        </div>
+        
+        <div class="card-body">
+          <table class="table table-bordered table-striped table-sm">
+            <thead>
+              <tr >
+                <th>Memoires</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let memoire of allMemoires" >
+              
+              <tr>
+                <td>{{memoire.nomFichier}}</td>
+                <td><a (click)="onSubmit(memoire._id)"> <button type="submit" class="btn btn-primary px-3" >Telecharger</button></a>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+         
+        </div>
       </div>
-      
     </div>
-    <p style="color: red;"><br/> {{ message }}</p>
-
+    <!--/.col-->
   </div>
   </div>
+</div>
 
-   <!--footer-->
-   <footer class="footer">
+
+<!--side-menu-->
+
+ <!--footer-->
+ <footer class="footer">
     <div class="container">
       <div class="row align-items-center flex-row-reverse">
         <div class="col-lg-12 col-sm-12 mt-3 mt-lg-0 text-center">

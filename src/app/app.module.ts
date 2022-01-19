@@ -20,6 +20,7 @@ import { UploadMemoireComponent } from './views/upload-memoire/upload-memoire.co
 import { DownloadRapportComponent } from './views/download-rapport/download-rapport.component';
 import { UploadDemandeAutorisationComponent } from './views/upload-demande-autorisation/upload-demande-autorisation.component';
 import { DownloadAutorisationComponent } from './views/download-autorisation/download-autorisation.component';
+import { DownloadMemoireComponent } from './views/download-memoire/download-memoire.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { DownloadAutorisationComponent } from './views/download-autorisation/dow
     UploadMemoireComponent,
     DownloadRapportComponent,
     UploadDemandeAutorisationComponent,
-    DownloadAutorisationComponent
+    DownloadAutorisationComponent,
+    DownloadMemoireComponent
   ],
   imports: [
     BrowserModule,
