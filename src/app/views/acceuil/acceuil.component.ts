@@ -11,40 +11,40 @@ import { TestBed } from '@angular/core/testing';
   selector: 'app-acceuil',
   templateUrl: './acceuil.component.html'
 })
-export class AcceuilComponent implements OnInit{
+export class AcceuilComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
 
-  prof:string;
+  prof: string;
   allProjets: any;
-  adminForm : FormGroup;
+  adminForm: FormGroup;
   submitted = false;
-  returnUrl : string;
+  returnUrl: string;
   message = '';
   hide = true;
-  profil= sessionStorage.getItem("profil");
-  nom= sessionStorage.getItem("nom");
-  prenom= sessionStorage.getItem("prenom");
+  profil = sessionStorage.getItem("profil");
+  nom = sessionStorage.getItem("nom");
+  prenom = sessionStorage.getItem("prenom");
 
 
   constructor(
-    private formBulder : FormBuilder,
-    private route : ActivatedRoute,
-    private router : Router,
-    private authService : AuthService,
+    private formBulder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService,
   ) { }
 
-  deconnexion(){
+  deconnexion() {
     this.authService.logOut();
     this.router.navigate(['/home']);
   }
-  encadreur(id:string){
+  encadreur(id: string) {
     this.authService.getEncadreur(id).subscribe(data => {
       this.prof = data.prenom;
-      this.prof+=" ";
-      this.prof+=data.nom; 
-    }); 
+      this.prof += " ";
+      this.prof += data.nom;
+    });
     return this.prof
   }
 
@@ -52,18 +52,17 @@ export class AcceuilComponent implements OnInit{
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
-      lengthMenu : [5, 10, 25],
+      lengthMenu: [5, 10, 25],
       processing: true,
       retrieve: true,
     };
     this.authService.getProjets().subscribe(data => {
       this.allProjets = data;
       this.dtTrigger.next(data);
-    }); 
-   
+    });
+
   }
-   
-  
+
+
 }
 
-  

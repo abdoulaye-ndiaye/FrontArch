@@ -1,157 +1,94 @@
- <!-- Navbar-->
- <header class="app-header header">
-
-    <!-- Navbar Right Menu-->
-    <div class="container-fluid">
-        <div class="d-flex">
-            <a class="header-brand" routerLink="/acceuil">
-                <img alt="logo" class="header-brand-img" src="../../../assets/images/brand/logo1.png">
-            </a>
-
-            <div class="d-flex ml-auto">
-                <p align="center">
-                  UNIVERSITE ALIOUNE DIOP DE BAMBEY<br />
-                  UFR SATIC - DEPARTEMENT TIC
-                </p>
-              </div>
-            <!-- Sidebar toggle button-->
-           
-            <div class="d-flex order-lg-2 ml-auto">
-                
-              
-
-                <div class="dropdown d-none d-md-flex">
-                    <a class="nav-link icon" data-toggle="dropdown"><i class="fe fe-mail"></i> <span class="pulse bg-success" aria-hidden="true"></span></a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                        <a class="dropdown-item text-center" href="#">2 Nouveaux Messages</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item d-flex pb-3" href="#">
-                            <span class="avatar brround mr-3 align-self-center" style="background-image: url(../../../assets/images/users/male/41.jpg)"></span>
-                            <div>
-                                <strong>Sidy :</strong> Salut! j'ai besoin de vous...
-                                <div class="small text-muted">
-                                    Il y'a 3 heures 
-                                </div>
-                            </div>
-                        </a>
-                        <a class="dropdown-item d-flex pb-3" href="#"><span class="avatar brround mr-3 align-self-center" style="background-image: url(../../../assets/images/users/female/1.jpg)"></span>
-                            <div>
-                                <strong>Laye :</strong> Nouveaux modifis sur le fichier...
-                                <div class="small text-muted">
-                                    Il y'a 5 heures
-                                </div>
-                            </div>
-                        </a>
-                       
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-center" href="#">Voir tous les messages</a>
-                    </div>
-                </div>
-                <div class="dropdown">
-                    <a class="nav-link pr-0 leading-none d-flex" data-toggle="dropdown" href="#">
-                        <span class="avatar avatar-md brround" style="background-image: url(../../../assets/images/avatar.jpeg)"></span>
-                        <span class="ml-2 d-none d-lg-block">
-                            <span class="text-dark"><strong>{{compte.prenom }} {{compte.nom}}</strong></span>
-                        </span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                        <a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-mail"></i> Mes messages</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#" (click)="deconnexion()"><i class="dropdown-icon fe fe-power"></i> Déconnection</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-
+<!-- Navbar-->
+<app-header></app-header>
 <!-- Sidebar menu-->
 <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
 <aside class="app-sidebar">
-    <div class="app-sidebar__user">
-        
-    </div>
-    <ul class="side-menu">
-        <li class="slide">
-            <a class="side-menu__item " data-toggle="slide" routerLink="/home"><i class="side-menu__icon si si-home"></i><span class="side-menu__label">Acceuil</span></a>
-            
-        </li>
-        <li>
-            <a class="side-menu__item " data-toggle="slide" routerLink="/projet"><i class="side-menu__icon si si-folder-alt"></i><span class="side-menu__label">Mon Projet</span></a>
-        </li>
-    
-        <li class="slide">
-            <a class="side-menu__item active" data-toggle="slide" routerLink="/download-rapport"><i class="side-menu__icon fas fa-file-download"></i><span class="side-menu__label">Download Rapports<br/> Rapporteurs</span></a>   
-        </li>
-        <li class="slide">
-          <a class="side-menu__item " data-toggle="slide" routerLink="/download-memoire"><i class="side-menu__icon fas fa-file-download"></i><span class="side-menu__label">Download Memoire</span></a>   
-      </li>
-     
-      <li class="slide">
-        <a class="side-menu__item" data-toggle="slide" routerLink="/upload-memoire"><i class="side-menu__icon fas fa-file-import"></i><span class="side-menu__label">Upload Mémoire</span></a>   
+  <div class="app-sidebar__user">
+
+  </div>
+  <ul class="side-menu">
+    <li class="slide">
+      <a class="side-menu__item " data-toggle="slide" routerLink="/home"><i class="side-menu__icon si si-home"></i><span
+          class="side-menu__label">Acceuil</span></a>
+
     </li>
-        <li class="slide">
-          <a class="side-menu__item" data-toggle="slide" routerLink="/upload-demande-autorisation"><i class="side-menu__icon fas fa-file-import"></i><span class="side-menu__label">Upload Demande<br/> autorisation</span></a>   
-      </li>
-      <li class="slide">
-        <a class="side-menu__item" data-toggle="slide" routerLink="/download-autorisation"><i class="side-menu__icon fas fa-file-download"></i><span class="side-menu__label">Download autorisation</span></a>   
-      </li>
-      
-    </ul>
+    <li>
+      <a class="side-menu__item " data-toggle="slide" routerLink="/projet"><i
+          class="side-menu__icon si si-folder-alt"></i><span class="side-menu__label">Mon Projet</span></a>
+    </li>
+
+    <li class="slide">
+      <a class="side-menu__item active" data-toggle="slide" routerLink="/download-rapport"><i
+          class="side-menu__icon fas fa-file-download"></i><span class="side-menu__label">Download Rapports<br />
+          Rapporteurs</span></a>
+    </li>
+    <li class="slide">
+      <a class="side-menu__item " data-toggle="slide" routerLink="/download-memoire"><i
+          class="side-menu__icon fas fa-file-download"></i><span class="side-menu__label">Download Memoire</span></a>
+    </li>
+    <li class="slide">
+      <a class="side-menu__item" data-toggle="slide" routerLink="/download-autorisation"><i
+          class="side-menu__icon fas fa-file-download"></i><span class="side-menu__label">Download
+          autorisation</span></a>
+    </li>
+
+    <li class="slide">
+      <a class="side-menu__item" data-toggle="slide" routerLink="/upload-memoire"><i
+          class="side-menu__icon fas fa-file-import"></i><span class="side-menu__label">Upload Mémoire</span></a>
+    </li>
+    <li class="slide">
+      <a class="side-menu__item" data-toggle="slide" routerLink="/upload-demande-autorisation"><i
+          class="side-menu__icon fas fa-file-import"></i><span class="side-menu__label">Upload Demande<br />
+          autorisation</span></a>
+    </li>
+    
+
+  </ul>
 </aside>
 
 <div class=" app-content my-3 my-md-5">
-    <div class="side-app">
-        <br/>
-    </div>
+  <div class="side-app">
+    <br />
+  </div>
   <div class=" container justify-content-center">
-<div class="row">
-    <div class="col-lg-12">
-      <div class="card">
-        <div class="card-header">
-          <i class="fa fa-align-justify"></i>
-        </div>
-        
-        <div class="card-body">
-          <table class="table table-bordered table-striped table-sm">
-            <thead>
-              <tr >
-                <th>Rapports</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody *ngFor="let rapport of allRapports" >
-              
-              <tr>
-                <td>{{rapport.nomFichier}}</td>
-                <td><a (click)="onSubmit(rapport._id)"> <button type="submit" class="btn btn-primary px-3" >Telecharger</button></a>
-                </td>
-              </tr>
-              
-            </tbody>
-          </table>
-         
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-header">
+            <i class="fa fa-align-justify"></i>
+          </div>
+
+          <div class="card-body">
+            <table class="table table-bordered table-striped table-sm">
+              <thead>
+                <tr>
+                  <th>Rapports</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let rapport of allRapports">
+
+                <tr>
+                  <td>{{rapport.nomFichier}}</td>
+                  <td><a (click)="onSubmit(rapport._id)"> <button type="submit"
+                        class="btn btn-primary px-3">Telecharger</button></a>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+
+          </div>
         </div>
       </div>
+      <!--/.col-->
     </div>
-    <!--/.col-->
-  </div>
   </div>
 </div>
 
 
 <!--side-menu-->
 
- <!--footer-->
- <footer class="footer">
-    <div class="container">
-      <div class="row align-items-center flex-row-reverse">
-        <div class="col-lg-12 col-sm-12 mt-3 mt-lg-0 text-center">
-          Copyright © 2022 <a href="#">UADB</a>.&nbsp;&nbsp; Designed by
-          <a href="#">Sidy TRAORE & Abdoulaye NDIAYE</a>&nbsp;&nbsp; All
-          rights reserved.
-        </div>
-      </div>
-    </div>
-  </footer>
+<!--footer-->
+<app-footer></app-footer>
 <!-- End Footer-->

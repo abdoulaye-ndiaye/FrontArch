@@ -9,43 +9,33 @@ import { AuthService } from '../../services/auth.service';
 export class ProjetComponent implements OnInit {
 
   projet: any;
-  compte:any;
-  encadreur:any;
-  a:string;
-  b:string;
-  c:string;
- 
+  encadreur: any;
+  b: string;
+  c: string;
+
 
   constructor(
-    private router : Router,
-    private authService : AuthService,
+    private router: Router,
+    private authService: AuthService,
   ) { }
 
-  deconnexion(){
-    this.authService.logOut();
-    this.router.navigate(['/home']);
-  }
-  
+
+
 
   ngOnInit(): void {
-    this.a= sessionStorage.getItem("id") as string;
-    this.b= sessionStorage.getItem("idEtu") as string;
-    
+    this.b = sessionStorage.getItem("idEtu") as string;
+
     this.authService.getProjetByIdEtudiant(this.b).subscribe(data => {
-      this.c=data._id;
+      this.c = data._id;
       this.projet = data;
-      
-    }); 
-    console.log(this.c);
-    this.authService.getCompte(this.a).subscribe(data => {
-      this.compte = data;
-      
-    }); 
-    
+
+    });
+
+
     this.authService.getEncadreur(this.c).subscribe(data => {
       this.encadreur = data;
-      
-    }); 
+
+    });
   }
 
 }

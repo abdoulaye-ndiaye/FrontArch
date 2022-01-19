@@ -7,11 +7,7 @@
         <div class="container-fluid">
           <div class="d-flex">
             <a class="header-brand" routerLink="/acceuil">
-              <img
-                alt="logo"
-                class="header-brand-img"
-                src="../../../assets/images/brand/logo1.png"
-              />
+              <img alt="logo" class="header-brand-img" src="../../../assets/images/brand/logo1.png" />
             </a>
             <div class="d-flex ml-auto">
               <p align="center">
@@ -20,34 +16,35 @@
               </p>
             </div>
             <!-- Sidebar toggle button-->
-           
+
             <div class="d-flex order-lg-2 ml-auto">
               <div *ngIf="!profil">
-              <a routerLink="/login">
-                <button type="button" class="btn bg-gradient">
-                  <i class="fe fe-plus mr-2 text-black"></i>Se connecter
-                </button></a
-              >
-            </div>
-            <div *ngIf="profil">
-              
-            <div class="dropdown">
-                <a class="nav-link pr-0 leading-none d-flex" data-toggle="dropdown" href="#">
-                    <span class="avatar avatar-md brround" style="background-image: url(../../../assets/images/avatar.jpeg)"></span>
+                <a routerLink="/login">
+                  <button type="button" class="btn bg-gradient">
+                    <i class="fe fe-plus mr-2 text-black"></i>Se connecter
+                  </button></a>
+              </div>
+              <div *ngIf="profil">
+
+                <div class="dropdown">
+                  <a class="nav-link pr-0 leading-none d-flex" data-toggle="dropdown" href="#">
+                    <span class="avatar avatar-md brround"
+                      style="background-image: url(../../../assets/images/avatar.jpeg)"></span>
                     <span class="ml-2 d-none d-lg-block">
-                        <span class="text-dark"><strong>{{prenom }} {{nom}}</strong></span>
+                      <span class="text-dark"><strong>{{prenom }} {{nom}}</strong></span>
                     </span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                  <a class="dropdown-item" routerLink="/home"><i class="dropdown-icon fe fe-user"></i> Mon Espace</a>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                    <a class="dropdown-item" routerLink="/home"><i class="dropdown-icon fe fe-user"></i> Mon Espace</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-mail"></i> Mes messages</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#" (click)="deconnexion()"><i class="dropdown-icon fe fe-power"></i> Déconnection</a>
+                    <a class="dropdown-item" href="#" (click)="deconnexion()"><i class="dropdown-icon fe fe-power"></i>
+                      Déconnection</a>
+                  </div>
                 </div>
+              </div>
             </div>
-            </div>
-          </div>
           </div>
         </div>
       </header>
@@ -99,74 +96,76 @@
         </div>
       </div>
 
-    
-      <div class="row mr-5 ml-5">
-        <div class="card m-5 p-3">
-            <div class="card-body">
-              <div align="center">LA LISTE DES MEMOIRES</div>
-                <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions"  [dtTrigger]="dtTrigger" >
-                    <thead>
-                    <tr>
-                        <th>Projet</th>
-                        <th>Description</th>
-                        <th>Date soutenance</th>
-                        <th>Etudiant</th>
-                        <th>Prof Encadreur</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr *ngFor="let projet of allProjets">
-                        <td>{{ projet.sujet }}</td>
-                        <td>{{ projet.description }}</td>
-                        <td>{{ projet.date_fin }}</td>
-                        <td>{{ projet.date_fin }}</td>
-                        <td>test</td>
-                        <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-    
-        </div>
-      </div>
-    
 
       <div class="row mr-5 ml-5">
         <div class="card m-5 p-3">
-            <div class="card-body">
-              <div align="center">LA LISTE DES ARTICLES</div>
-                <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
-                    <thead>
-                    <tr>
-                        <th>Sujet</th>
-                        <th>Description</th>
-                        <th>Date sortie</th>
-                        <th>Professeur</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Blockchain</td>
-                        <td>Introduction générale sur la blockchain, technologie des cryptomonaies</td>
-                        <td>14/01/2022</td>
-                        <td>Mme Kassé</td>
-                        <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
-                    </tr>
-                    <tr>
-                      <td>les Graphes</td>
-                      <td>Python, l'utilisation des graphes dans la prévision d'actions</td>
-                      <td>04/01/2022</td>
-                      <td>Mr Bass</td>
-                      <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
-                  </tr>
-                  <tr>
-                    <td>Datatables</td>
-                    <td>Optimisation de l'affichage des tableaux de données en Angular</td>
-                    <td>11/05/2019</td>
-                    <td>Vito Ndiaye</td>
-                    <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
+          <div class="card-body">
+            <div align="center">LA LISTE DES MEMOIRES</div>
+            <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions"
+              [dtTrigger]="dtTrigger">
+              <thead>
+                <tr>
+                  <th>Projet</th>
+                  <th>Description</th>
+                  <th>Date soutenance</th>
+                  <th>Etudiant</th>
+                  <th>Prof Encadreur</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let projet of allProjets">
+                  <td>{{ projet.sujet }}</td>
+                  <td>{{ projet.description }}</td>
+                  <td>{{ projet.date_fin }}</td>
+                  <td>{{ projet.date_fin }}</td>
+                  <td>test</td>
+                  <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="row mr-5 ml-5">
+        <div class="card m-5 p-3">
+          <div class="card-body">
+            <div align="center">LA LISTE DES ARTICLES</div>
+            <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions"
+              [dtTrigger]="dtTrigger">
+              <thead>
+                <tr>
+                  <th>Sujet</th>
+                  <th>Description</th>
+                  <th>Date sortie</th>
+                  <th>Professeur</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Blockchain</td>
+                  <td>Introduction générale sur la blockchain, technologie des cryptomonaies</td>
+                  <td>14/01/2022</td>
+                  <td>Mme Kassé</td>
+                  <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
+                </tr>
+                <tr>
+                  <td>les Graphes</td>
+                  <td>Python, l'utilisation des graphes dans la prévision d'actions</td>
+                  <td>04/01/2022</td>
+                  <td>Mr Bass</td>
+                  <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Datatables</td>
+                  <td>Optimisation de l'affichage des tableaux de données en Angular</td>
+                  <td>11/05/2019</td>
+                  <td>Vito Ndiaye</td>
+                  <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
                 </tr>
                 <tr>
                   <td>GitHub</td>
@@ -174,81 +173,69 @@
                   <td>14/08/2020</td>
                   <td>Mr Mbacké</td>
                   <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
-              </tr>
-              <tr>
-                <td>IA</td>
-                <td>Programmation de plusieurs drones pour des vols coordonnés</td>
-                <td>14/01/2016</td>
-                <td>Mr Ass Tako</td>
-                <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
-            </tr>
-            <tr>
-              <td>Analytics</td>
-              <td>Utilisation de l'outil Google Analytics pour l'optimisation du SEO des sites</td>
-              <td>14/01/2021</td>
-              <td>Mr SESAF</td>
-              <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
-          </tr>
-          <tr>
-            <td>Analytics</td>
-            <td>Utilisation de l'outil Google Analytics pour l'optimisation du SEO des sites</td>
-            <td>14/01/2021</td>
-            <td>Mr SESAF</td>
-            <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
-        </tr>
-        <tr>
-          <td>Analytics</td>
-          <td>Utilisation de l'outil Google Analytics pour l'optimisation du SEO des sites</td>
-          <td>14/01/2021</td>
-          <td>Mr SESAF</td>
-          <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
-      </tr>
-      <tr>
-        <td>Analytics</td>
-        <td>Utilisation de l'outil Google Analytics pour l'optimisation du SEO des sites</td>
-        <td>14/01/2021</td>
-        <td>Mr SESAF</td>
-        <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
-    </tr>
-    <tr>
-      <td>Analytics</td>
-      <td>Utilisation de l'outil Google Analytics pour l'optimisation du SEO des sites</td>
-      <td>14/01/2021</td>
-      <td>Mr SESAF</td>
-      <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
-  </tr>
-  <tr>
-    <td>Analytics</td>
-    <td>Utilisation de l'outil Google Analytics pour l'optimisation du SEO des sites</td>
-    <td>14/01/2021</td>
-    <td>Mr SESAF</td>
-    <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
-</tr>
-                    </tbody>
-                </table>
-            </div>
-    
+                </tr>
+                <tr>
+                  <td>IA</td>
+                  <td>Programmation de plusieurs drones pour des vols coordonnés</td>
+                  <td>14/01/2016</td>
+                  <td>Mr Ass Tako</td>
+                  <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Analytics</td>
+                  <td>Utilisation de l'outil Google Analytics pour l'optimisation du SEO des sites</td>
+                  <td>14/01/2021</td>
+                  <td>Mr SESAF</td>
+                  <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Analytics</td>
+                  <td>Utilisation de l'outil Google Analytics pour l'optimisation du SEO des sites</td>
+                  <td>14/01/2021</td>
+                  <td>Mr SESAF</td>
+                  <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Analytics</td>
+                  <td>Utilisation de l'outil Google Analytics pour l'optimisation du SEO des sites</td>
+                  <td>14/01/2021</td>
+                  <td>Mr SESAF</td>
+                  <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Analytics</td>
+                  <td>Utilisation de l'outil Google Analytics pour l'optimisation du SEO des sites</td>
+                  <td>14/01/2021</td>
+                  <td>Mr SESAF</td>
+                  <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Analytics</td>
+                  <td>Utilisation de l'outil Google Analytics pour l'optimisation du SEO des sites</td>
+                  <td>14/01/2021</td>
+                  <td>Mr SESAF</td>
+                  <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Analytics</td>
+                  <td>Utilisation de l'outil Google Analytics pour l'optimisation du SEO des sites</td>
+                  <td>14/01/2021</td>
+                  <td>Mr SESAF</td>
+                  <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
         </div>
       </div>
-    
+
 
       <!--footer-->
-      <footer class="footer">
-        <div class="container">
-          <div class="row align-items-center flex-row-reverse">
-            <div class="col-lg-12 col-sm-12 mt-3 mt-lg-0 text-center">
-              Copyright © 2022 <a href="#">UADB</a>.&nbsp;&nbsp; Designed by
-              <a href="#">Sidy TRAORE & Abdoulaye NDIAYE</a>&nbsp;&nbsp; All
-              rights reserved.
-            </div>
-          </div>
-        </div>
-      </footer>
+      <app-footer></app-footer>
       <!-- End Footer-->
-  </div>
+    </div>
 
-  <!-- Back to top -->
-  <a href="#top" id="back-to-top" style="display: inline"
-    ><i class="fas fa-angle-up"></i
-  ></a>
-</div>
+    <!-- Back to top -->
+    <a href="#top" id="back-to-top" style="display: inline"><i class="fas fa-angle-up"></i></a>
+  </div>

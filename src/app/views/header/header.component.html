@@ -1,0 +1,70 @@
+<header class="app-header header">
+    <!-- Navbar Right Menu-->
+    <div class="container-fluid">
+        <div class="d-flex">
+            <a class="header-brand" routerLink="/acceuil">
+                <img alt="logo" class="header-brand-img" src="../../../assets/images/brand/logo1.png">
+            </a>
+
+            <div class="d-flex ml-auto">
+                <p align="center">
+                    UNIVERSITE ALIOUNE DIOP DE BAMBEY<br />
+                    UFR SATIC - DEPARTEMENT TIC
+                </p>
+            </div>
+            <!-- Sidebar toggle button-->
+
+            <div class="d-flex order-lg-2 ml-auto">
+
+
+
+                <div class="dropdown d-none d-md-flex">
+                    <a class="nav-link icon" data-toggle="dropdown"><i class="fe fe-mail"></i> <span
+                            class="pulse bg-success" aria-hidden="true"></span></a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                        <a class="dropdown-item text-center" href="#">2 Nouveaux Messages</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item d-flex pb-3" href="#">
+                            <span class="avatar brround mr-3 align-self-center"
+                                style="background-image: url(../../../assets/images/users/male/41.jpg)"></span>
+                            <div>
+                                <strong>Sidy :</strong> Salut! j'ai besoin de vous...
+                                <div class="small text-muted">
+                                    Il y'a 3 heures
+                                </div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item d-flex pb-3" href="#"><span
+                                class="avatar brround mr-3 align-self-center"
+                                style="background-image: url(../../../assets/images/users/female/1.jpg)"></span>
+                            <div>
+                                <strong>Laye :</strong> Nouveaux modifis sur le fichier...
+                                <div class="small text-muted">
+                                    Il y'a 5 heures
+                                </div>
+                            </div>
+                        </a>
+
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-center" href="#">Voir tous les messages</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a class="nav-link pr-0 leading-none d-flex" data-toggle="dropdown" href="#">
+                        <span class="avatar avatar-md brround"
+                            style="background-image: url(../../../assets/images/avatar.jpeg)"></span>
+                        <span class="ml-2 d-none d-lg-block">
+                            <span class="text-dark"><strong>{{compte.prenom }} {{compte.nom}}</strong></span>
+                        </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                        <a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-mail"></i> Mes messages</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" (click)="deconnexion()"><i
+                                class="dropdown-icon fe fe-power"></i> Déconnection</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

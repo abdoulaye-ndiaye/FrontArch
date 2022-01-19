@@ -7,35 +7,27 @@ import { AuthService } from '../../services/auth.service';
 })
 export class DownloadMemoireComponent implements OnInit {
 
-  allMemoires:any;
+  allMemoires: any;
   submitted = false;
-  compte: any;
-  a:string;
+
   constructor(
-    private router : Router,
-    private authService : AuthService,
+    private router: Router,
+    private authService: AuthService,
   ) { }
 
-  deconnexion(){
-    this.authService.logOut();
-    this.router.navigate(['/home']);
-  }
+
 
   ngOnInit(): void {
-    this.a= sessionStorage.getItem("id") as string;
-    this.authService.getCompte(this.a).subscribe(data => {
-      this.compte = data;
-      
-    }); 
+
     this.authService.getMemoire().subscribe(data => {
       this.allMemoires = data;
     });
   }
 
-  onSubmit(idMemoire:string) {
-    this.submitted =true;    
-      this.authService.downloadMemoire(idMemoire);
-    }
+  onSubmit(idMemoire: string) {
+    this.submitted = true;
+    this.authService.downloadMemoire(idMemoire);
+  }
 
 
 }

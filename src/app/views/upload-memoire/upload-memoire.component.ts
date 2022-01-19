@@ -10,9 +10,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './upload-memoire.component.html'
 })
 export class UploadMemoireComponent implements OnInit {
-  compte: any;
-  a:string;
-  b=false;
+
+  b = false;
   uploadMemoireForm: FormGroup;
   fileSelected: File;
   imageUrl: any;
@@ -22,32 +21,25 @@ export class UploadMemoireComponent implements OnInit {
   hide = true;
 
   constructor(
-    private router : Router,
-    private authService : AuthService,
+    private router: Router,
+    private authService: AuthService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private uploadService: UploadService,
-  ) { 
+  ) {
     const etudiant = sessionStorage.getItem("id");
   }
 
-  deconnexion(){
-    this.authService.logOut();
-    this.router.navigate(['/home']);
-  }
+
 
   ngOnInit(): void {
 
     this.uploadMemoireForm = this.formBuilder.group({
       image: [null],
-      hide :['rien']
+      hide: ['rien']
     })
 
-    this.a= sessionStorage.getItem("id") as string;
-    this.authService.getCompte(this.a).subscribe(data => {
-      this.compte = data;
-      
-    }); 
+
   }
 
   get value() {
@@ -55,7 +47,7 @@ export class UploadMemoireComponent implements OnInit {
   }
 
   // Onchange
-  onChange(event:any) {
+  onChange(event: any) {
     // if (event.target.files.length > 0) {
     //   const file = event.target.files[0];
     //   this.patientForm.get('uploadImg').setValue(file);
@@ -85,7 +77,7 @@ export class UploadMemoireComponent implements OnInit {
         body.append('idProj', '603c100c99ca52503893c721');
         this.uploadService.upload(body).subscribe(result => {
           console.log(result);
-          this.message="Upload Réussie !";
+          this.message = "Upload Réussie !";
         }, error => {
 
         });
@@ -94,10 +86,10 @@ export class UploadMemoireComponent implements OnInit {
       }
     }
   }
-  
+
   refresh(): void {
     window.location.reload();
-    
-}
+
+  }
 
 }

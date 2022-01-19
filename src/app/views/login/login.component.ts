@@ -11,46 +11,46 @@ import { error } from '@angular/compiler/src/util';
 })
 
 export class LoginComponent implements OnInit {
-  loginForm : FormGroup;
+  loginForm: FormGroup;
   submitted = false;
-  returnUrl : string;
-  
-  message ='';
+  returnUrl: string;
+
+  message = '';
   hide = true;
   constructor(
     private authService: AuthService,
-    private formBulder : FormBuilder,
-    private route : ActivatedRoute,
-    private router : Router,
-    ) { }
-  
+    private formBulder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+  ) { }
+
 
   ngOnInit(): void {
     this.loginForm = this.formBulder.group({
-      email : ['',[Validators.required, Validators.email]],
-      password :['',Validators.required]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
     })
   }
 
   get f() { return this.loginForm.controls; }
 
-  get value(){
+  get value() {
     return this.loginForm.controls;
   }
 
-  onSubmit(){ 
-    this.submitted=true;
-    
+  onSubmit() {
+    this.submitted = true;
+
     if (this.loginForm.invalid) {
-       return ;
+      return;
     } else {
       this.authService.authenticate(this.loginForm.value.email, this.loginForm.value.password).subscribe(
-        result=>{
+        result => {
           console.log(result);
           if (result.code) {
-            this.message ='Email et/ou mot de passe incorrect !';
-          }else{
-            console.log('profil:'+result.profil);
+            this.message = 'Email et/ou mot de passe incorrect !';
+          } else {
+            console.log('profil:' + result.profil);
             let tokenStr = "Bearer " + result.token;
             console.log(tokenStr);
             sessionStorage.setItem("token", tokenStr);
@@ -60,12 +60,12 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/home']);
           }
         },
-        error=>{
+        error => {
           console.log(error);
-          this.message ='Email et/ou mot de passe incorrect !';
+          this.message = 'Email et/ou mot de passe incorrect !';
         }
       );
-      
+
     }
   }
 

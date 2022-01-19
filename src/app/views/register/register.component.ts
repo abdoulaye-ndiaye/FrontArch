@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService
-  ) {}
+  ) { }
 
 
 
@@ -74,7 +74,7 @@ export class RegisterComponent implements OnInit {
       );
 
       if (this.RegisterForm.value.profil == EnumProfil.ETUDIANT) {
-        
+
         this.authService
           .RegisterEtudiant(
             this.RegisterForm.value.dateNaissance,

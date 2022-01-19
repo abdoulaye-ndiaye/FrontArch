@@ -21,7 +21,8 @@ import { DownloadRapportComponent } from './views/download-rapport/download-rapp
 import { UploadDemandeAutorisationComponent } from './views/upload-demande-autorisation/upload-demande-autorisation.component';
 import { DownloadAutorisationComponent } from './views/download-autorisation/download-autorisation.component';
 import { DownloadMemoireComponent } from './views/download-memoire/download-memoire.component';
-
+import { HeaderComponent } from './views/header/header.component';
+import { FooterComponent } from './views/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,9 @@ import { DownloadMemoireComponent } from './views/download-memoire/download-memo
     DownloadRapportComponent,
     UploadDemandeAutorisationComponent,
     DownloadAutorisationComponent,
-    DownloadMemoireComponent
+    DownloadMemoireComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
