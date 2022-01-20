@@ -112,6 +112,13 @@ export class AuthService {
       window.open(window.URL.createObjectURL(res));
     });
   }
+  downloadDemandeAutorisation(idAutorisation:string): void {
+    this.httpClient
+    .get(`${environment.apiUrl}/download-demandesAutorisation/${idAutorisation}`, { responseType: 'blob'})
+    .subscribe(res => {
+      window.open(window.URL.createObjectURL(res));
+    });
+  }
   getRapport() {
     return this.httpClient
       .get<any>(`${environment.apiUrl}/rapportRapporteur`);
@@ -119,6 +126,10 @@ export class AuthService {
   getAutorisation() {
     return this.httpClient
       .get<any>(`${environment.apiUrl}/autorisation`);
+  }
+  getDemandeAutorisation() {
+    return this.httpClient
+      .get<any>(`${environment.apiUrl}/demandesAutorisation`);
   }
   getMemoire() {
     return this.httpClient

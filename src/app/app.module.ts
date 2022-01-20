@@ -23,6 +23,10 @@ import { DownloadAutorisationComponent } from './views/download-autorisation/dow
 import { DownloadMemoireComponent } from './views/download-memoire/download-memoire.component';
 import { HeaderComponent } from './views/header/header.component';
 import { FooterComponent } from './views/footer/footer.component';
+import { UploadRapportComponent } from './views/upload-rapport/upload-rapport.component';
+import { UploadAutorisationComponent } from './views/upload-autorisation/upload-autorisation.component';
+import { DownloadDemandeAutorisationComponent } from './views/download-demande-autorisation/download-demande-autorisation.component';
+import { AjoutRapporteurComponent } from './views/ajout-rapporteur/ajout-rapporteur.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +41,11 @@ import { FooterComponent } from './views/footer/footer.component';
     DownloadAutorisationComponent,
     DownloadMemoireComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    UploadRapportComponent,
+    UploadAutorisationComponent,
+    DownloadDemandeAutorisationComponent,
+    AjoutRapporteurComponent
   ],
   imports: [
     BrowserModule,

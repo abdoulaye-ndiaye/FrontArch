@@ -2,15 +2,19 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { AuthGuard } from './services/auth.guard';
 import { AcceuilComponent } from './views/acceuil/acceuil.component';
+import { AjoutRapporteurComponent } from './views/ajout-rapporteur/ajout-rapporteur.component';
 import { DownloadAutorisationComponent } from './views/download-autorisation/download-autorisation.component';
+import { DownloadDemandeAutorisationComponent } from './views/download-demande-autorisation/download-demande-autorisation.component';
 import { DownloadMemoireComponent } from './views/download-memoire/download-memoire.component';
 import { DownloadRapportComponent } from './views/download-rapport/download-rapport.component';
 import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
 import { ProjetComponent } from './views/projet/projet.component';
 import { RegisterComponent } from './views/register/register.component';
+import { UploadAutorisationComponent } from './views/upload-autorisation/upload-autorisation.component';
 import { UploadDemandeAutorisationComponent } from './views/upload-demande-autorisation/upload-demande-autorisation.component';
 import { UploadMemoireComponent } from './views/upload-memoire/upload-memoire.component';
+import { UploadRapportComponent } from './views/upload-rapport/upload-rapport.component';
 
 const routes: Routes = [
   {
@@ -92,6 +96,38 @@ const routes: Routes = [
     component: DownloadMemoireComponent,
     data: {
       title: 'Download-Memoire'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'upload-rapport',
+    component: UploadRapportComponent,
+    data: {
+      title: 'Upload-Rapport'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'upload-autorisation',
+    component: UploadAutorisationComponent,
+    data: {
+      title: 'Upload-Autorisation'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'download-demande-autorisation',
+    component: DownloadDemandeAutorisationComponent,
+    data: {
+      title: 'Download-Demande-Autorisation'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'ajout-rapporteur',
+    component: AjoutRapporteurComponent,
+    data: {
+      title: 'Ajout-Rapporteur'
     },
     canActivate:[AuthGuard]
   },
