@@ -9,6 +9,8 @@ export class DownloadDemandeAutorisationComponent implements OnInit {
 
   allDemandeAutorisations: any;
   submitted = false;
+  profil = sessionStorage.getItem("profil");
+
 
   constructor(
     private router: Router,

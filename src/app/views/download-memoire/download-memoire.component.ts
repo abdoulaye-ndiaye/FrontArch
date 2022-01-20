@@ -9,6 +9,8 @@ export class DownloadMemoireComponent implements OnInit {
 
   allMemoires: any;
   submitted = false;
+  profil = sessionStorage.getItem("profil");
+
 
   constructor(
     private router: Router,

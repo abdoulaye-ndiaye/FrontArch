@@ -19,6 +19,8 @@ export class UploadRapportComponent implements OnInit {
   returnUrl: string;
   message = '';
   hide = true;
+  profil = sessionStorage.getItem("profil");
+
 
   constructor(
     private router: Router,

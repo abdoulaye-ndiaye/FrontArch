@@ -10,6 +10,8 @@ export class DownloadRapportComponent implements OnInit {
 
   allRapports: any;
   submitted = false;
+  profil = sessionStorage.getItem("profil");
+
 
   constructor(
     private router: Router,

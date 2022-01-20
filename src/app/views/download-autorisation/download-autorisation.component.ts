@@ -9,6 +9,8 @@ export class DownloadAutorisationComponent implements OnInit {
 
   allAutorisations: any;
   submitted = false;
+  profil = sessionStorage.getItem("profil");
+
 
   constructor(
     private router: Router,

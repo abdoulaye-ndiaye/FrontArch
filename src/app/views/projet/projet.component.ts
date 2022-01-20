@@ -12,7 +12,7 @@ export class ProjetComponent implements OnInit {
   encadreur: any;
   b: string;
   c: string;
-
+  profil = sessionStorage.getItem("profil");
 
   constructor(
     private router: Router,

@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AjoutRapporteurComponent implements OnInit {
 
+  profil = sessionStorage.getItem("profil");
+
   constructor() { }
 
   ngOnInit(): void {

@@ -19,6 +19,8 @@ export class UploadMemoireComponent implements OnInit {
   returnUrl: string;
   message = '';
   hide = true;
+  profil = sessionStorage.getItem("profil");
+
 
   constructor(
     private router: Router,
