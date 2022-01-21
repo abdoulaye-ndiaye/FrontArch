@@ -27,7 +27,7 @@ export class AuthService {
           sessionStorage.setItem("dateNaissance", userData.dateNaissance);
           sessionStorage.setItem("lieuNaissance", userData.lieuNaissance);
           sessionStorage.setItem("idEtu", userData.idEtu);
-
+          sessionStorage.setItem("idProjet", userData.idProjet);
           return userData;
         })
       );
@@ -63,6 +63,7 @@ export class AuthService {
     sessionStorage.removeItem("profil");
     sessionStorage.removeItem("id");
     sessionStorage.removeItem("idEtu");
+    sessionStorage.removeItem("idProjet");
     sessionStorage.removeItem("nom");
     sessionStorage.removeItem("prenom");
     sessionStorage.removeItem("dateNaissance");
@@ -77,14 +78,21 @@ export class AuthService {
     return this.httpClient
       .get<any>(`${environment.apiUrl}/encadreur/projet/${idProjet}`);
   }
+  getRapporteur(idProjet:string) {
+    return this.httpClient
+      .get<any>(`${environment.apiUrl}/rapporteur/projet/${idProjet}`);
+  }
   getEtudiant(idEtudiant:string) {
     return this.httpClient
       .get<any>(`${environment.apiUrl}/etudiant/${idEtudiant}`);
   }
   getProjets() {
     return this.httpClient
-      .get<any>(`${environment.apiUrl}/projet`);
-      
+      .get<any>(`${environment.apiUrl}/projet`);  
+  }
+  getComptes() {
+    return this.httpClient
+      .get<any>(`${environment.apiUrl}/compte`);  
   }
   getProjetByIdEtudiant(idEtu:string) {
     return this.httpClient
@@ -139,5 +147,25 @@ export class AuthService {
     return this.httpClient
       .get<any>(`${environment.apiUrl}/compte/${idCompte}`);
   }
+  listeEtudiant() {
+    return this.httpClient
+      .get<any>(`${environment.apiUrl}/etudiant`);
+  }
+  listeProfesseur() {
+    return this.httpClient
+      .get<any>(`${environment.apiUrl}/professeur`);
+  }
+
+  ajoutRapporteur(idProf:string,idProjet:string) {
+    return this.httpClient
+      .post<any>(`${environment.apiUrl}/ajout-rapporteur`, { idProf,idProjet })
+      .pipe(
+        map(userData => {
+          return userData;
+        })
+      );
+  }
+
+
 }
 

@@ -20,7 +20,7 @@ export class UploadMemoireComponent implements OnInit {
   message = '';
   hide = true;
   profil = sessionStorage.getItem("profil");
-
+  c = sessionStorage.getItem("idProjet") as string;
 
   constructor(
     private router: Router,

@@ -27,6 +27,7 @@ import { UploadRapportComponent } from './views/upload-rapport/upload-rapport.co
 import { UploadAutorisationComponent } from './views/upload-autorisation/upload-autorisation.component';
 import { DownloadDemandeAutorisationComponent } from './views/download-demande-autorisation/download-demande-autorisation.component';
 import { AjoutRapporteurComponent } from './views/ajout-rapporteur/ajout-rapporteur.component';
+import { RapporteursComponent } from './views/rapporteurs/rapporteurs.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,8 @@ import { AjoutRapporteurComponent } from './views/ajout-rapporteur/ajout-rapport
     UploadRapportComponent,
     UploadAutorisationComponent,
     DownloadDemandeAutorisationComponent,
-    AjoutRapporteurComponent
+    AjoutRapporteurComponent,
+    RapporteursComponent
   ],
   imports: [
     BrowserModule,

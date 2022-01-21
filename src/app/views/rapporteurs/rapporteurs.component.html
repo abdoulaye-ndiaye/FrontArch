@@ -81,52 +81,75 @@
     <div class="side-app">
     </div>
     <div class=" container justify-content-center">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="card">
-                    
-                    <div class="card-body">
-                      <div class="form-group row">
-                        <div class="col-md-12">
-
-                        <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions"
-                        [dtTrigger]="dtTrigger">
-                        <thead>
-                          <tr>
-                            <th>Souteneur</th>
-                            <th>Projet</th>
-                            <th>Description</th>
-                            <th></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let projet of allProjets">
-                            <td>Etudiant</td>
-                            <td>{{ projet.sujet }}</td>
-                            <td>{{ projet.description }}</td>
-                            <td><a routerLink="/rapporteurs" class="btn btn-blue" [queryParams]="{id : projet._id}">Ajouter rapporteurs</a></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                     
-                    </div>
-                  </div>
+    
+        <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-header">
+                  <i class="fa fa-align-justify"></i> Liste des Professeurs
                 </div>
-                <!--/.col-->
+                <div class="card-body">
+                  
+                    <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions"
+                    [dtTrigger]="dtTrigger">
+                    <thead>
+                      <tr>
+                        <th>Nom</th>
+                        <th>Prenoms</th>
+                        <th></th>
+                        </tr>
+                      </thead>
+                      <tbody *ngFor="let professeur of allProfesseurs">
+                        <tr *ngIf="!(rapporteurs.includes(professeur._id))">
+                          <td>{{professeur.nom}}</td>
+                          <td>{{professeur.prenom}}</td>
+                          <td><a (click)="onSubmit(professeur._id);refresh()"> <button type="submit" class="btn btn-primary px-3" >Ajout rapporteur</button></a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                
+                </div>
+                
               </div>
-            
-  
             </div>
+            <!--/.col-->
           </div>
-        </div>
-        <!--/.col-->
-      </div>
+        
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-header">
+                  <i class="fa fa-align-justify"></i> Liste des Rapporteurs de l'etudiant
+                </div>
+                <div class="card-body">
+                  <form >
+                    <table class="table table-bordered table-striped table-sm">
+                      <thead>
+                        <tr >
+                          
+                          <th>Nom</th>
+                          <th>Prenoms</th>
+                        </tr>
+                      </thead>
+                      <tbody *ngFor="let professeur of allProfesseurs">
+                        <tr *ngIf="(rapporteurs.includes(professeur._id))">
+                
+                          <td>{{professeur.nom}}</td>
+                          <td>{{professeur.prenom}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </form>
+                </div>
+                
+              </div>
+            </div>
+            <!--/.col-->
+          </div>
+    
     </div>
-  </div>
+</div>
 
 <!--footer-->
 <app-footer></app-footer>

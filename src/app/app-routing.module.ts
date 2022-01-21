@@ -10,6 +10,7 @@ import { DownloadRapportComponent } from './views/download-rapport/download-rapp
 import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
 import { ProjetComponent } from './views/projet/projet.component';
+import { RapporteursComponent } from './views/rapporteurs/rapporteurs.component';
 import { RegisterComponent } from './views/register/register.component';
 import { UploadAutorisationComponent } from './views/upload-autorisation/upload-autorisation.component';
 import { UploadDemandeAutorisationComponent } from './views/upload-demande-autorisation/upload-demande-autorisation.component';
@@ -128,6 +129,14 @@ const routes: Routes = [
     component: AjoutRapporteurComponent,
     data: {
       title: 'Ajout-Rapporteur'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'rapporteurs',
+    component: RapporteursComponent,
+    data: {
+      title: 'Rapporteurs'
     },
     canActivate:[AuthGuard]
   },

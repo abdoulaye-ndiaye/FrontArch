@@ -11,7 +11,8 @@ export class ProjetComponent implements OnInit {
   projet: any;
   encadreur: any;
   b: string;
-  c: string;
+  c:string;
+  //c = sessionStorage.getItem("idProjet") as string;
   profil = sessionStorage.getItem("profil");
 
   constructor(
