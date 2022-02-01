@@ -76,7 +76,7 @@ export class UploadMemoireComponent implements OnInit {
       if (this.fileSelected) {
         const body = new FormData();
         body.append('fichier', this.fileSelected, this.fileSelected.name)
-        body.append('idProj', '603c100c99ca52503893c721');
+        body.append('idProj', this.c);
         this.uploadService.upload(body).subscribe(result => {
           console.log(result);
           this.message = "Upload Réussie !";
