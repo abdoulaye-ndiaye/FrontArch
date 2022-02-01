@@ -26,9 +26,9 @@ export class DownloadMemoireComponent implements OnInit {
     });
   }
 
-  onSubmit(idMemoire: string) {
+  onSubmit(url: string) {
     this.submitted = true;
-    this.authService.downloadMemoire(idMemoire);
+    this.authService.downloadMemoire(url);
   }
 
 
