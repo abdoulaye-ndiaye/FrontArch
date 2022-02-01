@@ -11,7 +11,6 @@ export class ProjetComponent implements OnInit {
   projet: any;
   encadreur: any;
   b: string;
-  c:string;
   //c = sessionStorage.getItem("idProjet") as string;
   profil = sessionStorage.getItem("profil");
 
@@ -27,16 +26,11 @@ export class ProjetComponent implements OnInit {
     this.b = sessionStorage.getItem("idEtu") as string;
 
     this.authService.getProjetByIdEtudiant(this.b).subscribe(data => {
-      this.c = data._id;
+      console.log(data);
       this.projet = data;
 
     });
 
-
-    this.authService.getEncadreur(this.c).subscribe(data => {
-      this.encadreur = data;
-
-    });
   }
 
 }

@@ -28,22 +28,24 @@ export class AuthService {
           sessionStorage.setItem("lieuNaissance", userData.lieuNaissance);
           sessionStorage.setItem("idEtu", userData.idEtu);
           sessionStorage.setItem("idProjet", userData.idProjet);
+          sessionStorage.setItem("classe", userData.classe);
+          sessionStorage.setItem("specialite", userData.specialite);
           return userData;
         })
       );
   }
-  RegisterEtudiant( dateNaissance:string, lieuNaissance:string, numTel:string, nom:string, prenom:string, profil:string, email:string, password:string) {
+  RegisterEtudiant( classe:string, dateNaissance:string, lieuNaissance:string, numTel:string, nom:string, prenom:string, profil:string, email:string, password:string) {
     return this.httpClient
-      .post<any>(`${environment.apiUrl}/etudiant`, { dateNaissance, lieuNaissance, numTel, nom, prenom, profil, email, password })
+      .post<any>(`${environment.apiUrl}/etudiant`, { dateNaissance, lieuNaissance, classe, numTel, nom, prenom, profil, email, password })
       .pipe(
         map(userData => {
           return userData;
         })
       );
   }
-  RegisterProf(numTel:string, nom:string, prenom:string, profil:string, email:string, password:string) {
+  RegisterProf( specialite:string, numTel:string, nom:string, prenom:string, profil:string, email:string, password:string) {
     return this.httpClient
-      .post<any>(`${environment.apiUrl}/professeur`, { numTel, nom, prenom, profil, email, password })
+      .post<any>(`${environment.apiUrl}/professeur`, { specialite, numTel, nom, prenom, profil, email, password })
       .pipe(
         map(userData => {
           return userData;
@@ -68,6 +70,8 @@ export class AuthService {
     sessionStorage.removeItem("prenom");
     sessionStorage.removeItem("dateNaissance");
     sessionStorage.removeItem("lieuNaissance");
+    sessionStorage.removeItem("classe");
+    sessionStorage.removeItem("specialite");
   }
 
   getProfesseur(idProf:string) {

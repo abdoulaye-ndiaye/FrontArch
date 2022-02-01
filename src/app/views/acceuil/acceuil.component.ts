@@ -57,6 +57,7 @@ export class AcceuilComponent implements OnInit {
       retrieve: true,
     };
     this.authService.getProjets().subscribe(data => {
+      console.log(data);
       this.allProjets = data;
       this.dtTrigger.next(data);
     });

@@ -32,23 +32,30 @@ export class RegisterComponent implements OnInit {
   ) { }
 
 
-
   ngOnInit(): void {
-    this.RegisterForm = this.formBulder.group(
-      {
-        profil: ['', Validators.required],
-        dateNaissance: ['', Validators.required],
-        lieuNaissance: ['', Validators.required],
-        numTel: ['', [Validators.required, Validators.maxLength(9)]],
-        nom: ['', Validators.required],
-        prenom: ['', Validators.required],
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(6)]],
-        confirmPassword: ['', Validators.required],
-      },
-      { validator: MustMatch('password', 'confirmPassword') }
-    );
+   
+      this.RegisterForm = this.formBulder.group(
+        {
+          profil: ['', Validators.required],
+          classe: [''],
+          specialite: [''],
+          dateNaissance: [''],
+          lieuNaissance: [''],
+          numTel: ['', [Validators.required, Validators.maxLength(9)]],
+          nom: ['', Validators.required],
+          prenom: ['', Validators.required],
+          email: ['', [Validators.required, Validators.email]],
+          password: ['', [Validators.required, Validators.minLength(6)]],
+          confirmPassword: ['', Validators.required],
+        },
+        { validator: MustMatch('password', 'confirmPassword') }
+      );
+   
   }
+
+  refresh(): void {
+    window.location.reload();
+}
 
   ngAfterViewInit() {
     //script
@@ -72,11 +79,12 @@ export class RegisterComponent implements OnInit {
         this.RegisterForm.value.email,
         this.RegisterForm.value.password
       );
-
+      this.RegisterForm.value.profil= this.profil;
       if (this.RegisterForm.value.profil == EnumProfil.ETUDIANT) {
 
         this.authService
           .RegisterEtudiant(
+            this.RegisterForm.value.classe,
             this.RegisterForm.value.dateNaissance,
             this.RegisterForm.value.lieuNaissance,
             this.RegisterForm.value.numTel,
@@ -101,6 +109,7 @@ export class RegisterComponent implements OnInit {
       } else {
         this.authService
           .RegisterProf(
+            this.RegisterForm.value.specialite,
             this.RegisterForm.value.numTel,
             this.RegisterForm.value.nom,
             this.RegisterForm.value.prenom,

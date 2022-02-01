@@ -147,7 +147,27 @@
                       {{compte.numTel }}
                     </div>
                   </div>
+                  <div *ngIf="profil==='PROF'">
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Spécialité</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        {{specialite }}
+                      </div>
+                    </div>
+                  </div>
                   <div *ngIf="profil==='ETUDIANT'">
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Classe</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        {{classe }}
+                      </div>
+                    </div>
                     <hr>
                     <div class="row">
                       <div class="col-sm-3">

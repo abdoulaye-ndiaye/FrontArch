@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit {
   a: string;
   dateNaissance: string;
   lieuNaissance: string;
+  classe: string;
+  specialite: string;
   profil = sessionStorage.getItem("profil");
 
   constructor(
@@ -25,6 +27,8 @@ export class HomeComponent implements OnInit {
     this.a = sessionStorage.getItem("id") as string;
     this.dateNaissance = sessionStorage.getItem("dateNaissance") as string;
     this.lieuNaissance = sessionStorage.getItem("lieuNaissance") as string;
+    this.classe = sessionStorage.getItem("classe") as string;
+    this.specialite = sessionStorage.getItem("specialite") as string;
 
     this.authService.getCompte(this.a).subscribe(data => {
       this.compte = data;
