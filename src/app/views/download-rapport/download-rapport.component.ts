@@ -26,9 +26,9 @@ export class DownloadRapportComponent implements OnInit {
     });
   }
 
-  onSubmit(idRapport: string) {
-    this.submitted = true;
-    this.authService.downloadRapport(idRapport);
-  }
 
+  onSubmit(url: string) {
+    this.submitted = true;
+    this.authService.downloadRapport(url);
+  }
 }

@@ -133,7 +133,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <form  method="post" class="card">
+        <form  method="post" class="card" [formGroup]="ProjetForm" (ngSubmit)="onSubmit()">
             <div class="card-header">
                 <h3 class="card-title">Création de projet</h3>
             </div>
@@ -142,7 +142,15 @@
                     <div class="col-md-6 col-lg-6">
                         <div class="form-group">
                             <label class="form-label">Sujet</label>
-                            <input type="text" class="form-control" name="example-text-input" placeholder="Entrer le nom du projet">
+                            <input type="text" class="form-control" formControlName="sujet" name="example-text-input" placeholder="Entrer le nom du projet"
+                            [ngClass]="{
+                                'is-invalid': submitted && f['sujet'].errors
+                              }" required>
+                              <div *ngIf="submitted && f['sujet'].errors" class="input-group mb-3 invalid-feedback">
+                                <div *ngIf="f['sujet'].errors['required']">
+                                  veuillez saisir Le sujet
+                                </div>
+                              </div>
                         </div>
                        
                         <div class="form-group">
@@ -156,7 +164,8 @@
                         <br/>
                         <div class="text-center">
                             <button type="submit" class="btn btn-block btn-blue">
-                             Créer le projet</button>
+                             Créer le projet
+                            </button>
                           </div>
                     </div>
                     <div class="col-md-6 col-lg-6">
@@ -174,7 +183,14 @@
                               <label for="inputCity">Date de début</label>
                               <div class="input-group">
                                 <input type="date" class="form-control fc-datepicker hasDatepicker"
-                                  formControlName="dateNaissance" autocomplete="dateNaissance" /> 
+                                  formControlName="date_debut" autocomplete="dateNaissance" [ngClass]="{
+                                    'is-invalid': submitted && f['date_debut'].errors
+                                  }" required /> 
+                                  <div *ngIf="submitted && f['date_debut'].errors" class="input-group mb-3 invalid-feedback">
+                                    <div *ngIf="f['date_debut'].errors['required']">
+                                      veuillez choisir la date de début
+                                    </div>
+                                  </div>
                               </div>
                               
                         </div>
@@ -182,7 +198,15 @@
                             <label for="inputCity">Date de fin</label>
                             <div class="input-group">
                               <input type="date" class="form-control fc-datepicker hasDatepicker"
-                                formControlName="dateNaissance" autocomplete="dateNaissance" /> 
+                                formControlName="date_fin" autocomplete="dateNaissance" 
+                                [ngClass]="{
+                                    'is-invalid': submitted && f['date_fin'].errors
+                                  }" required/> 
+                                  <div *ngIf="submitted && f['date_fin'].errors" class="input-group mb-3 invalid-feedback">
+                                    <div *ngIf="f['date_fin'].errors['required']">
+                                      veuillez choisir la date de fin
+                                    </div>
+                                  </div>
                             </div>
                       </div>
                     </div>
@@ -190,8 +214,7 @@
                     <div class="form-group">
                             <label class="form-label">Dérrogation</label>
                             <input type="number" class="form-control" name="example-text-input" placeholder="Entrer le nombre de jour">
-                        </div>
-                        
+                        </div> 
                     
                     </div>
                 </div>

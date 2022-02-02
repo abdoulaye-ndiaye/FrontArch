@@ -86,6 +86,31 @@ export class AuthService {
         })
       );
   }
+  FormulaireProjet(
+    sujet: string,
+    description: string,
+    encadreur: any,
+    date_debut: any,
+    date_fin: any,
+    derrogation: any,
+    etat:string
+  ) {
+    return this.httpClient
+      .post<any>(`${environment.apiUrl}/projet`, {
+        sujet,
+        description,
+        encadreur,
+        date_debut,
+        date_fin,
+        derrogation,
+        etat
+      })
+      .pipe(
+        map((userData) => {
+          return userData;
+        })
+      );
+  }
 
   isUserLoggedIn() {
     let user = sessionStorage.getItem('token');
@@ -142,16 +167,13 @@ export class AuthService {
       `${environment.apiUrl}/projet/etudiant/${idEtu}`
     );
   }
-  downloadRapport(idRapport: string): void {
-    this.httpClient
-      .get(`${environment.apiUrl}/download-rapport/${idRapport}`, {
-        responseType: 'blob',
-      })
-      .subscribe((res) => {
-        window.open(window.URL.createObjectURL(res));
-      });
-  }
+  
   downloadMemoire(url: string): void {
+    this.httpClient.get(`${url}`, { responseType: 'blob' }).subscribe((res) => {
+      window.open(window.URL.createObjectURL(res));
+    });
+  }
+  downloadRapport(url: string): void {
     this.httpClient.get(`${url}`, { responseType: 'blob' }).subscribe((res) => {
       window.open(window.URL.createObjectURL(res));
     });

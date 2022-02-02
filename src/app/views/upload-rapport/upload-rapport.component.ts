@@ -78,6 +78,7 @@ export class UploadRapportComponent implements OnInit {
         this.uploadService.upload(body).subscribe(result => {
           console.log(result);
           this.message = "Upload Réussie !";
+          this.uploadRapportForm.reset();
         }, error => {
 
         });
