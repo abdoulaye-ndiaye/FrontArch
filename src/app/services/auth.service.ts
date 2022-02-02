@@ -134,6 +134,9 @@ export class AuthService {
   getComptes() {
     return this.httpClient.get<any>(`${environment.apiUrl}/compte`);
   }
+  getProfs() {
+    return this.httpClient.get<any>(`${environment.apiUrl}/professeur`);
+  }
   getProjetByIdEtudiant(idEtu: string) {
     return this.httpClient.get<any>(
       `${environment.apiUrl}/projet/etudiant/${idEtu}`

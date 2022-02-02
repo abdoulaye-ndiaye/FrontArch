@@ -28,6 +28,7 @@ import { UploadAutorisationComponent } from './views/upload-autorisation/upload-
 import { DownloadDemandeAutorisationComponent } from './views/download-demande-autorisation/download-demande-autorisation.component';
 import { AjoutRapporteurComponent } from './views/ajout-rapporteur/ajout-rapporteur.component';
 import { RapporteursComponent } from './views/rapporteurs/rapporteurs.component';
+import { CreerProjetComponent } from './views/resp-form/creer-projet/creer-projet.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +48,8 @@ import { RapporteursComponent } from './views/rapporteurs/rapporteurs.component'
     UploadAutorisationComponent,
     DownloadDemandeAutorisationComponent,
     AjoutRapporteurComponent,
-    RapporteursComponent
+    RapporteursComponent,
+    CreerProjetComponent
   ],
   imports: [
     BrowserModule,

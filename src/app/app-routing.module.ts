@@ -12,6 +12,7 @@ import { LoginComponent } from './views/login/login.component';
 import { ProjetComponent } from './views/projet/projet.component';
 import { RapporteursComponent } from './views/rapporteurs/rapporteurs.component';
 import { RegisterComponent } from './views/register/register.component';
+import { CreerProjetComponent } from './views/resp-form/creer-projet/creer-projet.component';
 import { UploadAutorisationComponent } from './views/upload-autorisation/upload-autorisation.component';
 import { UploadDemandeAutorisationComponent } from './views/upload-demande-autorisation/upload-demande-autorisation.component';
 import { UploadMemoireComponent } from './views/upload-memoire/upload-memoire.component';
@@ -137,6 +138,14 @@ const routes: Routes = [
     component: RapporteursComponent,
     data: {
       title: 'Rapporteurs'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'creer-projet',
+    component: CreerProjetComponent,
+    data: {
+      title: 'Creer-Projet'
     },
     canActivate:[AuthGuard]
   },

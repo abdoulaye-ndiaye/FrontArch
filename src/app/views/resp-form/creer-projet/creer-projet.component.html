@@ -1,0 +1,209 @@
+<!-- Navbar-->
+<app-header></app-header>
+
+<!-- Sidebar menu-->
+<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+<aside class="app-sidebar">
+  <div class="app-sidebar__user"></div>
+  <ul class="side-menu">
+    <li class="slide">
+      <a class="side-menu__item" data-toggle="slide" routerLink="/home"
+        ><i class="side-menu__icon fas fa-home"></i
+        ><span class="side-menu__label">Acceuil</span></a
+      >
+    </li>
+    <div *ngIf="profil === 'ETUDIANT'">
+      <li>
+        <a class="side-menu__item" data-toggle="slide" routerLink="/projet"
+          ><i class="side-menu__icon fas fa-folder"></i
+          ><span class="side-menu__label">Mon Projet</span></a
+        >
+      </li>
+
+      <li class="slide">
+        <a
+          class="side-menu__item"
+          data-toggle="slide"
+          routerLink="/download-rapport"
+          ><i class="side-menu__icon fas fa-file-download"></i
+          ><span class="side-menu__label">Télécharger Rapports </span></a
+        >
+      </li>
+      <li class="slide">
+        <a
+          class="side-menu__item"
+          data-toggle="slide"
+          routerLink="/download-autorisation"
+          ><i class="side-menu__icon fas fa-file-download"></i
+          ><span class="side-menu__label">Télécharger autorisation</span></a
+        >
+      </li>
+      <li class="slide">
+        <a
+          class="side-menu__item"
+          data-toggle="slide"
+          routerLink="/upload-memoire"
+          ><i class="side-menu__icon fas fa-file-import"></i
+          ><span class="side-menu__label">Charger Mémoire</span></a
+        >
+      </li>
+      <li class="slide">
+        <a
+          class="side-menu__item"
+          data-toggle="slide"
+          routerLink="/upload-demande-autorisation"
+          ><i class="side-menu__icon fas fa-file-import"></i
+          ><span class="side-menu__label"
+            >Charger Demande<br />
+            autorisation</span
+          ></a
+        >
+      </li>
+    </div>
+    <div *ngIf="profil === 'PROF'">
+        <li class="slide">
+            <a
+              class="side-menu__item active"
+              data-toggle="slide"
+              routerLink="/creer-projet"
+              ><i class="side-menu__icon fas fa-file-download"></i
+              ><span class="side-menu__label">Créer Projet</span></a
+            >
+          </li>
+      <li class="slide">
+        <a
+          class="side-menu__item "
+          data-toggle="slide"
+          routerLink="/download-memoire"
+          ><i class="side-menu__icon fas fa-file-download"></i
+          ><span class="side-menu__label">Télécharger Memoire</span></a
+        >
+      </li>
+
+      <li class="slide">
+        <a
+          class="side-menu__item"
+          data-toggle="slide"
+          routerLink="/download-demande-autorisation"
+          ><i class="side-menu__icon fas fa-file-download"></i
+          ><span class="side-menu__label"
+            >Télécharger Demandes<br />
+            autorisation</span
+          ></a
+        >
+      </li>
+
+      <li class="slide">
+        <a
+          class="side-menu__item"
+          data-toggle="slide"
+          routerLink="/upload-rapport"
+          ><i class="side-menu__icon fas fa-file-import"></i
+          ><span class="side-menu__label">Charger Rapport</span></a
+        >
+      </li>
+      <li class="slide">
+        <a
+          class="side-menu__item"
+          data-toggle="slide"
+          routerLink="/upload-autorisation"
+          ><i class="side-menu__icon fas fa-file-import"></i
+          ><span class="side-menu__label">Charger Autorisation</span></a
+        >
+      </li>
+
+      <li class="slide">
+        <a
+          class="side-menu__item"
+          data-toggle="slide"
+          routerLink="/ajout-rapporteur"
+          ><i class="side-menu__icon fas fa-file-import"></i
+          ><span class="side-menu__label">Ajout Rapporteur</span></a
+        >
+      </li>
+    </div>
+  </ul>
+</aside>
+
+<div class="app-content my-3 my-md-5">
+  <div class="side-app">
+    <br />
+  </div>
+  <div class="container justify-content-center">
+
+<div class="row">
+    <div class="col-lg-12">
+        <form  method="post" class="card">
+            <div class="card-header">
+                <h3 class="card-title">Création de projet</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label class="form-label">Sujet</label>
+                            <input type="text" class="form-control" name="example-text-input" placeholder="Entrer le nom du projet">
+                        </div>
+                       
+                        <div class="form-group">
+                            <label class="form-label">Description </label>
+                            <textarea class="form-control" name="example-textarea-input" rows="4" placeholder="Donner la description du projet "></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Etat du projet</label>
+                            <input type="text" class="form-control" name="example-disabled-input" placeholder="Validé" value="Validé" disabled>
+                        </div>
+                        <br/>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-block btn-blue">
+                             Créer le projet</button>
+                          </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>Encadreur</label>
+                            <select aria-label="Default select example" id="classe" formControlName="classe" class="form-control" >
+                                <option value="" selected disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                  -- Veuillez selectionner un encadreur --
+                                </option>
+                                <option value="{{ prof._id }}" *ngFor="let prof of allProfs">{{ prof.compte.prenom }} {{ prof.compte.nom }}</option>
+                              </select>
+                        </div>
+                        <div class="row">
+                         <div class="form-group col-md-6">
+                              <label for="inputCity">Date de début</label>
+                              <div class="input-group">
+                                <input type="date" class="form-control fc-datepicker hasDatepicker"
+                                  formControlName="dateNaissance" autocomplete="dateNaissance" /> 
+                              </div>
+                              
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputCity">Date de fin</label>
+                            <div class="input-group">
+                              <input type="date" class="form-control fc-datepicker hasDatepicker"
+                                formControlName="dateNaissance" autocomplete="dateNaissance" /> 
+                            </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                            <label class="form-label">Dérrogation</label>
+                            <input type="number" class="form-control" name="example-text-input" placeholder="Entrer le nombre de jour">
+                        </div>
+                        
+                    
+                    </div>
+                </div>
+                
+            </div>
+        </form>
+    </div>
+</div>
+  </div>
+</div>
+
+<!--footer-->
+<app-footer></app-footer>
+<!-- End Footer-->
+
