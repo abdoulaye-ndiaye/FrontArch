@@ -20,6 +20,7 @@ export class ExcelProfComponent implements OnInit {
   messageGood = '';
   hide = true;
   profil = sessionStorage.getItem('profil');
+  data:any;
 
   constructor(
     private router: Router,
@@ -72,7 +73,7 @@ export class ExcelProfComponent implements OnInit {
 
         this.uploadService.upload(body).subscribe(
           (result) => {
-            console.log(result);
+            this.data=result;
             this.messageGood = 'Upload Réussie !';
             this.uploadExcelForm.reset();
           },
