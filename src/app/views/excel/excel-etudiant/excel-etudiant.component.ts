@@ -8,13 +8,15 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   selector: 'app-excel-etudiant',
   templateUrl: './excel-etudiant.component.html'
 })
-export class ExcelEtudiantComponent implements OnInit {b = false;
+export class ExcelEtudiantComponent implements OnInit {
+  b = false;
   uploadExcelForm: FormGroup;
   fileSelected: File;
   imageUrl: any;
   submitted = false;
   returnUrl: string;
-  message = '';
+  messageBad = '';
+  messageGood = '';
   hide = true;
   profil = sessionStorage.getItem('profil');
 
@@ -57,7 +59,8 @@ export class ExcelEtudiantComponent implements OnInit {b = false;
 
   envoyer() {
     this.submitted = true;
-    console.log('Bienvenue');
+    this.messageBad='';
+    this.messageGood='';
     if (this.uploadExcelForm.invalid) {
       console.log("Erreur d'upload");
       return;
@@ -69,13 +72,13 @@ export class ExcelEtudiantComponent implements OnInit {b = false;
         this.uploadService.upload(body).subscribe(
           (result) => {
             console.log(result);
-            this.message = 'Upload Réussie !';
+            this.messageGood = 'Upload Réussie !';
             this.uploadExcelForm.reset();
           },
           (error) => {}
         );
       } else {
-        console.log('Rien ne va !');
+        this.messageBad='Aucun fichier choisi !';
       }
     }
   }

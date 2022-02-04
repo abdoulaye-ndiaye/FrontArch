@@ -1,1 +1,176 @@
-<p>excel-prof works!</p>
+<!-- Navbar-->
+<app-header></app-header>
+
+<!-- Sidebar menu-->
+<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+<aside class="app-sidebar">
+  <div class="app-sidebar__user"></div>
+  <ul class="side-menu">
+    <li class="slide">
+      <a class="side-menu__item" data-toggle="slide" routerLink="/home"
+        ><i class="side-menu__icon fas fa-home"></i
+        ><span class="side-menu__label">Acceuil</span></a
+      >
+    </li>
+    <div *ngIf="profil === 'ETUDIANT'">
+      <li>
+        <a class="side-menu__item" data-toggle="slide" routerLink="/projet"
+          ><i class="side-menu__icon fas fa-folder"></i
+          ><span class="side-menu__label">Mon Projet</span></a
+        >
+      </li>
+
+      <li class="slide">
+        <a
+          class="side-menu__item"
+          data-toggle="slide"
+          routerLink="/download-rapport"
+          ><i class="side-menu__icon fas fa-file-download"></i
+          ><span class="side-menu__label">Télécharger Rapports </span></a
+        >
+      </li>
+      <li class="slide">
+        <a
+          class="side-menu__item"
+          data-toggle="slide"
+          routerLink="/download-autorisation"
+          ><i class="side-menu__icon fas fa-file-download"></i
+          ><span class="side-menu__label">Télécharger autorisation</span></a
+        >
+      </li>
+      <li class="slide">
+        <a
+          class="side-menu__item active"
+          data-toggle="slide"
+          routerLink="/upload-memoire"
+          ><i class="side-menu__icon fas fa-file-import"></i
+          ><span class="side-menu__label">Charger Mémoire</span></a
+        >
+      </li>
+      <li class="slide">
+        <a
+          class="side-menu__item"
+          data-toggle="slide"
+          routerLink="/upload-demande-autorisation"
+          ><i class="side-menu__icon fas fa-file-import"></i
+          ><span class="side-menu__label"
+            >Charger Demande<br />
+            autorisation</span
+          ></a
+        >
+      </li>
+    </div>
+    <div *ngIf="profil === 'PROF'">
+      <li class="slide">
+        <a
+          class="side-menu__item "
+          data-toggle="slide"
+          routerLink="/liste-etudiants"
+          ><i class="side-menu__icon fas fa-file-download"></i
+          ><span class="side-menu__label">Créer Projet</span></a
+        >
+      </li>
+
+      <li class="slide">
+        <a
+          class="side-menu__item"
+          data-toggle="slide"
+          routerLink="/download-memoire"
+          ><i class="side-menu__icon fas fa-file-download"></i
+          ><span class="side-menu__label">Télécharger Memoire</span></a
+        >
+      </li>
+      <li class="slide">
+        <a class="side-menu__item " data-toggle="slide" routerLink="/excel-etudiant"><i
+                class="side-menu__icon fas fa-file-download"></i><span class="side-menu__label">Excel Etudiants</span></a>
+    </li>
+    <li class="slide">
+        <a class="side-menu__item active" data-toggle="slide" routerLink="/excel-prof"><i
+                class="side-menu__icon fas fa-file-download"></i><span class="side-menu__label">Excel Professeurs</span></a>
+    </li>
+
+      <li class="slide">
+        <a
+          class="side-menu__item"
+          data-toggle="slide"
+          routerLink="/download-demande-autorisation"
+          ><i class="side-menu__icon fas fa-file-download"></i
+          ><span class="side-menu__label"
+            >Télécharger Demandes<br />
+            autorisation</span
+          ></a
+        >
+      </li>
+
+      <li class="slide">
+        <a
+          class="side-menu__item"
+          data-toggle="slide"
+          routerLink="/upload-rapport"
+          ><i class="side-menu__icon fas fa-file-import"></i
+          ><span class="side-menu__label">Charger Rapport</span></a
+        >
+      </li>
+      <li class="slide">
+        <a
+          class="side-menu__item"
+          data-toggle="slide"
+          routerLink="/upload-autorisation"
+          ><i class="side-menu__icon fas fa-file-import"></i
+          ><span class="side-menu__label">Charger Autorisation</span></a
+        >
+      </li>
+
+      <li class="slide">
+        <a
+          class="side-menu__item"
+          data-toggle="slide"
+          routerLink="/ajout-rapporteur"
+          ><i class="side-menu__icon fas fa-file-import"></i
+          ><span class="side-menu__label">Ajout Rapporteur</span></a
+        >
+      </li>
+    </div>
+  </ul>
+</aside>
+
+
+
+<div class="app-content my-3 my-md-5">
+  <div class="side-app">
+    <br />
+  </div>
+  <div class="container justify-content-center">
+    <div class="row">
+      <div class="col-md-6">
+        <form
+          [formGroup]="uploadExcelForm"
+          (ngSubmit)="envoyer()"
+          enctype="multipart/form-data"
+        >
+          <div class="form-group ">
+            <h2>Charger le fichier Excel pour la création des comptes Professeurs</h2>
+                <input type="file" formControlName="image" class="form-control form-control-lg" (change)="onChange($event)">
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary px-4">
+              Soumettre
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <p style="color: greenyellow">
+        <br />
+        {{ messageGood }}
+      </p>
+    <p style="color: red">
+      <br />
+      {{ messageBad }}
+    </p>
+  </div>
+</div>
+
+<!--footer-->
+<app-footer></app-footer>
+<!-- End Footer-->

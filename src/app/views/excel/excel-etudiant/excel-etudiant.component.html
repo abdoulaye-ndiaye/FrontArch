@@ -84,6 +84,10 @@
         <a class="side-menu__item active" data-toggle="slide" routerLink="/excel-etudiant"><i
                 class="side-menu__icon fas fa-file-download"></i><span class="side-menu__label">Excel Etudiants</span></a>
     </li>
+    <li class="slide">
+        <a class="side-menu__item " data-toggle="slide" routerLink="/excel-prof"><i
+                class="side-menu__icon fas fa-file-download"></i><span class="side-menu__label">Excel Professeurs</span></a>
+    </li>
 
       <li class="slide">
         <a
@@ -144,10 +148,9 @@
           (ngSubmit)="envoyer()"
           enctype="multipart/form-data"
         >
-          <div class="form-group files color">
+          <div class="form-group ">
             <h2>Charger le fichier Excel pour la création des comptes étudiants</h2>
-                <input formControlName="image" class="form-control form-control-lg" 
-                id="formFileLg" type="file" (change)="onChange($event)">
+                <input type="file" formControlName="image" class="form-control form-control-lg" (change)="onChange($event)">
           </div>
           <div>
             <button type="submit" class="btn btn-primary px-4">
@@ -157,9 +160,13 @@
         </form>
       </div>
     </div>
+    <p style="color: greenyellow">
+        <br />
+        {{ messageGood }}
+      </p>
     <p style="color: red">
       <br />
-      {{ message }}
+      {{ messageBad }}
     </p>
   </div>
 </div>

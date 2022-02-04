@@ -8,6 +8,7 @@ import { DownloadDemandeAutorisationComponent } from './views/download-demande-a
 import { DownloadMemoireComponent } from './views/download-memoire/download-memoire.component';
 import { DownloadRapportComponent } from './views/download-rapport/download-rapport.component';
 import { ExcelEtudiantComponent } from './views/excel/excel-etudiant/excel-etudiant.component';
+import { ExcelProfComponent } from './views/excel/excel-prof/excel-prof.component';
 import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
 import { ProjetComponent } from './views/projet/projet.component';
@@ -169,7 +170,7 @@ const routes: Routes = [
   },
   {
     path: 'excel-prof',
-    component: ExcelEtudiantComponent,
+    component: ExcelProfComponent,
     data: {
       title: 'Excel Professeur'
     },

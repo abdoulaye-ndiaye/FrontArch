@@ -15,7 +15,8 @@ export class UploadMemoireComponent implements OnInit {
   imageUrl: any;
   submitted = false;
   returnUrl: string;
-  message = '';
+  messageBad = '';
+  messageGood = '';
   hide = true;
   profil = sessionStorage.getItem('profil');
   idProj = sessionStorage.getItem('idProjet') as string;
@@ -60,7 +61,8 @@ export class UploadMemoireComponent implements OnInit {
 
   envoyer() {
     this.submitted = true;
-    console.log('Bienvenue');
+    this.messageBad='';
+    this.messageGood='';
     if (this.uploadMemoireForm.invalid) {
       console.log("Erreur d'upload");
       return;
@@ -73,13 +75,13 @@ export class UploadMemoireComponent implements OnInit {
         this.uploadService.upload(body).subscribe(
           (result) => {
             console.log(result);
-            this.message = 'Upload Réussie !';
+            this.messageGood = 'Upload Réussie !';
             this.uploadMemoireForm.reset();
           },
           (error) => {}
         );
       } else {
-        console.log('Rien ne va !');
+        this.messageBad = 'Aucun fichier selectionné';
       }
     }
   }
