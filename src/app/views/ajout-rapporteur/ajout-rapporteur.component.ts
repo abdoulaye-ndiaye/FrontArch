@@ -10,7 +10,7 @@ import { Subject } from 'rxjs';
   templateUrl: './ajout-rapporteur.component.html'
 })
 export class AjoutRapporteurComponent implements OnInit {
-
+  inputText: string = 'ajout-rapporteur';
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
 

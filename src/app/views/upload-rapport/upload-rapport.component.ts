@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './upload-rapport.component.html'
 })
 export class UploadRapportComponent implements OnInit {
-
+  inputText: string = 'upload-rapport';
   b = false;
   uploadRapportForm: FormGroup;
   fileSelected: File;

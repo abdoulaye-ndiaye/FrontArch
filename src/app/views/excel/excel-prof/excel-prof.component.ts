@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './excel-prof.component.html'
 })
 export class ExcelProfComponent implements OnInit {
+  inputText: string = 'excel-prof';
   b = false;
   uploadExcelForm: FormGroup;
   fileSelected: File;

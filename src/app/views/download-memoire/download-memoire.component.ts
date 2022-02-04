@@ -6,7 +6,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './download-memoire.component.html'
 })
 export class DownloadMemoireComponent implements OnInit {
-
+  inputText: string = 'download-memoire';
   allMemoires: any;
   submitted = false;
   profil = sessionStorage.getItem("profil");

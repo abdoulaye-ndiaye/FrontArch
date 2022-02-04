@@ -6,7 +6,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './download-autorisation.component.html'
 })
 export class DownloadAutorisationComponent implements OnInit {
-
+  inputText: string = 'download-autorisation';
   allAutorisations: any;
   submitted = false;
   profil = sessionStorage.getItem("profil");

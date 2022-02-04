@@ -8,7 +8,7 @@ import { AuthService } from '../../../services/auth.service';
   templateUrl: './creer-projet.component.html'
 })
 export class CreerProjetComponent implements OnInit {
-
+  inputText: string = 'resp-form';
   ProjetForm: FormGroup;
   profil = sessionStorage.getItem("profil");
   allProfs: any;

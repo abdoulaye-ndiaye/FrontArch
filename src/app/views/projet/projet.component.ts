@@ -7,7 +7,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './projet.component.html'
 })
 export class ProjetComponent implements OnInit {
-
+  inputText: string = 'projet';
   projet: any;
   encadreur: any;
   b: string;

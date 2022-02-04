@@ -32,6 +32,7 @@ import { CreerProjetComponent } from './views/resp-form/creer-projet/creer-proje
 import { ListeEtudiantsComponent } from './views/resp-form/liste-etudiants/liste-etudiants.component';
 import { ExcelEtudiantComponent } from './views/excel/excel-etudiant/excel-etudiant.component';
 import { ExcelProfComponent } from './views/excel/excel-prof/excel-prof.component';
+import { NavComponent } from './views/nav/nav.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +56,8 @@ import { ExcelProfComponent } from './views/excel/excel-prof/excel-prof.componen
     CreerProjetComponent,
     ListeEtudiantsComponent,
     ExcelEtudiantComponent,
-    ExcelProfComponent
+    ExcelProfComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

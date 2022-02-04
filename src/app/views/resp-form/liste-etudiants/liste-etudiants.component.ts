@@ -9,6 +9,7 @@ import { Subject } from 'rxjs';
   templateUrl: './liste-etudiants.component.html'
 })
 export class ListeEtudiantsComponent implements OnInit {
+  inputText: string = 'resp-form';
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
 
@@ -27,9 +28,7 @@ export class ListeEtudiantsComponent implements OnInit {
   
 
   ngOnInit(): void {
-  
-
-    
+      
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,

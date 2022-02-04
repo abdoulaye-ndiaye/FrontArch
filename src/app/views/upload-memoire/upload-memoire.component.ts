@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './upload-memoire.component.html',
 })
 export class UploadMemoireComponent implements OnInit {
+  inputText: string = 'upload-memoire';
   b = false;
   uploadMemoireForm: FormGroup;
   fileSelected: File;

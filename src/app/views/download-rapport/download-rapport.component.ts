@@ -7,7 +7,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './download-rapport.component.html'
 })
 export class DownloadRapportComponent implements OnInit {
-
+  inputText: string = 'download-rapport';
   allRapports: any;
   submitted = false;
   profil = sessionStorage.getItem("profil");

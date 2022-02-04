@@ -10,7 +10,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class UploadDemandeAutorisationComponent implements OnInit {
 
-
+  inputText: string = 'upload-demande-autorisation';
   b = false;
   uploadDemandeAutorisationForm: FormGroup;
   fileSelected: File;

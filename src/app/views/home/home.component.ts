@@ -7,7 +7,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
-
+  inputText: string = 'home';
   compte: any;
   a: string;
   dateNaissance: string;

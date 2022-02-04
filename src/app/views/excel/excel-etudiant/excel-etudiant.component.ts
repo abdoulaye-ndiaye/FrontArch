@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './excel-etudiant.component.html'
 })
 export class ExcelEtudiantComponent implements OnInit {
+  inputText: string = 'excel-etudiant';
   b = false;
   uploadExcelForm: FormGroup;
   fileSelected: File;
