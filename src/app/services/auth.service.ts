@@ -89,10 +89,10 @@ export class AuthService {
   FormulaireProjet(
     sujet: string,
     description: string,
-    encadreur: any,
-    date_debut: any,
-    date_fin: any,
-    derrogation: any,
+    encadreur: string,
+    date_debut: string,
+    date_fin: string,
+    etudiant: string,
     etat:string
   ) {
     return this.httpClient
@@ -102,7 +102,7 @@ export class AuthService {
         encadreur,
         date_debut,
         date_fin,
-        derrogation,
+        etudiant,
         etat
       })
       .pipe(
@@ -151,6 +151,11 @@ export class AuthService {
   getEtudiant(idEtudiant: string) {
     return this.httpClient.get<any>(
       `${environment.apiUrl}/etudiant/${idEtudiant}`
+    );
+  }
+  getProjet(idProjet: string) {
+    return this.httpClient.get<any>(
+      `${environment.apiUrl}/projet/${idProjet}`
     );
   }
   getProjets() {

@@ -13,6 +13,7 @@ import { ProjetComponent } from './views/projet/projet.component';
 import { RapporteursComponent } from './views/rapporteurs/rapporteurs.component';
 import { RegisterComponent } from './views/register/register.component';
 import { CreerProjetComponent } from './views/resp-form/creer-projet/creer-projet.component';
+import { ListeEtudiantsComponent } from './views/resp-form/liste-etudiants/liste-etudiants.component';
 import { UploadAutorisationComponent } from './views/upload-autorisation/upload-autorisation.component';
 import { UploadDemandeAutorisationComponent } from './views/upload-demande-autorisation/upload-demande-autorisation.component';
 import { UploadMemoireComponent } from './views/upload-memoire/upload-memoire.component';
@@ -146,6 +147,14 @@ const routes: Routes = [
     component: CreerProjetComponent,
     data: {
       title: 'Creer-Projet'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'liste-etudiants',
+    component: ListeEtudiantsComponent,
+    data: {
+      title: 'Liste Etudiants'
     },
     canActivate:[AuthGuard]
   },

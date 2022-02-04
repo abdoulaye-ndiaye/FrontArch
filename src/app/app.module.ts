@@ -29,6 +29,7 @@ import { DownloadDemandeAutorisationComponent } from './views/download-demande-a
 import { AjoutRapporteurComponent } from './views/ajout-rapporteur/ajout-rapporteur.component';
 import { RapporteursComponent } from './views/rapporteurs/rapporteurs.component';
 import { CreerProjetComponent } from './views/resp-form/creer-projet/creer-projet.component';
+import { ListeEtudiantsComponent } from './views/resp-form/liste-etudiants/liste-etudiants.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,8 @@ import { CreerProjetComponent } from './views/resp-form/creer-projet/creer-proje
     DownloadDemandeAutorisationComponent,
     AjoutRapporteurComponent,
     RapporteursComponent,
-    CreerProjetComponent
+    CreerProjetComponent,
+    ListeEtudiantsComponent
   ],
   imports: [
     BrowserModule,

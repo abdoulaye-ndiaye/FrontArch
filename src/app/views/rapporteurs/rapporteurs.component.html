@@ -45,7 +45,7 @@
           <a
             class="side-menu__item "
             data-toggle="slide"
-            routerLink="/creer-projet"
+            routerLink="/liste-etudiants"
             ><i class="side-menu__icon fas fa-file-download"></i
             ><span class="side-menu__label">Créer Projet</span></a
           >
@@ -95,29 +95,30 @@
             <div class="col-lg-12">
               <div class="card">
                 <div class="card-header">
-                  <i class="fa fa-align-justify"></i> Liste des Professeurs
+                  <i class="fa fa-align-justify"></i> Liste des Professeurs pas encore rapporteur dans le projet
                 </div>
                 <div class="card-body">
-                  
-                    <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions"
-                    [dtTrigger]="dtTrigger">
+                  <form [formGroup]="ajoutRapporteurForm" >
+                    <table class="table table-bordered table-striped table-hover" >
                     <thead>
                       <tr>
                         <th>Nom</th>
                         <th>Prenoms</th>
-                        <th></th>
+                        <th>Action</th>
                         </tr>
                       </thead>
                       <tbody *ngFor="let professeur of allProfesseurs">
                         <tr *ngIf="!(rapporteurs.includes(professeur._id))">
-                          <td>{{professeur.nom}}</td>
-                          <td>{{professeur.prenom}}</td>
-                          <td><a (click)="onSubmit(professeur._id);refresh()"> <button type="submit" class="btn btn-primary px-3" >Ajout rapporteur</button></a>
+                          <td>{{professeur.compte.nom}}</td>
+                          <td>{{professeur.compte.prenom}}</td>
+                          <td><a > <button (click)="onSubmit(professeur._id)" class="btn btn-primary px-3" >Ajouter comme rapporteur</button></a>
                           </td>
+                          <input type="hidden" formControlName="idProf" value="{{professeur.compte._id}}">
                         </tr>
                       </tbody>
                     </table>
-                
+                    
+                  </form>
                 </div>
                 
               </div>
@@ -129,23 +130,21 @@
             <div class="col-lg-12">
               <div class="card">
                 <div class="card-header">
-                  <i class="fa fa-align-justify"></i> Liste des Rapporteurs de l'etudiant
+                  <i class="fa fa-align-justify"></i> Liste des Rapporteurs de {{projet.etudiant.compte.prenom}} {{projet.etudiant.compte.nom}} ( {{projet.sujet}} )
                 </div>
                 <div class="card-body">
                   <form >
-                    <table class="table table-bordered table-striped table-sm">
+                    <table class="table table-bordered table-striped table-hover" >
                       <thead>
                         <tr >
-                          
                           <th>Nom</th>
                           <th>Prenoms</th>
                         </tr>
                       </thead>
                       <tbody *ngFor="let professeur of allProfesseurs">
                         <tr *ngIf="(rapporteurs.includes(professeur._id))">
-                
-                          <td>{{professeur.nom}}</td>
-                          <td>{{professeur.prenom}}</td>
+                          <td>{{professeur.compte.nom}}</td>
+                          <td>{{professeur.compte.prenom}}</td>
                         </tr>
                       </tbody>
                     </table>

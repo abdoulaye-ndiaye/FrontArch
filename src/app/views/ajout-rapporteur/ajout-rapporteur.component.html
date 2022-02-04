@@ -45,7 +45,7 @@
           <a
             class="side-menu__item "
             data-toggle="slide"
-            routerLink="/creer-projet"
+            routerLink="/liste-etudiants"
             ><i class="side-menu__icon fas fa-file-download"></i
             ><span class="side-menu__label">Créer Projet</span></a
           >
@@ -108,15 +108,15 @@
                           <tr>
                             <th>Souteneur</th>
                             <th>Projet</th>
-                            <th>Description</th>
+                            <th>Encadreur</th>
                             <th></th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr *ngFor="let projet of allProjets">
-                            <td>Etudiant</td>
+                            <td>{{projet.etudiant.compte.prenom}} {{projet.etudiant.compte.nom}}</td>
                             <td>{{ projet.sujet }}</td>
-                            <td>{{ projet.description }}</td>
+                            <td>{{projet.encadreur.compte.prenom}} {{projet.encadreur.compte.nom}}</td>
                             <td><a routerLink="/rapporteurs" class="btn btn-blue" [queryParams]="{id : projet._id}">Ajouter rapporteurs</a></td>
                           </tr>
                         </tbody>

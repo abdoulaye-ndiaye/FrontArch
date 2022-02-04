@@ -65,7 +65,7 @@
             <a
               class="side-menu__item active"
               data-toggle="slide"
-              routerLink="/creer-projet"
+              routerLink="/liste-etudiants"
               ><i class="side-menu__icon fas fa-file-download"></i
               ><span class="side-menu__label">Créer Projet</span></a
             >
@@ -148,19 +148,24 @@
                               }" required>
                               <div *ngIf="submitted && f['sujet'].errors" class="input-group mb-3 invalid-feedback">
                                 <div *ngIf="f['sujet'].errors['required']">
-                                  veuillez saisir Le sujet
+                                  Veuillez saisir le sujet
                                 </div>
                               </div>
                         </div>
                        
                         <div class="form-group">
                             <label class="form-label">Description </label>
-                            <textarea class="form-control" name="example-textarea-input" rows="4" placeholder="Donner la description du projet "></textarea>
+                            <textarea class="form-control" formControlName="description" rows="4" placeholder="Donner la description du projet " 
+                            [ngClass]="{
+                              'is-invalid': submitted && f['sujet'].errors
+                            }" required></textarea>
+                            <div *ngIf="submitted && f['sujet'].errors" class="input-group mb-3 invalid-feedback">
+                              <div *ngIf="f['sujet'].errors['required']">
+                                Veuillez entrer une description du sujet
+                              </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">Etat du projet</label>
-                            <input type="text" class="form-control" name="example-disabled-input" placeholder="Validé" value="Validé" disabled>
-                        </div>
+                        
                         <br/>
                         <div class="text-center">
                             <button type="submit" class="btn btn-block btn-blue">
@@ -171,12 +176,20 @@
                     <div class="col-md-6 col-lg-6">
                         <div class="form-group">
                             <label>Encadreur</label>
-                            <select aria-label="Default select example" id="classe" formControlName="classe" class="form-control" >
+                            <select aria-label="Default select example" id="classe" formControlName="encadreur" class="form-control" 
+                            [ngClass]="{
+                              'is-invalid': submitted && f['sujet'].errors
+                            }" required>
                                 <option value="" selected disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                   -- Veuillez selectionner un encadreur --
                                 </option>
-                                <option value="{{ prof._id }}" *ngFor="let prof of allProfs">{{ prof.compte.prenom }} {{ prof.compte.nom }}</option>
+                                <option  *ngFor="let prof of allProfs" value="{{ prof._id }}">{{ prof.compte.prenom }} {{ prof.compte.nom }}</option>
                               </select>
+                              <div *ngIf="submitted && f['sujet'].errors" class="input-group mb-3 invalid-feedback">
+                                <div *ngIf="f['sujet'].errors['required']">
+                                  Veuillez choisir un encadreur
+                                </div>
+                              </div>
                         </div>
                         <div class="row">
                          <div class="form-group col-md-6">
@@ -210,11 +223,11 @@
                             </div>
                       </div>
                     </div>
-
                     <div class="form-group">
-                            <label class="form-label">Dérrogation</label>
-                            <input type="number" class="form-control" name="example-text-input" placeholder="Entrer le nombre de jour">
-                        </div> 
+                      <label class="form-label">Etat du projet</label>
+                      <input type="text" class="form-control" formControlName="etat" placeholder="Validé" value="Validé" isdisabled>
+                  </div>
+                    
                     
                     </div>
                 </div>

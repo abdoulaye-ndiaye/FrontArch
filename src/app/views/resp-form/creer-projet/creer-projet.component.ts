@@ -12,6 +12,8 @@ export class CreerProjetComponent implements OnInit {
   ProjetForm: FormGroup;
   profil = sessionStorage.getItem("profil");
   allProfs: any;
+  etat:string;
+  idEtudiant:string;
   submitted = false;
   constructor(
     private formBulder: FormBuilder,
@@ -32,22 +34,32 @@ export class CreerProjetComponent implements OnInit {
     this.ProjetForm = this.formBulder.group(
       {
         sujet: ['', Validators.required],
-        description: [''],
+        description: ['',Validators.required],
         encadreur: ['', Validators.required],
         date_debut: ['', Validators.required],
         date_fin: ['', Validators.required],
-        derrogation: [''],
+        etat: [''],
       });
+      this.route.queryParamMap
+    .subscribe(params => {
+      console.log(params); 
+
+      this.idEtudiant = params.get('idEtudiant') as string;
+  }) ;
 
     this.authService.getProfs().subscribe(data => {
       this.allProfs = data;
     });
   }
+
   onSubmit() {
     this.submitted = true;
-
+    this.etat="validé";
+    
     if (this.ProjetForm.invalid) {
+      alert('echec');
       return console.log("invalid");
+
     } else {
     
         this.authService
@@ -57,21 +69,22 @@ export class CreerProjetComponent implements OnInit {
             this.ProjetForm.value.encadreur,
             this.ProjetForm.value.date_debut,
             this.ProjetForm.value.date_fin,
-            this.ProjetForm.value.derrogation,
-            this.ProjetForm.value.etat,
+            this.idEtudiant,
+            this.etat
            
           )
           .subscribe(
             (resultat) => {
+              alert('Création projet reussie');
               console.log({ resultat: resultat });
               this.submitted = false;
-              this.router.navigate(['/login']);
+              this.router.navigate(['#']);
             },
             (error) => {
               console.log(error);
             }
           );
-        alert('Création projet reussie');
+        
       } 
     }
   }

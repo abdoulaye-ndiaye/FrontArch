@@ -61,18 +61,18 @@
       </li>
     </div>
     <div *ngIf="profil === 'PROF'">
+        <li class="slide">
+            <a
+              class="side-menu__item active"
+              data-toggle="slide"
+              routerLink="/liste-etudiants"
+              ><i class="side-menu__icon fas fa-file-download"></i
+              ><span class="side-menu__label">Créer Projet</span></a
+            >
+          </li>
       <li class="slide">
         <a
           class="side-menu__item "
-          data-toggle="slide"
-          routerLink="/liste-etudiants"
-          ><i class="side-menu__icon fas fa-file-download"></i
-          ><span class="side-menu__label">Créer Projet</span></a
-        >
-      </li>
-      <li class="slide">
-        <a
-          class="side-menu__item active"
           data-toggle="slide"
           routerLink="/download-memoire"
           ><i class="side-menu__icon fas fa-file-download"></i
@@ -130,43 +130,69 @@
     <br />
   </div>
   <div class="container justify-content-center">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="card">
-          <div class="card-header">
-            <i class="fa fa-align-justify"></i>
-          </div>
 
-          <div class="card-body">
-            <table class="table table-bordered table-striped table-sm">
-              <thead>
-                <tr>
-                  <th>Memoires</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody *ngFor="let memoire of allMemoires">
-                <tr>
-                  <td>{{ memoire.nomFichier }}</td>
-                  <td>
-                    <a (click)="onSubmit(memoire.url)">
-                      <button type="submit" class="btn btn-primary px-3">
-                        Telecharger
-                      </button></a
-                    >
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-      <!--/.col-->
+
+
+ <div class="row mr-5 ml-5">
+    <div class="card m-5 p-3">
+      <div class="card-body">
+        <div align="center">LISTE DES ETUDIANTS EN SI</div>
+        <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions"
+          [dtTrigger]="dtTrigger">
+          <thead>
+            <tr>
+              <th>Prenom</th>
+              <th>Nom</th>
+              <th>Date de Naissance</th>
+              <th>Lieu de Naissace</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let etudiant of allEtudiants">
+            <tr *ngIf="etudiant.classe==='SI'">
+              <td>{{ etudiant.compte.prenom }}</td>
+              <td>{{ etudiant.compte.nom }}</td>
+              <td>{{ etudiant.dateNaissance }}</td>
+              <td>{{ etudiant.lieuNaissance }}</td>
+              <td><a routerLink="/creer-projet" [queryParams]="{idEtudiant : etudiant._id}" class="btn btn-pill btn-info"> Créer un projet</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>      
     </div>
   </div>
-</div>
 
-<!--side-menu-->
+  <div class="row mr-5 ml-5">
+    <div class="card m-5 p-3">
+      <div class="card-body">
+        <div align="center">LISTE DES ETUDIANTS EN SR</div>
+        <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions"
+          [dtTrigger]="dtTrigger">
+          <thead>
+            <tr>
+              <th>Prenom</th>
+              <th>Nom</th>
+              <th>Date de Naissance</th>
+              <th>Lieu de Naissace</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let etudiant of allEtudiants">
+            <tr *ngIf="etudiant.classe==='SR'">
+              <td>{{ etudiant.compte.prenom }}</td>
+              <td>{{ etudiant.compte.nom }}</td>
+              <td>{{ etudiant.dateNaissance }}</td>
+              <td>{{ etudiant.lieuNaissance }}</td>
+              <td><a routerLink="/creer-projet" [queryParams]="{idEtudiant : etudiant._id}" class="btn btn-pill btn-info"> Créer un projet</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>      
+    </div>
+  </div>
+
+  </div>
+</div>
 
 <!--footer-->
 <app-footer></app-footer>

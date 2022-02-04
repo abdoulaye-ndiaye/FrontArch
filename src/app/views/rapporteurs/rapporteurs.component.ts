@@ -16,7 +16,7 @@ export class RapporteursComponent implements OnInit {
 
   profil = sessionStorage.getItem("profil");
   allProfesseurs:any;
-  rapporteurs:any;
+  projet:any;
   ajoutRapporteurForm : FormGroup;
   submitted = false;
   returnUrl : string;
@@ -24,6 +24,7 @@ export class RapporteursComponent implements OnInit {
   hide = true;
   id: string;
   idProf: string;
+  rapporteurs:any;
 
   constructor(
     private formBulder : FormBuilder,
@@ -31,43 +32,57 @@ export class RapporteursComponent implements OnInit {
     private router : Router,
     private authService : AuthService,
   ) { }
+  get value() {
+    return this.ajoutRapporteurForm.controls;
+  };
 
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      lengthMenu: [5, 10, 25],
+      processing: true,
+      retrieve: true,
+    };
+
+
+    this.ajoutRapporteurForm = this.formBulder.group(
+      {
+        idProf: [''],
+      });
     
-    this.authService.listeProfesseur().subscribe(data => {
-      this.allProfesseurs = data;
-      console.log(this.allProfesseurs);
+    this.route.queryParamMap
+    .subscribe(params => { 
+      this.id = params.get('id') as string;
     }) ;
 
-    this.route.queryParamMap
-    .subscribe(params => {
-      console.log(params); 
+    this.authService.listeProfesseur().subscribe(data => {
+      this.allProfesseurs = data;
+      this.dtTrigger.next(data);
+    }) ;
 
-      this.id = params.get('id') as string;
-      localStorage.setItem("id",this.id);
-      console.log(this.id); 
-      this.idProf = params.get('idProf') as string;
-      console.log(this.idProf); 
-  }) ;
-  this.id=localStorage.getItem("id") as string;
-  this.authService.getRapporteur(this.id).subscribe(data => {
-    this.rapporteurs = data;
-    console.log(this.rapporteurs);
-
-  }) ;
-    }
+    this.authService.getProjet(this.id).subscribe(data => {
+      this.projet = data;
+      this.rapporteurs=this.projet.rapporteur;
+      console.log(this.rapporteurs)
+      
+    });
     
-    refresh(): void {
-      window.location.reload();
-  }
+}
+
     onSubmit(idProf:string) {
-      this.submitted =true;    
+      this.submitted =true;   
+     
         this.authService.ajoutRapporteur(idProf, this.id)
         .subscribe(
           results=>{
             console.log(results)
           }
         )
+        this.refresh()
       }
-
+    
+      refresh(): void {
+        window.location.reload();
+    }
 }
