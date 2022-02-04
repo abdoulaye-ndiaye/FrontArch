@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { UploadService } from '../../services/upload-memoire/upload.service';
+import { AuthService } from '../../../services/auth.service';
+import { UploadService } from '../../../services/upload-excel-etudiant/upload.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-upload-memoire',
-  templateUrl: './upload-memoire.component.html',
+  selector: 'app-excel-etudiant',
+  templateUrl: './excel-etudiant.component.html'
 })
-export class UploadMemoireComponent implements OnInit {
-  b = false;
-  uploadMemoireForm: FormGroup;
+export class ExcelEtudiantComponent implements OnInit {b = false;
+  uploadExcelForm: FormGroup;
   fileSelected: File;
   imageUrl: any;
   submitted = false;
@@ -18,7 +17,6 @@ export class UploadMemoireComponent implements OnInit {
   message = '';
   hide = true;
   profil = sessionStorage.getItem('profil');
-  idProj = sessionStorage.getItem('idProjet') as string;
 
   constructor(
     private router: Router,
@@ -31,14 +29,13 @@ export class UploadMemoireComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.uploadMemoireForm = this.formBuilder.group({
+    this.uploadExcelForm = this.formBuilder.group({
       image: [null],
-      hide: ['rien'],
     });
   }
 
   get value() {
-    return this.uploadMemoireForm.controls;
+    return this.uploadExcelForm.controls;
   }
 
   // Onchange
@@ -61,20 +58,19 @@ export class UploadMemoireComponent implements OnInit {
   envoyer() {
     this.submitted = true;
     console.log('Bienvenue');
-    if (this.uploadMemoireForm.invalid) {
+    if (this.uploadExcelForm.invalid) {
       console.log("Erreur d'upload");
       return;
     } else {
       if (this.fileSelected) {
         const body = new FormData();
-        body.append('fichier', this.fileSelected, this.fileSelected.name);
-        body.append('idProj', this.idProj);
+        body.append('file', this.fileSelected, this.fileSelected.name);
 
         this.uploadService.upload(body).subscribe(
           (result) => {
             console.log(result);
             this.message = 'Upload Réussie !';
-            this.uploadMemoireForm.reset();
+            this.uploadExcelForm.reset();
           },
           (error) => {}
         );
@@ -87,4 +83,5 @@ export class UploadMemoireComponent implements OnInit {
   refresh(): void {
     window.location.reload();
   }
+
 }

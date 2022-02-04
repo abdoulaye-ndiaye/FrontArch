@@ -7,6 +7,7 @@ import { DownloadAutorisationComponent } from './views/download-autorisation/dow
 import { DownloadDemandeAutorisationComponent } from './views/download-demande-autorisation/download-demande-autorisation.component';
 import { DownloadMemoireComponent } from './views/download-memoire/download-memoire.component';
 import { DownloadRapportComponent } from './views/download-rapport/download-rapport.component';
+import { ExcelEtudiantComponent } from './views/excel/excel-etudiant/excel-etudiant.component';
 import { HomeComponent } from './views/home/home.component';
 import { LoginComponent } from './views/login/login.component';
 import { ProjetComponent } from './views/projet/projet.component';
@@ -155,6 +156,22 @@ const routes: Routes = [
     component: ListeEtudiantsComponent,
     data: {
       title: 'Liste Etudiants'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'excel-etudiant',
+    component: ExcelEtudiantComponent,
+    data: {
+      title: 'Excel Etudiant'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'excel-prof',
+    component: ExcelEtudiantComponent,
+    data: {
+      title: 'Excel Professeur'
     },
     canActivate:[AuthGuard]
   },

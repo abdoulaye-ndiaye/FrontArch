@@ -30,6 +30,8 @@ import { AjoutRapporteurComponent } from './views/ajout-rapporteur/ajout-rapport
 import { RapporteursComponent } from './views/rapporteurs/rapporteurs.component';
 import { CreerProjetComponent } from './views/resp-form/creer-projet/creer-projet.component';
 import { ListeEtudiantsComponent } from './views/resp-form/liste-etudiants/liste-etudiants.component';
+import { ExcelEtudiantComponent } from './views/excel/excel-etudiant/excel-etudiant.component';
+import { ExcelProfComponent } from './views/excel/excel-prof/excel-prof.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +53,9 @@ import { ListeEtudiantsComponent } from './views/resp-form/liste-etudiants/liste
     AjoutRapporteurComponent,
     RapporteursComponent,
     CreerProjetComponent,
-    ListeEtudiantsComponent
+    ListeEtudiantsComponent,
+    ExcelEtudiantComponent,
+    ExcelProfComponent
   ],
   imports: [
     BrowserModule,
