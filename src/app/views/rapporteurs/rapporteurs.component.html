@@ -56,12 +56,16 @@
                         <tr >
                           <th>Nom</th>
                           <th>Prenoms</th>
+                          <th>Action</th>
                         </tr>
                       </thead>
                       <tbody *ngFor="let professeur of allProfesseurs">
                         <tr *ngIf="(rapporteurs.includes(professeur._id))">
                           <td>{{professeur.compte.nom}}</td>
                           <td>{{professeur.compte.prenom}}</td>
+                          <td><a > <button (click)="suppression(professeur._id)" class="btn btn-primary px-3" >Retirer rapporteur</button></a>
+                          </td>
+                          <input type="hidden" formControlName="idProf" value="{{professeur.compte._id}}">
                         </tr>
                       </tbody>
                     </table>

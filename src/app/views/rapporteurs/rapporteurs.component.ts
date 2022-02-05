@@ -78,20 +78,38 @@ export class RapporteursComponent implements OnInit {
         .subscribe(
           results=>{
             console.log(results)
-            
+            this.alertGood1();
+            this.refresh();
           }
         )
-        this.alertGood();
-        this.refresh()
+       
+      }
+      suppression(idProf:string){
+        this.authService.supprimerRapporteur(idProf, this.id)
+        .subscribe(
+          results=>{
+            console.log(results)
+            this.alertGood2();
+            this.refresh();
+          }
+        )
       }
     
       refresh(): void {
         window.location.reload();
     }
-    alertGood(){
+    alertGood1(){
       Swal.fire({
         icon: 'success',
         title: 'Rapporteur ajouté !',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
+    alertGood2(){
+      Swal.fire({
+        icon: 'success',
+        title: 'Rapporteur supprimé !',
         showConfirmButton: false,
         timer: 1500
       })

@@ -235,4 +235,13 @@ export class AuthService {
         })
       );
   }
+  supprimerRapporteur(idProf: string, idProjet: string) {
+    return this.httpClient
+      .post<any>(`${environment.apiUrl}/supprimer-rapporteur`, { idProf, idProjet })
+      .pipe(
+        map((userData) => {
+          return userData;
+        })
+      );
+  }
 }
