@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-header',
@@ -19,6 +20,7 @@ export class HeaderComponent implements OnInit {
 
   deconnexion() {
     this.authService.logOut();
+    this.alert();
     this.router.navigate(['/home']);
   }
 
@@ -31,6 +33,14 @@ export class HeaderComponent implements OnInit {
 
     });
 
+  }
+  alert(){
+    Swal.fire({
+      icon: 'success',
+      title: 'Bye Bye !',
+      showConfirmButton: false,
+      timer: 1000
+    })
   }
 
 }

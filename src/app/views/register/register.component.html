@@ -13,30 +13,48 @@
                   <label for="inputNom">Profil</label>
                   <div class="input-group">
                     <select aria-label="Default select example" id="profil" formControlName="profil"
-                      class="form-control" (change)="onChangeProfil($event)">
+                      class="form-control" (change)="onChangeProfil($event)" [ngClass]="{
+                        'is-invalid': submitted && f['profil'].errors
+                      }" required>
                       <option value="" disabled>
                         -- Veuillez selectionner un profil --
                       </option>
                       <option value="ETUDIANT">Etudiant</option>
                       <option value="PROF">Professeur</option>
                     </select>
+                    <div *ngIf="submitted && f['profil'].errors" class="input-group mb-3 invalid-feedback">
+                      <div *ngIf="f['profil'].errors['required']">
+                        Veuillez choisir un profil
+                      </div>
+                    </div>
                   </div>
                   <div class="choix" *ngIf="profil !== 'PROF'">
                     <label for="inputClasse">Classe</label>
                   <div class="input-group">
-                    <select aria-label="Default select example" id="classe" formControlName="classe" class="form-control" >
+                    <select aria-label="Default select example" id="classe" formControlName="classe" class="form-control" 
+                    [ngClass]="{
+                      'is-invalid': submitted && f['classe'].errors
+                    }" required>
                       <option value="" disabled>
                         -- Veuillez selectionner une classe --
                       </option>
                       <option value="SI">Systèmes d'Information</option>
                       <option value="SR">Systèmes et Réseaux</option>
                     </select>
+                    <div *ngIf="submitted && f['classe'].errors" class="input-group mb-3 invalid-feedback">
+                      <div *ngIf="f['classe'].errors['required']">
+                        Veuillez choisir une classe
+                      </div>
+                    </div>
                   </div>
                   </div>
                   <div class="choix" *ngIf="profil == 'PROF'">
                     <label for="inputSpecialite">Spécialité</label>
                   <div class="input-group">
-                    <select aria-label="Default select example" id="specialite" formControlName="specialite" class="form-control" >
+                    <select aria-label="Default select example" id="specialite" formControlName="specialite" class="form-control" 
+                    [ngClass]="{
+                      'is-invalid': submitted && f['specialite'].errors
+                    }" required>
                       <option value="" disabled>
                         -- Veuillez selectionner une spécialité --
                       </option>
@@ -44,6 +62,11 @@
                       <option value="RESP-FORM">Responsable de formation</option>
                       <option value="DIRECTEUR">Directeur d'UFR</option>
                     </select>
+                    <div *ngIf="submitted && f['specialite'].errors" class="input-group mb-3 invalid-feedback">
+                      <div *ngIf="f['specialite'].errors['required']">
+                        Veuillez choisir une spécialité
+                      </div>
+                    </div>
                   </div>
                   </div>
                   <div class="form-row">
@@ -77,18 +100,29 @@
                       <div class="form-group col-md-6">
                         <label for="inputCity">Date Naissance</label>
                         <div class="input-group">
-
                           <input type="date" class="form-control fc-datepicker hasDatepicker"
-                            formControlName="dateNaissance" autocomplete="dateNaissance" />
-                          
+                            formControlName="dateNaissance" autocomplete="dateNaissance" [ngClass]="{
+                              'is-invalid': submitted && f['dateNaissance'].errors
+                            }" required/>
+                            <div *ngIf="submitted && f['dateNaissance'].errors" class="input-group mb-3 invalid-feedback">
+                              <div *ngIf="f['dateNaissance'].errors['required']">
+                                veuillez saisir votre date de Naissance
+                              </div>
+                            </div>
                         </div>
                       </div>
 
                       <div class="form-group col-md-6">
                         <label for="inputLieuNaissance">Lieu Naissance</label>
                         <input type="text" class="form-control" formControlName="lieuNaissance" placeholder=""
-                          autocomplete="lieuNaissance" />
-                       
+                          autocomplete="lieuNaissance" [ngClass]="{
+                            'is-invalid': submitted && f['lieuNaissance'].errors
+                          }" required />
+                          <div *ngIf="submitted && f['lieuNaissance'].errors" class="input-group mb-3 invalid-feedback">
+                            <div *ngIf="f['lieuNaissance'].errors['required']">
+                              veuillez saisir votre lieu de naissance
+                            </div>
+                          </div>
                       </div>
 
                     </div>

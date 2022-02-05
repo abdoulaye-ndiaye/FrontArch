@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { UploadService } from '../../services/upload-memoire/upload.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-upload-memoire',
@@ -65,10 +66,12 @@ export class UploadMemoireComponent implements OnInit {
     this.messageBad='';
     this.messageGood='';
     if (this.uploadMemoireForm.invalid) {
-      console.log("Erreur d'upload");
+      this.alertBad();
       return;
     } else {
       if (this.fileSelected) {
+        this.wait();
+  
         const body = new FormData();
         body.append('fichier', this.fileSelected, this.fileSelected.name);
         body.append('idProj', this.idProj);
@@ -76,18 +79,41 @@ export class UploadMemoireComponent implements OnInit {
         this.uploadService.upload(body).subscribe(
           (result) => {
             console.log(result);
-            this.messageGood = 'Upload Réussie !';
+            Swal.close();
+            this.alertGood();
             this.uploadMemoireForm.reset();
           },
           (error) => {}
         );
       } else {
-        this.messageBad = 'Aucun fichier selectionné';
+        this.alertBad();
       }
     }
   }
 
   refresh(): void {
     window.location.reload();
+  }
+  alertGood(){
+    Swal.fire({
+      icon: 'success',
+      title: 'Upload réussi !',
+      showConfirmButton: false,
+      timer: 1000
+    })
+  }
+  alertBad(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Erreur...',
+      text: 'Aucun Fichier choisi !'
+    })
+  }
+  wait(){
+    Swal.fire({
+      icon: 'info',
+      title: 'Upload en cours !'
+    });
+    Swal.showLoading();
   }
 }

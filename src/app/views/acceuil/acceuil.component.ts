@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 import { Subject } from 'rxjs';
 import { TestBed } from '@angular/core/testing';
@@ -37,6 +38,7 @@ export class AcceuilComponent implements OnInit {
 
   deconnexion() {
     this.authService.logOut();
+    this.alert();
     this.router.navigate(['/home']);
   }
   encadreur(id: string) {
@@ -62,7 +64,14 @@ export class AcceuilComponent implements OnInit {
     });
 
   }
-
+  alert(){
+    Swal.fire({
+      icon: 'success',
+      title: 'Bye Bye !',
+      showConfirmButton: false,
+      timer: 1000
+    })
+  }
 
 }
 

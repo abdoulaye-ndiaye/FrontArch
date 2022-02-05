@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { UploadService } from '../../../services/upload-excel-etudiant/upload.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Component({
   selector: 'app-excel-etudiant',
   templateUrl: './excel-etudiant.component.html'
@@ -68,25 +68,49 @@ export class ExcelEtudiantComponent implements OnInit {
       return;
     } else {
       if (this.fileSelected) {
+        this.wait();
         const body = new FormData();
         body.append('file', this.fileSelected, this.fileSelected.name);
 
         this.uploadService.upload(body).subscribe(
           (result) => {
             this.data=result;
-            this.messageGood = 'Upload Réussie !';
+            Swal.close();
+            this.alertGood();
             this.uploadExcelForm.reset();
           },
           (error) => {}
         );
       } else {
-        this.messageBad='Aucun fichier choisi !';
+        this.alertBad();
       }
     }
   }
 
   refresh(): void {
     window.location.reload();
+  }
+  alertGood(){
+    Swal.fire({
+      icon: 'success',
+      title: 'Upload réussi !',
+      showConfirmButton: false,
+      timer: 1000
+    })
+  }
+  alertBad(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Erreur...',
+      text: 'Aucun Fichier choisi !'
+    })
+  }
+  wait(){
+    Swal.fire({
+      icon: 'info',
+      title: 'Upload en cours !'
+    });
+    Swal.showLoading();
   }
 
 }

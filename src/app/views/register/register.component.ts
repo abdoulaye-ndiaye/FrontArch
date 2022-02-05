@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { MustMatch } from '../../services/_helpers/must-match.validator';
 import { style } from '@angular/animations';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 export enum EnumProfil {
   ETUDIANT = 'ETUDIANT',
@@ -22,7 +23,6 @@ export class RegisterComponent implements OnInit {
 
   submitted = false;
   returnUrl: string;
-  message = '';
   hide = true;
   constructor(
     private formBulder: FormBuilder,
@@ -73,7 +73,7 @@ export class RegisterComponent implements OnInit {
     this.submitted = true;
 
     if (this.RegisterForm.invalid) {
-      return console.log("invalid");
+      console.log("invalid form")
     } else {
       console.log(
         this.RegisterForm.value.email,
@@ -102,10 +102,10 @@ export class RegisterComponent implements OnInit {
             },
             (error) => {
               console.log(error);
-              this.message = 'email ou mot de passe incorrect';
+            this.alertBad();
             }
           );
-        alert('inscription etudiant reussie');
+        this.alertGood();
       } else {
         this.authService
           .RegisterProf(
@@ -125,10 +125,10 @@ export class RegisterComponent implements OnInit {
             },
             (error) => {
               console.log(error);
-              this.message = 'email ou mot de passe incorrect';
+              this.alertBad();
             }
           );
-        alert('inscription professeur reussie');
+        this.alertGood();
       }
     }
   }
@@ -140,5 +140,22 @@ export class RegisterComponent implements OnInit {
   onChangeProfil(event: any) {
     console.log(event.target.value);
     this.profil = event.target.value;
+  }
+  alertGood(){
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Inscription Réussie !',
+      showConfirmButton: false,
+      timer: 1200
+      
+    })
+  }
+  alertBad(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Erreur...',
+      text: 'Echec inscription'
+    })
   }
 }

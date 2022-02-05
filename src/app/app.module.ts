@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AcceuilComponent } from './views/acceuil/acceuil.component';
@@ -34,6 +36,7 @@ import { ExcelEtudiantComponent } from './views/excel/excel-etudiant/excel-etudi
 import { ExcelProfComponent } from './views/excel/excel-prof/excel-prof.component';
 import { NavComponent } from './views/nav/nav.component';
 @NgModule({
+  
   declarations: [
     AppComponent,
     AcceuilComponent,
@@ -60,6 +63,10 @@ import { NavComponent } from './views/nav/nav.component';
     NavComponent
   ],
   imports: [
+    SweetAlert2Module.forRoot(),
+    SweetAlert2Module,
+    SweetAlert2Module.forChild({ /* options */ }),
+
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

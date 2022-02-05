@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { error } from '@angular/compiler/src/util';
 
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+
 
 @Component({
   selector: 'app-login',
@@ -57,6 +59,7 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem("profil", result.profil);
             sessionStorage.setItem("id", result.id);
             sessionStorage.setItem("email", result.email);
+            this.alert();
             this.router.navigate(['/home']);
           }
         },
@@ -68,6 +71,14 @@ export class LoginComponent implements OnInit {
 
     }
   }
-
+  alert(){
+    Swal.fire({
+      icon: 'success',
+      title: 'Login réussi !',
+      showConfirmButton: false,
+      timer: 1200
+    })
+  }
+  
 }
 

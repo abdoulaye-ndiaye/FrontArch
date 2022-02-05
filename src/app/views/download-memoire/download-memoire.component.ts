@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+
 @Component({
   selector: 'app-download-memoire',
   templateUrl: './download-memoire.component.html'
@@ -28,8 +30,15 @@ export class DownloadMemoireComponent implements OnInit {
 
   onSubmit(url: string) {
     this.submitted = true;
+   
     this.authService.downloadMemoire(url);
   }
-
+  wait(){
+    Swal.fire({
+      icon: 'info',
+      title: 'Ouverture en cours !'
+    });
+    Swal.showLoading();
+  }
 
 }

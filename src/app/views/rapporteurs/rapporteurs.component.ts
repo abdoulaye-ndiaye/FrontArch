@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { Subject } from 'rxjs';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 
 @Component({
@@ -77,12 +78,22 @@ export class RapporteursComponent implements OnInit {
         .subscribe(
           results=>{
             console.log(results)
+            
           }
         )
+        this.alertGood();
         this.refresh()
       }
     
       refresh(): void {
         window.location.reload();
+    }
+    alertGood(){
+      Swal.fire({
+        icon: 'success',
+        title: 'Rapporteur ajouté !',
+        showConfirmButton: false,
+        timer: 1500
+      })
     }
 }

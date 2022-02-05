@@ -35,10 +35,10 @@
                             <label class="form-label">Description </label>
                             <textarea class="form-control" formControlName="description" rows="4" placeholder="Donner la description du projet " 
                             [ngClass]="{
-                              'is-invalid': submitted && f['sujet'].errors
+                              'is-invalid': submitted && f['description'].errors
                             }" required></textarea>
-                            <div *ngIf="submitted && f['sujet'].errors" class="input-group mb-3 invalid-feedback">
-                              <div *ngIf="f['sujet'].errors['required']">
+                            <div *ngIf="submitted && f['description'].errors" class="input-group mb-3 invalid-feedback">
+                              <div *ngIf="f['description'].errors['required']">
                                 Veuillez entrer une description du sujet
                               </div>
                             </div>
@@ -56,15 +56,15 @@
                             <label>Encadreur</label>
                             <select aria-label="Default select example" id="classe" formControlName="encadreur" class="form-control" 
                             [ngClass]="{
-                              'is-invalid': submitted && f['sujet'].errors
+                              'is-invalid': submitted && f['encadreur'].errors
                             }" required>
                                 <option value="" selected disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                   -- Veuillez selectionner un encadreur --
                                 </option>
                                 <option  *ngFor="let prof of allProfs" value="{{ prof._id }}">{{ prof.compte.prenom }} {{ prof.compte.nom }}</option>
                               </select>
-                              <div *ngIf="submitted && f['sujet'].errors" class="input-group mb-3 invalid-feedback">
-                                <div *ngIf="f['sujet'].errors['required']">
+                              <div *ngIf="submitted && f['encadreur'].errors" class="input-group mb-3 invalid-feedback">
+                                <div *ngIf="f['encadreur'].errors['required']">
                                   Veuillez choisir un encadreur
                                 </div>
                               </div>

@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-creer-projet',
@@ -57,8 +58,7 @@ export class CreerProjetComponent implements OnInit {
     this.etat="validé";
     
     if (this.ProjetForm.invalid) {
-      alert('echec');
-      return console.log("invalid");
+      console.log("invalid form")
 
     } else {
     
@@ -75,17 +75,33 @@ export class CreerProjetComponent implements OnInit {
           )
           .subscribe(
             (resultat) => {
-              alert('Création projet reussie');
+              this.alertGood();
               console.log({ resultat: resultat });
               this.submitted = false;
-              this.router.navigate(['#']);
+              this.ProjetForm.reset();
             },
             (error) => {
               console.log(error);
+              this.alertBad();
             }
           );
         
       } 
+    }
+    alertGood(){
+      Swal.fire({
+        icon: 'success',
+        title: 'Projet Créé avec succès',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
+    alertBad(){
+      Swal.fire({
+        icon: 'error',
+        title: 'Erreur...',
+        text: 'Echec de la création de projet !'
+      })
     }
   }
 
