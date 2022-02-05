@@ -244,4 +244,15 @@ export class AuthService {
         })
       );
   }
+  changerPassword(idCompte: string, password: string) {
+    return this.httpClient
+      .put<any>(`${environment.apiUrl}/changer-password/${idCompte}`, {
+        password
+      })
+      .pipe(
+        map((userData) => {
+          return userData;
+        })
+      );
+  }
 }

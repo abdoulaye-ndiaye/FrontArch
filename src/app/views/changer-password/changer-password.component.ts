@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
 import { MustMatch } from '../../services/_helpers/must-match.validator';
 
 
@@ -10,30 +12,76 @@ import { MustMatch } from '../../services/_helpers/must-match.validator';
 })
 export class ChangerPasswordComponent implements OnInit {
   inputText: string = 'changer-password';
+  compte: any;
+  a:any;
+  changerPwdForm: FormGroup;
   submitted = false;
-  changerPasswordForm: FormGroup;
-
 
   constructor(
-    private authService: AuthService,
     private formBulder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
-    this.changerPasswordForm = this.formBulder.group({
-      password: ['', [Validators.required,Validators.minLength(6)]],
-      confirm: ['', Validators.required]
-    },
-    { validator: MustMatch('password', 'confirmPassword') })
-  }
+    this.changerPwdForm = this.formBulder.group(
+      {
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', Validators.required],
+      },
+      { validator: MustMatch('password', 'confirmPassword') }
+    );
+    this.a = sessionStorage.getItem("id") as string;
 
-  get f() { return this.changerPasswordForm.controls; }
+    this.authService.getCompte(this.a).subscribe(data => {
+      this.compte = data;
+    });
+
+  }
+  get f() {
+    return this.changerPwdForm.controls;
+  }
 
   get value() {
-    return this.changerPasswordForm.controls;
+    return this.changerPwdForm.controls;
   }
-  onSubmit(){
+  onSubmit() {
+    this.submitted = true;
 
+    if (this.changerPwdForm.invalid) {
+      console.log("invalid form")
+    } else {
+
+        this.authService.changerPassword(this.a,this.changerPwdForm.value.password)
+          .subscribe(
+            (resultat) => {
+              this.submitted = false;
+              this.router.navigate(['/login']);
+            },
+            (error) => {
+              console.log(error);
+            this.alertBad();
+            }
+          );
+        this.alertGood();
+      
+    }
   }
-
+  alertGood(){
+    Swal.fire({
+      icon: 'success',
+      title: 'Mot de passe modifié !',
+      showConfirmButton: false,
+      timer: 1100
+      
+    })
+  }
+  alertBad(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Erreur...',
+      text: 'Echec de la modification'
+    })
+  }
 }

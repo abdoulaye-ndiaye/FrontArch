@@ -11,8 +11,6 @@ export class HeaderComponent implements OnInit {
 
   compte: any;
   a: string;
-
-
   constructor(
     private router: Router,
     private authService: AuthService,
