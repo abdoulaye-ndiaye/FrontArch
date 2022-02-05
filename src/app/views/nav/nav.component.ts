@@ -10,7 +10,7 @@ export class NavComponent implements OnInit {
   profil = sessionStorage.getItem("profil");
   home="";ajoutRapporteur="";downloadAutorisation="";downloadDemandeAutorisation="";downloadMemoire="";
   downloadRapport="";excelEtudiant="";excelProf="";projet="";rapporteurs="";respForm="";
-  uploadAutorisation="";uploadDemandeAutorisation="";uploadMemoire="";uploadRapport="";
+  uploadAutorisation="";uploadDemandeAutorisation="";uploadMemoire="";uploadRapport="";changerPassword="";
 
   constructor(
     private router: Router,
@@ -35,6 +35,8 @@ export class NavComponent implements OnInit {
     if (this.inputFromParent=='upload-demande-autorisation'){this.uploadDemandeAutorisation="active";}
     if (this.inputFromParent=='upload-memoire'){this.uploadMemoire="active";}
     if (this.inputFromParent=='upload-rapport'){this.uploadRapport="active";}
+    if (this.inputFromParent=='changer-password'){this.home="active";}
+
 
   }
 

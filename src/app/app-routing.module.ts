@@ -3,6 +3,7 @@ import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { AuthGuard } from './services/auth.guard';
 import { AcceuilComponent } from './views/acceuil/acceuil.component';
 import { AjoutRapporteurComponent } from './views/ajout-rapporteur/ajout-rapporteur.component';
+import { ChangerPasswordComponent } from './views/changer-password/changer-password.component';
 import { DownloadAutorisationComponent } from './views/download-autorisation/download-autorisation.component';
 import { DownloadDemandeAutorisationComponent } from './views/download-demande-autorisation/download-demande-autorisation.component';
 import { DownloadMemoireComponent } from './views/download-memoire/download-memoire.component';
@@ -173,6 +174,14 @@ const routes: Routes = [
     component: ExcelProfComponent,
     data: {
       title: 'Excel Professeur'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'changer-password',
+    component: ChangerPasswordComponent,
+    data: {
+      title: 'Modifier Mot de Pass'
     },
     canActivate:[AuthGuard]
   },

@@ -35,6 +35,7 @@ import { ListeEtudiantsComponent } from './views/resp-form/liste-etudiants/liste
 import { ExcelEtudiantComponent } from './views/excel/excel-etudiant/excel-etudiant.component';
 import { ExcelProfComponent } from './views/excel/excel-prof/excel-prof.component';
 import { NavComponent } from './views/nav/nav.component';
+import { ChangerPasswordComponent } from './views/changer-password/changer-password.component';
 @NgModule({
   
   declarations: [
@@ -60,7 +61,8 @@ import { NavComponent } from './views/nav/nav.component';
     ListeEtudiantsComponent,
     ExcelEtudiantComponent,
     ExcelProfComponent,
-    NavComponent
+    NavComponent,
+    ChangerPasswordComponent
   ],
   imports: [
     SweetAlert2Module.forRoot(),

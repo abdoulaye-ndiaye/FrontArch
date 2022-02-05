@@ -79,7 +79,19 @@ export class ExcelEtudiantComponent implements OnInit {
             this.alertGood();
             this.uploadExcelForm.reset();
           },
-          (error) => {}
+          (error) => {
+            console.log(error);
+            if(error.status==400){
+            Swal.close();
+            this.error1();
+            this.uploadExcelForm.reset();
+            }
+            else if(error.status==500) {
+              Swal.close();
+              this.error2();
+              this.uploadExcelForm.reset();
+            }
+          }
         );
       } else {
         this.alertBad();
@@ -111,6 +123,20 @@ export class ExcelEtudiantComponent implements OnInit {
       title: 'Upload en cours !'
     });
     Swal.showLoading();
+  }
+  error1(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Erreur...',
+      text: "L'entête du fichier excel est incorrect !"
+    })
+  }
+  error2(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Erreur...',
+      text: 'Veuillez uploader un fichier excel !'
+    })
   }
 
 }
