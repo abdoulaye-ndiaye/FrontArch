@@ -7,33 +7,33 @@
    <ul class="side-menu">
        <li class="slide">
            <a class="side-menu__item {{home}}" data-toggle="slide" routerLink="/home"><i
-                   class="side-menu__icon fas fa-home"></i><span class="side-menu__label">Acceuil</span></a>
+                   class="side-menu__icon fas fa-home fa-lg"></i><span class="side-menu__label">Acceuil</span></a>
  
        </li>
        <div *ngIf="profil==='ETUDIANT'">
        <li>
            <a class="side-menu__item {{projet}}" data-toggle="slide" routerLink="/projet"><i
-                   class="side-menu__icon fas fa-folder"></i><span class="side-menu__label">Mon Projet</span></a>
+                   class="side-menu__icon fas fa-folder fa-lg"></i><span class="side-menu__label">Mon Projet</span></a>
        </li>
     
        <li class="slide">
            <a class="side-menu__item {{downloadRapport}}" data-toggle="slide" routerLink="/download-rapport"><i
-                   class="side-menu__icon fas fa-file-download"></i><span class="side-menu__label">Télécharger Rapports
+                   class="side-menu__icon fas fa-file-download fa-lg"></i><span class="side-menu__label">Télécharger Rapports
                </span></a>
        </li>
        <li class="slide">
          <a class="side-menu__item {{downloadAutorisation}}" data-toggle="slide" routerLink="/download-autorisation"><i
-                 class="side-menu__icon fas fa-file-download"></i><span class="side-menu__label">Télécharger
+                 class="side-menu__icon fas fa-file-download fa-lg"></i><span class="side-menu__label">Télécharger
                  autorisation</span></a>
      </li>
      <li class="slide">
        <a class="side-menu__item {{uploadMemoire}}" data-toggle="slide" routerLink="/upload-memoire"><i
-               class="side-menu__icon fas fa-file-import"></i><span class="side-menu__label">Charger
+               class="side-menu__icon fas fa-file-import fa-lg"></i><span class="side-menu__label">Charger
                Mémoire</span></a>
    </li>
    <li class="slide">
      <a class="side-menu__item {{uploadDemandeAutorisation}}" data-toggle="slide" routerLink="/upload-demande-autorisation"><i
-             class="side-menu__icon fas fa-file-import"></i><span class="side-menu__label">Charger Demande<br />
+             class="side-menu__icon fas fa-file-import fa-lg"></i><span class="side-menu__label">Charger Demande<br />
              autorisation</span></a>
  </li>
      </div>
@@ -43,47 +43,45 @@
            class="side-menu__item {{respForm}}"
            data-toggle="slide"
            routerLink="/liste-etudiants"
-           ><i class="side-menu__icon fas fa-file-download"></i
+           ><i class="side-menu__icon fas fa-folder-plus fa-lg"></i
            ><span class="side-menu__label">Créer Projet</span></a
          >
        </li>
        <li class="slide">
            <a class="side-menu__item {{downloadMemoire}}" data-toggle="slide" routerLink="/download-memoire"><i
-                   class="side-menu__icon fas fa-file-download"></i><span class="side-menu__label">Télécharger
+                   class="side-menu__icon fas fa-file-download fa-lg"></i><span class="side-menu__label">Télécharger
                    Memoire</span></a>
        </li>
        <li class="slide">
+        <a class="side-menu__item {{downloadDemandeAutorisation}}" data-toggle="slide" routerLink="/download-demande-autorisation"><i
+                class="side-menu__icon fas fa-file-download fa-lg"></i><span class="side-menu__label">Télécharger
+                Demandes<br />
+                autorisation</span></a>
+    </li>
+
+       <li class="slide">
          <a class="side-menu__item {{excelEtudiant}}" data-toggle="slide" routerLink="/excel-etudiant"><i
-                 class="side-menu__icon fas fa-file-excel"></i><span class="side-menu__label">Excel Etudiants</span></a>
+                 class="side-menu__icon fas fa-file-excel fa-lg"></i><span class="side-menu__label">Excel Etudiants</span></a>
      </li>
      <li class="slide">
        <a class="side-menu__item {{excelProf}}" data-toggle="slide" routerLink="/excel-prof"><i
-               class="side-menu__icon fas fa-file-excel"></i><span class="side-menu__label">Excel Professeurs</span></a>
+               class="side-menu__icon fas fa-file-excel fa-lg"></i><span class="side-menu__label">Excel Professeurs</span></a>
    </li>
        
-       
-       <li class="slide">
-           <a class="side-menu__item {{downloadDemandeAutorisation}}" data-toggle="slide" routerLink="/download-demande-autorisation"><i
-                   class="side-menu__icon fas fa-file-download"></i><span class="side-menu__label">Télécharger
-                   Demandes<br />
-                   autorisation</span></a>
-       </li>
- 
-      
        <li class="slide">
            <a class="side-menu__item {{uploadRapport}}" data-toggle="slide" routerLink="/upload-rapport"><i
-                   class="side-menu__icon fas fa-file-import"></i><span class="side-menu__label">Charger
+                   class="side-menu__icon fas fa-file-import fa-lg"></i><span class="side-menu__label">Charger
                    Rapport</span></a>
        </li>
        <li class="slide">
            <a class="side-menu__item {{uploadAutorisation}}" data-toggle="slide" routerLink="/upload-autorisation"><i
-                   class="side-menu__icon fas fa-file-import"></i><span class="side-menu__label">Charger
+                   class="side-menu__icon fas fa-file-import fa-lg"></i><span class="side-menu__label">Charger
                    Autorisation</span></a>
        </li>
        
        <li class="slide">
            <a class="side-menu__item {{ajoutRapporteur}}" data-toggle="slide" routerLink="/ajout-rapporteur"><i
-                   class="side-menu__icon fas fa-file-import"></i><span class="side-menu__label">Gestion
+                   class="side-menu__icon fas fa-tasks fa-lg"></i><span class="side-menu__label">Gestion
                    Rapporteur</span></a>
        </li>
        
