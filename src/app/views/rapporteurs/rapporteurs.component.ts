@@ -11,7 +11,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
   templateUrl: './rapporteurs.component.html'
 })
 export class RapporteursComponent implements OnInit {
-  inputText: string = 'rapporteurs';
+  inputText: string = 'ajout-rapporteur';
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
 
