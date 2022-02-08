@@ -26,7 +26,7 @@ export class DownloadDemandeAutorisationComponent implements OnInit {
 
   onSubmit(idDemandeAutorisation: string) {
     this.submitted = true;
-    this.authService.downloadDemandeAutorisation(idDemandeAutorisation);
+   // this.authService.downloadFichier();
   }
 
 }

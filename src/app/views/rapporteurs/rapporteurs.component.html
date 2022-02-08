@@ -16,7 +16,7 @@
                 </div>
                 <div class="card-body">
                   <form [formGroup]="ajoutRapporteurForm" >
-                    <table class="table table-bordered table-striped table-hover" >
+                    <table class="table table-bordered table-striped table-hover" id="professeurs">
                     <thead>
                       <tr>
                         <th>Nom</th>
@@ -24,13 +24,15 @@
                         <th>Action</th>
                         </tr>
                       </thead>
-                      <tbody *ngFor="let professeur of allProfesseurs">
-                        <tr *ngIf="!(rapporteurs.includes(professeur._id))">
-                          <td>{{professeur.compte.nom}}</td>
-                          <td>{{professeur.compte.prenom}}</td>
-                          <td><a > <button (click)="onSubmit(professeur._id)" class="btn btn-primary px-3" >Ajouter comme rapporteur</button></a>
-                          </td>
-                          <input type="hidden" formControlName="idProf" value="{{professeur.compte._id}}">
+                      <tbody >
+                        <tr *ngFor="let professeur of allProfesseurs">
+                          <ng-container *ngIf="!(rapporteurs.includes(professeur._id))">
+                            <td>{{professeur.compte.nom}}</td>
+                            <td>{{professeur.compte.prenom}}</td>
+                            <td><a > <button (click)="onSubmit(professeur._id)" class="btn btn-primary px-3" >Ajouter comme rapporteur</button></a>
+                            </td>
+                            <input type="hidden" formControlName="idProf" value="{{professeur.compte._id}}">
+                          </ng-container>
                         </tr>
                       </tbody>
                     </table>
@@ -51,7 +53,7 @@
                 </div>
                 <div class="card-body">
                   <form >
-                    <table class="table table-bordered table-striped table-hover" >
+                    <table class="table table-bordered table-striped table-hover" id="rapporteurs">
                       <thead>
                         <tr >
                           <th>Nom</th>
@@ -59,13 +61,15 @@
                           <th>Action</th>
                         </tr>
                       </thead>
-                      <tbody *ngFor="let professeur of allProfesseurs">
-                        <tr *ngIf="(rapporteurs.includes(professeur._id))">
-                          <td>{{professeur.compte.nom}}</td>
-                          <td>{{professeur.compte.prenom}}</td>
-                          <td><a > <button (click)="suppression(professeur._id)" class="btn btn-primary px-3" >Retirer rapporteur</button></a>
-                          </td>
-                          <input type="hidden" formControlName="idProf" value="{{professeur.compte._id}}">
+                      <tbody >
+                        <tr *ngFor="let professeur of allProfesseurs">
+                          <ng-container *ngIf="(rapporteurs.includes(professeur._id))">
+                            <td>{{professeur.compte.nom}}</td>
+                            <td>{{professeur.compte.prenom}}</td>
+                            <td><a > <button (click)="suppression(professeur._id)" class="btn btn-primary px-3" >Retirer rapporteur</button></a>
+                            </td>
+                            <input type="hidden" formControlName="idProf" value="{{professeur.compte._id}}">
+                          </ng-container>
                         </tr>
                       </tbody>
                     </table>

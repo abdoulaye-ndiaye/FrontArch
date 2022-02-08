@@ -1,0 +1,34 @@
+<div class="page">
+    <div class="page-main">
+      <!-- Navbar-->
+      <app-header></app-header>
+  
+      <app-nav [inputFromParent] = "inputText"></app-nav>
+  
+      <div class=" app-content my-3 my-md-5">
+        <div class="side-app">
+          <br/><br/>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+        <div class="card" >
+            <div class="card-header">
+                <a routerLink="/dossier" [queryParams]="{ idEtudiant: etudiant._id }"><i class="fas fa-arrow-left fa-2x"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="justify-content-center">
+                    PVs de {{etudiant.compte.prenom}} {{etudiant.compte.nom}}  Master {{etudiant.classe}}
+                </div>
+            </div>
+        
+        <div class="container" align="center">
+            <a (dblclick)="onSubmit(etudiant.projet.memoire.url)" class="justify-content-center"><img src="../../../../assets/icons/icons8-pdf-100.png"/>
+                <div class="justify-content-center">{{etudiant.projet.pv.nomFichier}}</div>
+            </a>&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+    </div></div></div>
+
+      </div>
+    </div>
+</div>
+<!--footer-->
+<app-footer></app-footer>
+<!-- End Footer-->

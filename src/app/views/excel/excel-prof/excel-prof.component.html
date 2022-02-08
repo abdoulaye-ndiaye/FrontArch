@@ -42,7 +42,7 @@
       <div class="card m-5 p-3">
         <div class="card-body">
           <div align="center">Nouveaux Professeurs Enregistrés</div>
-          <table class="table table-bordered table-striped table-hover" >
+          <table class="table table-bordered table-striped table-hover" id="professeur">
             <thead>
               <tr>
                 <th>Prenom</th>
@@ -51,8 +51,8 @@
                 
               </tr>
             </thead>
-            <tbody *ngFor="let prof of data">
-              <tr >
+            <tbody >
+              <tr *ngFor="let prof of data">
                 <td>{{ prof.prenom }}</td>
                 <td>{{ prof.nom }}</td>
                 <td>{{ prof.email}}</td>

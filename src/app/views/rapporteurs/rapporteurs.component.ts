@@ -2,7 +2,6 @@ import { Component, OnInit, VERSION } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { Subject } from 'rxjs';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 
@@ -12,8 +11,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 })
 export class RapporteursComponent implements OnInit {
   inputText: string = 'ajout-rapporteur';
-  dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<any> = new Subject<any>();
+ 
 
   profil = sessionStorage.getItem("profil");
   allProfesseurs:any;
@@ -38,13 +36,7 @@ export class RapporteursComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 5,
-      lengthMenu: [5, 10, 25],
-      processing: true,
-      retrieve: true,
-    };
+    
 
 
     this.ajoutRapporteurForm = this.formBulder.group(
@@ -59,12 +51,27 @@ export class RapporteursComponent implements OnInit {
 
     this.authService.listeProfesseur().subscribe(data => {
       this.allProfesseurs = data;
-      this.dtTrigger.next(data);
+      setTimeout(() => {
+        $('#professeurs').DataTable({
+          pagingType: 'full_numbers',
+          pageLength: 5,
+          processing: true,
+          lengthMenu: [5, 10, 25],
+        });
+      }, 1);
     }) ;
 
     this.authService.getProjet(this.id).subscribe(data => {
       this.projet = data;
       this.rapporteurs=this.projet.rapporteur;
+      setTimeout(() => {
+        $('#rapporteurs').DataTable({
+          pagingType: 'full_numbers',
+          pageLength: 5,
+          processing: true,
+          lengthMenu: [5, 10, 25],
+        });
+      }, 1);
       console.log(this.rapporteurs)
       
     });

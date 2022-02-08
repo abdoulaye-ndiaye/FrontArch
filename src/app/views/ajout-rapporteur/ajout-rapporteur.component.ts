@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-ajout-rapporteur',
@@ -11,8 +10,7 @@ import { Subject } from 'rxjs';
 })
 export class AjoutRapporteurComponent implements OnInit {
   inputText: string = 'ajout-rapporteur';
-  dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<any> = new Subject<any>();
+  
 
   submitted = false;
   id : string;
@@ -30,16 +28,17 @@ export class AjoutRapporteurComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 5,
-      lengthMenu: [5, 10, 25],
-      processing: true,
-      retrieve: true,
-    };
+   
     this.authService.getProjets().subscribe(data => {
       this.allProjets = data;
-      this.dtTrigger.next(data);
+      setTimeout(() => {
+        $('#projet').DataTable({
+          pagingType: 'full_numbers',
+          pageLength: 5,
+          processing: true,
+          lengthMenu: [5, 10, 25],
+        });
+      }, 1);
     });
     }
 

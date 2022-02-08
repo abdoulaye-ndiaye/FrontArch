@@ -20,7 +20,7 @@ export class ExcelEtudiantComponent implements OnInit {
   messageGood = '';
   hide = true;
   profil = sessionStorage.getItem('profil');
-  data:any;
+  allEtudiants:any;
 
   constructor(
     private router: Router,
@@ -74,7 +74,15 @@ export class ExcelEtudiantComponent implements OnInit {
 
         this.uploadService.upload(body).subscribe(
           (result) => {
-            this.data=result;
+            this.allEtudiants=result;
+            setTimeout(() => {
+              $('#etudiants').DataTable({
+                pagingType: 'full_numbers',
+                pageLength: 5,
+                processing: true,
+                lengthMenu: [5, 10, 25],
+              });
+            }, 1);
             Swal.close();
             this.alertGood();
             this.uploadExcelForm.reset();

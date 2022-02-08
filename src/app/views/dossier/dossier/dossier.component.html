@@ -1,0 +1,55 @@
+<div class="page">
+    <div class="page-main">
+      <!-- Navbar-->
+      <app-header></app-header>
+  
+      <app-nav [inputFromParent] = "inputText"></app-nav>
+  
+      <div class=" app-content my-3 my-md-5">
+        <div class="side-app">
+          <br/>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+        <div class="card" >
+            <div class="card-header justify-content-center">
+                Dossiers de {{etudiant.compte.prenom}} {{etudiant.compte.nom}}  Master {{etudiant.classe}}
+            </div>
+        
+        <div class="container" align="left">
+            <a routerLink="/memoire" [queryParams]="{ idEtudiant: etudiant._id }" class="contenant"><img src="../../../../assets/icons/icons8-mac-folder-100.png"/>
+                <div class="texte_centrer"><br>Mémoires</div>
+            </a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a routerLink="/pv" [queryParams]="{ idEtudiant: etudiant._id }" class="contenant"><img src="../../../../assets/icons/icons8-mac-folder-100.png"/>
+                <div class="texte_centrer"><br>PVs</div>
+            </a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a routerLink="#" class="contenant"><img src="../../../../assets/icons/icons8-mac-folder-100.png"/>
+                <div class="texte_centrer"><br>Rapports</div>
+            </a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a routerLink="#" class="contenant"><img src="../../../../assets/icons/icons8-mac-folder-100.png"/>
+                <div class="texte_centrer"><br>Autorisations</div>
+            </a>&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+    </div></div></div>
+
+      </div>
+      <!--footer-->
+<app-footer></app-footer>
+<!-- End Footer-->
+    </div>
+</div>
+
+<style>
+    .contenant {
+      position: relative;
+      text-align: center;
+      color: whitesmoke;
+    }
+    
+    .texte_centrer {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    </style>

@@ -173,35 +173,13 @@ export class AuthService {
     );
   }
   
-  downloadMemoire(url: string): void {
+  downloadFichier(url: string): void {
     this.httpClient.get(`${url}`, { responseType: 'blob' }).subscribe((res) => {
       window.open(window.URL.createObjectURL(res));
     });
   }
-  downloadRapport(url: string): void {
-    this.httpClient.get(`${url}`, { responseType: 'blob' }).subscribe((res) => {
-      window.open(window.URL.createObjectURL(res));
-    });
-  }
-  downloadAutorisation(idAutorisation: string): void {
-    this.httpClient
-      .get(`${environment.apiUrl}/download-autorisation/${idAutorisation}`, {
-        responseType: 'blob',
-      })
-      .subscribe((res) => {
-        window.open(window.URL.createObjectURL(res));
-      });
-  }
-  downloadDemandeAutorisation(idAutorisation: string): void {
-    this.httpClient
-      .get(
-        `${environment.apiUrl}/download-demandesAutorisation/${idAutorisation}`,
-        { responseType: 'blob' }
-      )
-      .subscribe((res) => {
-        window.open(window.URL.createObjectURL(res));
-      });
-  }
+ 
+  
   getRapport() {
     return this.httpClient.get<any>(`${environment.apiUrl}/rapportRapporteur`);
   }

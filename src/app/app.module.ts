@@ -36,6 +36,10 @@ import { ExcelEtudiantComponent } from './views/excel/excel-etudiant/excel-etudi
 import { ExcelProfComponent } from './views/excel/excel-prof/excel-prof.component';
 import { NavComponent } from './views/nav/nav.component';
 import { ChangerPasswordComponent } from './views/changer-password/changer-password.component';
+import { DossierComponent } from './views/dossier/dossier/dossier.component';
+import { EtudiantsComponent } from './views/dossier/etudiants/etudiants.component';
+import { MemoireComponent } from './views/dossier/memoire/memoire.component';
+import { PvComponent } from './views/dossier/pv/pv.component';
 @NgModule({
   
   declarations: [
@@ -62,7 +66,11 @@ import { ChangerPasswordComponent } from './views/changer-password/changer-passw
     ExcelEtudiantComponent,
     ExcelProfComponent,
     NavComponent,
-    ChangerPasswordComponent
+    ChangerPasswordComponent,
+    DossierComponent,
+    EtudiantsComponent,
+    MemoireComponent,
+    PvComponent
   ],
   imports: [
     SweetAlert2Module.forRoot(),

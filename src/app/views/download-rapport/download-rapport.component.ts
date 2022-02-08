@@ -29,6 +29,6 @@ export class DownloadRapportComponent implements OnInit {
 
   onSubmit(url: string) {
     this.submitted = true;
-    this.authService.downloadRapport(url);
+    this.authService.downloadFichier(url);
   }
 }

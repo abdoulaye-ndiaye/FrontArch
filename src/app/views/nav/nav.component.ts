@@ -8,9 +8,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class NavComponent implements OnInit {
   @Input() inputFromParent : string;
   profil = sessionStorage.getItem("profil");
+  specialite = sessionStorage.getItem("specialite");
+
   home="";ajoutRapporteur="";downloadAutorisation="";downloadDemandeAutorisation="";downloadMemoire="";
   downloadRapport="";excelEtudiant="";excelProf="";projet="";rapporteurs="";respForm="";
   uploadAutorisation="";uploadDemandeAutorisation="";uploadMemoire="";uploadRapport="";changerPassword="";
+  dossier="";memoire="";
 
   constructor(
     private router: Router,
@@ -36,6 +39,10 @@ export class NavComponent implements OnInit {
     if (this.inputFromParent=='upload-memoire'){this.uploadMemoire="active";}
     if (this.inputFromParent=='upload-rapport'){this.uploadRapport="active";}
     if (this.inputFromParent=='changer-password'){this.home="active";}
+    if (this.inputFromParent=='dossier'){this.dossier="active";}
+    if (this.inputFromParent=='memoire'){this.dossier="active";}
+
+
 
 
   }

@@ -3,12 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 
+
 @Component({
-  selector: 'app-liste-etudiants',
-  templateUrl: './liste-etudiants.component.html',
+  selector: 'app-etudiants',
+  templateUrl: './etudiants.component.html'
 })
-export class ListeEtudiantsComponent implements OnInit {
-  inputText: string = 'resp-form';
+export class EtudiantsComponent implements OnInit {
+  inputText: string = 'dossier';
 
   allEtudiantsSI: Array<any> = [];
   allEtudiantsSR: Array<any> = [];
@@ -54,3 +55,4 @@ export class ListeEtudiantsComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 }
+

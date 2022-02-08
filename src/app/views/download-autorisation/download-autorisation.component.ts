@@ -28,7 +28,7 @@ export class DownloadAutorisationComponent implements OnInit {
 
   onSubmit(idAutorisation: string) {
     this.submitted = true;
-    this.authService.downloadAutorisation(idAutorisation);
+    //this.authService.downloadFichier();
   }
 
 }

@@ -30,8 +30,7 @@ export class DownloadMemoireComponent implements OnInit {
 
   onSubmit(url: string) {
     this.submitted = true;
-   
-    this.authService.downloadMemoire(url);
+    this.authService.downloadFichier(url);
   }
   wait(){
     Swal.fire({

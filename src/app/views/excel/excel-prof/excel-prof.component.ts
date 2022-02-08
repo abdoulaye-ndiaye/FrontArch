@@ -76,6 +76,14 @@ export class ExcelProfComponent implements OnInit {
         this.uploadService.upload(body).subscribe(
           (result) => {
             this.data=result;
+            setTimeout(() => {
+              $('#professeur').DataTable({
+                pagingType: 'full_numbers',
+                pageLength: 5,
+                processing: true,
+                lengthMenu: [5, 10, 25],
+              });
+            }, 1);
             Swal.close();
             this.alertGood();
             this.uploadExcelForm.reset();

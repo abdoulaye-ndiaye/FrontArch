@@ -42,7 +42,7 @@
       <div class="card m-5 p-3">
         <div class="card-body">
           <div align="center">Nouveaux Etudiants Enregistrés</div>
-          <table class="table table-bordered table-striped table-hover" >
+          <table class="table table-bordered table-striped table-hover " id="etudiants" >
             <thead>
               <tr>
                 <th>Prenom</th>
@@ -52,8 +52,8 @@
                 <th>classe</th>
               </tr>
             </thead>
-            <tbody *ngFor="let etudiant of data">
-              <tr >
+            <tbody >
+              <tr *ngFor="let etudiant of allEtudiants">
                 <td>{{ etudiant.prenom }}</td>
                 <td>{{ etudiant.nom }}</td>
                 <td>{{ etudiant.dateNaissance }}</td>

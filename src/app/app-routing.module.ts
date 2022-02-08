@@ -4,6 +4,10 @@ import { AuthGuard } from './services/auth.guard';
 import { AcceuilComponent } from './views/acceuil/acceuil.component';
 import { AjoutRapporteurComponent } from './views/ajout-rapporteur/ajout-rapporteur.component';
 import { ChangerPasswordComponent } from './views/changer-password/changer-password.component';
+import { DossierComponent } from './views/dossier/dossier/dossier.component';
+import { EtudiantsComponent } from './views/dossier/etudiants/etudiants.component';
+import { MemoireComponent } from './views/dossier/memoire/memoire.component';
+import { PvComponent } from './views/dossier/pv/pv.component';
 import { DownloadAutorisationComponent } from './views/download-autorisation/download-autorisation.component';
 import { DownloadDemandeAutorisationComponent } from './views/download-demande-autorisation/download-demande-autorisation.component';
 import { DownloadMemoireComponent } from './views/download-memoire/download-memoire.component';
@@ -162,6 +166,14 @@ const routes: Routes = [
     canActivate:[AuthGuard]
   },
   {
+    path: 'etudiants',
+    component: EtudiantsComponent,
+    data: {
+      title: 'Etudiants'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
     path: 'excel-etudiant',
     component: ExcelEtudiantComponent,
     data: {
@@ -182,6 +194,30 @@ const routes: Routes = [
     component: ChangerPasswordComponent,
     data: {
       title: 'Modifier Mot de Pass'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'dossier',
+    component: DossierComponent,
+    data: {
+      title: 'Dossiers Etudiants'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'memoire',
+    component: MemoireComponent,
+    data: {
+      title: 'Memoire Etudiant'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'pv',
+    component: PvComponent,
+    data: {
+      title: 'PVs Etudiant'
     },
     canActivate:[AuthGuard]
   },
