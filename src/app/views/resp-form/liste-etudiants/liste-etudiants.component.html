@@ -1,74 +1,90 @@
 <!-- Navbar-->
 <app-header></app-header>
 
-<app-nav [inputFromParent] = "inputText"></app-nav>
+<app-nav [inputFromParent]="inputText"></app-nav>
 
 <div class="app-content my-3 my-md-5">
   <div class="side-app">
     <br />
   </div>
   <div class="container justify-content-center">
-
-
-
- <div class="row mr-5 ml-5">
-    <div class="card m-5 p-3">
-      <div class="card-body">
-        <div align="center">LISTE DES ETUDIANTS EN SI</div>
-        <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions"
-          [dtTrigger]="dtTrigger">
-          <thead>
-            <tr>
-              <th>Prenom</th>
-              <th>Nom</th>
-              <th>Date de Naissance</th>
-              <th>Lieu de Naissace</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody *ngFor="let etudiant of allEtudiants">
-            <tr *ngIf="etudiant.classe==='SI'">
-              <td>{{ etudiant.compte.prenom }}</td>
-              <td>{{ etudiant.compte.nom }}</td>
-              <td>{{ etudiant.dateNaissance }}</td>
-              <td>{{ etudiant.lieuNaissance }}</td>
-              <td><a routerLink="/creer-projet" [queryParams]="{idEtudiant : etudiant._id}" class="btn btn-pill btn-info"> Créer un projet</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>      
+    <div class="row mr-5 ml-5">
+      <div class="card m-5 p-3">
+        <div class="card-body">
+          <div align="center">LISTE DES ETUDIANTS EN SI</div>
+          <table
+            class="table table-bordered table-striped table-hover"
+            id="etudiantsSI"
+          >
+            <thead>
+              <tr>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Date de Naissance</th>
+                <th>Lieu de Naissace</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let etudiant of allEtudiantsSI">
+                <td>{{ etudiant.compte.prenom ?? "NA" }}</td>
+                <td>{{ etudiant.compte.nom }}</td>
+                <td>{{ etudiant.dateNaissance }}</td>
+                <td>{{ etudiant.lieuNaissance }}</td>
+                <td>
+                  <a
+                    routerLink="/creer-projet"
+                    [queryParams]="{ idEtudiant: etudiant._id }"
+                    class="btn btn-pill btn-info"
+                  >
+                    Créer un projet</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="row mr-5 ml-5">
-    <div class="card m-5 p-3">
-      <div class="card-body">
-        <div align="center">LISTE DES ETUDIANTS EN SR</div>
-        <table class="table table-bordered table-striped table-hover" datatable [dtOptions]="dtOptions"
-          [dtTrigger]="dtTrigger">
-          <thead>
-            <tr>
-              <th>Prenom</th>
-              <th>Nom</th>
-              <th>Date de Naissance</th>
-              <th>Lieu de Naissace</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody *ngFor="let etudiant of allEtudiants">
-            <tr *ngIf="etudiant.classe==='SR'">
-              <td>{{ etudiant.compte.prenom }}</td>
-              <td>{{ etudiant.compte.nom }}</td>
-              <td>{{ etudiant.dateNaissance }}</td>
-              <td>{{ etudiant.lieuNaissance }}</td>
-              <td><a routerLink="/creer-projet" [queryParams]="{idEtudiant : etudiant._id}" class="btn btn-pill btn-info"> Créer un projet</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>      
+    <div class="row mr-5 ml-5">
+      <div class="card m-5 p-3">
+        <div class="card-body">
+          <div align="center">LISTE DES ETUDIANTS EN SR</div>
+          <table
+            class="table table-bordered table-striped table-hover"
+            id="etudiantsSR"
+          >
+            <thead>
+              <tr>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Date de Naissance</th>
+                <th>Lieu de Naissace</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let etudiant of allEtudiantsSR">
+                <td>{{ etudiant.compte.prenom }}</td>
+                <td>{{ etudiant.compte.nom }}</td>
+                <td>{{ etudiant.dateNaissance }}</td>
+                <td>{{ etudiant.lieuNaissance }}</td>
+                <td>
+                  <a
+                    routerLink="/creer-projet"
+                    [queryParams]="{ idEtudiant: etudiant._id }"
+                    class="btn btn-pill btn-info"
+                  >
+                    Créer un projet</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-  </div>
-
   </div>
 </div>
 
