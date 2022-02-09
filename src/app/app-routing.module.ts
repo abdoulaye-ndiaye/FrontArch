@@ -4,14 +4,12 @@ import { AuthGuard } from './services/auth.guard';
 import { AcceuilComponent } from './views/acceuil/acceuil.component';
 import { AjoutRapporteurComponent } from './views/ajout-rapporteur/ajout-rapporteur.component';
 import { ChangerPasswordComponent } from './views/changer-password/changer-password.component';
+import { AutorisationComponent } from './views/dossier/autorisation/autorisation.component';
 import { DossierComponent } from './views/dossier/dossier/dossier.component';
 import { EtudiantsComponent } from './views/dossier/etudiants/etudiants.component';
 import { MemoireComponent } from './views/dossier/memoire/memoire.component';
 import { PvComponent } from './views/dossier/pv/pv.component';
-import { DownloadAutorisationComponent } from './views/download-autorisation/download-autorisation.component';
-import { DownloadDemandeAutorisationComponent } from './views/download-demande-autorisation/download-demande-autorisation.component';
-import { DownloadMemoireComponent } from './views/download-memoire/download-memoire.component';
-import { DownloadRapportComponent } from './views/download-rapport/download-rapport.component';
+import { RapportComponent } from './views/dossier/rapport/rapport.component';
 import { ExcelEtudiantComponent } from './views/excel/excel-etudiant/excel-etudiant.component';
 import { ExcelProfComponent } from './views/excel/excel-prof/excel-prof.component';
 import { HomeComponent } from './views/home/home.component';
@@ -78,34 +76,10 @@ const routes: Routes = [
     canActivate:[AuthGuard]
   },
   {
-    path: 'download-rapport',
-    component: DownloadRapportComponent,
-    data: {
-      title: 'Download-Rapport'
-    },
-    canActivate:[AuthGuard]
-  },
-  {
     path: 'upload-demande-autorisation',
     component: UploadDemandeAutorisationComponent,
     data: {
       title: 'Upload-Demande-Autorisation'
-    },
-    canActivate:[AuthGuard]
-  },
-  {
-    path: 'download-autorisation',
-    component: DownloadAutorisationComponent,
-    data: {
-      title: 'Download-Autorisation'
-    },
-    canActivate:[AuthGuard]
-  },
-  {
-    path: 'download-memoire',
-    component: DownloadMemoireComponent,
-    data: {
-      title: 'Download-Memoire'
     },
     canActivate:[AuthGuard]
   },
@@ -122,14 +96,6 @@ const routes: Routes = [
     component: UploadAutorisationComponent,
     data: {
       title: 'Upload-Autorisation'
-    },
-    canActivate:[AuthGuard]
-  },
-  {
-    path: 'download-demande-autorisation',
-    component: DownloadDemandeAutorisationComponent,
-    data: {
-      title: 'Download-Demande-Autorisation'
     },
     canActivate:[AuthGuard]
   },
@@ -218,6 +184,22 @@ const routes: Routes = [
     component: PvComponent,
     data: {
       title: 'PVs Etudiant'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'rapport',
+    component: RapportComponent,
+    data: {
+      title: 'Rapports Etudiant'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'autorisation',
+    component: AutorisationComponent,
+    data: {
+      title: 'Autorisation Etudiant'
     },
     canActivate:[AuthGuard]
   },

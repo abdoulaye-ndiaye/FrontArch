@@ -5,11 +5,11 @@ import { AuthService } from '../../../services/auth.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
-  selector: 'app-memoire',
-  templateUrl: './memoire.component.html'
+  selector: 'app-autorisation',
+  templateUrl: './autorisation.component.html'
 })
-export class MemoireComponent implements OnInit {
-  inputText: string = 'memoire';
+export class AutorisationComponent implements OnInit {
+  inputText: string = 'autorisation';
   submitted=false;
   idEtudiant:string;
   etudiant:any;
@@ -30,14 +30,13 @@ export class MemoireComponent implements OnInit {
     }) ;
     this.authService.getEtudiant(this.idEtudiant).subscribe(data=>{
       this.etudiant=data;
-      if(this.etudiant.projet.memoire){
+      if(this.etudiant.projet.autorisation){
         this.test=true;
       }
     })
   }
   onSubmit(url: string) {
-    //this.wait();
-    console.log("debut")
+   // this.wait();
     this.submitted = true;
     this.authService.downloadFichier(url);
    // Swal.close()

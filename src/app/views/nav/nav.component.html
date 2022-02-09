@@ -16,16 +16,6 @@
                    class="side-menu__icon fas fa-folder fa-lg"></i><span class="side-menu__label">Mon Projet</span></a>
        </li>
     
-       <li class="slide">
-           <a class="side-menu__item {{downloadRapport}}" data-toggle="slide" routerLink="/download-rapport"><i
-                   class="side-menu__icon fas fa-file-download fa-lg"></i><span class="side-menu__label">Télécharger Rapports
-               </span></a>
-       </li>
-       <li class="slide">
-         <a class="side-menu__item {{downloadAutorisation}}" data-toggle="slide" routerLink="/download-autorisation"><i
-                 class="side-menu__icon fas fa-file-download fa-lg"></i><span class="side-menu__label">Télécharger
-                 autorisation</span></a>
-     </li>
      <li class="slide">
        <a class="side-menu__item {{uploadMemoire}}" data-toggle="slide" routerLink="/upload-memoire"><i
                class="side-menu__icon fas fa-file-import fa-lg"></i><span class="side-menu__label">Charger
@@ -39,12 +29,7 @@
      </div>
      <div *ngIf="profil==='PROF'">
       <div *ngIf="specialite==='DIRECTEUR'">
-        <li class="slide">
-          <a class="side-menu__item {{downloadDemandeAutorisation}}" data-toggle="slide" routerLink="/download-demande-autorisation"><i
-                  class="side-menu__icon fas fa-file-download fa-lg"></i><span class="side-menu__label">Télécharger
-                  Demandes<br />
-                  autorisation</span></a>
-          </li>
+       
           <li class="slide">
             <a class="side-menu__item {{uploadAutorisation}}" data-toggle="slide" routerLink="/upload-autorisation"><i
                     class="side-menu__icon fas fa-file-import fa-lg"></i><span class="side-menu__label">Charger

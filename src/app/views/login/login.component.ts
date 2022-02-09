@@ -48,13 +48,10 @@ export class LoginComponent implements OnInit {
     } else {
       this.authService.authenticate(this.loginForm.value.email, this.loginForm.value.password).subscribe(
         result => {
-          console.log(result);
           if (result.code) {
             this.message = 'Email et/ou mot de passe incorrect !';
           } else {
-            console.log('profil:' + result.profil);
             let tokenStr = "Bearer " + result.token;
-            console.log(tokenStr);
             sessionStorage.setItem("token", tokenStr);
             sessionStorage.setItem("profil", result.profil);
             sessionStorage.setItem("id", result.id);

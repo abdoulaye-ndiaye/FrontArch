@@ -10,10 +10,9 @@ export class NavComponent implements OnInit {
   profil = sessionStorage.getItem("profil");
   specialite = sessionStorage.getItem("specialite");
 
-  home="";ajoutRapporteur="";downloadAutorisation="";downloadDemandeAutorisation="";downloadMemoire="";
-  downloadRapport="";excelEtudiant="";excelProf="";projet="";rapporteurs="";respForm="";
+  home="";ajoutRapporteur="";excelEtudiant="";excelProf="";projet="";rapporteurs="";respForm="";
   uploadAutorisation="";uploadDemandeAutorisation="";uploadMemoire="";uploadRapport="";changerPassword="";
-  dossier="";memoire="";
+  dossier="";memoire="";pv="";
 
   constructor(
     private router: Router,
@@ -25,10 +24,6 @@ export class NavComponent implements OnInit {
   test(){
     if (this.inputFromParent=='home'){this.home="active";}
     if (this.inputFromParent=='ajout-rapporteur'){this.ajoutRapporteur="active";}
-    if (this.inputFromParent=='download-autorisation'){this.downloadAutorisation="active";}
-    if (this.inputFromParent=='download-demande-autorisation'){this.downloadDemandeAutorisation="active";}
-    if (this.inputFromParent=='download-memoire'){this.downloadMemoire="active";}
-    if (this.inputFromParent=='download-rapport'){this.downloadRapport="active";}
     if (this.inputFromParent=='excel-etudiant'){this.excelEtudiant="active";}
     if (this.inputFromParent=='excel-prof'){this.excelProf="active";}
     if (this.inputFromParent=='projet'){this.projet="active";}
@@ -41,9 +36,9 @@ export class NavComponent implements OnInit {
     if (this.inputFromParent=='changer-password'){this.home="active";}
     if (this.inputFromParent=='dossier'){this.dossier="active";}
     if (this.inputFromParent=='memoire'){this.dossier="active";}
-
-
-
+    if (this.inputFromParent=='pv'){this.dossier="active";}
+    if (this.inputFromParent=='autorisation'){this.dossier="active";}
+    if (this.inputFromParent=='rapport'){this.dossier="active";}
 
   }
 

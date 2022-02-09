@@ -19,12 +19,15 @@
                 </div>
             </div>
         
-        <div class="container" align="center">
-            <a (dblclick)="onSubmit(etudiant.projet.memoire.url)" class="justify-content-center"><img src="../../../../assets/icons/icons8-pdf-100.png"/>
+        <div *ngIf="test" class="container" align="center">
+            <a (dblclick)="onSubmit(etudiant.projet.memoire.url)" class="justify-content-center">
+                <img src="../../../../assets/icons/icons8-pdf-100.png"/>
                 <div class="justify-content-center">{{etudiant.projet.memoire.nomFichier}}</div>
             </a>&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
-    </div></div></div>
+    </div>
+</div>
+</div>
 
       </div>
     </div>

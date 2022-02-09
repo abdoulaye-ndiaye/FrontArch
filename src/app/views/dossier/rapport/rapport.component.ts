@@ -5,15 +5,16 @@ import { AuthService } from '../../../services/auth.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
-  selector: 'app-memoire',
-  templateUrl: './memoire.component.html'
+  selector: 'app-rapport',
+  templateUrl: './rapport.component.html'
 })
-export class MemoireComponent implements OnInit {
-  inputText: string = 'memoire';
+export class RapportComponent implements OnInit {
+  inputText: string = 'rapport';
   submitted=false;
   idEtudiant:string;
   etudiant:any;
   test=false;
+  
   constructor(
     private formBulder: FormBuilder,
     private route: ActivatedRoute,
@@ -30,14 +31,13 @@ export class MemoireComponent implements OnInit {
     }) ;
     this.authService.getEtudiant(this.idEtudiant).subscribe(data=>{
       this.etudiant=data;
-      if(this.etudiant.projet.memoire){
+      if(this.etudiant.projet.rapportRapporteur){
         this.test=true;
       }
     })
   }
   onSubmit(url: string) {
-    //this.wait();
-    console.log("debut")
+   // this.wait();
     this.submitted = true;
     this.authService.downloadFichier(url);
    // Swal.close()

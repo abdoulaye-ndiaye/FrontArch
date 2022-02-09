@@ -19,15 +19,11 @@ import {DataTablesModule} from 'angular-datatables';
 import { HomeComponent } from './views/home/home.component';
 import { ProjetComponent } from './views/projet/projet.component';
 import { UploadMemoireComponent } from './views/upload-memoire/upload-memoire.component';
-import { DownloadRapportComponent } from './views/download-rapport/download-rapport.component';
 import { UploadDemandeAutorisationComponent } from './views/upload-demande-autorisation/upload-demande-autorisation.component';
-import { DownloadAutorisationComponent } from './views/download-autorisation/download-autorisation.component';
-import { DownloadMemoireComponent } from './views/download-memoire/download-memoire.component';
 import { HeaderComponent } from './views/header/header.component';
 import { FooterComponent } from './views/footer/footer.component';
 import { UploadRapportComponent } from './views/upload-rapport/upload-rapport.component';
 import { UploadAutorisationComponent } from './views/upload-autorisation/upload-autorisation.component';
-import { DownloadDemandeAutorisationComponent } from './views/download-demande-autorisation/download-demande-autorisation.component';
 import { AjoutRapporteurComponent } from './views/ajout-rapporteur/ajout-rapporteur.component';
 import { RapporteursComponent } from './views/rapporteurs/rapporteurs.component';
 import { CreerProjetComponent } from './views/resp-form/creer-projet/creer-projet.component';
@@ -40,6 +36,8 @@ import { DossierComponent } from './views/dossier/dossier/dossier.component';
 import { EtudiantsComponent } from './views/dossier/etudiants/etudiants.component';
 import { MemoireComponent } from './views/dossier/memoire/memoire.component';
 import { PvComponent } from './views/dossier/pv/pv.component';
+import { RapportComponent } from './views/dossier/rapport/rapport.component';
+import { AutorisationComponent } from './views/dossier/autorisation/autorisation.component';
 @NgModule({
   
   declarations: [
@@ -50,15 +48,11 @@ import { PvComponent } from './views/dossier/pv/pv.component';
     HomeComponent,
     ProjetComponent,
     UploadMemoireComponent,
-    DownloadRapportComponent,
     UploadDemandeAutorisationComponent,
-    DownloadAutorisationComponent,
-    DownloadMemoireComponent,
     HeaderComponent,
     FooterComponent,
     UploadRapportComponent,
     UploadAutorisationComponent,
-    DownloadDemandeAutorisationComponent,
     AjoutRapporteurComponent,
     RapporteursComponent,
     CreerProjetComponent,
@@ -70,7 +64,9 @@ import { PvComponent } from './views/dossier/pv/pv.component';
     DossierComponent,
     EtudiantsComponent,
     MemoireComponent,
-    PvComponent
+    PvComponent,
+    RapportComponent,
+    AutorisationComponent
   ],
   imports: [
     SweetAlert2Module.forRoot(),

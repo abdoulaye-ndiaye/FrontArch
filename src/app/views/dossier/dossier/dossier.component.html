@@ -12,7 +12,8 @@
         <div class="row justify-content-center">
             <div class="col-lg-6">
         <div class="card" >
-            <div class="card-header justify-content-center">
+            <div class="card-header">
+                <a routerLink="/etudiants"><i class="fas fa-arrow-left fa-2x"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 Dossiers de {{etudiant.compte.prenom}} {{etudiant.compte.nom}}  Master {{etudiant.classe}}
             </div>
         
@@ -23,10 +24,10 @@
             <a routerLink="/pv" [queryParams]="{ idEtudiant: etudiant._id }" class="contenant"><img src="../../../../assets/icons/icons8-mac-folder-100.png"/>
                 <div class="texte_centrer"><br>PVs</div>
             </a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a routerLink="#" class="contenant"><img src="../../../../assets/icons/icons8-mac-folder-100.png"/>
+            <a routerLink="/rapport" [queryParams]="{ idEtudiant: etudiant._id }" class="contenant"><img src="../../../../assets/icons/icons8-mac-folder-100.png"/>
                 <div class="texte_centrer"><br>Rapports</div>
             </a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a routerLink="#" class="contenant"><img src="../../../../assets/icons/icons8-mac-folder-100.png"/>
+            <a routerLink="/autorisation" [queryParams]="{ idEtudiant: etudiant._id }" class="contenant"><img src="../../../../assets/icons/icons8-mac-folder-100.png"/>
                 <div class="texte_centrer"><br>Autorisations</div>
             </a>&nbsp;&nbsp;&nbsp;&nbsp;
         </div>

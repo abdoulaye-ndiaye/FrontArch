@@ -13,6 +13,8 @@ export class PvComponent implements OnInit {
   submitted=false;
   idEtudiant:string;
   etudiant:any;
+  test=false;
+
   constructor(
     private formBulder: FormBuilder,
     private route: ActivatedRoute,
@@ -29,6 +31,9 @@ export class PvComponent implements OnInit {
     }) ;
     this.authService.getEtudiant(this.idEtudiant).subscribe(data=>{
       this.etudiant=data;
+      if(this.etudiant.projet.pv){
+        this.test=true;
+      }
     })
   }
   onSubmit(url: string) {
