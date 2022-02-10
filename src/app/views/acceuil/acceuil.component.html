@@ -28,17 +28,21 @@
 
                 <div class="dropdown">
                   <a class="nav-link pr-0 leading-none d-flex" data-toggle="dropdown" href="#">
-                    <span class="avatar avatar-md brround"
-                      style="background-image: url(../../../assets/images/avatar.jpeg)"></span>
                     <span class="ml-2 d-none d-lg-block">
                       <span class="text-dark"><strong>{{prenom }} {{nom}}</strong></span>
                     </span>
+                    <span class="avatar avatar-md brround"
+                      style="background-image: url(../../../assets/images/avatar.jpeg)"></span>
+                    
                   </a>
                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                     <a class="dropdown-item" routerLink="/home"><i class="dropdown-icon fe fe-user"></i> Mon Espace</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-mail"></i> Mes messages</a>
-                    <div class="dropdown-divider"></div>
+                    <!-- 
+                      <a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-mail"></i> Mes messages</a>
+                      <div class="dropdown-divider"></div>
+                    -->
+                    
                     <a class="dropdown-item" href="#" (click)="deconnexion()"><i class="dropdown-icon fe fe-power"></i>
                       Déconnection</a>
                   </div>

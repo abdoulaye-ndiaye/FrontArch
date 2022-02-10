@@ -18,7 +18,8 @@
 
 
 
-                <div class="dropdown d-none d-md-flex">
+            <!-- 
+ <div class="dropdown d-none d-md-flex">
                     <a class="nav-link icon" data-toggle="dropdown"><i class="fe fe-mail"></i> <span
                             class="pulse bg-success" aria-hidden="true"></span></a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
@@ -49,17 +50,23 @@
                         <a class="dropdown-item text-center" href="#">Voir tous les messages</a>
                     </div>
                 </div>
+            -->   
+
                 <div class="dropdown">
                     <a class="nav-link pr-0 leading-none d-flex" data-toggle="dropdown" href="#">
-                        <span class="avatar avatar-md brround"
-                            style="background-image: url(../../../assets/images/avatar.jpeg)"></span>
                         <span class="ml-2 d-none d-lg-block">
                             <span class="text-dark"><strong>{{compte.prenom }} {{compte.nom}}</strong></span>
                         </span>
+                        <span class="avatar avatar-md brround"
+                            style="background-image: url(../../../assets/images/avatar.jpeg)"></span>
+                       
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                        <a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-mail"></i> Mes messages</a>
-                        <div class="dropdown-divider"></div>
+                    <!-- 
+                        <a class="dropdown-item" href="#"><i class="dropdown-icon fe fe-mail"></i> Mes messages</a> 
+                         <div class="dropdown-divider"></div>
+                    -->   
+                       
                         <a class="dropdown-item" routerLink="/changer-password"><i
                                 class="dropdown-icon fe fe-edit"></i> Modifier Mot de passe</a>
                         <div class="dropdown-divider"></div>
