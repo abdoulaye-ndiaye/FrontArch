@@ -1,0 +1,92 @@
+<!-- Navbar-->
+<app-header></app-header>
+
+<app-nav [inputFromParent] = "inputText"></app-nav>
+
+<div class=" app-content my-3 my-md-5">
+    <div class="side-app">
+    </div><br>
+    <div class=" container justify-content-center">
+    
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-header">
+              <a routerLink="/ajout-rapporteur"><i class="fas fa-arrow-left fa-2x"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               Liste des Encadreurs de {{projet.etudiant.compte.prenom}} {{projet.etudiant.compte.nom}} ( {{projet.sujet}} )
+            </div>
+            <div class="card-body">
+              <form >
+                <table class="table table-bordered table-striped table-hover" id="encadreurs">
+                  <thead>
+                    <tr >
+                      <th>Nom</th>
+                      <th>Prenoms</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody >
+                    <tr *ngFor="let professeur of allProfesseurs">
+                      <ng-container *ngIf="(encadreurs.includes(professeur._id))">
+                        <td>{{professeur.compte.nom}}</td>
+                        <td>{{professeur.compte.prenom}}</td>
+                        <td><a > <button (click)="suppression(professeur._id)" class="btn btn-primary px-3" >Retirer rapporteur</button></a>
+                        </td>
+                        <input type="hidden" formControlName="idProf" value="{{professeur.compte._id}}">
+                      </ng-container>
+                    </tr>
+                  </tbody>
+                </table>
+              </form>
+            </div>
+            
+          </div>
+        </div>
+        <!--/.col-->
+      </div>
+      
+        <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-header justify-content-center">
+                   Liste des Professeurs pas encore encadreur dans le projet
+                </div>
+                <div class="card-body">
+                  <form [formGroup]="ajoutEncadreurForm" >
+                    <table class="table table-bordered table-striped table-hover" id="professeurs">
+                    <thead>
+                      <tr>
+                        <th>Nom</th>
+                        <th>Prenoms</th>
+                        <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody >
+                        <tr *ngFor="let professeur of allProfesseurs">
+                          <ng-container *ngIf="!(encadreurs.includes(professeur._id))">
+                            <td>{{professeur.compte.nom}}</td>
+                            <td>{{professeur.compte.prenom}}</td>
+                            <td><a > <button (click)="onSubmit(professeur._id)" class="btn btn-primary px-3" >Ajouter comme rapporteur</button></a>
+                            </td>
+                            <input type="hidden" formControlName="idProf" value="{{professeur.compte._id}}">
+                          </ng-container>
+                        </tr>
+                      </tbody>
+                    </table>
+                    
+                  </form>
+                </div>
+                
+              </div>
+            </div>
+            <!--/.col-->
+          </div>
+        
+         
+    
+    </div>
+</div>
+
+<!--footer-->
+<app-footer></app-footer>
+<!-- End Footer-->

@@ -233,4 +233,70 @@ export class AuthService {
         })
       );
   }
+  updateProjet(idProjet: string, sujet: string, description: string) {
+    return this.httpClient
+      .put<any>(`${environment.apiUrl}/projet/${idProjet}`, {
+        sujet,description
+      })
+      .pipe(
+        map((userData) => {
+          return userData;
+        })
+      );
+  }
+  ajoutMembreJury(idProf: string, idProjet: string) {
+    return this.httpClient
+      .post<any>(`${environment.apiUrl}/ajout-membre-jury`, { idProf, idProjet })
+      .pipe(
+        map((userData) => {
+          return userData;
+        })
+      );
+  }
+  supprimerMembreJury(idProf: string, idProjet: string) {
+    return this.httpClient
+      .post<any>(`${environment.apiUrl}/supprimer-membre-jury`, { idProf, idProjet })
+      .pipe(
+        map((userData) => {
+          return userData;
+        })
+      );
+  }
+  FormulaireJury(
+    batiment: string,
+    salleSoutenance: string,
+    numJury: any,
+    
+  ) {
+    return this.httpClient
+      .post<any>(`${environment.apiUrl}/jury`, {
+        batiment,
+        salleSoutenance,
+        numJury,
+        
+      })
+      .pipe(
+        map((userData) => {
+          return userData;
+        })
+      );
+  }
+  ajoutEncadreur(idProf: string, idProjet: string) {
+    return this.httpClient
+      .post<any>(`${environment.apiUrl}/ajout-encadreur`, { idProf, idProjet })
+      .pipe(
+        map((userData) => {
+          return userData;
+        })
+      );
+  }
+  supprimerEncadreur(idProf: string, idProjet: string) {
+    return this.httpClient
+      .post<any>(`${environment.apiUrl}/supprimer-encadreur`, { idProf, idProjet })
+      .pipe(
+        map((userData) => {
+          return userData;
+        })
+      );
+  }
 }

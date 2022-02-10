@@ -51,21 +51,15 @@
             <hr>
             <div class="row">
               <div class="col-sm-3">
-                <h6 class="mb-0">Date de début :</h6>
+                <a routerLink="/modif-projet">
+                <button type="submit" class="btn btn-block btn-blue">
+                  Modifier
+                 </button>
+                </a>
               </div>
-              <div class="col-sm-9 text-secondary">
-                {{projet.date_debut }}
-              </div>
+              
             </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <h6 class="mb-0">Date fin :</h6>
-              </div>
-              <div class="col-sm-9 text-secondary">
-                {{projet.date_fin }}
-              </div>
-            </div>
+          
           </div>
         </div>
       </div>

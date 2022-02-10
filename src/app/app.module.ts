@@ -38,6 +38,12 @@ import { MemoireComponent } from './views/dossier/memoire/memoire.component';
 import { PvComponent } from './views/dossier/pv/pv.component';
 import { RapportComponent } from './views/dossier/rapport/rapport.component';
 import { AutorisationComponent } from './views/dossier/autorisation/autorisation.component';
+import { ModifProjetComponent } from './views/resp-form/modif-projet/modif-projet.component';
+import { CreerJuryComponent } from './views/jury/creer-jury/creer-jury.component';
+import { JuryComponent } from './views/jury/jury/jury.component';
+import { ListeProjetsComponent } from './views/jury/liste-projets/liste-projets.component';
+import { EncadreursComponent } from './views/encadreurs/encadreurs.component';
+
 @NgModule({
   
   declarations: [
@@ -66,7 +72,12 @@ import { AutorisationComponent } from './views/dossier/autorisation/autorisation
     MemoireComponent,
     PvComponent,
     RapportComponent,
-    AutorisationComponent
+    AutorisationComponent,
+    ModifProjetComponent,
+    CreerJuryComponent,
+    JuryComponent,
+    ListeProjetsComponent,
+    EncadreursComponent
   ],
   imports: [
     SweetAlert2Module.forRoot(),

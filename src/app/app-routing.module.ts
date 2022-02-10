@@ -10,15 +10,20 @@ import { EtudiantsComponent } from './views/dossier/etudiants/etudiants.componen
 import { MemoireComponent } from './views/dossier/memoire/memoire.component';
 import { PvComponent } from './views/dossier/pv/pv.component';
 import { RapportComponent } from './views/dossier/rapport/rapport.component';
+import { EncadreursComponent } from './views/encadreurs/encadreurs.component';
 import { ExcelEtudiantComponent } from './views/excel/excel-etudiant/excel-etudiant.component';
 import { ExcelProfComponent } from './views/excel/excel-prof/excel-prof.component';
 import { HomeComponent } from './views/home/home.component';
+import { CreerJuryComponent } from './views/jury/creer-jury/creer-jury.component';
+import { JuryComponent } from './views/jury/jury/jury.component';
+import { ListeProjetsComponent } from './views/jury/liste-projets/liste-projets.component';
 import { LoginComponent } from './views/login/login.component';
 import { ProjetComponent } from './views/projet/projet.component';
 import { RapporteursComponent } from './views/rapporteurs/rapporteurs.component';
 import { RegisterComponent } from './views/register/register.component';
 import { CreerProjetComponent } from './views/resp-form/creer-projet/creer-projet.component';
 import { ListeEtudiantsComponent } from './views/resp-form/liste-etudiants/liste-etudiants.component';
+import { ModifProjetComponent } from './views/resp-form/modif-projet/modif-projet.component';
 import { UploadAutorisationComponent } from './views/upload-autorisation/upload-autorisation.component';
 import { UploadDemandeAutorisationComponent } from './views/upload-demande-autorisation/upload-demande-autorisation.component';
 import { UploadMemoireComponent } from './views/upload-memoire/upload-memoire.component';
@@ -200,6 +205,46 @@ const routes: Routes = [
     component: AutorisationComponent,
     data: {
       title: 'Autorisation Etudiant'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'modif-projet',
+    component: ModifProjetComponent,
+    data: {
+      title: 'Modifier projet'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'creer-jury',
+    component: CreerJuryComponent,
+    data: {
+      title: 'creer jury'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'jury',
+    component: JuryComponent,
+    data: {
+      title: 'Jury'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'liste-projets',
+    component: ListeProjetsComponent,
+    data: {
+      title: 'Liste projets'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'encadreurs',
+    component: EncadreursComponent,
+    data: {
+      title: 'Encadreurs'
     },
     canActivate:[AuthGuard]
   },

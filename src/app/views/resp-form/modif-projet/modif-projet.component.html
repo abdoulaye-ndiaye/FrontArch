@@ -11,16 +11,18 @@
 
 <div class="row">
     <div class="col-lg-6">
-        <form  method="post" class="card" [formGroup]="ProjetForm" (ngSubmit)="onSubmit()">
+        <form  method="post" class="card mb-3" [formGroup]="ModifProjetForm" (ngSubmit)="onSubmit()">
             <div class="card-header">
-                <h3 class="card-title">Création de projet</h3>
+                <a routerLink="/projet"><i class="fas fa-arrow-left fa-2x"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <h3 class="card-title">Modification du projet </h3>
             </div>
-            <div class="card-body">
-               
+            <div class="card-body ">
+                
                     <div class="">
                         <div class="form-group">
                             <label class="form-label">Sujet</label>
-                            <input type="text" class="form-control" formControlName="sujet" name="example-text-input" placeholder="Entrer le nom du projet"
+                            <input type="text" class="form-control" formControlName="sujet" name="example-text-input" placeholder="
+                            {{projet.sujet}}"
                             [ngClass]="{
                                 'is-invalid': submitted && f['sujet'].errors
                               }" required>
@@ -33,7 +35,7 @@
                        
                         <div class="form-group">
                             <label class="form-label">Description </label>
-                            <textarea class="form-control" formControlName="description" rows="4" placeholder="Donner la description du projet " 
+                            <textarea class="form-control" formControlName="description" rows="4" placeholder="{{projet.description}}" 
                             [ngClass]="{
                               'is-invalid': submitted && f['description'].errors
                             }" required></textarea>
@@ -47,11 +49,12 @@
                         <br/>
                         <div class="text-center">
                             <button type="submit" class="btn btn-block btn-blue">
-                             Créer le projet
+                             Valider
                             </button>
                           </div>
+                    </div>
                     
-                </div>
+              
                 
             </div>
         </form>

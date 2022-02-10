@@ -1,0 +1,134 @@
+<!-- Navbar-->
+<app-header></app-header>
+
+<app-nav [inputFromParent] = "inputText"></app-nav>
+
+<div class="app-content my-3 my-md-5">
+  <div class="side-app">
+    <br />
+  </div>
+  <div class="container justify-content-center">
+
+<div class="row">
+    <div class="col-lg-12">
+        <form  method="post" class="card" [formGroup]="JuryForm" (ngSubmit)="onSubmit()">
+            <div class="card-header">
+                <h3 class="card-title">Création de Jury</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label class="form-label">Batiment</label>
+                            <input type="text" class="form-control" formControlName="batiment" name="example-text-input" placeholder="Entrer le nom du batiment de la soutenance"
+                            [ngClass]="{
+                                'is-invalid': submitted && f['batiment'].errors
+                              }" required>
+                              <div *ngIf="submitted && f['batiment'].errors" class="input-group mb-3 invalid-feedback">
+                                <div *ngIf="f['batiment'].errors['required']">
+                                  Veuillez saisir le nom du batiment de ce jury
+                                </div>
+                              </div>
+                        </div>
+                       
+                        <div class="form-group">
+                            <label class="form-label">Salle de Soutenance </label>
+                            <input type="text" class="form-control" formControlName="salleSoutenance"  placeholder="Donner le nom de la salle de soutenance " 
+                            [ngClass]="{
+                              'is-invalid': submitted && f['salleSoutenance'].errors
+                            }" required>
+                            <div *ngIf="submitted && f['salleSoutenance'].errors" class="input-group mb-3 invalid-feedback">
+                              <div *ngIf="f['salleSoutenance'].errors['required']">
+                                Veuillez entrer le nom de la salle de soutenance de ce jury
+                              </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Numéro du jury</label>
+                            <input type="number" class="form-control" formControlName="numJury" name="example-text-input" placeholder="Entrer le numero du jury"
+                            [ngClass]="{
+                                'is-invalid': submitted && f['numJury'].errors
+                              }" required>
+                              <div *ngIf="submitted && f['numJury'].errors" class="input-group mb-3 invalid-feedback">
+                                <div *ngIf="f['numJury'].errors['required']">
+                                  Veuillez saisir le numero du jury
+                                </div>
+                              </div>
+                        </div>
+                       
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>Membre 1</label>
+                            <select aria-label="Default select example" formControlName="membre1" class="form-control" 
+                            [ngClass]="{
+                              'is-invalid': submitted && f['membre1'].errors
+                            }" required>
+                                <option value="" selected disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                  -- Veuillez selectionner le membre 1 du jury --
+                                </option>
+                                <option  *ngFor="let prof of allProfs" value="{{ prof._id }}">{{ prof.compte.prenom }} {{ prof.compte.nom }}</option>
+                              </select>
+                              <div *ngIf="submitted && f['membre1'].errors" class="input-group mb-3 invalid-feedback">
+                                <div *ngIf="f['membre1'].errors['required']">
+                                  Veuillez choisir le membre num 1 du Jury
+                                </div>
+                              </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Membre 2</label>
+                            <select aria-label="Default select example" formControlName="membre2" class="form-control" 
+                            [ngClass]="{
+                              'is-invalid': submitted && f['membre2'].errors
+                            }" required>
+                                <option value="" selected disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                  -- Veuillez selectionner le membre 2 du jury --
+                                </option>
+                                <option  *ngFor="let prof of allProfs" value="{{ prof._id }}">{{ prof.compte.prenom }} {{ prof.compte.nom }}</option>
+                              </select>
+                              <div *ngIf="submitted && f['membre2'].errors" class="input-group mb-3 invalid-feedback">
+                                <div *ngIf="f['membre2'].errors['required']">
+                                  Veuillez choisir le membre num 2 du Jury
+                                </div>
+                              </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Membre 3</label>
+                            <select aria-label="Default select example" formControlName="membre3" class="form-control" 
+                            [ngClass]="{
+                              'is-invalid': submitted && f['membre3'].errors
+                            }" required>
+                                <option value="" selected disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                  -- Veuillez selectionner le membre 3 du jury --
+                                </option>
+                                <option  *ngFor="let prof of allProfs" value="{{ prof._id }}">{{ prof.compte.prenom }} {{ prof.compte.nom }}</option>
+                              </select>
+                              <div *ngIf="submitted && f['membre3'].errors" class="input-group mb-3 invalid-feedback">
+                                <div *ngIf="f['membre3'].errors['required']">
+                                  Veuillez choisir le membre num 3 du Jury
+                                </div>
+                              </div>
+                        </div>
+                        
+                       
+                      
+                    </div>
+                    
+                </div>
+                <br/>
+                    <div class="col-lg-6 justify-content-center">
+                        <button type="submit" class="btn btn-block btn-blue">
+                         Créer le Jury
+                        </button>
+                      </div>
+            </div>
+        </form>
+    </div>
+</div>
+  </div>
+</div>
+
+<!--footer-->
+<app-footer></app-footer>
+<!-- End Footer-->
+

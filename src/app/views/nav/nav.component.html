@@ -15,6 +15,15 @@
            <a class="side-menu__item {{projet}}" data-toggle="slide" routerLink="/projet"><i
                    class="side-menu__icon fas fa-folder fa-lg"></i><span class="side-menu__label">Mon Projet</span></a>
        </li>
+       <li class="slide">
+        <a
+          class="side-menu__item {{respForm}}"
+          data-toggle="slide"
+          routerLink="/creer-projet"
+          ><i class="side-menu__icon fas fa-plus fa-lg"></i
+          ><span class="side-menu__label">Créer Projet</span></a
+        >
+      </li>
     
      <li class="slide">
        <a class="side-menu__item {{uploadMemoire}}" data-toggle="slide" routerLink="/upload-memoire"><i
@@ -38,15 +47,7 @@
       </div>
 
        <div *ngIf="specialite==='RESP-FORM'">
-        <li class="slide">
-          <a
-            class="side-menu__item {{respForm}}"
-            data-toggle="slide"
-            routerLink="/liste-etudiants"
-            ><i class="side-menu__icon fas fa-plus fa-lg"></i
-            ><span class="side-menu__label">Créer Projet</span></a
-          >
-        </li>
+        
         <li class="slide">
           <a
             class="side-menu__item {{dossier}}"
