@@ -26,7 +26,6 @@ export class ProjetComponent implements OnInit {
     this.b = sessionStorage.getItem("idEtu") as string;
 
     this.authService.getProjetByIdEtudiant(this.b).subscribe(data => {
-      console.log(data);
       this.encadreurs=data.encadreur;
       this.projet = data;
 

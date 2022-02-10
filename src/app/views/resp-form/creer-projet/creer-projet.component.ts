@@ -64,11 +64,12 @@ export class CreerProjetComponent implements OnInit {
               console.log({ resultat: resultat });
               this.submitted = false;
               this.ProjetForm.reset();
+              this.router.navigate(['/projet']);
             },
             (error) => {
               console.log(error);
               this.alertBad();
-              this.router.navigate(['/projet']);
+              
             }
           );
         

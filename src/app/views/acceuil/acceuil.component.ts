@@ -27,6 +27,7 @@ export class AcceuilComponent implements OnInit {
   prenom = sessionStorage.getItem("prenom");
 
 
+
   constructor(
     private formBulder: FormBuilder,
     private route: ActivatedRoute,
@@ -39,19 +40,13 @@ export class AcceuilComponent implements OnInit {
     this.alert();
     this.router.navigate(['/home']);
   }
-  encadreur(id: string) {
-    this.authService.getEncadreur(id).subscribe(data => {
-      this.prof = data.prenom;
-      this.prof += " ";
-      this.prof += data.nom;
-    });
-    return this.prof
-  }
+
 
   ngOnInit(): void {
 
     this.authService.getProjets().subscribe(data => {
       this.allProjets = data;
+      console.log(this.allProjets)
       setTimeout(() => {
         $('#memoire').DataTable({
           pagingType: 'full_numbers',

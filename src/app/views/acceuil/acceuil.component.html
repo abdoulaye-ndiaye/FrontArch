@@ -106,7 +106,6 @@
                 <tr>
                   <th>Projet</th>
                   <th>Description</th>
-                  <th>Date soutenance</th>
                   <th>Etudiant</th>
                   <th>Prof Encadreur</th>
                   <th>Action</th>
@@ -116,9 +115,12 @@
                 <tr *ngFor="let projet of allProjets">
                   <td>{{ projet.sujet }}</td>
                   <td>{{ projet.description }}</td>
-                  <td>{{ projet.date_fin }}</td>
                   <td>{{ projet.etudiant.compte.prenom }} {{ projet.etudiant.compte.nom }}</td>
-                  <td>{{ projet.encadreur.compte.prenom }} {{ projet.encadreur.compte.nom }}</td>
+                  <td>
+                    <ng-container *ngFor="let encadreur of projet.encadreur">
+                      {{encadreur.compte.prenom }}  {{encadreur.compte.nom }},
+                    </ng-container>
+                  </td>
                   <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
                 </tr>
               </tbody>
