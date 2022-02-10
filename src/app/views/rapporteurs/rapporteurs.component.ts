@@ -35,8 +35,6 @@ export class RapporteursComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    
-
 
     this.ajoutRapporteurForm = this.formBulder.group(
       {

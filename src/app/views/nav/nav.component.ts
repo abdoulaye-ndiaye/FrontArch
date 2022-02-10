@@ -18,7 +18,7 @@ export class NavComponent implements OnInit {
 
   home="";ajoutRapporteur="";excelEtudiant="";excelProf="";projet="";rapporteurs="";respForm="";
   uploadAutorisation="";uploadDemandeAutorisation="";uploadMemoire="";uploadRapport="";changerPassword="";
-  dossier="";memoire="";pv="";
+  dossier="";memoire="";pv="";encadreur="";
 
   constructor(
     private router: Router,
@@ -46,10 +46,11 @@ export class NavComponent implements OnInit {
     if (this.inputFromParent=='pv'){this.dossier="active";}
     if (this.inputFromParent=='autorisation'){this.dossier="active";}
     if (this.inputFromParent=='rapport'){this.dossier="active";}
+    if (this.inputFromParent=='encadreurs'){this.encadreur="active";}
+
 
 
     this.authService.getEtudiant(this.idEtu).subscribe(data=>{
-      console.log(data)
       if(data.projet==null){
         this.afficheProjet=false
       }

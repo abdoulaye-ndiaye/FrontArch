@@ -16,6 +16,21 @@
             <a class="side-menu__item {{projet}}" data-toggle="slide" routerLink="/projet"><i
                     class="side-menu__icon fas fa-folder fa-lg"></i><span class="side-menu__label">Mon Projet</span></a>
         </li>
+        <li class="slide">
+          <a class="side-menu__item {{encadreur}}" data-toggle="slide" routerLink="/encadreurs"><i
+                  class="side-menu__icon fas fa-tasks fa-lg"></i><span class="side-menu__label">Gestion
+                  Encadreurs</span></a>
+      </li>
+      <li class="slide">
+        <a class="side-menu__item {{uploadMemoire}}" data-toggle="slide" routerLink="/upload-memoire"><i
+                class="side-menu__icon fas fa-file-import fa-lg"></i><span class="side-menu__label">Charger
+                Mémoire</span></a>
+    </li>
+    <li class="slide">
+      <a class="side-menu__item {{uploadDemandeAutorisation}}" data-toggle="slide" routerLink="/upload-demande-autorisation"><i
+              class="side-menu__icon fas fa-file-import fa-lg"></i><span class="side-menu__label">Charger Demande<br />
+              autorisation</span></a>
+  </li>
          </ng-container>
          <ng-container *ngIf="afficheProjet==false">
           <li class="slide">
@@ -29,16 +44,7 @@
           </li>
          </ng-container>
     
-     <li class="slide">
-       <a class="side-menu__item {{uploadMemoire}}" data-toggle="slide" routerLink="/upload-memoire"><i
-               class="side-menu__icon fas fa-file-import fa-lg"></i><span class="side-menu__label">Charger
-               Mémoire</span></a>
-   </li>
-   <li class="slide">
-     <a class="side-menu__item {{uploadDemandeAutorisation}}" data-toggle="slide" routerLink="/upload-demande-autorisation"><i
-             class="side-menu__icon fas fa-file-import fa-lg"></i><span class="side-menu__label">Charger Demande<br />
-             autorisation</span></a>
- </li>
+   
      </div>
      <div *ngIf="profil==='PROF'">
       <div *ngIf="specialite==='DIRECTEUR'">

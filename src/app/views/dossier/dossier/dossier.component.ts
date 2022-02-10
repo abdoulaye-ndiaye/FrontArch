@@ -12,6 +12,10 @@ export class DossierComponent implements OnInit {
 
   idEtudiant:string;
   etudiant:any;
+  projet:any;
+  encadreurs:any;
+  afficher=true;
+  
   constructor(
     private formBulder: FormBuilder,
     private route: ActivatedRoute,
@@ -28,6 +32,18 @@ export class DossierComponent implements OnInit {
     }) ;
     this.authService.getEtudiant(this.idEtudiant).subscribe(data=>{
       this.etudiant=data;
+    })
+    
+
+    this.authService.getProjetByIdEtudiant(this.idEtudiant).subscribe(data => {
+      this.encadreurs=data.encadreur;
+      this.projet = data;
+    });
+    
+    this.authService.getEtudiant(this.idEtudiant).subscribe(data=>{
+      if(data.projet==null){
+        this.afficher=false
+      }
     })
   }
 

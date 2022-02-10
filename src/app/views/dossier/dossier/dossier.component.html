@@ -10,28 +10,90 @@
           <br/>
         </div>
         <div class="row justify-content-center">
-            <div class="col-lg-6">
-        <div class="card" >
-            <div class="card-header">
-                <a routerLink="/etudiants"><i class="fas fa-arrow-left fa-2x"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                Dossiers de {{etudiant.compte.prenom}} {{etudiant.compte.nom}}  Master {{etudiant.classe}}
+            <div class="col-lg-8">
+                <div class="card" >
+                    <div class="card-header">
+                        <a routerLink="/etudiants"><i class="fas fa-arrow-left fa-2x"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        Dossiers de {{etudiant.compte.prenom}} {{etudiant.compte.nom}}  Master {{etudiant.classe}}
+                    </div>
+                
+                <div class="container" align="left">
+                    <a routerLink="/memoire" [queryParams]="{ idEtudiant: etudiant._id }" class="contenant"><img src="../../../../assets/icons/icons8-mac-folder-100.png"/>
+                        <div class="texte_centrer"><br>Mémoires</div>
+                    </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a routerLink="/pv" [queryParams]="{ idEtudiant: etudiant._id }" class="contenant"><img src="../../../../assets/icons/icons8-mac-folder-100.png"/>
+                        <div class="texte_centrer"><br>PVs</div>
+                    </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a routerLink="/rapport" [queryParams]="{ idEtudiant: etudiant._id }" class="contenant"><img src="../../../../assets/icons/icons8-mac-folder-100.png"/>
+                        <div class="texte_centrer"><br>Rapports</div>
+                    </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a routerLink="/autorisation" [queryParams]="{ idEtudiant: etudiant._id }" class="contenant"><img src="../../../../assets/icons/icons8-mac-folder-100.png"/>
+                        <div class="texte_centrer"><br>Autorisations</div>
+                    </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
             </div>
-        
-        <div class="container" align="left">
-            <a routerLink="/memoire" [queryParams]="{ idEtudiant: etudiant._id }" class="contenant"><img src="../../../../assets/icons/icons8-mac-folder-100.png"/>
-                <div class="texte_centrer"><br>Mémoires</div>
-            </a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a routerLink="/pv" [queryParams]="{ idEtudiant: etudiant._id }" class="contenant"><img src="../../../../assets/icons/icons8-mac-folder-100.png"/>
-                <div class="texte_centrer"><br>PVs</div>
-            </a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a routerLink="/rapport" [queryParams]="{ idEtudiant: etudiant._id }" class="contenant"><img src="../../../../assets/icons/icons8-mac-folder-100.png"/>
-                <div class="texte_centrer"><br>Rapports</div>
-            </a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a routerLink="/autorisation" [queryParams]="{ idEtudiant: etudiant._id }" class="contenant"><img src="../../../../assets/icons/icons8-mac-folder-100.png"/>
-                <div class="texte_centrer"><br>Autorisations</div>
-            </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+        <ng-container *ngIf="afficher==true">
+            <div class="col-md-8">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Sujet :</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        {{projet.sujet }}
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Description :</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        {{projet.description }}
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Etat :</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        {{projet.etat }}
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Encadreurs :</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        <ng-container *ngFor="let encadreur of encadreurs">
+                          {{encadreur.compte.prenom }}  {{encadreur.compte.nom }},
+                        </ng-container>
+                       
+                      </div>
+                    </div>
+                    <div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </ng-container>
+        <ng-container *ngIf="afficher==false">
+            <div class="col-md-8">
+                <div class="card mb-3">
+                    <div class="card-header justify-content-center">
+                        PAS ENCORE DE PROJET
+                    </div>
+                </div>
+               
+            </div>
+        </ng-container>
+           
+            
         </div>
-    </div></div></div>
 
       </div>
       <!--footer-->

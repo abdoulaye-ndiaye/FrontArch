@@ -13,7 +13,7 @@ export class EncadreursComponent implements OnInit {
  
 
   profil = sessionStorage.getItem("profil");
-  allProfesseurs:any;
+  allProfesseurs:any[];
   projet:any;
   ajoutEncadreurForm : FormGroup;
   submitted = false;
@@ -21,7 +21,7 @@ export class EncadreursComponent implements OnInit {
   message = '';
   idEtu:string;
   hide = true;
-  idProjet:string;
+  idProjet= sessionStorage.getItem("idProjet") as string;
   idProf: string;
   encadreurs:any;
 
@@ -43,8 +43,24 @@ export class EncadreursComponent implements OnInit {
         idProf: [''],
       });
 
+      this.authService.getProjet(this.idProjet).subscribe(data => {
+        this.projet = data;
+        this.encadreurs=this.projet.encadreur;
+        setTimeout(() => {
+          $('#encadreurs').DataTable({
+            pagingType: 'full_numbers',
+            pageLength: 5,
+            processing: true,
+            lengthMenu: [5, 10, 25],
+          });
+        }, 1);
+        console.log(this.encadreurs)
+        
+      });
+
     this.authService.listeProfesseur().subscribe(data => {
       this.allProfesseurs = data;
+      console.log(data)
       setTimeout(() => {
         $('#professeurs').DataTable({
           pagingType: 'full_numbers',
@@ -55,21 +71,7 @@ export class EncadreursComponent implements OnInit {
       }, 1);
     }) ;
 
-    this.authService.getProjetByIdEtudiant(this.idEtu).subscribe(data => {
-      this.projet = data;
-      console.log(data)
-      this.encadreurs=this.projet.encadreur;
-      setTimeout(() => {
-        $('#encadreurs').DataTable({
-          pagingType: 'full_numbers',
-          pageLength: 5,
-          processing: true,
-          lengthMenu: [5, 10, 25],
-        });
-      }, 1);
-      console.log(this.encadreurs)
-      
-    });
+   
     
 }
 
