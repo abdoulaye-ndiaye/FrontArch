@@ -89,21 +89,13 @@ export class AuthService {
   FormulaireProjet(
     sujet: string,
     description: string,
-    encadreur: string,
-    date_debut: string,
-    date_fin: string,
-    etudiant: string,
-    etat:string
+    etudiant: string
   ) {
     return this.httpClient
       .post<any>(`${environment.apiUrl}/projet`, {
         sujet,
         description,
-        encadreur,
-        date_debut,
-        date_fin,
-        etudiant,
-        etat
+        etudiant
       })
       .pipe(
         map((userData) => {

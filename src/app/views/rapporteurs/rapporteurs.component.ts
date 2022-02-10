@@ -12,7 +12,6 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class RapporteursComponent implements OnInit {
   inputText: string = 'ajout-rapporteur';
  
-
   profil = sessionStorage.getItem("profil");
   allProfesseurs:any;
   projet:any;
@@ -49,18 +48,6 @@ export class RapporteursComponent implements OnInit {
       this.id = params.get('id') as string;
     }) ;
 
-    this.authService.listeProfesseur().subscribe(data => {
-      this.allProfesseurs = data;
-      setTimeout(() => {
-        $('#professeurs').DataTable({
-          pagingType: 'full_numbers',
-          pageLength: 5,
-          processing: true,
-          lengthMenu: [5, 10, 25],
-        });
-      }, 1);
-    }) ;
-
     this.authService.getProjet(this.id).subscribe(data => {
       this.projet = data;
       this.rapporteurs=this.projet.rapporteur;
@@ -75,6 +62,17 @@ export class RapporteursComponent implements OnInit {
       console.log(this.rapporteurs)
       
     });
+    this.authService.listeProfesseur().subscribe(data => {
+      this.allProfesseurs = data;
+      setTimeout(() => {
+        $('#professeurs').DataTable({
+          pagingType: 'full_numbers',
+          pageLength: 5,
+          processing: true,
+          lengthMenu: [5, 10, 25],
+        });
+      }, 1);
+    }) ;
     
 }
 

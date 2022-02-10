@@ -13,8 +13,7 @@ export class CreerProjetComponent implements OnInit {
   ProjetForm: FormGroup;
   profil = sessionStorage.getItem("profil");
   allProfs: any;
-  etat:string;
-  idEtudiant:string;
+  idEtudiant= sessionStorage.getItem("idEtu") as string;
   submitted = false;
   constructor(
     private formBulder: FormBuilder,
@@ -32,21 +31,12 @@ export class CreerProjetComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.idEtudiant)
     this.ProjetForm = this.formBulder.group(
       {
         sujet: ['', Validators.required],
         description: ['',Validators.required],
-        encadreur: ['', Validators.required],
-        date_debut: ['', Validators.required],
-        date_fin: ['', Validators.required],
-        etat: [''],
       });
-      this.route.queryParamMap
-    .subscribe(params => {
-      console.log(params); 
-
-      this.idEtudiant = params.get('idEtudiant') as string;
-  }) ;
 
     this.authService.getProfs().subscribe(data => {
       this.allProfs = data;
@@ -55,7 +45,6 @@ export class CreerProjetComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.etat="validé";
     
     if (this.ProjetForm.invalid) {
       console.log("invalid form")
@@ -66,11 +55,7 @@ export class CreerProjetComponent implements OnInit {
           .FormulaireProjet(
             this.ProjetForm.value.sujet,
             this.ProjetForm.value.description,
-            this.ProjetForm.value.encadreur,
-            this.ProjetForm.value.date_debut,
-            this.ProjetForm.value.date_fin,
-            this.idEtudiant,
-            this.etat
+            this.idEtudiant
            
           )
           .subscribe(
@@ -83,6 +68,7 @@ export class CreerProjetComponent implements OnInit {
             (error) => {
               console.log(error);
               this.alertBad();
+              this.router.navigate(['/projet']);
             }
           );
         

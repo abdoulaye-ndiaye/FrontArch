@@ -11,19 +11,23 @@
  
        </li>
        <div *ngIf="profil==='ETUDIANT'">
-       <li>
-           <a class="side-menu__item {{projet}}" data-toggle="slide" routerLink="/projet"><i
-                   class="side-menu__icon fas fa-folder fa-lg"></i><span class="side-menu__label">Mon Projet</span></a>
-       </li>
-       <li class="slide">
-        <a
-          class="side-menu__item {{respForm}}"
-          data-toggle="slide"
-          routerLink="/creer-projet"
-          ><i class="side-menu__icon fas fa-plus fa-lg"></i
-          ><span class="side-menu__label">Créer Projet</span></a
-        >
-      </li>
+         <ng-container *ngIf="afficheProjet==true">
+          <li>
+            <a class="side-menu__item {{projet}}" data-toggle="slide" routerLink="/projet"><i
+                    class="side-menu__icon fas fa-folder fa-lg"></i><span class="side-menu__label">Mon Projet</span></a>
+        </li>
+         </ng-container>
+         <ng-container *ngIf="afficheProjet==false">
+          <li class="slide">
+            <a
+              class="side-menu__item {{respForm}}"
+              data-toggle="slide"
+              routerLink="/creer-projet"
+              ><i class="side-menu__icon fas fa-plus fa-lg"></i
+              ><span class="side-menu__label">Créer Projet</span></a
+            >
+          </li>
+         </ng-container>
     
      <li class="slide">
        <a class="side-menu__item {{uploadMemoire}}" data-toggle="slide" routerLink="/upload-memoire"><i

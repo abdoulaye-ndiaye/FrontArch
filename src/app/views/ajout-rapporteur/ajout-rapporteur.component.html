@@ -24,15 +24,13 @@
                           <tr>
                             <th>Etudiant</th>
                             <th>Projet</th>
-                            <th>Encadreur</th>
-                            <th></th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
                           <tr *ngFor="let projet of allProjets">
                             <td>{{projet.etudiant.compte.prenom ?? "NA"}} {{projet.etudiant.compte.nom ?? "NA"}}</td>
                             <td>{{ projet.sujet ?? "NA"}}</td>
-                            <td>{{projet.encadreur.compte.prenom ?? "NA"}} {{projet.encadreur.compte.nom ?? "NA"}}</td>
                             <td><a routerLink="/rapporteurs" class="btn btn-blue" [queryParams]="{id : projet._id}">Gèrer les rapporteurs</a></td>
                           </tr>
                         </tbody>

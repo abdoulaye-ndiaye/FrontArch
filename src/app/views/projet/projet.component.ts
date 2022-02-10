@@ -9,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
 export class ProjetComponent implements OnInit {
   inputText: string = 'projet';
   projet: any;
-  encadreur: any;
+  encadreurs: any;
   b: string;
   //c = sessionStorage.getItem("idProjet") as string;
   profil = sessionStorage.getItem("profil");
@@ -27,6 +27,7 @@ export class ProjetComponent implements OnInit {
 
     this.authService.getProjetByIdEtudiant(this.b).subscribe(data => {
       console.log(data);
+      this.encadreurs=data.encadreur;
       this.projet = data;
 
     });

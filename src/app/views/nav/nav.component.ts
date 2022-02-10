@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { data } from 'jquery';
+import { AuthService } from '../../services/auth.service';
+
 
 @Component({
   selector: 'app-nav',
@@ -9,6 +12,9 @@ export class NavComponent implements OnInit {
   @Input() inputFromParent : string;
   profil = sessionStorage.getItem("profil");
   specialite = sessionStorage.getItem("specialite");
+  idEtu = sessionStorage.getItem("idEtu") as string;
+  afficheProjet=true;
+
 
   home="";ajoutRapporteur="";excelEtudiant="";excelProf="";projet="";rapporteurs="";respForm="";
   uploadAutorisation="";uploadDemandeAutorisation="";uploadMemoire="";uploadRapport="";changerPassword="";
@@ -16,6 +22,7 @@ export class NavComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -40,6 +47,14 @@ export class NavComponent implements OnInit {
     if (this.inputFromParent=='autorisation'){this.dossier="active";}
     if (this.inputFromParent=='rapport'){this.dossier="active";}
 
+
+    this.authService.getEtudiant(this.idEtu).subscribe(data=>{
+      console.log(data)
+      if(data.projet==null){
+        this.afficheProjet=false
+      }
+    })
   }
 
+  
 }

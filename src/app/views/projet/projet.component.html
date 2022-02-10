@@ -44,7 +44,10 @@
               <h6 class="mb-0">Encadreur :</h6>
             </div>
             <div class="col-sm-9 text-secondary">
-              {{projet.encadreur.compte.prenom }}  {{projet.encadreur.compte.nom }}
+              <ng-container *ngFor="let encadreur of encadreurs">
+                {{encadreur.compte.prenom }}  {{encadreur.compte.nom }},
+              </ng-container>
+             
             </div>
           </div>
           <div>
