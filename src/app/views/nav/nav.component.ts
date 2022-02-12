@@ -37,7 +37,7 @@ export class NavComponent implements OnInit {
     if (this.inputFromParent=='rapporteurs'){this.dossier="active";}
     if (this.inputFromParent=='resp-form'){this.respForm="active";}
     if (this.inputFromParent=='upload-autorisation'){this.uploadAutorisation="active";}
-    if (this.inputFromParent=='upload-demande-autorisation'){this.demandeAutorisation="active";}
+    if (this.inputFromParent=='demande-autorisation'){this.demandeAutorisation="active";}
     if (this.inputFromParent=='upload-memoire'){this.uploadMemoire="active";}
     if (this.inputFromParent=='upload-rapport'){this.uploadRapport="active";}
     if (this.inputFromParent=='changer-password'){this.home="active";}

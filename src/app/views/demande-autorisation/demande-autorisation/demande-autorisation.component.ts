@@ -27,8 +27,11 @@ export class DemandeAutorisationComponent implements OnInit{
   const pdfTable = this.pdfTable.nativeElement;
   var html = htmlToPdfmake(pdfTable.innerHTML);
   console.log(html)
-  const documentDefinition = { content: html };
-  console.log(documentDefinition)
+  var documentDefinition = { 
+    content: [
+      html ]
+  };
+  
   pdfMake.createPdf(documentDefinition).open(); 
      
   }
