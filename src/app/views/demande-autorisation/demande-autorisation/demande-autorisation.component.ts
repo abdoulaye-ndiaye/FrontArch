@@ -3,11 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { DatePipe } from '@angular/common';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 import * as pdfMake from "pdfmake/build/pdfmake";
 const htmlToPdfmake = require("html-to-pdfmake");
-import { jsPDF } from "jspdf";
 
+
+import SignaturePad from 'signature_pad';
 
 @Component({
   selector: 'app-demande-autorisation',
@@ -19,6 +21,10 @@ export class DemandeAutorisationComponent implements OnInit{
   etudiant:any;
   date:string;
   classe:string;
+
+  signaturePad: SignaturePad;
+  @ViewChild('canvas') canvasEl: ElementRef;
+  signatureImg: string;
 
 
   @ViewChild('pdfTable') pdfTable: ElementRef;
@@ -33,7 +39,7 @@ export class DemandeAutorisationComponent implements OnInit{
   };
   
   pdfMake.createPdf(documentDefinition).open(); 
-     
+    this.clearPad();
   }
 
   
@@ -58,6 +64,41 @@ export class DemandeAutorisationComponent implements OnInit{
       else if(data.classe=="SR"){this.classe="Systèmes et Reseaux"}
 
     });
+  }
+  ngAfterViewInit() {
+    this.signaturePad = new SignaturePad(this.canvasEl.nativeElement);
+  }
+
+  startDrawing(event: Event) {
+    console.log(event);
+    // works in device not in browser
+
+  }
+
+  moved(event: Event) {
+    // works in device not in browser
+  }
+
+  clearPad() {
+    this.signaturePad.clear();
+  }
+
+  savePad() {
+    const base64Data = this.signaturePad.toDataURL();
+    this.signatureImg = base64Data;
+    this.alertGood();
+  }
+  refresh(): void {
+    window.location.reload();
+
+  }
+  alertGood(){
+    Swal.fire({
+      icon: 'success',
+      title: 'Signature bien enregistrée',
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
 
 }
