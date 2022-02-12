@@ -60,7 +60,6 @@ export class EncadreursComponent implements OnInit {
 
     this.authService.listeProfesseur().subscribe(data => {
       this.allProfesseurs = data;
-      console.log(data)
       setTimeout(() => {
         $('#professeurs').DataTable({
           pagingType: 'full_numbers',

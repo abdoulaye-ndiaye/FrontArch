@@ -20,6 +20,7 @@ import { JuryComponent } from './views/jury/jury/jury.component';
 import { ListeProjetsComponent } from './views/jury/liste-projets/liste-projets.component';
 import { LoginComponent } from './views/login/login.component';
 import { ProjetComponent } from './views/projet/projet.component';
+import { PvSoutenanceComponent } from './views/pv-soutenance/pv-soutenance.component';
 import { RapporteursComponent } from './views/rapporteurs/rapporteurs.component';
 import { RegisterComponent } from './views/register/register.component';
 import { CreerProjetComponent } from './views/resp-form/creer-projet/creer-projet.component';
@@ -254,6 +255,14 @@ const routes: Routes = [
     component: DemandeAutorisationComponent,
     data: {
       title: 'Demande Autorisation'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'pv-soutenance',
+    component: PvSoutenanceComponent,
+    data: {
+      title: 'PV Soutenance'
     },
     canActivate:[AuthGuard]
   },

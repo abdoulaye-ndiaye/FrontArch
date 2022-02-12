@@ -1,20 +1,19 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from '../../../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { DatePipe } from '@angular/common';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-
 import * as pdfMake from "pdfmake/build/pdfmake";
 const htmlToPdfmake = require("html-to-pdfmake");
 import SignaturePad from 'signature_pad';
 
 @Component({
-  selector: 'app-demande-autorisation',
-  templateUrl: './demande-autorisation.component.html'
+  selector: 'app-pv',
+  templateUrl: './pv-soutenance.component.html'
 })
-export class DemandeAutorisationComponent implements OnInit{
-  inputText: string = 'demande-autorisation';
+export class PvSoutenanceComponent implements OnInit {
+  inputText: string = 'pv-soutenance';
   a:string;
   etudiant:any;
   date:string;
@@ -40,8 +39,6 @@ export class DemandeAutorisationComponent implements OnInit{
     this.clearPad();
   }
 
-  
-  
  
   constructor(
     private formBulder: FormBuilder,

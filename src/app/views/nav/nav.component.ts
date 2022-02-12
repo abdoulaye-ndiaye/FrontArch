@@ -18,7 +18,7 @@ export class NavComponent implements OnInit {
 
   home="";ajoutRapporteur="";excelEtudiant="";excelProf="";projet="";rapporteurs="";respForm="";
   uploadAutorisation="";demandeAutorisation="";uploadMemoire="";uploadRapport="";changerPassword="";
-  dossier="";memoire="";pv="";encadreur="";jury="";uploadDemandeAutorisation="";
+  dossier="";memoire="";pv="";encadreur="";jury="";uploadDemandeAutorisation="";pvSoutenance="";
 
   constructor(
     private router: Router,
@@ -51,6 +51,8 @@ export class NavComponent implements OnInit {
     if (this.inputFromParent=='jury'){this.dossier="active";}
     if (this.inputFromParent=='liste-projets'){this.dossier="active";}
     if (this.inputFromParent=='upload-demande-autorisation'){this.uploadDemandeAutorisation="active";}
+    if (this.inputFromParent=='pv-soutenance'){this.pvSoutenance="active";}
+
 
     this.authService.getEtudiant(this.idEtu).subscribe(data=>{
       if(data.projet==null){

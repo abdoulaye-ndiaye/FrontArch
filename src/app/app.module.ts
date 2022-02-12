@@ -46,6 +46,7 @@ import { EncadreursComponent } from './views/encadreurs/encadreurs.component';
 import { DemandeAutorisationComponent } from './views/demande-autorisation/demande-autorisation/demande-autorisation.component';
 
 import { DatePipe } from '@angular/common';
+import { PvSoutenanceComponent } from './views/pv-soutenance/pv-soutenance.component';
 
 @NgModule({
   
@@ -81,7 +82,8 @@ import { DatePipe } from '@angular/common';
     JuryComponent,
     ListeProjetsComponent,
     EncadreursComponent,
-    DemandeAutorisationComponent
+    DemandeAutorisationComponent,
+    PvSoutenanceComponent
   ],
   imports: [
     SweetAlert2Module.forRoot(),

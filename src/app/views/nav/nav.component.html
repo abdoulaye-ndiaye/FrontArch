@@ -28,7 +28,7 @@
     </li>
     <li class="slide">
       <a class="side-menu__item {{demandeAutorisation}}" data-toggle="slide" routerLink="/demande-autorisation"><i
-              class="side-menu__icon fas fa-file-import fa-lg"></i><span class="side-menu__label">Demande
+              class="side-menu__icon fas fa-file-pdf fa-lg"></i><span class="side-menu__label">Demande
               autorisation</span></a>
   </li>
   <li class="slide">
@@ -83,6 +83,7 @@
    
    
        </div>
+     
        <div *ngIf="specialite==='SIMPLE'">
        <li class="slide">
            <a class="side-menu__item {{uploadRapport}}" data-toggle="slide" routerLink="/upload-rapport"><i
@@ -90,7 +91,14 @@
                    Rapport</span></a>
        </li>
        </div>
-       
+       <li class="slide">
+        <a class="side-menu__item {{pvSoutenance}}" data-toggle="slide" routerLink="/pv-soutenance"><i
+                class="side-menu__icon fas fa-file-pdf fa-lg"></i><span class="side-menu__label">PV Soutencance
+                </span></a>
+    </li>
+     </div>
+     <div *ngIf="profil==='ADMIN'">
+      
      </div>
  
    </ul>
