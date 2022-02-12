@@ -14,6 +14,11 @@ export class CreerJuryComponent implements OnInit {
   allProfs: any;
   submitted = false;
   idJury:string;
+  idProjet:string;
+  projet:any;
+  encadreurs:any;
+  rapporteurs:any;
+  profs:any;
 
   constructor(
     private formBulder: FormBuilder,
@@ -36,11 +41,19 @@ export class CreerJuryComponent implements OnInit {
         batiment: ['', Validators.required],
         salleSoutenance: ['',Validators.required],
         numJury: ['', Validators.required],
-        membre1: [''],
-        membre2: [''],
-        membre3: [''],
+        president: ['',Validators.required],
       });
-     
+      this.route.queryParamMap
+      .subscribe(params => {
+        console.log(params); 
+  
+        this.idProjet = params.get('idProjet') as string;
+      }) ;
+      this.authService.getProjet(this.idProjet).subscribe(data=>{
+        this.projet=data;
+        this.encadreurs=data.encadreur;
+        this.rapporteurs=data.rapporteur;
+      })
 
     this.authService.getProfs().subscribe(data => {
       this.allProfs = data;
@@ -58,7 +71,9 @@ export class CreerJuryComponent implements OnInit {
           .FormulaireJury(
             this.JuryForm.value.batiment,
             this.JuryForm.value.salleSoutenance,
-            this.JuryForm.value.numJury
+            this.JuryForm.value.numJury,
+            this.JuryForm.value.president,
+            this.idProjet
           )
           .subscribe(
             (resultat) => {

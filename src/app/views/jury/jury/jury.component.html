@@ -3,90 +3,106 @@
 
 <app-nav [inputFromParent] = "inputText"></app-nav>
 
-<div class=" app-content my-3 my-md-5">
-    <div class="side-app">
-    </div><br>
-    <div class=" container justify-content-center">
-    
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="card">
-            <div class="card-header">
-              <a routerLink="/liste-projets"><i class="fas fa-arrow-left fa-2x"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-               Liste des Membres du jury de {{projet.etudiant.compte.prenom}} {{projet.etudiant.compte.nom}} ( {{projet.sujet}} )
+<div class="app-content my-3 my-md-5">
+  <div class="side-app">
+    <br />
+  </div>
+  <div class="container justify-content-center">
+
+<div class="row">
+    <div class="col-lg-12">
+        <form  method="post" class="card" [formGroup]="JuryForm" (ngSubmit)="onSubmit()">
+            <div class="card-header justify-content-center">
+                <h3 class="card-title">Modification du Jury de {{projet.etudiant.compte.prenom}} {{projet.etudiant.compte.nom}} Master {{projet.etudiant.classe}}</h3>
             </div>
             <div class="card-body">
-              <form >
-                <table class="table table-bordered table-striped table-hover" id="membresJury">
-                  <thead>
-                    <tr >
-                      <th>Nom</th>
-                      <th>Prenoms</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody >
-                    <tr *ngFor="let professeur of allProfesseurs">
-                      <ng-container *ngIf="(membresJury.includes(professeur._id))">
-                        <td>{{professeur.compte.nom}}</td>
-                        <td>{{professeur.compte.prenom}}</td>
-                        <td><a > <button (click)="suppression(professeur._id)" class="btn btn-primary px-3" >Retirer Membre du Jury</button></a>
-                        </td>
-                        <input type="hidden" formControlName="idProf" value="{{professeur.compte._id}}">
-                      </ng-container>
-                    </tr>
-                  </tbody>
-                </table>
-              </form>
-            </div>
-            
-          </div>
-        </div>
-        <!--/.col-->
-      </div>
-      
-        <div class="row">
-            <div class="col-lg-12">
-              <div class="card">
-                <div class="card-header justify-content-center">
-                   Liste des Professeurs pas encore membre dans ce jury
-                </div>
-                <div class="card-body">
-                  <form [formGroup]="ajoutMembresJuryForm" >
-                    <table class="table table-bordered table-striped table-hover" id="professeurs">
-                    <thead>
-                      <tr>
-                        <th>Nom</th>
-                        <th>Prenoms</th>
-                        <th>Action</th>
-                        </tr>
-                      </thead>
-                      <tbody >
-                        <tr *ngFor="let professeur of allProfesseurs">
-                          <ng-container *ngIf="!(membresJury.includes(professeur._id))">
-                            <td>{{professeur.compte.nom}}</td>
-                            <td>{{professeur.compte.prenom}}</td>
-                            <td><a > <button (click)="onSubmit(professeur._id)" class="btn btn-primary px-3" >Ajouter comme Membre du Jury</button></a>
-                            </td>
-                            <input type="hidden" formControlName="idProf" value="{{professeur.compte._id}}">
-                          </ng-container>
-                        </tr>
-                      </tbody>
-                    </table>
+                <div class="row">
+                    <div class="col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label class="form-label">Batiment</label>
+                            <input type="text" class="form-control" formControlName="batiment" name="example-text-input" placeholder="{{projet.jury.batiment}}"
+                            [ngClass]="{
+                                'is-invalid': submitted && f['batiment'].errors
+                              }" required>
+                              <div *ngIf="submitted && f['batiment'].errors" class="input-group mb-3 invalid-feedback">
+                                <div *ngIf="f['batiment'].errors['required']">
+                                  Veuillez saisir le nom du batiment de ce jury
+                                </div>
+                              </div>
+                        </div>
+                       
+                        <div class="form-group">
+                            <label class="form-label">Salle de Soutenance </label>
+                            <input type="text" class="form-control" formControlName="salleSoutenance"  placeholder="{{projet.jury.salleSoutenance}} " 
+                            [ngClass]="{
+                              'is-invalid': submitted && f['salleSoutenance'].errors
+                            }" required>
+                            <div *ngIf="submitted && f['salleSoutenance'].errors" class="input-group mb-3 invalid-feedback">
+                              <div *ngIf="f['salleSoutenance'].errors['required']">
+                                Veuillez entrer le nom de la salle de soutenance de ce jury
+                              </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Numéro du jury</label>
+                            <input type="number" class="form-control" formControlName="numJury" name="example-text-input" placeholder="{{projet.jury.numJury}}"
+                            [ngClass]="{
+                                'is-invalid': submitted && f['numJury'].errors
+                              }" required>
+                              <div *ngIf="submitted && f['numJury'].errors" class="input-group mb-3 invalid-feedback">
+                                <div *ngIf="f['numJury'].errors['required']">
+                                  Veuillez saisir le numero du jury
+                                </div>
+                              </div>
+                        </div>
+                       
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <label>Président du jury</label>
+                            <select aria-label="Default select example" formControlName="president" class="form-control" 
+                            [ngClass]="{
+                              'is-invalid': submitted && f['president'].errors
+                            }" required>
+                                <option value="" selected disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                  {{projet.jury.presidentJury.compte.prenom}} {{projet.jury.presidentJury.compte.nom}}
+                                </option>
+                                <ng-container *ngFor="let prof of allProfs" >
+                                  <option *ngIf="((!(encadreurs.includes(prof._id)))&&(!(rapporteurs.includes(prof._id))))" value="{{ prof._id }}">{{ prof.compte.prenom }} {{ prof.compte.nom }}</option>
+                                </ng-container>
+                              </select>
+                              <div *ngIf="submitted && f['president'].errors" class="input-group mb-3 invalid-feedback">
+                                <div *ngIf="f['president'].errors['required']">
+                                  Veuillez choisir le Président du Jury
+                                </div>
+                              </div>
+                        </div>
+                        <div class="form-group">
+                           
+                        </div>
+                        <div class="form-group">
+                           
+                        </div>
+                        
+                       
+                      
+                    </div>
                     
-                  </form>
                 </div>
-                
-              </div>
+                <br/>
+                    <div class="col-lg-6 justify-content-center">
+                        <button type="submit" class="btn btn-block btn-blue" >
+                        <a routerLink="/dossier" [queryParams]="{idEtudiant : projet.etudiant._id}">Créer le Jury</a> 
+                        </button>
+                      </div>
             </div>
-            <!--/.col-->
-          </div>
-        
-         
-    
+        </form>
     </div>
+</div>
+  </div>
 </div>
 
 <!--footer-->
 <app-footer></app-footer>
 <!-- End Footer-->
+

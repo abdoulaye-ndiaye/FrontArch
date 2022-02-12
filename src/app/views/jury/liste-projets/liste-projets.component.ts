@@ -15,6 +15,7 @@ export class ListeProjetsComponent implements OnInit {
   hide = true;
   allProjets: any;
 
+
   profil = sessionStorage.getItem("profil");
 
   constructor(

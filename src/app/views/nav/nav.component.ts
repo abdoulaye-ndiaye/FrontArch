@@ -17,8 +17,8 @@ export class NavComponent implements OnInit {
 
 
   home="";ajoutRapporteur="";excelEtudiant="";excelProf="";projet="";rapporteurs="";respForm="";
-  uploadAutorisation="";uploadDemandeAutorisation="";uploadMemoire="";uploadRapport="";changerPassword="";
-  dossier="";memoire="";pv="";encadreur="";
+  uploadAutorisation="";demandeAutorisation="";uploadMemoire="";uploadRapport="";changerPassword="";
+  dossier="";memoire="";pv="";encadreur="";jury="";
 
   constructor(
     private router: Router,
@@ -34,10 +34,10 @@ export class NavComponent implements OnInit {
     if (this.inputFromParent=='excel-etudiant'){this.excelEtudiant="active";}
     if (this.inputFromParent=='excel-prof'){this.excelProf="active";}
     if (this.inputFromParent=='projet'){this.projet="active";}
-    if (this.inputFromParent=='rapporteurs'){this.rapporteurs="active";}
+    if (this.inputFromParent=='rapporteurs'){this.dossier="active";}
     if (this.inputFromParent=='resp-form'){this.respForm="active";}
     if (this.inputFromParent=='upload-autorisation'){this.uploadAutorisation="active";}
-    if (this.inputFromParent=='upload-demande-autorisation'){this.uploadDemandeAutorisation="active";}
+    if (this.inputFromParent=='upload-demande-autorisation'){this.demandeAutorisation="active";}
     if (this.inputFromParent=='upload-memoire'){this.uploadMemoire="active";}
     if (this.inputFromParent=='upload-rapport'){this.uploadRapport="active";}
     if (this.inputFromParent=='changer-password'){this.home="active";}
@@ -47,7 +47,9 @@ export class NavComponent implements OnInit {
     if (this.inputFromParent=='autorisation'){this.dossier="active";}
     if (this.inputFromParent=='rapport'){this.dossier="active";}
     if (this.inputFromParent=='encadreurs'){this.encadreur="active";}
-
+    if (this.inputFromParent=='creer-jury'){this.dossier="active";}
+    if (this.inputFromParent=='jury'){this.dossier="active";}
+    if (this.inputFromParent=='liste-projets'){this.dossier="active";}
 
 
     this.authService.getEtudiant(this.idEtu).subscribe(data=>{

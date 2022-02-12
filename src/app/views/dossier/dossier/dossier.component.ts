@@ -14,7 +14,9 @@ export class DossierComponent implements OnInit {
   etudiant:any;
   projet:any;
   encadreurs:any;
+  rapporteurs:any;
   afficher=true;
+  show=true;
   
   constructor(
     private formBulder: FormBuilder,
@@ -33,16 +35,19 @@ export class DossierComponent implements OnInit {
     this.authService.getEtudiant(this.idEtudiant).subscribe(data=>{
       this.etudiant=data;
     })
-    
 
     this.authService.getProjetByIdEtudiant(this.idEtudiant).subscribe(data => {
       this.encadreurs=data.encadreur;
+      this.rapporteurs=data.rapporteur;
       this.projet = data;
     });
     
     this.authService.getEtudiant(this.idEtudiant).subscribe(data=>{
       if(data.projet==null){
         this.afficher=false
+      }
+      if(data.projet.jury==null){
+        this.show=false
       }
     })
   }

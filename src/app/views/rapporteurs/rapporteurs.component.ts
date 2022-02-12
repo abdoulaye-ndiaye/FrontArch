@@ -10,7 +10,7 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
   templateUrl: './rapporteurs.component.html'
 })
 export class RapporteursComponent implements OnInit {
-  inputText: string = 'ajout-rapporteur';
+  inputText: string = 'rapporteurs';
  
   profil = sessionStorage.getItem("profil");
   allProfesseurs:any;
@@ -23,6 +23,8 @@ export class RapporteursComponent implements OnInit {
   id: string;
   idProf: string;
   rapporteurs:any;
+  encadreurs:any;
+  etudiant:any;
 
   constructor(
     private formBulder : FormBuilder,
@@ -43,12 +45,14 @@ export class RapporteursComponent implements OnInit {
     
     this.route.queryParamMap
     .subscribe(params => { 
-      this.id = params.get('id') as string;
+      this.id = params.get('idProjet') as string;
     }) ;
 
     this.authService.getProjet(this.id).subscribe(data => {
       this.projet = data;
+      this.encadreurs=data.encadreur;
       this.rapporteurs=this.projet.rapporteur;
+      this.etudiant=data.etudiant;
       setTimeout(() => {
         $('#rapporteurs').DataTable({
           pagingType: 'full_numbers',

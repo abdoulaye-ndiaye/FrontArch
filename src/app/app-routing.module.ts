@@ -4,6 +4,7 @@ import { AuthGuard } from './services/auth.guard';
 import { AcceuilComponent } from './views/acceuil/acceuil.component';
 import { AjoutRapporteurComponent } from './views/ajout-rapporteur/ajout-rapporteur.component';
 import { ChangerPasswordComponent } from './views/changer-password/changer-password.component';
+import { DemandeAutorisationComponent } from './views/demande-autorisation/demande-autorisation/demande-autorisation.component';
 import { AutorisationComponent } from './views/dossier/autorisation/autorisation.component';
 import { DossierComponent } from './views/dossier/dossier/dossier.component';
 import { EtudiantsComponent } from './views/dossier/etudiants/etudiants.component';
@@ -245,6 +246,14 @@ const routes: Routes = [
     component: EncadreursComponent,
     data: {
       title: 'Encadreurs'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'demande-autorisation',
+    component: DemandeAutorisationComponent,
+    data: {
+      title: 'Demande Autorisation'
     },
     canActivate:[AuthGuard]
   },

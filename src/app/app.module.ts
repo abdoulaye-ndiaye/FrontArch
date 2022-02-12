@@ -43,6 +43,9 @@ import { CreerJuryComponent } from './views/jury/creer-jury/creer-jury.component
 import { JuryComponent } from './views/jury/jury/jury.component';
 import { ListeProjetsComponent } from './views/jury/liste-projets/liste-projets.component';
 import { EncadreursComponent } from './views/encadreurs/encadreurs.component';
+import { DemandeAutorisationComponent } from './views/demande-autorisation/demande-autorisation/demande-autorisation.component';
+
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   
@@ -77,7 +80,8 @@ import { EncadreursComponent } from './views/encadreurs/encadreurs.component';
     CreerJuryComponent,
     JuryComponent,
     ListeProjetsComponent,
-    EncadreursComponent
+    EncadreursComponent,
+    DemandeAutorisationComponent
   ],
   imports: [
     SweetAlert2Module.forRoot(),
@@ -97,7 +101,8 @@ import { EncadreursComponent } from './views/encadreurs/encadreurs.component';
     {
       provide: LocationStrategy,
       useClass: HashLocationStrategy
-    }
+    },
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

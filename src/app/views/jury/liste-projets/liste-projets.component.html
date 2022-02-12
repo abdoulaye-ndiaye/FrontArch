@@ -32,8 +32,8 @@
                           <tr *ngFor="let projet of allProjets">
                             <td>{{projet.etudiant.compte.prenom ?? "NA"}} {{projet.etudiant.compte.nom ?? "NA"}}</td>
                             <td>{{ projet.sujet ?? "NA"}}</td>
-                            <td>{{projet.encadreur.compte.prenom ?? "NA"}} {{projet.encadreur.compte.nom ?? "NA"}}</td>
-                            <td><a routerLink="/jury" class="btn btn-blue" [queryParams]="{id : projet._id}">Gèrer le Jury</a></td>
+                              <td> <ng-container *ngFor="let encadreur of projet.encadreur">{{encadreur.compte.prenom ?? "NA"}} {{encadreur.compte.nom ?? "NA"}},</ng-container></td>
+                            <td><a routerLink="/creer-jury" class="btn btn-blue" [queryParams]="{idProjet : projet._id}">Gèrer le Jury</a></td>
                           </tr>
                         </tbody>
                       </table>

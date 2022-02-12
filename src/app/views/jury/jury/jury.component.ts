@@ -1,5 +1,5 @@
-import { Component, OnInit, VERSION } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
@@ -11,114 +11,102 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class JuryComponent implements OnInit {
   inputText: string = 'jury';
   
-  profil = sessionStorage.getItem("profil");
-  allProfesseurs:any;
-  projet:any;
-  ajoutMembresJuryForm : FormGroup;
+  JuryForm: FormGroup;
+  allProfs: any;
   submitted = false;
-  returnUrl : string;
-  message = '';
-  hide = true;
-  id: string;
-  idProf: string;
-  membresJury:any;
   idJury:string;
+  idProjet:string;
+  projet:any;
+  encadreurs:any;
+  rapporteurs:any;
+  profs:any;
 
   constructor(
-    private formBulder : FormBuilder,
-    private route : ActivatedRoute,
-    private router : Router,
-    private authService : AuthService,
+    private formBulder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService,
   ) { }
+
+  get f() {
+    return this.JuryForm.controls;
+  }
+
   get value() {
-    return this.ajoutMembresJuryForm.controls;
-  };
+    return this.JuryForm.controls;
+  }
 
   ngOnInit(): void {
-    
-    this.ajoutMembresJuryForm = this.formBulder.group(
+    this.JuryForm = this.formBulder.group(
       {
-        idProf: [''],
+        batiment: ['', Validators.required],
+        salleSoutenance: ['',Validators.required],
+        numJury: ['', Validators.required],
+        president: ['',Validators.required],
       });
-    
-    this.route.queryParamMap
-    .subscribe(params => { 
-      this.id = params.get('id') as string;
-    }) ;
+      this.route.queryParamMap
+      .subscribe(params => {
+        console.log(params); 
+  
+        this.idProjet = params.get('idProjet') as string;
+      }) ;
 
-    this.authService.listeProfesseur().subscribe(data => {
-      this.allProfesseurs = data;
-      console.log(data)
-      setTimeout(() => {
-        $('#professeurs').DataTable({
-          pagingType: 'full_numbers',
-          pageLength: 5,
-          processing: true,
-          lengthMenu: [5, 10, 25],
-        });
-      }, 1);
-    }) ;
+      this.authService.getProjet(this.idProjet).subscribe(data=>{
+        this.projet=data;
+        this.encadreurs=data.encadreur;
+        this.rapporteurs=data.rapporteur;
+      })
 
-    this.authService.getProjet(this.id).subscribe(data => {
-      this.projet = data;
-      console.log(data)
-      this.idJury= data.projet.jury._id;
-      this.membresJury=this.projet.jury.membres;
-      console.log(this.membresJury)
-      setTimeout(() => {
-        $('#membresJury').DataTable({
-          pagingType: 'full_numbers',
-          pageLength: 5,
-          processing: true,
-          lengthMenu: [5, 10, 25],
-        });
-      }, 1);
-      
+    this.authService.getProfs().subscribe(data => {
+      this.allProfs = data;
     });
-    
-}
+  }
 
-    onSubmit(idProf:string) {
-      this.submitted =true;   
-     
-        this.authService.ajoutMembreJury(idProf, this.idJury)
-        .subscribe(
-          results=>{
-            console.log(results)
-            this.alertGood1();
-            this.refresh();
-          }
-        )
-       
-      }
-      suppression(idProf:string){
-        this.authService.supprimerMembreJury(idProf, this.idJury)
-        .subscribe(
-          results=>{
-            console.log(results)
-            this.alertGood2();
-            this.refresh();
-          }
-        )
-      }
+  onSubmit() {
+    this.submitted = true;
     
-      refresh(): void {
-        window.location.reload();
+    if (this.JuryForm.invalid) {
+      console.log("invalid form")
+
+    } else {
+    
+        this.authService
+          .updateJury(
+            this.projet.jury._id,
+            this.JuryForm.value.batiment,
+            this.JuryForm.value.salleSoutenance,
+            this.JuryForm.value.numJury,
+            this.JuryForm.value.president
+          )
+          .subscribe(
+            (resultat) => {
+              this.alertGood();
+              console.log({ resultat: resultat });
+              this.submitted = false;
+              this.JuryForm.reset();
+              this.router.navigate(['/dossier']);
+            },
+            (error) => {
+              console.log(error);
+              this.alertBad();
+            }
+          );
+        
+      } 
     }
-    alertGood1(){
+    alertGood(){
       Swal.fire({
         icon: 'success',
-        title: 'Membre du jury ajouté !',
+        title: 'Jury Créé modifié succès',
         showConfirmButton: false,
         timer: 1500
       })
     }
-    alertGood2(){
+    alertBad(){
       Swal.fire({
-        icon: 'success',
-        title: 'Membre du jury supprimé !',
-        showConfirmButton: false,
-        timer: 1500
+        icon: 'error',
+        title: 'Erreur...',
+        text: 'Echec de la modification du Jury !'
       })
     }
 }

@@ -236,6 +236,18 @@ export class AuthService {
         })
       );
   }
+  updateJury(idJury: string, batiment: string, salleSoutenance: string, numJury:string, presidentJury:string) {
+    return this.httpClient
+      .put<any>(`${environment.apiUrl}/jury/${idJury}`, {
+        batiment,salleSoutenance,numJury,presidentJury
+      })
+      .pipe(
+        map((userData) => {
+          return userData;
+        })
+      );
+  }
+
   ajoutMembreJury(idProf: string, idProjet: string) {
     return this.httpClient
       .post<any>(`${environment.apiUrl}/ajout-membre-jury`, { idProf, idProjet })
@@ -258,6 +270,8 @@ export class AuthService {
     batiment: string,
     salleSoutenance: string,
     numJury: any,
+    presidentJury:string,
+    idProjet:string
     
   ) {
     return this.httpClient
@@ -265,6 +279,8 @@ export class AuthService {
         batiment,
         salleSoutenance,
         numJury,
+        presidentJury,
+        idProjet
         
       })
       .pipe(

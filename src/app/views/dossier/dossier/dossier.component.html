@@ -32,7 +32,7 @@
                     </a>&nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
             </div>
-                    </div>
+             </div>
         <ng-container *ngIf="afficher==true">
             <div class="col-md-8">
                 <div class="card mb-3">
@@ -75,6 +75,22 @@
                        
                       </div>
                     </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Rapporteurs :</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        <ng-container *ngFor="let rapporteur of rapporteurs">
+                          {{rapporteur.compte.prenom }}  {{rapporteur.compte.nom }},
+                        </ng-container>
+                      </div>
+                      <div class="row justify-content-center">
+                        <div class="">
+                          &nbsp;&nbsp;&nbsp;&nbsp;<a routerLink="/rapporteurs" class="btn btn-blue" [queryParams]="{idProjet : projet._id}">Modifier</a>
+                        </div>
+                      </div>
+                    </div>
                     <div>
                     </div>
                   </div>
@@ -91,7 +107,87 @@
                
             </div>
         </ng-container>
-           
+        <ng-container *ngIf="show==true">
+          <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">NumJury :</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{projet.jury.numJury }}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Batiment :</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{projet.jury.batiment }}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Salle Soutenance :</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{projet.jury.salleSoutenance }}
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                   
+                    <div class="col-sm-12 text-secondary">
+                      
+                        <h5 align="center">Les membres du Jury de {{etudiant.compte.prenom}} {{etudiant.compte.nom}}</h5>
+                      
+                     <table class="table table-bordered table-striped table-hover">
+                       <thead>
+                        <th>Prenom</th>
+                        <th>Nom</th>
+                        <th>Role</th>
+                       </thead>
+                      <tbody>
+                        <tr>
+                          <td>{{projet.jury.presidentJury.compte.prenom}}</td>
+                          <td>{{projet.jury.presidentJury.compte.nom}}</td>
+                          <td>Président du Jury</td>
+                        </tr>
+                        <tr *ngFor="let encadreur of encadreurs">
+                          <td>{{encadreur.compte.prenom }}</td>
+                          <td>{{encadreur.compte.nom }}</td>
+                          <td>Encadrant</td>
+                        </tr>
+                        <tr *ngFor="let rapporteur of rapporteurs">
+                          <td>{{rapporteur.compte.prenom }}</td>
+                          <td>{{rapporteur.compte.nom }}</td>
+                          <td>Rapporteur</td>
+                        </tr>
+                      </tbody>
+                      
+                     </table>
+                    </div>
+                    <a routerLink="/jury" class="btn btn-blue " [queryParams]="{idProjet : projet._id}">Modifier le Jury</a>
+                  </div>
+                  <div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </ng-container>
+      <ng-container *ngIf="show==false">
+          <div class="col-md-8">
+              <div class="card mb-3">
+                  <div class="card-header justify-content-center">
+                      PAS ENCORE DE JURY &nbsp;&nbsp;&nbsp;&nbsp;<a routerLink="/creer-jury" class="btn btn-blue" [queryParams]="{idProjet : projet._id}">Créer Jury</a>
+                  </div>
+              </div>
+             
+          </div>
+      </ng-container>
             
         </div>
 

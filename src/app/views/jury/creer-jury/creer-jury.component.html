@@ -12,8 +12,8 @@
 <div class="row">
     <div class="col-lg-12">
         <form  method="post" class="card" [formGroup]="JuryForm" (ngSubmit)="onSubmit()">
-            <div class="card-header">
-                <h3 class="card-title">Création de Jury</h3>
+            <div class="card-header justify-content-center">
+                <h3 class="card-title">Création de Jury pour {{projet.etudiant.compte.prenom}} {{projet.etudiant.compte.nom}} Master {{projet.etudiant.classe}}</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -59,55 +59,29 @@
                     </div>
                     <div class="col-md-6 col-lg-6">
                         <div class="form-group">
-                            <label>Membre 1</label>
-                            <select aria-label="Default select example" formControlName="membre1" class="form-control" 
+                            <label>Président du jury</label>
+                            <select aria-label="Default select example" formControlName="president" class="form-control" 
                             [ngClass]="{
-                              'is-invalid': submitted && f['membre1'].errors
+                              'is-invalid': submitted && f['president'].errors
                             }" required>
                                 <option value="" selected disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                  -- Veuillez selectionner le membre 1 du jury --
+                                  -- Veuillez selectionner le Président du jury --
                                 </option>
-                                <option  *ngFor="let prof of allProfs" value="{{ prof._id }}">{{ prof.compte.prenom }} {{ prof.compte.nom }}</option>
+                                <ng-container *ngFor="let prof of allProfs" >
+                                  <option *ngIf="((!(encadreurs.includes(prof._id)))&&(!(rapporteurs.includes(prof._id))))" value="{{ prof._id }}">{{ prof.compte.prenom }} {{ prof.compte.nom }}</option>
+                                </ng-container>
                               </select>
-                              <div *ngIf="submitted && f['membre1'].errors" class="input-group mb-3 invalid-feedback">
-                                <div *ngIf="f['membre1'].errors['required']">
-                                  Veuillez choisir le membre num 1 du Jury
+                              <div *ngIf="submitted && f['president'].errors" class="input-group mb-3 invalid-feedback">
+                                <div *ngIf="f['president'].errors['required']">
+                                  Veuillez choisir le Président du Jury
                                 </div>
                               </div>
                         </div>
                         <div class="form-group">
-                            <label>Membre 2</label>
-                            <select aria-label="Default select example" formControlName="membre2" class="form-control" 
-                            [ngClass]="{
-                              'is-invalid': submitted && f['membre2'].errors
-                            }" required>
-                                <option value="" selected disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                  -- Veuillez selectionner le membre 2 du jury --
-                                </option>
-                                <option  *ngFor="let prof of allProfs" value="{{ prof._id }}">{{ prof.compte.prenom }} {{ prof.compte.nom }}</option>
-                              </select>
-                              <div *ngIf="submitted && f['membre2'].errors" class="input-group mb-3 invalid-feedback">
-                                <div *ngIf="f['membre2'].errors['required']">
-                                  Veuillez choisir le membre num 2 du Jury
-                                </div>
-                              </div>
+                           
                         </div>
                         <div class="form-group">
-                            <label>Membre 3</label>
-                            <select aria-label="Default select example" formControlName="membre3" class="form-control" 
-                            [ngClass]="{
-                              'is-invalid': submitted && f['membre3'].errors
-                            }" required>
-                                <option value="" selected disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                  -- Veuillez selectionner le membre 3 du jury --
-                                </option>
-                                <option  *ngFor="let prof of allProfs" value="{{ prof._id }}">{{ prof.compte.prenom }} {{ prof.compte.nom }}</option>
-                              </select>
-                              <div *ngIf="submitted && f['membre3'].errors" class="input-group mb-3 invalid-feedback">
-                                <div *ngIf="f['membre3'].errors['required']">
-                                  Veuillez choisir le membre num 3 du Jury
-                                </div>
-                              </div>
+                           
                         </div>
                         
                        
@@ -117,8 +91,8 @@
                 </div>
                 <br/>
                     <div class="col-lg-6 justify-content-center">
-                        <button type="submit" class="btn btn-block btn-blue">
-                         Créer le Jury
+                        <button type="submit" class="btn btn-block btn-blue" >
+                        <a routerLink="/dossier" [queryParams]="{idEtudiant : projet.etudiant._id}">Créer le Jury</a> 
                         </button>
                       </div>
             </div>

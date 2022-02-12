@@ -11,8 +11,7 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="card">
-            <div class="card-header">
-              <a routerLink="/ajout-rapporteur"><i class="fas fa-arrow-left fa-2x"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="card-header justify-content-center">
                Liste des Encadreurs de {{projet.etudiant.compte.prenom}} {{projet.etudiant.compte.nom}} ( {{projet.sujet}} )
             </div>
             <div class="card-body">
@@ -30,7 +29,7 @@
                       <tr *ngIf="(encadreurs.includes(professeur._id))">
                           <td>{{professeur.compte.nom}}</td>
                           <td>{{professeur.compte.prenom}}</td>
-                          <td><a > <button (click)="onSubmit(professeur._id)" class="btn btn-primary px-3" >Ajouter comme encadreur</button></a>
+                          <td><a > <button (click)="suppression(professeur._id)" class="btn btn-primary px-3" >Retirer l'encadreur</button></a>
                           </td>
                           <input type="hidden" formControlName="idProf" value="{{professeur.compte._id}}">
                       </tr>
