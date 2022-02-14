@@ -1,0 +1,84 @@
+<!-- Navbar-->
+<app-header></app-header>
+
+<app-nav [inputFromParent] = "inputText"></app-nav>
+
+<div class="app-content my-3 my-md-5">
+    <div class="side-app">
+      <br />
+    </div>
+    <div class="container justify-content-center">
+
+        <div class="row">
+            <div class="col-lg-8">
+                <form  method="post" class="card" [formGroup]="NoteForm" (ngSubmit)="onSubmit()">
+                    <div class="card-header justify-content-center">
+                        <h3 class="card-title">Attribution de Note</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="">
+                            <div class="form-group">
+                                <label>Etudiant</label>
+                                <select aria-label="Default select example" formControlName="etudiant" class="form-control" 
+                                (change)="onChangeProjet($event)" [ngClass]="{
+                                  'is-invalid': submitted && f['etudiant'].errors
+                                }" required>
+                                    <option  value="" selected disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                      -- Veuillez selectionner l'étudiant --
+                                    </option>
+                                    <ng-container *ngFor="let projet of allProjets" >
+                                      <option  *ngIf="((!projet.note)&&(projet.jury)&&(projet.jury.presidentJury._id==idProf))" value="{{ projet._id }}">{{ projet.etudiant.compte.prenom }} {{ projet.etudiant.compte.nom }}({{ projet.sujet }})</option>
+                                      <input  type="hidden" #idProjet formControlName="idProjet" value="{{projet._id}}">
+                                    </ng-container>
+                                  </select>
+                                  <div *ngIf="submitted && f['etudiant'].errors" class="input-group mb-3 invalid-feedback">
+                                    <div *ngIf="f['etudiant'].errors['required']">
+                                      Veuillez choisir un étudiant
+                                    </div>
+                                  </div>
+                            </div>
+                                <div class="form-group">
+                                    <label class="form-label">Valeur</label>
+                                    <input type="number" class="form-control" formControlName="valeur" name="example-text-input" placeholder="Donner la note"
+                                    [ngClass]="{
+                                        'is-invalid': submitted && f['valeur'].errors
+                                      }" required>
+                                      <div *ngIf="submitted && f['valeur'].errors" class="input-group mb-3 invalid-feedback">
+                                        <div *ngIf="f['valeur'].errors['required']">
+                                          Veuillez saisir la note
+                                        </div>
+                                      </div>
+                                </div>
+                              
+                                <div class="form-group">
+                                    <label class="form-label">Mention </label>
+                                    <input type="text" class="form-control" formControlName="mention" placeholder="Donner la mention " 
+                                    [ngClass]="{
+                                      'is-invalid': submitted && f['mention'].errors
+                                    }" required>
+                                    <div *ngIf="submitted && f['mention'].errors" class="input-group mb-3 invalid-feedback">
+                                      <div *ngIf="f['mention'].errors['required']">
+                                        Veuillez entrer une mention
+                                      </div>
+                                    </div>
+                                </div>
+                                
+                                <br/>
+                                <div class="col-lg-6 text-center">
+                                    <button *ngIf="test==false" type="submit" class="btn btn-block btn-blue">Enregistrer
+                                    </button>
+                                    <a *ngIf="test" class="btn btn-block btn-blue" style="color: white;" routerLink="/pv-soutenance" [queryParams]="{idProjet : idProjet}">Créer le PV</a> 
+                                </div>
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--footer-->
+<app-footer></app-footer>
+<!-- End Footer-->
+

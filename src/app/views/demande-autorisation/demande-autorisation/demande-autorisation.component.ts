@@ -19,6 +19,8 @@ export class DemandeAutorisationComponent implements OnInit{
   etudiant:any;
   date:string;
   classe:string;
+  save=false;
+
 
   signaturePad: SignaturePad;
   @ViewChild('canvas') canvasEl: ElementRef;
@@ -28,16 +30,20 @@ export class DemandeAutorisationComponent implements OnInit{
   @ViewChild('pdfTable') pdfTable: ElementRef;
   
   public async downloadAsPDF() {
-  const pdfTable = this.pdfTable.nativeElement;
-  var html = htmlToPdfmake(pdfTable.innerHTML);
-  console.log(html)
-  var documentDefinition = { 
-    content: [
-      html ]
-  };
-  
-  pdfMake.createPdf(documentDefinition).open(); 
-    this.clearPad();
+    if(this.save==true){
+      const pdfTable = this.pdfTable.nativeElement;
+      var html = htmlToPdfmake(pdfTable.innerHTML);
+      var documentDefinition = { 
+        content: [
+          html ]
+      };
+      
+      pdfMake.createPdf(documentDefinition).open(); 
+        this.clearPad();
+    }
+    else{
+      this.alertBad()
+    }
   }
 
   
@@ -82,9 +88,11 @@ export class DemandeAutorisationComponent implements OnInit{
   }
 
   savePad() {
+    this.save=true;
     const base64Data = this.signaturePad.toDataURL();
     this.signatureImg = base64Data;
     this.alertGood();
+    
   }
   refresh(): void {
     window.location.reload();
@@ -93,7 +101,15 @@ export class DemandeAutorisationComponent implements OnInit{
   alertGood(){
     Swal.fire({
       icon: 'success',
-      title: 'Signature bien enregistrée',
+      title: 'Enregistrée',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+  alertBad(){
+    Swal.fire({
+      icon: 'error',
+      title: "Veuillez enregistrer d'abord !!!",
       showConfirmButton: false,
       timer: 1500
     })

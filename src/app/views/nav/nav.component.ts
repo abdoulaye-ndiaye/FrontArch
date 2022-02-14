@@ -17,8 +17,9 @@ export class NavComponent implements OnInit {
 
 
   home="";ajoutRapporteur="";excelEtudiant="";excelProf="";projet="";rapporteurs="";respForm="";
-  uploadAutorisation="";demandeAutorisation="";uploadMemoire="";uploadRapport="";changerPassword="";
+  uploadCertificat="";demandeAutorisation="";uploadMemoire="";uploadRapport="";changerPassword="";
   dossier="";memoire="";pv="";encadreur="";jury="";uploadDemandeAutorisation="";pvSoutenance="";
+  note="";
 
   constructor(
     private router: Router,
@@ -36,13 +37,14 @@ export class NavComponent implements OnInit {
     if (this.inputFromParent=='projet'){this.projet="active";}
     if (this.inputFromParent=='rapporteurs'){this.dossier="active";}
     if (this.inputFromParent=='resp-form'){this.respForm="active";}
-    if (this.inputFromParent=='upload-autorisation'){this.uploadAutorisation="active";}
+    if (this.inputFromParent=='upload-certificat'){this.uploadCertificat="active";}
     if (this.inputFromParent=='demande-autorisation'){this.demandeAutorisation="active";}
     if (this.inputFromParent=='upload-memoire'){this.uploadMemoire="active";}
     if (this.inputFromParent=='upload-rapport'){this.uploadRapport="active";}
     if (this.inputFromParent=='changer-password'){this.home="active";}
     if (this.inputFromParent=='dossier'){this.dossier="active";}
     if (this.inputFromParent=='memoire'){this.dossier="active";}
+    if (this.inputFromParent=='d-autorisation'){this.dossier="active";}
     if (this.inputFromParent=='pv'){this.dossier="active";}
     if (this.inputFromParent=='autorisation'){this.dossier="active";}
     if (this.inputFromParent=='rapport'){this.dossier="active";}
@@ -52,13 +54,16 @@ export class NavComponent implements OnInit {
     if (this.inputFromParent=='liste-projets'){this.dossier="active";}
     if (this.inputFromParent=='upload-demande-autorisation'){this.uploadDemandeAutorisation="active";}
     if (this.inputFromParent=='pv-soutenance'){this.pvSoutenance="active";}
+    if (this.inputFromParent=='note'){this.pvSoutenance="active";}
 
-
-    this.authService.getEtudiant(this.idEtu).subscribe(data=>{
-      if(data.projet==null){
-        this.afficheProjet=false
-      }
-    })
+    if(this.profil=='ETUDIANT'){
+      this.authService.getEtudiant(this.idEtu).subscribe(data=>{
+        if(data.projet==null){
+          this.afficheProjet=false
+        }
+      })
+    }
+   
   }
 
   

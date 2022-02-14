@@ -17,6 +17,7 @@ export class DossierComponent implements OnInit {
   rapporteurs:any;
   afficher=true;
   show=true;
+  specialite=sessionStorage.getItem('specialite') as string;
   
   constructor(
     private formBulder: FormBuilder,
@@ -43,11 +44,15 @@ export class DossierComponent implements OnInit {
     });
     
     this.authService.getEtudiant(this.idEtudiant).subscribe(data=>{
+      console.log(data)
       if(data.projet==null){
         this.afficher=false
-      }
-      if(data.projet.jury==null){
         this.show=false
+      }
+      else if(data.projet){
+        if(data.projet.jury==null){
+          this.show=false
+        }
       }
     })
   }

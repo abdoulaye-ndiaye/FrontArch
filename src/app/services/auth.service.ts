@@ -25,6 +25,7 @@ export class AuthService {
           sessionStorage.setItem('dateNaissance', userData.dateNaissance);
           sessionStorage.setItem('lieuNaissance', userData.lieuNaissance);
           sessionStorage.setItem('idEtu', userData.idEtu);
+          sessionStorage.setItem('idProf', userData.idProf);
           sessionStorage.setItem('idProjet', userData.idProjet);
           sessionStorage.setItem('classe', userData.classe);
           sessionStorage.setItem('specialite', userData.specialite);
@@ -41,6 +42,7 @@ export class AuthService {
     prenom: string,
     profil: string,
     email: string,
+    code: string,
     password: string
   ) {
     return this.httpClient
@@ -53,6 +55,7 @@ export class AuthService {
         prenom,
         profil,
         email,
+        code,
         password,
       })
       .pipe(
@@ -116,6 +119,7 @@ export class AuthService {
     sessionStorage.removeItem('profil');
     sessionStorage.removeItem('id');
     sessionStorage.removeItem('idEtu');
+    sessionStorage.removeItem('idProf');
     sessionStorage.removeItem('idProjet');
     sessionStorage.removeItem('nom');
     sessionStorage.removeItem('prenom');
@@ -158,6 +162,9 @@ export class AuthService {
   }
   getProfs() {
     return this.httpClient.get<any>(`${environment.apiUrl}/professeur`);
+  }
+  getEtudiants() {
+    return this.httpClient.get<any>(`${environment.apiUrl}/etudiant`);
   }
   getProjetByIdEtudiant(idEtu: string) {
     return this.httpClient.get<any>(
@@ -280,6 +287,25 @@ export class AuthService {
         salleSoutenance,
         numJury,
         presidentJury,
+        idProjet
+        
+      })
+      .pipe(
+        map((userData) => {
+          return userData;
+        })
+      );
+  }
+  FormulaireNote(
+    valeur: string,
+    mention: string,
+    idProjet:string
+    
+  ) {
+    return this.httpClient
+      .post<any>(`${environment.apiUrl}/note`, {
+        valeur,
+        mention,
         idProjet
         
       })

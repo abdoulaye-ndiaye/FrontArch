@@ -6,9 +6,9 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-autorisation',
-  templateUrl: './autorisation.component.html'
+  templateUrl: './certificat.component.html'
 })
-export class AutorisationComponent implements OnInit {
+export class CertificatComponent implements OnInit {
   inputText: string = 'autorisation';
   submitted=false;
   idEtudiant:string;
@@ -30,7 +30,7 @@ export class AutorisationComponent implements OnInit {
     }) ;
     this.authService.getEtudiant(this.idEtudiant).subscribe(data=>{
       this.etudiant=data;
-      if(this.etudiant.projet.autorisation){
+      if(this.etudiant.projet.certificat){
         this.test=true;
       }
     })

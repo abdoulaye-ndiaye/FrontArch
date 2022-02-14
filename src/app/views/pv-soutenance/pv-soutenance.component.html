@@ -27,78 +27,102 @@
                     <div style="text-align:'center';font-weight: bold;" >
                     Master Professionnel SI/SR</div>
                     <div style="text-align:'center';font-weight: bold;" >
-                        ****************</div>
+                        ****************</div><br>
                 <div style="text-align:'justify'; margin: 10%;" >
                     <h3 style="text-align: center;"><u>PROCÈS-VERBAL DE SOUTENANCE</u></h3>
-                    N° étudiant :<br/>
-                    Nom :<br/>
-                    Prénom :<br/>
-                    Date de Naissance : Lieu de Naissance:<br>
-                    Téléphone :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email :
-                </div>
+                    N° étudiant :&nbsp;&nbsp; {{etudiant.code}}<br/>
+                    Nom :&nbsp;&nbsp; {{etudiant.compte.nom}}<br/>
+                    Prénom :&nbsp;&nbsp; {{etudiant.compte.prenom}}<br/>
+                    Date de Naissance :&nbsp;&nbsp; {{etudiant.dateNaissance}}<br>
+                    Lieu de Naissance :&nbsp;&nbsp; {{etudiant.lieuNaissance}}<br>
+                    Téléphone :&nbsp;&nbsp; {{etudiant.compte.numTel}}<br>
+                    Email :&nbsp;&nbsp; {{etudiant.compte.email}}<br>
+                </div><br><br>
                 <div style="text-align:'justify'; margin: 10%;">    
                     <h4 style="text-align: center;"><u>MEMOIRE SOUTENU</u></h4>
-                    <strong>Titre du mémoire : </strong><br><br>
-                    L'étudiant dont le nom prècéde, a soutenu le mémoire ci-dessus devant le jury composé de :
+                  <p>  <strong>Titre du mémoire :</strong> {{projet.sujet}}: {{projet.description}}</p> <br><br><br>
+                    L'étudiant dont le nom prècéde, a soutenu le mémoire ci-dessus devant le jury composé de :<br>
                     <table class="table table-bordered table-striped table-hover">
                         <thead>
                          <th>Prenom</th>
                          <th>Nom</th>
                          <th>Role</th>
+                         <th>Signatures</th>
                         </thead>
                        <tbody>
                          <tr>
-                           <td></td>
-                           <td></td>
+                           <td>{{projet.jury.presidentJury.compte.nom}}</td>
+                           <td>{{projet.jury.presidentJury.compte.prenom}}</td>
                            <td>Président du Jury</td>
+                           <td [rowSpan]="nb">
+                            <canvas width="250" height="{{nb*100}}" #canvas (touchstart)="startDrawing($event)" (touchmove)="moved($event)" style="background-color: var(--ion-color-success);border: 1px solid rgb(187, 178, 178);display: block;">
+                                <img width="200" height="{{nb*25}}" src='{{ signatureImg }}' />
+                            </canvas> 
+                           </td>
                          </tr>
-                         <tr >
-                           <td></td>
-                           <td></td>
-                           <td>Encadrant</td>
-                         </tr>
-                         <tr>
-                           <td></td>
-                           <td></td>
-                           <td>Rapporteur</td>
-                         </tr>
+                         <tr *ngFor="let encadreur of encadreurs">
+                            <td>{{encadreur.compte.prenom }}</td>
+                            <td>{{encadreur.compte.nom }}</td>
+                            <td>Encadrant</td>
+                          </tr>
+                          <tr *ngFor="let rapporteur of rapporteurs">
+                            <td>{{rapporteur.compte.prenom }}</td>
+                            <td>{{rapporteur.compte.nom }}</td>
+                            <td>Rapporteur</td>
+                          </tr>
                        </tbody>
-                       
                       </table>
-                </div><br>
+                </div><br><br><br><br><br><br><br><br><br><br>
                 <div style="text-align:'justify';margin: 10%;" >
                     Après avoir lu son rapport et écouté sa présentation, la décision du jury est :
                 </div><br>
                 <div style="text-align:'justify';margin: 15%;" >
-                    <strong>Note :</strong><br>
-                    <ul>
-                       <li>Le mémoire est archivable en l'état.</li>
-                       <li>Le mémoire est archivable aprés correction.</li>
-                        <li>Le mémoire est non archivable (niveau insuffisant).</li>
-                    </ul>
-                </div>
+                    <strong>Note : {{projet.note.valeur}}</strong><br>
+                    <strong>Mention : {{projet.note.mention}}</strong><br><br>
+                    <table>
+                       <tr>
+                           <td style="border: 1px solid; width: 10%;"> 
+                            <canvas width="50" height="30" #canvas2 (touchstart)="startDrawing($event)" (touchmove)="moved($event)" style="background-color: var(--ion-color-success);border: 1px solid rgb(187, 178, 178);display: block;">
+                            <img width="30" height="15" src='{{ signatureImg2 }}' />
+                             </canvas> 
+                        </td>
+                           <td>Le mémoire est archivable en l'état.</td>
+                       </tr><br>
+                       <tr>
+                        <td style="border: 1px solid; width: 10%;"> 
+                            <canvas width="50" height="30" #canvas3 (touchstart)="startDrawing($event)" (touchmove)="moved($event)" style="background-color: var(--ion-color-success);border: 1px solid rgb(187, 178, 178);display: block;">
+                            <img width="30" height="15" src='{{ signatureImg3 }}' />
+                             </canvas> 
+                        </td>
+                            <td>Le mémoire est archivable après correction.</td>
+                        </tr><br>
+                        <tr>
+                            <td style="border: 1px solid; width: 10%;"> 
+                                <canvas width="50" height="30" #canvas4 (touchstart)="startDrawing($event)" (touchmove)="moved($event)" style="background-color: var(--ion-color-success);border: 1px solid rgb(187, 178, 178);display: block;">
+                                <img width="30" height="15" src='{{ signatureImg4 }}' />
+                                 </canvas> 
+                            </td>
+                            <td>Le mémoire est non archivable (niveau insuffisant).</td>
+                        </tr>
+                    </table>
+                </div><br><br><br><br>
 
                 <div style="text-align:'right';margin: 10%;" >
                     Date de Soutencance<br> <strong >{{date}} </strong><br>
                 </div>
                 <div style="text-align:'left';margin: 10%;" >
-                    Le chef du département<br>
-                    <canvas #canvas (touchstart)="startDrawing($event)" (touchmove)="moved($event)" style="background-color: var(--ion-color-success);border: 1px solid rgb(187, 178, 178);display: block;">
-                        <img width="200" src='{{ signatureImg }}' />
-                    </canvas> <br>
+                    Le chef du département<br><br><br><br><br><br><br><br><br><br><br><br>
                 </div>
                 
                 <div style="text-align:'center';font-weight: normal;" >
                     UNIVERSITE ALIOUNE DIOP DE BAMBEY<br/>
          Tel:(+221)33 973 30 84 - Fax:(+221)33 973 30 93 - B.P:30-Bambey (Rép. Du Sénégal) <br/>
           Internet: www.uadb.edu.sn - Email: satic@uadb.edu.sn
-                </div>
-                
-           
+                </div><br>
             </div>
         </div>
-        <button class="btn btn-primary" (click)="clearPad()">Supprimer La signature</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button class="btn btn-primary"  color="secondary" (click)="savePad()">Enregistrer la signature</button><br/><br/>
+        <button class="btn btn-primary" (click)="clearPad()">Réinitialiser</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-primary"  color="secondary" (click)="savePad()">Enregistrer</button><br/><br/>
         <button class="btn btn-primary" (click)="downloadAsPDF();">Génèrer le PDF</button><br/><br/>
       </div>
 </div>

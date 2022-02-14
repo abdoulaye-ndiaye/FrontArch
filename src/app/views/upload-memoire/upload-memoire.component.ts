@@ -17,11 +17,11 @@ export class UploadMemoireComponent implements OnInit {
   imageUrl: any;
   submitted = false;
   returnUrl: string;
-  messageBad = '';
-  messageGood = '';
+ 
   hide = true;
   profil = sessionStorage.getItem('profil');
-  idProj = sessionStorage.getItem('idProjet') as string;
+  idProj:string;
+  idEtu:string;
 
   constructor(
     private router: Router,
@@ -30,14 +30,18 @@ export class UploadMemoireComponent implements OnInit {
     private route: ActivatedRoute,
     private uploadService: UploadService
   ) {
-    const etudiant = sessionStorage.getItem('id');
+    
   }
 
   ngOnInit(): void {
+    this.idEtu = sessionStorage.getItem('idEtu') as string;
     this.uploadMemoireForm = this.formBuilder.group({
       image: [null],
       hide: ['rien'],
     });
+    this.authService.getProjetByIdEtudiant(this.idEtu).subscribe(data=>{
+      this.idProj=data._id;
+    })
   }
 
   get value() {
@@ -63,15 +67,13 @@ export class UploadMemoireComponent implements OnInit {
 
   envoyer() {
     this.submitted = true;
-    this.messageBad='';
-    this.messageGood='';
+   
     if (this.uploadMemoireForm.invalid) {
       this.alertBad();
       return;
     } else {
       if (this.fileSelected) {
         this.wait();
-  
         const body = new FormData();
         body.append('fichier', this.fileSelected, this.fileSelected.name);
         body.append('idProj', this.idProj);

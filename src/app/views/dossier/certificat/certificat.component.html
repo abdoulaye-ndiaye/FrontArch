@@ -15,14 +15,14 @@
             <div class="card-header">
                 <a routerLink="/dossier" [queryParams]="{ idEtudiant: etudiant._id }"><i class="fas fa-arrow-left fa-2x"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="justify-content-center">
-                    Aurorisation de {{etudiant.compte.prenom}} {{etudiant.compte.nom}}  Master {{etudiant.classe}}
+                    Certificat d'inscription de {{etudiant.compte.prenom}} {{etudiant.compte.nom}}  Master {{etudiant.classe}}
                 </div>
             </div>
         
         <div *ngIf="test" class="container" align="center">
-            <a (click)="onSubmit(etudiant.projet.aurorisation.url)" class="justify-content-center">
+            <a (click)="onSubmit(etudiant.projet.certificat.url)" class="justify-content-center">
                 <img src="../../../../assets/icons/icons8-pdf-100.png"/>
-                <div class="justify-content-center">{{etudiant.projet.aurorisation.nomFichier}}</div>
+                <div class="justify-content-center">{{etudiant.projet.certificat.nomFichier}}</div>
             </a>&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
     </div>

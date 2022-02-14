@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { data } from 'jquery';
 
 @Component({
   selector: 'app-encadreurs',
@@ -21,7 +22,7 @@ export class EncadreursComponent implements OnInit {
   message = '';
   idEtu:string;
   hide = true;
-  idProjet= sessionStorage.getItem("idProjet") as string;
+  idProjet: string;
   idProf: string;
   encadreurs:any;
 
@@ -41,22 +42,27 @@ export class EncadreursComponent implements OnInit {
     this.ajoutEncadreurForm = this.formBulder.group(
       {
         idProf: [''],
-      });
+      }); 
+      this.authService.getProjetByIdEtudiant(this.idEtu).subscribe(data=>{
+        this.idProjet=data._id;
 
-      this.authService.getProjet(this.idProjet).subscribe(data => {
-        this.projet = data;
-        this.encadreurs=this.projet.encadreur;
-        setTimeout(() => {
-          $('#encadreurs').DataTable({
-            pagingType: 'full_numbers',
-            pageLength: 5,
-            processing: true,
-            lengthMenu: [5, 10, 25],
-          });
-        }, 1);
-        console.log(this.encadreurs)
-        
-      });
+        this.authService.getProjet(this.idProjet).subscribe(data => {
+          this.projet = data;
+          this.encadreurs=this.projet.encadreur;
+          setTimeout(() => {
+            $('#encadreurs').DataTable({
+              pagingType: 'full_numbers',
+              pageLength: 5,
+              processing: true,
+              lengthMenu: [5, 10, 25],
+            });
+          }, 1);
+          console.log(this.encadreurs)
+          
+        });
+      })
+
+      
 
     this.authService.listeProfesseur().subscribe(data => {
       this.allProfesseurs = data;

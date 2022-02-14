@@ -5,7 +5,8 @@ import { AcceuilComponent } from './views/acceuil/acceuil.component';
 import { AjoutRapporteurComponent } from './views/ajout-rapporteur/ajout-rapporteur.component';
 import { ChangerPasswordComponent } from './views/changer-password/changer-password.component';
 import { DemandeAutorisationComponent } from './views/demande-autorisation/demande-autorisation/demande-autorisation.component';
-import { AutorisationComponent } from './views/dossier/autorisation/autorisation.component';
+import { CertificatComponent } from './views/dossier/certificat/certificat.component';
+import { DAutorisationComponent } from './views/dossier/d-autorisation/d-autorisation.component';
 import { DossierComponent } from './views/dossier/dossier/dossier.component';
 import { EtudiantsComponent } from './views/dossier/etudiants/etudiants.component';
 import { MemoireComponent } from './views/dossier/memoire/memoire.component';
@@ -19,6 +20,7 @@ import { CreerJuryComponent } from './views/jury/creer-jury/creer-jury.component
 import { JuryComponent } from './views/jury/jury/jury.component';
 import { ListeProjetsComponent } from './views/jury/liste-projets/liste-projets.component';
 import { LoginComponent } from './views/login/login.component';
+import { NoteComponent } from './views/note/note.component';
 import { ProjetComponent } from './views/projet/projet.component';
 import { PvSoutenanceComponent } from './views/pv-soutenance/pv-soutenance.component';
 import { RapporteursComponent } from './views/rapporteurs/rapporteurs.component';
@@ -26,7 +28,7 @@ import { RegisterComponent } from './views/register/register.component';
 import { CreerProjetComponent } from './views/resp-form/creer-projet/creer-projet.component';
 import { ListeEtudiantsComponent } from './views/resp-form/liste-etudiants/liste-etudiants.component';
 import { ModifProjetComponent } from './views/resp-form/modif-projet/modif-projet.component';
-import { UploadAutorisationComponent } from './views/upload-autorisation/upload-autorisation.component';
+import { UploadCertificatComponent } from './views/upload-certificat/upload-certificat.component';
 import { UploadDemandeAutorisationComponent } from './views/upload-demande-autorisation/upload-demande-autorisation.component';
 import { UploadMemoireComponent } from './views/upload-memoire/upload-memoire.component';
 import { UploadRapportComponent } from './views/upload-rapport/upload-rapport.component';
@@ -99,10 +101,10 @@ const routes: Routes = [
     canActivate:[AuthGuard]
   },
   {
-    path: 'upload-autorisation',
-    component: UploadAutorisationComponent,
+    path: 'upload-certificat',
+    component: UploadCertificatComponent,
     data: {
-      title: 'Upload-Autorisation'
+      title: 'Upload-Certificat'
     },
     canActivate:[AuthGuard]
   },
@@ -187,6 +189,14 @@ const routes: Routes = [
     canActivate:[AuthGuard]
   },
   {
+    path: 'd-autorisation',
+    component: DAutorisationComponent,
+    data: {
+      title: 'Demande Autorisation Etudiant'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
     path: 'pv',
     component: PvComponent,
     data: {
@@ -203,10 +213,10 @@ const routes: Routes = [
     canActivate:[AuthGuard]
   },
   {
-    path: 'autorisation',
-    component: AutorisationComponent,
+    path: 'certificat',
+    component: CertificatComponent,
     data: {
-      title: 'Autorisation Etudiant'
+      title: 'Certificat inscription'
     },
     canActivate:[AuthGuard]
   },
@@ -263,6 +273,14 @@ const routes: Routes = [
     component: PvSoutenanceComponent,
     data: {
       title: 'PV Soutenance'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'note',
+    component: NoteComponent,
+    data: {
+      title: 'Note Soutenance'
     },
     canActivate:[AuthGuard]
   },

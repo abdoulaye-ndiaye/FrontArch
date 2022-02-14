@@ -1,27 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+
+import { UploadService } from '../../services/upload-certificat/upload.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
-import { UploadService } from '../../services/upload-demande-autorisation/upload.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
-@Component({
-  selector: 'app-upload-demande-autorisation',
-  templateUrl: './upload-demande-autorisation.component.html'
-})
-export class UploadDemandeAutorisationComponent implements OnInit {
 
-  inputText: string = 'upload-demande-autorisation';
+@Component({
+  selector: 'app-upload-certificat',
+  templateUrl: './upload-certificat.component.html'
+})
+export class UploadCertificatComponent implements OnInit {
+  inputText: string = 'upload-certificat';
   b = false;
-  uploadDemandeAutorisationForm: FormGroup;
+  uploadCertificatForm: FormGroup;
   fileSelected: File;
   imageUrl: any;
   submitted = false;
   returnUrl: string;
-  message = '';
+ 
   hide = true;
   profil = sessionStorage.getItem("profil");
-  idProj:string;
+  idProjet: string;
   idEtu:string;
 
   constructor(
@@ -30,27 +31,26 @@ export class UploadDemandeAutorisationComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private uploadService: UploadService,
-  ) {
+  ) { 
+   
   }
 
-
   ngOnInit(): void {
+    this.idEtu= sessionStorage.getItem("idEtu") as string;
 
-    this.uploadDemandeAutorisationForm = this.formBuilder.group({
+    this.uploadCertificatForm = this.formBuilder.group({
       image: [null],
       hide: ['rien']
     })
-    this.idEtu = sessionStorage.getItem('idEtu') as string;
-  
+
     this.authService.getProjetByIdEtudiant(this.idEtu).subscribe(data=>{
-      this.idProj=data._id;
+      this.idProjet=data._id;
     })
-
-
   }
+    
 
   get value() {
-    return this.uploadDemandeAutorisationForm.controls;
+    return this.uploadCertificatForm.controls;
   }
 
   // Onchange
@@ -73,29 +73,33 @@ export class UploadDemandeAutorisationComponent implements OnInit {
 
   envoyer() {
     this.submitted = true;
-    console.log("Bienvenue")
-    if (this.uploadDemandeAutorisationForm.invalid) {
+  
+    if (this.uploadCertificatForm.invalid) {
       this.alertBad();
       return;
     } else {
       if (this.fileSelected) {
         this.wait();
+  
         const body = new FormData();
-        body.append('fichier', this.fileSelected, this.fileSelected.name)
-        body.append('idProj', this.idProj);
-        this.uploadService.upload(body).subscribe(result => {
-          console.log(result);
-          Swal.close();
-          this.alertGood();
-          this.uploadDemandeAutorisationForm.reset()
-        }, error => {
+        body.append('fichier', this.fileSelected, this.fileSelected.name);
+        body.append('idProj', this.idProjet);
 
-        });
+        this.uploadService.upload(body).subscribe(
+          (result) => {
+            console.log(result);
+            Swal.close();
+            this.alertGood();
+            this.uploadCertificatForm.reset();
+          },
+          (error) => {}
+        );
       } else {
         this.alertBad();
       }
     }
   }
+
 
   refresh(): void {
     window.location.reload();
@@ -122,4 +126,5 @@ export class UploadDemandeAutorisationComponent implements OnInit {
     });
     Swal.showLoading();
   }
+
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 import { UploadService } from '../../services/upload-rapport/upload.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -20,7 +21,8 @@ export class UploadRapportComponent implements OnInit {
   message = '';
   hide = true;
   profil = sessionStorage.getItem("profil");
-
+  idProj:string;
+  idEtu:string;
 
   constructor(
     private router: Router,
@@ -29,7 +31,6 @@ export class UploadRapportComponent implements OnInit {
     private route: ActivatedRoute,
     private uploadService: UploadService,
   ) { 
-    const etudiant = sessionStorage.getItem("id");
   }
 
   ngOnInit(): void {
@@ -38,7 +39,11 @@ export class UploadRapportComponent implements OnInit {
       image: [null],
       hide: ['rien']
     })
-
+    this.idEtu = sessionStorage.getItem('idEtu') as string;
+   
+    this.authService.getProjetByIdEtudiant(this.idEtu).subscribe(data=>{
+      this.idProj=data._id;
+    })
 
   }
 
@@ -68,22 +73,24 @@ export class UploadRapportComponent implements OnInit {
     this.submitted = true;
     console.log("Bienvenue")
     if (this.uploadRapportForm.invalid) {
-      console.log("Erreur d'upload")
+      this.alertBad();
       return;
     } else {
       if (this.fileSelected) {
+        this.wait();
         const body = new FormData();
         body.append('fichier', this.fileSelected, this.fileSelected.name)
-        body.append('idProj', '603c100c99ca52503893c721');
+        body.append('idProj', this.idProj);
         this.uploadService.upload(body).subscribe(result => {
           console.log(result);
-          this.message = "Upload Réussie !";
+          Swal.close();
+          this.alertGood();
           this.uploadRapportForm.reset();
         }, error => {
 
         });
       } else {
-        console.log("Rien ne va !")
+        this.alertBad();
       }
     }
   }
@@ -91,6 +98,28 @@ export class UploadRapportComponent implements OnInit {
   refresh(): void {
     window.location.reload();
 
+  }
+  alertGood(){
+    Swal.fire({
+      icon: 'success',
+      title: 'Upload réussi !',
+      showConfirmButton: false,
+      timer: 1000
+    })
+  }
+  alertBad(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Erreur...',
+      text: 'Aucun Fichier choisi !'
+    })
+  }
+  wait(){
+    Swal.fire({
+      icon: 'info',
+      title: 'Upload en cours !'
+    });
+    Swal.showLoading();
   }
 
 }

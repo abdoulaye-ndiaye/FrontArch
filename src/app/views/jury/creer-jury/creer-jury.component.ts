@@ -19,6 +19,7 @@ export class CreerJuryComponent implements OnInit {
   encadreurs:any;
   rapporteurs:any;
   profs:any;
+  test=false;
 
   constructor(
     private formBulder: FormBuilder,
@@ -81,7 +82,7 @@ export class CreerJuryComponent implements OnInit {
               console.log({ resultat: resultat });
               this.idJury=resultat._id;
               this.submitted = false;
-              this.JuryForm.reset();
+              this.test=true;
             },
             (error) => {
               console.log(error);

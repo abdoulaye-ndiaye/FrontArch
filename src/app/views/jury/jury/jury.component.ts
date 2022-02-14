@@ -84,7 +84,7 @@ export class JuryComponent implements OnInit {
               console.log({ resultat: resultat });
               this.submitted = false;
               this.JuryForm.reset();
-              this.router.navigate(['/dossier']);
+              this.refresh()
             },
             (error) => {
               console.log(error);
@@ -94,10 +94,13 @@ export class JuryComponent implements OnInit {
         
       } 
     }
+    refresh(): void {
+      window.location.reload();
+  }
     alertGood(){
       Swal.fire({
         icon: 'success',
-        title: 'Jury Créé modifié succès',
+        title: 'Jury modifié avec succès',
         showConfirmButton: false,
         timer: 1500
       })

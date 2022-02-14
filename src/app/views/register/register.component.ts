@@ -33,12 +33,12 @@ export class RegisterComponent implements OnInit {
 
 
   ngOnInit(): void {
-   
+    if(this.profil=='ETUDIANT'){
       this.RegisterForm = this.formBulder.group(
         {
           profil: ['', Validators.required],
           classe: [''],
-          specialite: [''],
+          code:[''],
           dateNaissance: [''],
           lieuNaissance: [''],
           numTel: ['', [Validators.required, Validators.maxLength(9)]],
@@ -50,6 +50,23 @@ export class RegisterComponent implements OnInit {
         },
         { validator: MustMatch('password', 'confirmPassword') }
       );
+     }
+     else if(this.profil=='PROF'){
+      this.RegisterForm = this.formBulder.group(
+        {
+          profil: ['', Validators.required],
+          specialite: [''],
+          numTel: ['', [Validators.required, Validators.maxLength(9)]],
+          nom: ['', Validators.required],
+          prenom: ['', Validators.required],
+          email: ['', [Validators.required, Validators.email]],
+          password: ['', [Validators.required, Validators.minLength(6)]],
+          confirmPassword: ['', Validators.required],
+        },
+        { validator: MustMatch('password', 'confirmPassword') }
+      );
+     }
+    
    
   }
 
@@ -58,7 +75,7 @@ export class RegisterComponent implements OnInit {
 }
 
   ngAfterViewInit() {
-    //script
+   
   }
 
   get f() {
@@ -79,7 +96,7 @@ export class RegisterComponent implements OnInit {
         this.RegisterForm.value.email,
         this.RegisterForm.value.password
       );
-      this.RegisterForm.value.profil= this.profil;
+      
       if (this.RegisterForm.value.profil == EnumProfil.ETUDIANT) {
 
         this.authService
@@ -92,6 +109,7 @@ export class RegisterComponent implements OnInit {
             this.RegisterForm.value.prenom,
             EnumProfil.ETUDIANT,
             this.RegisterForm.value.email,
+            this.RegisterForm.value.code,
             this.RegisterForm.value.password
           )
           .subscribe(
@@ -106,7 +124,8 @@ export class RegisterComponent implements OnInit {
             }
           );
         this.alertGood();
-      } else {
+      } 
+      else if(this.RegisterForm.value.profil == EnumProfil.PROF) {
         this.authService
           .RegisterProf(
             this.RegisterForm.value.specialite,

@@ -12,8 +12,9 @@
 <div class="row">
     <div class="col-lg-12">
         <form  method="post" class="card" [formGroup]="JuryForm" (ngSubmit)="onSubmit()">
-            <div class="card-header justify-content-center">
-                <h3 class="card-title">Création de Jury pour {{projet.etudiant.compte.prenom}} {{projet.etudiant.compte.nom}} Master {{projet.etudiant.classe}}</h3>
+            <div class="card-header">
+              <a routerLink="/dossier" [queryParams]="{idEtudiant : projet.etudiant._id}"><i class="fas fa-arrow-left fa-2x"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <h3 class="card-title">Création de Jury pour {{projet.etudiant.compte.prenom}} {{projet.etudiant.compte.nom}} Master {{projet.etudiant.classe}}</h3>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -91,8 +92,7 @@
                 </div>
                 <br/>
                     <div class="col-lg-6 justify-content-center">
-                        <button type="submit" class="btn btn-block btn-blue" >
-                        <a routerLink="/dossier" [queryParams]="{idEtudiant : projet.etudiant._id}">Créer le Jury</a> 
+                        <button *ngIf="test" type="submit" class="btn btn-block btn-blue" >Créer le Jury
                         </button>
                       </div>
             </div>

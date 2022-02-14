@@ -71,23 +71,34 @@
   <div class=" container justify-content-center">
     <div class="row">
       <div class="col-md-6 ">
-        <form [formGroup]='uploadAutorisationForm' (ngSubmit)='envoyer()' enctype="multipart/form-data">
+        <form
+          [formGroup]="uploadCertificatForm"
+          (ngSubmit)="envoyer()"
+          enctype="multipart/form-data"
+        >
           <div class="form-group files color">
-            <h2>Charger votre Autorisation </h2>
-            <input type="file" formControlName="image" class="form-control" (change)="onChange($event)">
+            <h2>Charger votre Certificat d'inscription</h2>
+            <input
+              type="file"
+              formControlName="image"
+              class="form-control"
+              (change)="onChange($event)"
+            />
           </div>
           <div class="form-group files color" hidden>
-            <h2>Hidden </h2>
-            <input type="text" formControlName="hide" class="form-control">
+            <h2>Hidden</h2>
+            <input type="text" formControlName="hide" class="form-control" />
           </div>
           <div>
-            <button type="submit" class="btn btn-primary px-4" (click)="refresh()">Soumettre</button>
+            <button type="submit" class="btn btn-primary px-4">
+              Soumettre
+            </button>
           </div>
         </form>
       </div>
 
     </div>
-    <p style="color: red;"><br /> {{ message }}</p>
+   
 
   </div>
 </div>

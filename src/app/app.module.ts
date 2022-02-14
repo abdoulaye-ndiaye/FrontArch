@@ -23,7 +23,7 @@ import { UploadDemandeAutorisationComponent } from './views/upload-demande-autor
 import { HeaderComponent } from './views/header/header.component';
 import { FooterComponent } from './views/footer/footer.component';
 import { UploadRapportComponent } from './views/upload-rapport/upload-rapport.component';
-import { UploadAutorisationComponent } from './views/upload-autorisation/upload-autorisation.component';
+import { UploadCertificatComponent } from './views/upload-certificat/upload-certificat.component';
 import { AjoutRapporteurComponent } from './views/ajout-rapporteur/ajout-rapporteur.component';
 import { RapporteursComponent } from './views/rapporteurs/rapporteurs.component';
 import { CreerProjetComponent } from './views/resp-form/creer-projet/creer-projet.component';
@@ -37,7 +37,7 @@ import { EtudiantsComponent } from './views/dossier/etudiants/etudiants.componen
 import { MemoireComponent } from './views/dossier/memoire/memoire.component';
 import { PvComponent } from './views/dossier/pv/pv.component';
 import { RapportComponent } from './views/dossier/rapport/rapport.component';
-import { AutorisationComponent } from './views/dossier/autorisation/autorisation.component';
+import { CertificatComponent } from './views/dossier/certificat/certificat.component';
 import { ModifProjetComponent } from './views/resp-form/modif-projet/modif-projet.component';
 import { CreerJuryComponent } from './views/jury/creer-jury/creer-jury.component';
 import { JuryComponent } from './views/jury/jury/jury.component';
@@ -47,6 +47,8 @@ import { DemandeAutorisationComponent } from './views/demande-autorisation/deman
 
 import { DatePipe } from '@angular/common';
 import { PvSoutenanceComponent } from './views/pv-soutenance/pv-soutenance.component';
+import { NoteComponent } from './views/note/note.component';
+import { DAutorisationComponent } from './views/dossier/d-autorisation/d-autorisation.component';
 
 @NgModule({
   
@@ -62,7 +64,7 @@ import { PvSoutenanceComponent } from './views/pv-soutenance/pv-soutenance.compo
     HeaderComponent,
     FooterComponent,
     UploadRapportComponent,
-    UploadAutorisationComponent,
+    UploadCertificatComponent,
     AjoutRapporteurComponent,
     RapporteursComponent,
     CreerProjetComponent,
@@ -76,14 +78,16 @@ import { PvSoutenanceComponent } from './views/pv-soutenance/pv-soutenance.compo
     MemoireComponent,
     PvComponent,
     RapportComponent,
-    AutorisationComponent,
+    CertificatComponent,
     ModifProjetComponent,
     CreerJuryComponent,
     JuryComponent,
     ListeProjetsComponent,
     EncadreursComponent,
     DemandeAutorisationComponent,
-    PvSoutenanceComponent
+    PvSoutenanceComponent,
+    NoteComponent,
+    DAutorisationComponent
   ],
   imports: [
     SweetAlert2Module.forRoot(),
