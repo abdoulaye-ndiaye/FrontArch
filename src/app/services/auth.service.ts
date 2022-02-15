@@ -154,6 +154,17 @@ export class AuthService {
       `${environment.apiUrl}/projet/${idProjet}`
     );
   }
+  verifEmail(email: string) {
+    return this.httpClient
+      .post<any>(`${environment.apiUrl}/compte/verif`, {
+        email
+      })
+      .pipe(
+        map((userData) => {
+          return userData;
+        })
+      );
+  }
   getProjets() {
     return this.httpClient.get<any>(`${environment.apiUrl}/projet`);
   }

@@ -69,6 +69,12 @@ export class RegisterComponent implements OnInit {
       console.log("invalid form")
     } 
     else {
+      this.authService.verifEmail(this.RegisterForm.value.email).subscribe(
+        (data)=>{
+          this.alertBadEmail();
+        this.f['email'].reset()
+      },
+      (error)=>{
         this.authService
           .RegisterEtudiant(
             this.RegisterForm.value.classe,
@@ -93,13 +99,20 @@ export class RegisterComponent implements OnInit {
             this.alertBad();
             }
           );
-     
+      })
     }
   }
 
   reset(){
     this.submitted=false;
     this.RegisterForm.reset();
+  }
+  alertBadEmail(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Email déja utilisé !',
+      
+    })
   }
   alertGood(){
     Swal.fire({

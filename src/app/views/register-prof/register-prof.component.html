@@ -88,7 +88,7 @@
                       <label for="inputNumTel">Numèro de Télèphone</label>
                       <input type="text" formControlName="numTel" class="form-control" placeholder="7[0-6-5-7-8]0000000"
                         autocomplete="numTel" [ngClass]="{
-                          'is-invalid': submitted && f['numTel'].errors
+                          'is-invalid': submitted && f['numTel'].errors 
                         }" required />
                       <div *ngIf="submitted && f['numTel'] && f['numTel'].errors" class="input-group mb-3 invalid-feedback">
                         <div *ngIf="f['numTel'].errors['required']">

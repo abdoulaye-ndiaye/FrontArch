@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { MustMatch } from '../../services/_helpers/must-match.validator';
 import { style } from '@angular/animations';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { data } from 'jquery';
 
 @Component({
   selector: 'app-register-prof',
@@ -14,10 +15,11 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 export class RegisterProfComponent implements OnInit {
   inputText='register-prof';
   RegisterForm: FormGroup;
-
+  emails:any;
   submitted = false;
   returnUrl: string;
   hide = true;
+
   constructor(
     private formBulder: FormBuilder,
     private route: ActivatedRoute,
@@ -60,40 +62,57 @@ export class RegisterProfComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
-    if (this.RegisterForm.invalid) {
-      console.log("invalid form")
-    } 
-    else {
-        this.authService
-          .RegisterProf(
-            this.RegisterForm.value.specialite,
-            this.RegisterForm.value.numTel,
-            this.RegisterForm.value.nom,
-            this.RegisterForm.value.prenom,
-            'PROF',
-            this.RegisterForm.value.email,
-            this.RegisterForm.value.password
-          )
-          .subscribe(
-            (resultat) => {
-              this.submitted = false;
-              this.RegisterForm.reset();
-              this.alertGood();
+    
+      if (this.RegisterForm.invalid) {
+        console.log("invalid form")
+          } 
+          else {
+            this.authService.verifEmail(this.RegisterForm.value.email).subscribe(
+              (data)=>{
+                this.alertBadEmail();
+              this.f['email'].reset()
             },
-            (error) => {
-              console.log(error);
-            this.alertBad();
-            }
-          );
-     
+            (error)=>{
+              this.authService
+                .RegisterProf(
+                  this.RegisterForm.value.specialite,
+                  this.RegisterForm.value.numTel,
+                  this.RegisterForm.value.nom,
+                  this.RegisterForm.value.prenom,
+                  'PROF',
+                  this.RegisterForm.value.email,
+                  this.RegisterForm.value.password
+                )
+                .subscribe(
+                  (resultat) => {
+                    this.submitted = false;
+                    this.RegisterForm.reset();
+                    this.alertGood();
+                  },
+                  (error) => {
+                    console.log(error);
+                  this.alertBad();
+                  }
+                );
+          
+            })
     }
+    
+
+    
   }
   Reset(){
     this.submitted=false;
     this.RegisterForm.reset();
   }
 
+  alertBadEmail(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Email déja utilisé !',
+      
+    })
+  }
   alertGood(){
     Swal.fire({
       icon: 'success',
