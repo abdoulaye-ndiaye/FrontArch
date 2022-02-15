@@ -112,26 +112,6 @@ export class AuthService {
     console.log(!(user === null));
     return !(user === null);
   }
-  isProfilEtu() {
-    let etu = sessionStorage.getItem('profil');
-    console.log(!(etu !== 'ETUDIANT'));
-    return !(etu !== 'ETUDIANT');
-  }
-  isProfilProf() {
-    let prof = sessionStorage.getItem('profil');
-    console.log(!(prof !== 'PROF'));
-    return !(prof !== 'PROF');
-  }
-  isSpecialiteRespForm() {
-    let resp = sessionStorage.getItem('specialite');
-    console.log(!(resp !== 'RESP-FORM'));
-    return !(resp !== 'RESP-FORM');
-  }
-  isSpecialiteDirecteur() {
-    let directeur = sessionStorage.getItem('specialite');
-    console.log(!(directeur !== 'DIRECTEUR'));
-    return !(directeur !== 'DIRECTEUR');
-  }
 
   logOut() {
     sessionStorage.removeItem('token');

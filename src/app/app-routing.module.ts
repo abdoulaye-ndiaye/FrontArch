@@ -61,6 +61,7 @@ const routes: Routes = [
     component: RegisterComponent,
     data: {
       title: 'Register',
+      excepteRole: 'ADMIN',
       expectedProfil: 'ADMIN'
     },
     canActivate: [AuthGuard]
@@ -96,6 +97,7 @@ const routes: Routes = [
     component: UploadDecisionPfeComponent,
     data: {
       title: 'Upload-Decision-Pfe',
+      expectedRole: 'DIRECTEUR',
       expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
@@ -132,6 +134,7 @@ const routes: Routes = [
     component: AjoutRapporteurComponent,
     data: {
       title: 'Ajout-Rapporteur',
+      expectedRole: 'RESP-FORM',
       expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
@@ -141,6 +144,7 @@ const routes: Routes = [
     component: RapporteursComponent,
     data: {
       title: 'Rapporteurs',
+      expectedRole: 'RESP-FORM',
       expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
@@ -159,6 +163,7 @@ const routes: Routes = [
     component: ListeEtudiantsComponent,
     data: {
       title: 'Liste Etudiants',
+      expectedRole: 'RESP-FORM',
       expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
@@ -168,7 +173,9 @@ const routes: Routes = [
     component: EtudiantsComponent,
     data: {
       title: 'Etudiants',
-      expectedProfil: 'PROF'
+      expectedProfil: 'PROF',
+      expectedRole: 'RESP-FORM',
+      expectedRole2: 'DIRECTEUR'
     },
     canActivate:[AuthGuard]
   },
@@ -203,7 +210,9 @@ const routes: Routes = [
     component: DossierComponent,
     data: {
       title: 'Dossiers Etudiants',
-      expectedProfil: 'PROF'
+      expectedProfil: 'PROF',
+      expectedRole: 'RESP-FORM',
+      expectedRole2: 'DIRECTEUR'
     },
     canActivate:[AuthGuard]
   },
@@ -212,7 +221,9 @@ const routes: Routes = [
     component: MemoireComponent,
     data: {
       title: 'Memoire Etudiant',
-      expectedProfil: 'PROF'
+      expectedProfil: 'PROF',
+      expectedRole: 'RESP-FORM',
+      expectedRole2: 'DIRECTEUR'
     },
     canActivate:[AuthGuard]
   },
@@ -221,7 +232,9 @@ const routes: Routes = [
     component: DAutorisationComponent,
     data: {
       title: 'Demande Autorisation Etudiant',
-      expectedProfil: 'PROF'
+      expectedProfil: 'PROF',
+      expectedRole: 'RESP-FORM',
+      expectedRole2: 'DIRECTEUR'
     },
     canActivate:[AuthGuard]
   },
@@ -230,7 +243,9 @@ const routes: Routes = [
     component: DComPfeComponent,
     data: {
       title: 'Décision des Cmomission Pfe Etudiant',
-      expectedProfil: 'PROF'
+      expectedProfil: 'PROF',
+      expectedRole: 'RESP-FORM',
+      expectedRole2: 'DIRECTEUR'
     },
     canActivate:[AuthGuard]
   },
@@ -239,7 +254,8 @@ const routes: Routes = [
     component: DesComPfeComponent,
     data: {
       title: 'Décision Commission des PFE',
-      expectedProfil: 'PROF'
+      expectedProfil: 'PROF',
+      expectedRole: 'RESP-FORM'
     },
     canActivate:[AuthGuard]
   },
@@ -248,7 +264,9 @@ const routes: Routes = [
     component: PvComponent,
     data: {
       title: 'PVs Etudiant',
-      expectedProfil: 'PROF'
+      expectedProfil: 'PROF',
+      expectedRole: 'RESP-FORM',
+      expectedRole2: 'DIRECTEUR'
     },
     canActivate:[AuthGuard]
   },
@@ -257,7 +275,9 @@ const routes: Routes = [
     component: RapportComponent,
     data: {
       title: 'Rapports Etudiant',
-      expectedProfil: 'PROF'
+      expectedProfil: 'PROF',
+      expectedRole: 'RESP-FORM',
+      expectedRole2: 'DIRECTEUR'
     },
     canActivate:[AuthGuard]
   },
@@ -266,7 +286,9 @@ const routes: Routes = [
     component: CertificatComponent,
     data: {
       title: 'Certificat inscription',
-      expectedProfil: 'PROF'
+      expectedProfil: 'PROF',
+      expectedRole: 'RESP-FORM',
+      expectedRole2: 'DIRECTEUR'
     },
     canActivate:[AuthGuard]
   },
@@ -284,6 +306,7 @@ const routes: Routes = [
     component: CreerJuryComponent,
     data: {
       title: 'creer jury',
+      expectedRole: 'RESP-FORM',
       expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
@@ -293,6 +316,7 @@ const routes: Routes = [
     component: JuryComponent,
     data: {
       title: 'Jury',
+      expectedRole: 'RESP-FORM',
       expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
@@ -302,6 +326,7 @@ const routes: Routes = [
     component: ListeProjetsComponent,
     data: {
       title: 'Liste projets',
+      expectedRole: 'RESP-FORM',
       expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
