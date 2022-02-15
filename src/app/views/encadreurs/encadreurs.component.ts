@@ -57,8 +57,6 @@ export class EncadreursComponent implements OnInit {
               lengthMenu: [5, 10, 25],
             });
           }, 1);
-          console.log(this.encadreurs)
-          
         });
       })
 
@@ -66,7 +64,6 @@ export class EncadreursComponent implements OnInit {
 
     this.authService.listeProfesseur().subscribe(data => {
       this.allProfesseurs = data;
-      console.log(data)
       setTimeout(() => {
         $('#professeurs').DataTable({
           pagingType: 'full_numbers',
@@ -87,7 +84,6 @@ export class EncadreursComponent implements OnInit {
         this.authService.ajoutEncadreur(idProf, this.idProjet)
         .subscribe(
           results=>{
-            console.log(results)
             this.alertGood1();
             this.refresh();
           }
@@ -98,7 +94,6 @@ export class EncadreursComponent implements OnInit {
         this.authService.supprimerEncadreur(idProf, this.idProjet)
         .subscribe(
           results=>{
-            console.log(results)
             this.alertGood2();
             this.refresh();
           }

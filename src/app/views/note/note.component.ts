@@ -48,6 +48,7 @@ export class NoteComponent implements OnInit {
       this.authService.getProfesseur(this.idProf).subscribe(data=>{
         this.prof= data;
       })
+
     this.authService.getProjets().subscribe(data => {
       this.allProjets = data;
     });
@@ -69,22 +70,17 @@ export class NoteComponent implements OnInit {
           .subscribe(
             (resultat) => {
               this.alertGood();
-              console.log({ resultat: resultat });
               this.submitted = false;
-              
-              
             },
             (error) => {
               console.log(error);
               this.alertBad();
-              
             }
           );
         
       } 
     }
     onChangeProjet(event: any) {
-      console.log(event.target.value);
       this.idProjet = event.target.value;
     }
     alertGood(){

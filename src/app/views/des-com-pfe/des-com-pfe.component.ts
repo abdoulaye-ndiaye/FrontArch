@@ -84,12 +84,10 @@ export class DesComPfeComponent implements OnInit {
 
     this.authService.getProjetByIdEtudiant(this.idEtudiant).subscribe(data =>{
       this.projet=data;
-      console.log(this.projet)
       this.encadreurs=data.encadreur;
       this.rapporteurs=data.rapporteur;
       this.nb=this.encadreurs.length + this.rapporteurs.length +1;
       this.row="rowspan='"+this.nb+"'";
-      console.log(this.row)
       this.etudiant = data.etudiant;
       if(this.etudiant.classe=="SI"){this.classe="Systèmes d'Information"}
       else if(this.etudiant.classe=="SR"){this.classe="Systèmes et Reseaux"}

@@ -29,8 +29,6 @@ export class DossierComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParamMap
     .subscribe(params => {
-      console.log(params); 
-
       this.idEtudiant = params.get('idEtudiant') as string;
     }) ;
     this.authService.getEtudiant(this.idEtudiant).subscribe(data=>{
@@ -44,7 +42,6 @@ export class DossierComponent implements OnInit {
     });
     
     this.authService.getEtudiant(this.idEtudiant).subscribe(data=>{
-      console.log(data)
       if(data.projet==null){
         this.afficher=false
         this.show=false

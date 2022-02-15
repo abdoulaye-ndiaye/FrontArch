@@ -13,8 +13,6 @@ import { TestBed } from '@angular/core/testing';
   templateUrl: './acceuil.component.html'
 })
 export class AcceuilComponent implements OnInit {
-
-
   prof: string;
   allProjets: any;
   adminForm: FormGroup;
@@ -46,7 +44,6 @@ export class AcceuilComponent implements OnInit {
 
     this.authService.getProjets().subscribe(data => {
       this.allProjets = data;
-      console.log(this.allProjets)
       setTimeout(() => {
         $('#memoire').DataTable({
           pagingType: 'full_numbers',

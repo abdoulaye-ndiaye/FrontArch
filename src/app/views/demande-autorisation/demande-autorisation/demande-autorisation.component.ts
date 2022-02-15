@@ -46,9 +46,6 @@ export class DemandeAutorisationComponent implements OnInit{
     }
   }
 
-  
-  
- 
   constructor(
     private formBulder: FormBuilder,
     private route: ActivatedRoute,

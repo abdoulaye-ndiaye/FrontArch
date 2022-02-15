@@ -24,13 +24,10 @@ export class MemoireComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParamMap
     .subscribe(params => {
-      console.log(params); 
-
       this.idEtudiant = params.get('idEtudiant') as string;
     }) ;
     this.authService.getEtudiant(this.idEtudiant).subscribe(data=>{
       this.etudiant=data;
-      console.log(data)
       if(this.etudiant.projet.memoire){
         this.test=true;
       }

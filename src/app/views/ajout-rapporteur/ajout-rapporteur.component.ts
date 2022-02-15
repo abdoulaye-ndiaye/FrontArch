@@ -10,7 +10,6 @@ import { AuthService } from '../../services/auth.service';
 })
 export class AjoutRapporteurComponent implements OnInit {
   inputText: string = 'ajout-rapporteur';
-  
 
   submitted = false;
   id : string;
@@ -44,7 +43,6 @@ export class AjoutRapporteurComponent implements OnInit {
 
     onSubmit() {
       this.submitted = true;
-      
       this.router.navigate(['/rapporteurs']);
     }
 

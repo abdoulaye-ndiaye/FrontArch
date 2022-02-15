@@ -82,12 +82,11 @@ export class UploadRapportComponent implements OnInit {
         body.append('fichier', this.fileSelected, this.fileSelected.name)
         body.append('idProj', this.idProj);
         this.uploadService.upload(body).subscribe(result => {
-          console.log(result);
           Swal.close();
           this.alertGood();
           this.uploadRapportForm.reset();
         }, error => {
-
+          console.log(error);
         });
       } else {
         this.alertBad();

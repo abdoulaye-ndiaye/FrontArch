@@ -80,7 +80,6 @@ export class UploadDecisionPfeComponent implements OnInit {
 
         this.uploadService.upload(body).subscribe(
           (result) => {
-            console.log(result);
             Swal.close();
             this.alertGood();
             this.uploadDecisionPfesForm.reset();

@@ -61,7 +61,6 @@ export class RapporteursComponent implements OnInit {
           lengthMenu: [5, 10, 25],
         });
       }, 1);
-      console.log(this.rapporteurs)
       
     });
     this.authService.listeProfesseur().subscribe(data => {
@@ -84,7 +83,6 @@ export class RapporteursComponent implements OnInit {
         this.authService.ajoutRapporteur(idProf, this.id)
         .subscribe(
           results=>{
-            console.log(results)
             this.alertGood1();
             this.refresh();
           }
@@ -95,7 +93,6 @@ export class RapporteursComponent implements OnInit {
         this.authService.supprimerRapporteur(idProf, this.id)
         .subscribe(
           results=>{
-            console.log(results)
             this.alertGood2();
             this.refresh();
           }

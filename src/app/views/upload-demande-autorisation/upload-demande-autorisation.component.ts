@@ -84,12 +84,11 @@ export class UploadDemandeAutorisationComponent implements OnInit {
         body.append('fichier', this.fileSelected, this.fileSelected.name)
         body.append('idProj', this.idProj);
         this.uploadService.upload(body).subscribe(result => {
-          console.log(result);
           Swal.close();
           this.alertGood();
           this.uploadDemandeAutorisationForm.reset()
         }, error => {
-
+          console.log(error);
         });
       } else {
         this.alertBad();

@@ -62,7 +62,6 @@ export class ModifProjetComponent implements OnInit {
           .subscribe(
             (resultat) => {
               this.alertGood();
-              console.log({ resultat: resultat });
               this.submitted = false;
               this.ModifProjetForm.reset();
               this.router.navigate(['/projet']);

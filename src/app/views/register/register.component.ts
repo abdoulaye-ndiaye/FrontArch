@@ -91,11 +91,8 @@ export class RegisterComponent implements OnInit {
 
     if (this.RegisterForm.invalid) {
       console.log("invalid form")
-    } else {
-      console.log(
-        this.RegisterForm.value.email,
-        this.RegisterForm.value.password
-      );
+    } 
+    else {
       
       if (this.RegisterForm.value.profil == EnumProfil.ETUDIANT) {
 
@@ -114,7 +111,6 @@ export class RegisterComponent implements OnInit {
           )
           .subscribe(
             (resultat) => {
-              console.log({ resultat: resultat });
               this.submitted = false;
               this.router.navigate(['/login']);
             },
@@ -138,7 +134,6 @@ export class RegisterComponent implements OnInit {
           )
           .subscribe(
             (resultat) => {
-              console.log({ resultat: resultat });
               this.submitted = false;
               this.router.navigate(['/login']);
             },
@@ -157,7 +152,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onChangeProfil(event: any) {
-    console.log(event.target.value);
     this.profil = event.target.value;
   }
   alertGood(){

@@ -29,7 +29,6 @@ export class ListeProjetsComponent implements OnInit {
    
     this.authService.getProjets().subscribe(data => {
       this.allProjets = data;
-      console.log(data)
       setTimeout(() => {
         $('#projet').DataTable({
           pagingType: 'full_numbers',

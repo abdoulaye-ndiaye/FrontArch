@@ -31,7 +31,6 @@ export class CreerProjetComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.idEtudiant)
     this.ProjetForm = this.formBulder.group(
       {
         sujet: ['', Validators.required],
@@ -61,7 +60,6 @@ export class CreerProjetComponent implements OnInit {
           .subscribe(
             (resultat) => {
               this.alertGood();
-              console.log({ resultat: resultat });
               this.submitted = false;
               this.ProjetForm.reset();
               this.router.navigate(['/projet']);

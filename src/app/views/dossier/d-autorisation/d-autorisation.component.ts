@@ -23,8 +23,6 @@ export class DAutorisationComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParamMap
     .subscribe(params => {
-      console.log(params); 
-
       this.idEtudiant = params.get('idEtudiant') as string;
     }) ;
     this.authService.getEtudiant(this.idEtudiant).subscribe(data=>{

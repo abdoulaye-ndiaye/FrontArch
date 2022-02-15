@@ -80,12 +80,13 @@ export class UploadMemoireComponent implements OnInit {
 
         this.uploadService.upload(body).subscribe(
           (result) => {
-            console.log(result);
             Swal.close();
             this.alertGood();
             this.uploadMemoireForm.reset();
           },
-          (error) => {}
+          (error) => {
+            console.log(error);
+          }
         );
       } else {
         this.alertBad();

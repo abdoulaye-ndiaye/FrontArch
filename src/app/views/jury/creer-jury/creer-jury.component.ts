@@ -44,12 +44,12 @@ export class CreerJuryComponent implements OnInit {
         numJury: ['', Validators.required],
         president: ['',Validators.required],
       });
+
       this.route.queryParamMap
       .subscribe(params => {
-        console.log(params); 
-  
         this.idProjet = params.get('idProjet') as string;
       }) ;
+
       this.authService.getProjet(this.idProjet).subscribe(data=>{
         this.projet=data;
         this.encadreurs=data.encadreur;
@@ -66,7 +66,6 @@ export class CreerJuryComponent implements OnInit {
     
     if (this.JuryForm.invalid) {
       console.log("invalid form")
-
     } else {
         this.authService
           .FormulaireJury(
@@ -79,7 +78,6 @@ export class CreerJuryComponent implements OnInit {
           .subscribe(
             (resultat) => {
               this.alertGood();
-              console.log({ resultat: resultat });
               this.idJury=resultat._id;
               this.submitted = false;
               this.test=true;
