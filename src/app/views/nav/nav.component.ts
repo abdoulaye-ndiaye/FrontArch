@@ -19,7 +19,7 @@ export class NavComponent implements OnInit {
   home="";ajoutRapporteur="";excelEtudiant="";excelProf="";projet="";rapporteurs="";respForm="";
   uploadCertificat="";demandeAutorisation="";uploadMemoire="";uploadRapport="";changerPassword="";
   dossier="";memoire="";pv="";encadreur="";jury="";uploadDemandeAutorisation="";pvSoutenance="";
-  note="";
+  note="";desComPfe="";uploadDecisionPfe="";
 
   constructor(
     private router: Router,
@@ -40,6 +40,7 @@ export class NavComponent implements OnInit {
     if (this.inputFromParent=='upload-certificat'){this.uploadCertificat="active";}
     if (this.inputFromParent=='demande-autorisation'){this.demandeAutorisation="active";}
     if (this.inputFromParent=='upload-memoire'){this.uploadMemoire="active";}
+    if (this.inputFromParent=='upload-decision-pfe'){this.uploadDecisionPfe="active";}
     if (this.inputFromParent=='upload-rapport'){this.uploadRapport="active";}
     if (this.inputFromParent=='changer-password'){this.home="active";}
     if (this.inputFromParent=='dossier'){this.dossier="active";}
@@ -55,6 +56,8 @@ export class NavComponent implements OnInit {
     if (this.inputFromParent=='upload-demande-autorisation'){this.uploadDemandeAutorisation="active";}
     if (this.inputFromParent=='pv-soutenance'){this.pvSoutenance="active";}
     if (this.inputFromParent=='note'){this.pvSoutenance="active";}
+    if (this.inputFromParent=='des-com-pfe'){this.desComPfe="active";}
+    if (this.inputFromParent=='d-com-pfe'){this.dossier="active";}
 
     if(this.profil=='ETUDIANT'){
       this.authService.getEtudiant(this.idEtu).subscribe(data=>{

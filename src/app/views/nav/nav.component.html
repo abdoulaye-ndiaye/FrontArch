@@ -67,6 +67,11 @@
             ><span class="side-menu__label">Dossiers Etudiants</span></a
           >
         </li>
+        <li class="slide">
+          <a class="side-menu__item {{uploadDecisionPfe}}" data-toggle="slide" routerLink="/upload-decision-pfe"><i
+                  class="side-menu__icon fas fa-file-import fa-lg"></i><span class="side-menu__label">Charger Decision<br>
+                  Commision PFEs</span></a>
+      </li>
       </div>
 
        <div *ngIf="specialite==='RESP-FORM'">
@@ -80,6 +85,11 @@
             ><span class="side-menu__label">Dossiers Etudiants</span></a
           >
         </li>
+        <li class="slide">
+          <a class="side-menu__item {{desComPfe}}" data-toggle="slide" routerLink="/liste-projets"><i
+                  class="side-menu__icon fas fa-file-pdf fa-lg"></i><span class="side-menu__label">Décision Comission<br>
+                  des PFE</span></a>
+      </li>
         
    
        </div>
@@ -93,7 +103,7 @@
        </div>
        <li class="slide">
         <a class="side-menu__item {{pvSoutenance}}" data-toggle="slide" routerLink="/note"><i
-                class="side-menu__icon fas fa-file-pdf fa-lg"></i><span class="side-menu__label">Soutencance
+                class="side-menu__icon fas fa-tasks fa-lg"></i><span class="side-menu__label">Soutencance
                 </span></a>
     </li>
      </div>

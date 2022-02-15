@@ -5,8 +5,10 @@ import { AcceuilComponent } from './views/acceuil/acceuil.component';
 import { AjoutRapporteurComponent } from './views/ajout-rapporteur/ajout-rapporteur.component';
 import { ChangerPasswordComponent } from './views/changer-password/changer-password.component';
 import { DemandeAutorisationComponent } from './views/demande-autorisation/demande-autorisation/demande-autorisation.component';
+import { DesComPfeComponent } from './views/des-com-pfe/des-com-pfe.component';
 import { CertificatComponent } from './views/dossier/certificat/certificat.component';
 import { DAutorisationComponent } from './views/dossier/d-autorisation/d-autorisation.component';
+import { DComPfeComponent } from './views/dossier/d-com-pfe/d-com-pfe.component';
 import { DossierComponent } from './views/dossier/dossier/dossier.component';
 import { EtudiantsComponent } from './views/dossier/etudiants/etudiants.component';
 import { MemoireComponent } from './views/dossier/memoire/memoire.component';
@@ -29,6 +31,7 @@ import { CreerProjetComponent } from './views/resp-form/creer-projet/creer-proje
 import { ListeEtudiantsComponent } from './views/resp-form/liste-etudiants/liste-etudiants.component';
 import { ModifProjetComponent } from './views/resp-form/modif-projet/modif-projet.component';
 import { UploadCertificatComponent } from './views/upload-certificat/upload-certificat.component';
+import { UploadDecisionPfeComponent } from './views/upload-decision-pfe/upload-decision-pfe.component';
 import { UploadDemandeAutorisationComponent } from './views/upload-demande-autorisation/upload-demande-autorisation.component';
 import { UploadMemoireComponent } from './views/upload-memoire/upload-memoire.component';
 import { UploadRapportComponent } from './views/upload-rapport/upload-rapport.component';
@@ -74,13 +77,21 @@ const routes: Routes = [
     data: {
       title: 'Projet'
     },
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard],
   },
   {
     path: 'upload-memoire',
     component: UploadMemoireComponent,
     data: {
       title: 'Upload-Memoire'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'upload-decision-pfe',
+    component: UploadDecisionPfeComponent,
+    data: {
+      title: 'Upload-Decision-Pfe'
     },
     canActivate:[AuthGuard]
   },
@@ -193,6 +204,22 @@ const routes: Routes = [
     component: DAutorisationComponent,
     data: {
       title: 'Demande Autorisation Etudiant'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'd-com-pfe',
+    component: DComPfeComponent,
+    data: {
+      title: 'Décision des Cmomission Pfe Etudiant'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'des-com-pfe',
+    component: DesComPfeComponent,
+    data: {
+      title: 'Décision Commission des PFE'
     },
     canActivate:[AuthGuard]
   },

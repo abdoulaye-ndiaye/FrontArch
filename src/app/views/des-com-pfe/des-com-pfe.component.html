@@ -1,0 +1,126 @@
+<div class="page">
+    <div class="page-main">
+      <!-- Navbar-->
+      <app-header></app-header>
+  
+      <app-nav [inputFromParent] = "inputText"></app-nav>
+  
+      <div class=" app-content my-3 my-md-5">
+        <div class="side-app">
+          <br/>
+        </div>
+
+    <div class="container justify-content-center">
+        <div class="col-md-10">
+            <div class="card mb-3">
+            <div id="pdfTable" #pdfTable>
+                <div style="text-align: center;">
+                    <img width="100" src="data:image/jpeg;base64,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">
+                </div>
+                <div  class="uadb" style="text-align:'center';font-weight: bold;"  >
+                    UNIVERSITE ALIOUNE DIOP DE BAMBEY<br/>
+                        <i> L'excellence est ma constance, l'éthique ma vertu</i>
+                       ____________________________________________________________________________________
+                </div>  
+                <div style="text-align:'center';font-weight: bold;" >
+                    UFR SATIC - Département TIC</div>
+                    <div style="text-align:'center';font-weight: bold;" >
+                    Master Professionnel SI/SR</div>
+                    <div style="text-align:'center';font-weight: bold;" >
+                        ****************</div>
+                <div style="text-align:'justify'; margin: 10%;" >
+                    <h4 style="text-align: center;"><u>DECISION DE LA COMMISSION DES PFE</u></h4>
+                </div>
+                <div style="text-align:'justify'; margin: 10%;" >
+                    N° étudiant :&nbsp;&nbsp; {{etudiant.code}}
+                </div>
+                <div style="text-align:'justify'; margin: 10%;" >
+                    Nom :&nbsp;&nbsp; {{etudiant.compte.nom}}
+                </div>
+                <div style="text-align:'justify'; margin: 10%;" >
+                    Prénom :&nbsp;&nbsp; {{etudiant.compte.prenom}}
+                </div>
+                <div style="text-align:'justify'; margin: 10%;" >
+                    Date de Naissance :&nbsp;&nbsp; {{etudiant.dateNaissance}}
+                </div>
+                <div style="text-align:'justify'; margin: 10%;" >
+                    Lieu de Naissance :&nbsp;&nbsp; {{etudiant.lieuNaissance}}
+                </div>
+                <div style="text-align:'justify'; margin: 10%;" >
+                    Téléphone :&nbsp;&nbsp; {{etudiant.compte.numTel}}
+                </div>
+                <div style="text-align:'justify'; margin: 10%;" >
+                    Email :&nbsp;&nbsp; {{etudiant.compte.email}}<br>
+                </div>
+                <div style="text-align:'justify'; margin: 10%;">    
+                    <h5 style="text-align: center;"><u>MEMOIRE SOUMIS</u></h5>
+                  <p>  <strong>Titre du mémoire :</strong> {{projet.sujet}}: {{projet.description}}</p> <br>
+                    <strong style="text-align: center;">==============RESERVER A LA COMMISSION DES PFE==============</strong><br>
+                    
+                </div>
+                <div style="text-align:'justify';margin: 10%;" >
+                    Après examen du mémoire déposé par l'étudiant dont le nom précède, la décision de
+                    la commission des PFE est :
+                    <table>
+                       <tr>
+                           <td style="border: 1px solid; width: 10%;"> 
+                            <canvas width="50" height="30" #canvas2 (touchstart)="startDrawing($event)" (touchmove)="moved($event)" style="background-color: var(--ion-color-success);border: 1px solid rgb(187, 178, 178);display: block;">
+                            <img width="30" height="15" src='{{ signatureImg2 }}' />
+                             </canvas> 
+                        </td>
+                           <td>Soutenable en l'état.</td>
+                       </tr><br>
+                       <tr>
+                        <td style="border: 1px solid; width: 10%;"> 
+                            <canvas width="50" height="30" #canvas3 (touchstart)="startDrawing($event)" (touchmove)="moved($event)" style="background-color: var(--ion-color-success);border: 1px solid rgb(187, 178, 178);display: block;">
+                            <img width="30" height="15" src='{{ signatureImg3 }}' />
+                             </canvas> 
+                        </td>
+                            <td>Soutenable après révisions</td>
+                        </tr><br>
+                        <tr>
+                            <td style="border: 1px solid; width: 10%;"> 
+                                <canvas width="50" height="30" #canvas4 (touchstart)="startDrawing($event)" (touchmove)="moved($event)" style="background-color: var(--ion-color-success);border: 1px solid rgb(187, 178, 178);display: block;">
+                                <img width="30" height="15" src='{{ signatureImg4 }}' />
+                                 </canvas> 
+                            </td>
+                            <td>Non soutenable</td>
+                        </tr>
+                    </table>
+                </div><br><br><br>
+
+                <div style="text-align:'left';margin: 10%;" >
+                    Date : <strong >{{date}} </strong><br>
+                </div>
+                <div style="text-align:'right';margin: 10%;" >
+                    <strong> Le Directeur d'UFR</strong>
+                 </div>
+                <div style="text-align:'left';margin: 10%;" >
+                   <strong> La Présidente de la Commission</strong>
+                    Dr. Fatoumata Balde
+                    <canvas #canvas (touchstart)="startDrawing($event)" (touchmove)="moved($event)" style="background-color: var(--ion-color-success);border: 1px solid rgb(187, 178, 178);display: block;">
+                        <img width="200"  src='{{ signatureImg }}' />
+                    </canvas> 
+                </div><br><br><br>
+                
+                
+                <div style="text-align:'center';font-weight: normal;" >
+                    UNIVERSITE ALIOUNE DIOP DE BAMBEY<br/>
+         Tel:(+221)33 973 30 84 - Fax:(+221)33 973 30 93 - B.P:30-Bambey (Rép. Du Sénégal) <br/>
+          Internet: www.uadb.edu.sn - Email: satic@uadb.edu.sn
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" (click)="clearPad()">Réinitialiser</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-primary"  color="secondary" (click)="savePad()">Enregistrer</button><br/><br/>
+        <button class="btn btn-primary" (click)="downloadAsPDF();">Génèrer le PDF</button><br/><br/>
+      </div>
+</div>
+       
+
+</div>
+<!--footer-->
+<app-footer></app-footer>
+<!-- End Footer-->
+</div>
+</div>

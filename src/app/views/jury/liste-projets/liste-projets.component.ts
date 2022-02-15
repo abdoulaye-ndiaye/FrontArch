@@ -8,7 +8,7 @@ import { AuthService } from '../../../services/auth.service';
   templateUrl: './liste-projets.component.html'
 })
 export class ListeProjetsComponent implements OnInit {
-  inputText: string = 'liste-projets';
+  inputText: string = 'des-com-pfe';
   submitted = false;
   id : string;
   message = '';
@@ -29,6 +29,7 @@ export class ListeProjetsComponent implements OnInit {
    
     this.authService.getProjets().subscribe(data => {
       this.allProjets = data;
+      console.log(data)
       setTimeout(() => {
         $('#projet').DataTable({
           pagingType: 'full_numbers',

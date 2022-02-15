@@ -14,7 +14,7 @@
               <div class="row">
                 <div class="col-lg-12">
                   <div class="card">
-                    <div class="card-header justify-content-center"> Gestion Jurys </div>
+                    <div class="card-header justify-content-center"> DECISION COMMISSION DES PFE (Projets avec mémoire soumis) </div>
                     <div class="card-body">
                       <div class="form-group row">
                         <div class="col-md-12">
@@ -24,17 +24,19 @@
                           <tr>
                             <th>Etudiant</th>
                             <th>Projet</th>
-                            <th>Encadreur</th>
-                            <th></th>
+                            <th>Encadreurs</th>
+                            <th>Action</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr *ngFor="let projet of allProjets">
-                            <td>{{projet.etudiant.compte.prenom ?? "NA"}} {{projet.etudiant.compte.nom ?? "NA"}}</td>
-                            <td>{{ projet.sujet ?? "NA"}}</td>
-                              <td> <ng-container *ngFor="let encadreur of projet.encadreur">{{encadreur.compte.prenom ?? "NA"}} {{encadreur.compte.nom ?? "NA"}},</ng-container></td>
-                            <td><a routerLink="/creer-jury" class="btn btn-blue" [queryParams]="{idProjet : projet._id}">Gèrer le Jury</a></td>
-                          </tr>
+                          <ng-container  *ngFor="let projet of allProjets">
+                            <tr *ngIf="projet.memoire">
+                              <td>{{projet.etudiant.compte.prenom ?? "NA"}} {{projet.etudiant.compte.nom ?? "NA"}}</td>
+                              <td>{{ projet.sujet ?? "NA"}}</td>
+                                <td> <ng-container *ngFor="let encadreur of projet.encadreur"> {{encadreur.compte.prenom ?? "NA"}} {{encadreur.compte.nom ?? "NA"}},</ng-container></td>
+                              <td><a routerLink="/des-com-pfe" class="btn btn-blue" [queryParams]="{idProjet : projet._id}">Gèrer</a></td>
+                            </tr>
+                          </ng-container>
                         </tbody>
                       </table>
                      

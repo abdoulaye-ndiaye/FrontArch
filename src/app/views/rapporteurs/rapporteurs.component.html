@@ -32,7 +32,6 @@
                           <td>{{professeur.compte.prenom}}</td>
                           <td><a > <button (click)="suppression(professeur._id)" class="btn btn-primary px-3" >Supprimer rapporteur</button></a>
                           </td>
-                          <input type="hidden" formControlName="idProf" value="{{professeur.compte._id}}">
                       </tr>
                     </ng-container>
                   </tbody>
@@ -68,7 +67,6 @@
                               <td>{{professeur.compte.prenom}}</td>
                               <td><a > <button (click)="onSubmit(professeur._id)" class="btn btn-primary px-3" >Ajouter comme rapporteur</button></a>
                               </td>
-                              <input type="hidden" formControlName="idProf" value="{{professeur.compte._id}}">
                           </tr>
                         </ng-container>
                       </tbody>

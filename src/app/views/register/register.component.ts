@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
           code:[''],
           dateNaissance: [''],
           lieuNaissance: [''],
-          numTel: ['', [Validators.required, Validators.maxLength(9)]],
+          numTel: ['', [Validators.required, Validators.minLength(9),  Validators.maxLength(9)]],
           nom: ['', Validators.required],
           prenom: ['', Validators.required],
           email: ['', [Validators.required, Validators.email]],
@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
         {
           profil: ['', Validators.required],
           specialite: [''],
-          numTel: ['', [Validators.required, Validators.maxLength(9)]],
+          numTel: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
           nom: ['', Validators.required],
           prenom: ['', Validators.required],
           email: ['', [Validators.required, Validators.email]],

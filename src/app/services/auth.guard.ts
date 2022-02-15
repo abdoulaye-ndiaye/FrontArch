@@ -18,4 +18,35 @@ export class AuthGuard implements CanActivate{
     return false;
 
 }
+etudiantActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  if (this.authService.isProfilEtu())
+    return true;
+
+  this.router.navigate(['home']);
+  return false;
+
+}
+profActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  if (this.authService.isProfilProf())
+    return true;
+
+  this.router.navigate(['home']);
+  return false;
+
+}
+respFormActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  if (this.authService.isSpecialiteRespForm())
+    return true;
+
+  this.router.navigate(['home']);
+  return false;
+
+}
+directeurActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  if (this.authService.isSpecialiteDirecteur())
+    return true;
+
+  this.router.navigate(['home']);
+  return false;
+}
 }

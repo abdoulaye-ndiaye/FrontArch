@@ -10,11 +10,11 @@ import SignaturePad from 'signature_pad';
 import { data } from 'jquery';
 
 @Component({
-  selector: 'app-pv',
-  templateUrl: './pv-soutenance.component.html'
+  selector: 'app-des-com-pfe',
+  templateUrl: './des-com-pfe.component.html'
 })
-export class PvSoutenanceComponent implements OnInit {
-  inputText: string = 'pv-soutenance';
+export class DesComPfeComponent implements OnInit {
+  inputText: string = 'des-com-pfe';
   a:string;
   date:string;
   etudiant:any;
@@ -158,5 +158,4 @@ export class PvSoutenanceComponent implements OnInit {
       timer: 1500
     })
   }
-
 }

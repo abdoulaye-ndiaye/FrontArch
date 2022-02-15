@@ -49,6 +49,9 @@ import { DatePipe } from '@angular/common';
 import { PvSoutenanceComponent } from './views/pv-soutenance/pv-soutenance.component';
 import { NoteComponent } from './views/note/note.component';
 import { DAutorisationComponent } from './views/dossier/d-autorisation/d-autorisation.component';
+import { DesComPfeComponent } from './views/des-com-pfe/des-com-pfe.component';
+import { DComPfeComponent } from './views/dossier/d-com-pfe/d-com-pfe.component';
+import { UploadDecisionPfeComponent } from './views/upload-decision-pfe/upload-decision-pfe.component';
 
 @NgModule({
   
@@ -87,7 +90,10 @@ import { DAutorisationComponent } from './views/dossier/d-autorisation/d-autoris
     DemandeAutorisationComponent,
     PvSoutenanceComponent,
     NoteComponent,
-    DAutorisationComponent
+    DAutorisationComponent,
+    DesComPfeComponent,
+    DComPfeComponent,
+    UploadDecisionPfeComponent
   ],
   imports: [
     SweetAlert2Module.forRoot(),

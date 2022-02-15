@@ -155,20 +155,23 @@
                         <div *ngIf="f['email'].errors['required']">
                           veuillez saisir votre email
                         </div>
-                        <div *ngIf="f['email'].errors['maxLength']">
+                        <div *ngIf="f['email'].errors['email']">
                           votre email est invalide
                         </div>
                       </div>
                     </div>
                     <div class="form-group col-md-6">
                       <label for="inputNumTel">Numèro de Télèphone</label>
-                      <input type="number" formControlName="numTel" class="form-control" placeholder=""
+                      <input minLength="9" maxLength="9" type="number" formControlName="numTel" class="form-control" placeholder=""
                         autocomplete="numTel" [ngClass]="{
                           'is-invalid': submitted && f['numTel'].errors
                         }" required />
-                      <div *ngIf="submitted && f['numTel'].errors" class="input-group mb-3 invalid-feedback">
+                      <div *ngIf="submitted && f['numTel'].touched && f['numTel'].errors" class="input-group mb-3 invalid-feedback">
                         <div *ngIf="f['numTel'].errors['required']">
                           veuillez saisir votre numero de telephone
+                        </div>
+                        <div *ngIf="f['numTel'].errors['minLength']">
+                          la longueur est inferieur à 9 chiffres
                         </div>
                         <div *ngIf="f['numTel'].errors['maxLength']">
                           la longueur est superieur à 9 chiffres

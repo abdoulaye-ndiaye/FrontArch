@@ -71,6 +71,7 @@ export class DemandeAutorisationComponent implements OnInit{
   }
   ngAfterViewInit() {
     this.signaturePad = new SignaturePad(this.canvasEl.nativeElement);
+    this.signaturePad.penColor="blue";
   }
 
   startDrawing(event: Event) {
