@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
   deconnexion() {
     this.authService.logOut();
     this.alert();
-    this.router.navigate(['/home']);
+    this.router.navigate(['acceuil']);
   }
 
 

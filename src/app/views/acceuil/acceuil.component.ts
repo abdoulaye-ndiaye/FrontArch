@@ -38,7 +38,7 @@ export class AcceuilComponent implements OnInit {
   deconnexion() {
     this.authService.logOut();
     this.alert();
-    this.router.navigate(['/home']);
+    this.refresh();
   }
 
 
@@ -72,6 +72,9 @@ export class AcceuilComponent implements OnInit {
       timer: 1000
     })
   }
+  refresh(): void {
+    window.location.reload();
+}
 
 }
 

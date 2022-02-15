@@ -10,7 +10,7 @@ import { data } from 'jquery';
   templateUrl: './modif-projet.component.html'
 })
 export class ModifProjetComponent implements OnInit {
-  inputText: string = 'modif-projet';
+  inputText: string = 'projet';
   ModifProjetForm: FormGroup;
   profil = sessionStorage.getItem("profil");
   allProfs: any;

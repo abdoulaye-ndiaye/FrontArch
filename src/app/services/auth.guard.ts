@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate } from '@angular/router';
+import { data } from 'jquery';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -10,43 +11,20 @@ export class AuthGuard implements CanActivate{
   constructor(private router: Router,
     private authService: AuthService) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (this.authService.isUserLoggedIn())
+  canActivate(route: ActivatedRouteSnapshot) {
+  
+    let profil = sessionStorage.getItem('profil');
+    var expectedProfil = profil;
+    if(route.data['expectedProfil']){
+      expectedProfil=route.data['expectedProfil'];
+    }
+
+    if (this.authService.isUserLoggedIn() && profil==expectedProfil)
       return true;
 
-    this.router.navigate(['login']);
+    this.router.navigate(['acceuil']);
     return false;
 
 }
-etudiantActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-  if (this.authService.isProfilEtu())
-    return true;
 
-  this.router.navigate(['home']);
-  return false;
-
-}
-profActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-  if (this.authService.isProfilProf())
-    return true;
-
-  this.router.navigate(['home']);
-  return false;
-
-}
-respFormActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-  if (this.authService.isSpecialiteRespForm())
-    return true;
-
-  this.router.navigate(['home']);
-  return false;
-
-}
-directeurActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-  if (this.authService.isSpecialiteDirecteur())
-    return true;
-
-  this.router.navigate(['home']);
-  return false;
-}
 }

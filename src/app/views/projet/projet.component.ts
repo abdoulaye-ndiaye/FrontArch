@@ -10,8 +10,10 @@ export class ProjetComponent implements OnInit {
   inputText: string = 'projet';
   projet: any;
   encadreurs: any;
+  rapporteurs:any;
   b: string;
-  //c = sessionStorage.getItem("idProjet") as string;
+  show=true;
+  etudiant:any;
   profil = sessionStorage.getItem("profil");
 
   constructor(
@@ -27,10 +29,23 @@ export class ProjetComponent implements OnInit {
 
     this.authService.getProjetByIdEtudiant(this.b).subscribe(data => {
       this.encadreurs=data.encadreur;
+      this.rapporteurs=data.rapporteur;
       this.projet = data;
 
     });
+    this.authService.getEtudiant(this.b).subscribe(data=>{
+      this.etudiant=data;
+      if(data.projet==null){
+        this.show=false;
+      }
+      else if(data.projet){
+        if(data.projet.jury==null){
+          this.show=false
+        }
+      }
+    })
 
   }
+  
 
 }

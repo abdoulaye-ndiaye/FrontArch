@@ -60,8 +60,10 @@ const routes: Routes = [
     path: 'register',
     component: RegisterComponent,
     data: {
-      title: 'Register'
-    }
+      title: 'Register',
+      expectedProfil: 'ADMIN'
+    },
+    canActivate: [AuthGuard]
   },
   {
     path: 'home',
@@ -75,7 +77,8 @@ const routes: Routes = [
     path: 'projet',
     component: ProjetComponent,
     data: {
-      title: 'Projet'
+      title: 'Projet',
+      expectedProfil: 'ETUDIANT'
     },
     canActivate:[AuthGuard],
   },
@@ -83,7 +86,8 @@ const routes: Routes = [
     path: 'upload-memoire',
     component: UploadMemoireComponent,
     data: {
-      title: 'Upload-Memoire'
+      title: 'Upload-Memoire',
+      expectedProfil: 'ETUDIANT'
     },
     canActivate:[AuthGuard]
   },
@@ -91,7 +95,8 @@ const routes: Routes = [
     path: 'upload-decision-pfe',
     component: UploadDecisionPfeComponent,
     data: {
-      title: 'Upload-Decision-Pfe'
+      title: 'Upload-Decision-Pfe',
+      expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
   },
@@ -99,7 +104,8 @@ const routes: Routes = [
     path: 'upload-demande-autorisation',
     component: UploadDemandeAutorisationComponent,
     data: {
-      title: 'Upload-Demande-Autorisation'
+      title: 'Upload-Demande-Autorisation',
+      expectedProfil: 'ETUDIANT'
     },
     canActivate:[AuthGuard]
   },
@@ -107,7 +113,8 @@ const routes: Routes = [
     path: 'upload-rapport',
     component: UploadRapportComponent,
     data: {
-      title: 'Upload-Rapport'
+      title: 'Upload-Rapport',
+      expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
   },
@@ -115,7 +122,8 @@ const routes: Routes = [
     path: 'upload-certificat',
     component: UploadCertificatComponent,
     data: {
-      title: 'Upload-Certificat'
+      title: 'Upload-Certificat',
+      expectedProfil: 'ETUDIANT'
     },
     canActivate:[AuthGuard]
   },
@@ -123,7 +131,8 @@ const routes: Routes = [
     path: 'ajout-rapporteur',
     component: AjoutRapporteurComponent,
     data: {
-      title: 'Ajout-Rapporteur'
+      title: 'Ajout-Rapporteur',
+      expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
   },
@@ -131,7 +140,8 @@ const routes: Routes = [
     path: 'rapporteurs',
     component: RapporteursComponent,
     data: {
-      title: 'Rapporteurs'
+      title: 'Rapporteurs',
+      expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
   },
@@ -139,7 +149,8 @@ const routes: Routes = [
     path: 'creer-projet',
     component: CreerProjetComponent,
     data: {
-      title: 'Creer-Projet'
+      title: 'Creer-Projet',
+      expectedProfil: 'ETUDIANT'
     },
     canActivate:[AuthGuard]
   },
@@ -147,7 +158,8 @@ const routes: Routes = [
     path: 'liste-etudiants',
     component: ListeEtudiantsComponent,
     data: {
-      title: 'Liste Etudiants'
+      title: 'Liste Etudiants',
+      expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
   },
@@ -155,7 +167,8 @@ const routes: Routes = [
     path: 'etudiants',
     component: EtudiantsComponent,
     data: {
-      title: 'Etudiants'
+      title: 'Etudiants',
+      expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
   },
@@ -163,7 +176,8 @@ const routes: Routes = [
     path: 'excel-etudiant',
     component: ExcelEtudiantComponent,
     data: {
-      title: 'Excel Etudiant'
+      title: 'Excel Etudiant',
+      expectedProfil: 'ADMIN'
     },
     canActivate:[AuthGuard]
   },
@@ -171,7 +185,8 @@ const routes: Routes = [
     path: 'excel-prof',
     component: ExcelProfComponent,
     data: {
-      title: 'Excel Professeur'
+      title: 'Excel Professeur',
+      expectedProfil: 'ADMIN'
     },
     canActivate:[AuthGuard]
   },
@@ -187,7 +202,8 @@ const routes: Routes = [
     path: 'dossier',
     component: DossierComponent,
     data: {
-      title: 'Dossiers Etudiants'
+      title: 'Dossiers Etudiants',
+      expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
   },
@@ -195,7 +211,8 @@ const routes: Routes = [
     path: 'memoire',
     component: MemoireComponent,
     data: {
-      title: 'Memoire Etudiant'
+      title: 'Memoire Etudiant',
+      expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
   },
@@ -203,7 +220,8 @@ const routes: Routes = [
     path: 'd-autorisation',
     component: DAutorisationComponent,
     data: {
-      title: 'Demande Autorisation Etudiant'
+      title: 'Demande Autorisation Etudiant',
+      expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
   },
@@ -211,7 +229,8 @@ const routes: Routes = [
     path: 'd-com-pfe',
     component: DComPfeComponent,
     data: {
-      title: 'Décision des Cmomission Pfe Etudiant'
+      title: 'Décision des Cmomission Pfe Etudiant',
+      expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
   },
@@ -219,7 +238,8 @@ const routes: Routes = [
     path: 'des-com-pfe',
     component: DesComPfeComponent,
     data: {
-      title: 'Décision Commission des PFE'
+      title: 'Décision Commission des PFE',
+      expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
   },
@@ -227,7 +247,8 @@ const routes: Routes = [
     path: 'pv',
     component: PvComponent,
     data: {
-      title: 'PVs Etudiant'
+      title: 'PVs Etudiant',
+      expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
   },
@@ -235,7 +256,8 @@ const routes: Routes = [
     path: 'rapport',
     component: RapportComponent,
     data: {
-      title: 'Rapports Etudiant'
+      title: 'Rapports Etudiant',
+      expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
   },
@@ -243,7 +265,8 @@ const routes: Routes = [
     path: 'certificat',
     component: CertificatComponent,
     data: {
-      title: 'Certificat inscription'
+      title: 'Certificat inscription',
+      expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
   },
@@ -251,7 +274,8 @@ const routes: Routes = [
     path: 'modif-projet',
     component: ModifProjetComponent,
     data: {
-      title: 'Modifier projet'
+      title: 'Modifier projet',
+      expectedProfil: 'ETUDIANT'
     },
     canActivate:[AuthGuard]
   },
@@ -259,7 +283,8 @@ const routes: Routes = [
     path: 'creer-jury',
     component: CreerJuryComponent,
     data: {
-      title: 'creer jury'
+      title: 'creer jury',
+      expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
   },
@@ -267,7 +292,8 @@ const routes: Routes = [
     path: 'jury',
     component: JuryComponent,
     data: {
-      title: 'Jury'
+      title: 'Jury',
+      expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
   },
@@ -275,7 +301,8 @@ const routes: Routes = [
     path: 'liste-projets',
     component: ListeProjetsComponent,
     data: {
-      title: 'Liste projets'
+      title: 'Liste projets',
+      expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
   },
@@ -283,7 +310,8 @@ const routes: Routes = [
     path: 'encadreurs',
     component: EncadreursComponent,
     data: {
-      title: 'Encadreurs'
+      title: 'Encadreurs',
+      expectedProfil: 'ETUDIANT'
     },
     canActivate:[AuthGuard]
   },
@@ -291,7 +319,8 @@ const routes: Routes = [
     path: 'demande-autorisation',
     component: DemandeAutorisationComponent,
     data: {
-      title: 'Demande Autorisation'
+      title: 'Demande Autorisation',
+      expectedProfil: 'ETUDIANT'
     },
     canActivate:[AuthGuard]
   },
@@ -299,7 +328,8 @@ const routes: Routes = [
     path: 'pv-soutenance',
     component: PvSoutenanceComponent,
     data: {
-      title: 'PV Soutenance'
+      title: 'PV Soutenance',
+      expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
   },
@@ -307,7 +337,8 @@ const routes: Routes = [
     path: 'note',
     component: NoteComponent,
     data: {
-      title: 'Note Soutenance'
+      title: 'Note Soutenance',
+      expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]
   },
