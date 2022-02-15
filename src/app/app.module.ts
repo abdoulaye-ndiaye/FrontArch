@@ -52,6 +52,7 @@ import { DAutorisationComponent } from './views/dossier/d-autorisation/d-autoris
 import { DesComPfeComponent } from './views/des-com-pfe/des-com-pfe.component';
 import { DComPfeComponent } from './views/dossier/d-com-pfe/d-com-pfe.component';
 import { UploadDecisionPfeComponent } from './views/upload-decision-pfe/upload-decision-pfe.component';
+import { RegisterProfComponent } from './views/register-prof/register-prof.component';
 
 @NgModule({
   
@@ -93,7 +94,8 @@ import { UploadDecisionPfeComponent } from './views/upload-decision-pfe/upload-d
     DAutorisationComponent,
     DesComPfeComponent,
     DComPfeComponent,
-    UploadDecisionPfeComponent
+    UploadDecisionPfeComponent,
+    RegisterProfComponent
   ],
   imports: [
     SweetAlert2Module.forRoot(),

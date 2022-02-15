@@ -10,7 +10,7 @@
     <br />
   </div>
   <div class="container justify-content-center">
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col-md-6">
         <form
           [formGroup]="uploadExcelForm"
@@ -29,19 +29,11 @@
         </form>
       </div>
     </div>
-    <p style="color: greenyellow">
-        <br />
-        {{ messageGood }}
-      </p>
-    <p style="color: red">
-      <br />
-      {{ messageBad }}
-    </p>
 
     <div class="row mr-5 ml-5">
       <div class="card m-5 p-3">
         <div class="card-body">
-          <div align="center">Nouveaux Professeurs Enregistrés</div>
+          <h3 align="center">Nouveaux Professeurs Enregistrés</h3>
           <table class="table table-bordered table-striped table-hover" id="professeur">
             <thead>
               <tr>

@@ -27,7 +27,7 @@ export class ChangerPasswordComponent implements OnInit {
   ngOnInit(): void {
     this.changerPwdForm = this.formBulder.group(
       {
-        password: ['', [Validators.required, Validators.minLength(6)]],
+        password: ['', [Validators.required, Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$")]],
         confirmPassword: ['', Validators.required],
       },
       { validator: MustMatch('password', 'confirmPassword') }

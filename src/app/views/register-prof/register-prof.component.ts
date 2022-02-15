@@ -7,13 +7,12 @@ import { MustMatch } from '../../services/_helpers/must-match.validator';
 import { style } from '@angular/animations';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
-
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
+  selector: 'app-register-prof',
+  templateUrl: './register-prof.component.html'
 })
-export class RegisterComponent implements OnInit {
-  inputText='register';
+export class RegisterProfComponent implements OnInit {
+  inputText='register-prof';
   RegisterForm: FormGroup;
 
   submitted = false;
@@ -30,10 +29,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
       this.RegisterForm = this.formBulder.group(
         {
-          classe: ['', Validators.required],
-          code:['', [Validators.required, Validators.pattern("[0-9][0-9][0-9][0-9][0-9][0-9][0-9]")]],
-          dateNaissance: ['', Validators.required],
-          lieuNaissance: ['', Validators.required],
+          specialite: ['', Validators.required],
           numTel: ['', [Validators.required, Validators.pattern("[7][06785][0-9][0-9][0-9][0-9][0-9][0-9][0-9]")]],
           nom: ['', Validators.required],
           prenom: ['', Validators.required],
@@ -70,16 +66,13 @@ export class RegisterComponent implements OnInit {
     } 
     else {
         this.authService
-          .RegisterEtudiant(
-            this.RegisterForm.value.classe,
-            this.RegisterForm.value.dateNaissance,
-            this.RegisterForm.value.lieuNaissance,
+          .RegisterProf(
+            this.RegisterForm.value.specialite,
             this.RegisterForm.value.numTel,
             this.RegisterForm.value.nom,
             this.RegisterForm.value.prenom,
-            'ETUDIANT',
+            'PROF',
             this.RegisterForm.value.email,
-            this.RegisterForm.value.code,
             this.RegisterForm.value.password
           )
           .subscribe(
@@ -96,11 +89,11 @@ export class RegisterComponent implements OnInit {
      
     }
   }
-
-  reset(){
+  Reset(){
     this.submitted=false;
     this.RegisterForm.reset();
   }
+
   alertGood(){
     Swal.fire({
       icon: 'success',

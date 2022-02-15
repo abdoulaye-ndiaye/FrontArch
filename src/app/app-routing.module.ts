@@ -26,6 +26,7 @@ import { NoteComponent } from './views/note/note.component';
 import { ProjetComponent } from './views/projet/projet.component';
 import { PvSoutenanceComponent } from './views/pv-soutenance/pv-soutenance.component';
 import { RapporteursComponent } from './views/rapporteurs/rapporteurs.component';
+import { RegisterProfComponent } from './views/register-prof/register-prof.component';
 import { RegisterComponent } from './views/register/register.component';
 import { CreerProjetComponent } from './views/resp-form/creer-projet/creer-projet.component';
 import { ListeEtudiantsComponent } from './views/resp-form/liste-etudiants/liste-etudiants.component';
@@ -60,7 +61,17 @@ const routes: Routes = [
     path: 'register',
     component: RegisterComponent,
     data: {
-      title: 'Register',
+      title: 'Register Etudiant',
+      excepteRole: 'ADMIN',
+      expectedProfil: 'ADMIN'
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'register-prof',
+    component: RegisterProfComponent,
+    data: {
+      title: 'Register Professeur',
       excepteRole: 'ADMIN',
       expectedProfil: 'ADMIN'
     },
