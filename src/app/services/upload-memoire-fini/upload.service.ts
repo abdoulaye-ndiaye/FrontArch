@@ -13,7 +13,6 @@ export class UploadService {
     const HttpUploadOptions = {
       headers: new HttpHeaders({'Content-Type': 'multipart/form-data'})
     }
-    return this.httpClient.post<any>(`${environment.apiUrl}/upload-article`, data);
-    
+    return this.httpClient.post<any>(`${environment.apiUrl}/upload-memoireFini`, data);
   }
 }

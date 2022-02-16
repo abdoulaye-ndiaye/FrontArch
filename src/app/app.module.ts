@@ -53,6 +53,9 @@ import { DesComPfeComponent } from './views/des-com-pfe/des-com-pfe.component';
 import { DComPfeComponent } from './views/dossier/d-com-pfe/d-com-pfe.component';
 import { UploadDecisionPfeComponent } from './views/upload-decision-pfe/upload-decision-pfe.component';
 import { RegisterProfComponent } from './views/register-prof/register-prof.component';
+import { UploadArticleComponent } from './views/upload-article/upload-article.component';
+import { ArticleComponent } from './views/article/article.component';
+import { UploadMemoireFiniComponent } from './views/upload-memoire-fini/upload-memoire-fini.component';
 
 @NgModule({
   
@@ -95,7 +98,10 @@ import { RegisterProfComponent } from './views/register-prof/register-prof.compo
     DesComPfeComponent,
     DComPfeComponent,
     UploadDecisionPfeComponent,
-    RegisterProfComponent
+    RegisterProfComponent,
+    UploadArticleComponent,
+    ArticleComponent,
+    UploadMemoireFiniComponent
   ],
   imports: [
     SweetAlert2Module.forRoot(),

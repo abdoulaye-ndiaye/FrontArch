@@ -168,6 +168,12 @@ export class AuthService {
   getProjets() {
     return this.httpClient.get<any>(`${environment.apiUrl}/projet`);
   }
+  getArticles() {
+    return this.httpClient.get<any>(`${environment.apiUrl}/article`);
+  }
+  getMemoiresFinis() {
+    return this.httpClient.get<any>(`${environment.apiUrl}/memoireFini`);
+  }
   getComptes() {
     return this.httpClient.get<any>(`${environment.apiUrl}/compte`);
   }

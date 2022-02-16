@@ -66,7 +66,7 @@
                   <div class="card-body text-center">
                     <div class="dash3">
                       <h5 class="text-muted">Mémoires</h5>
-                      <h4 class="counter text-primary">1,628</h4>
+                      <h4 class="counter text-primary">{{nbmemoire}}</h4>
                     </div>
                   </div>
                 </div>
@@ -82,7 +82,7 @@
                   <div class="card-body text-center">
                     <div class="dash3">
                       <h5 class="text-muted">Articles</h5>
-                      <h4 class="counter text-success">468</h4>
+                      <h4 class="counter text-success">{{nbarticle}}</h4>
                     </div>
                   </div>
                 </div>
@@ -108,7 +108,7 @@
             <table class="table table-bordered table-striped table-hover" id="memoire">
               <thead>
                 <tr>
-                  <th>Projet</th>
+                  <th>Sujet</th>
                   <th>Description</th>
                   <th>Etudiant</th>
                   <th>Profs Encadreurs</th>
@@ -116,16 +116,12 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let projet of allProjets">
-                  <td>{{ projet.sujet }}</td>
-                  <td>{{ projet.description }}</td>
-                  <td>{{ projet.etudiant.compte.prenom }} {{ projet.etudiant.compte.nom }}</td>
-                  <td>
-                    <ng-container *ngFor="let encadreur of projet.encadreur">
-                      {{encadreur.compte.prenom }}  {{encadreur.compte.nom }},
-                    </ng-container>
-                  </td>
-                  <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
+                <tr *ngFor="let memoire of allMemoiresFinis">
+                  <td>{{ memoire.sujet }}</td>
+                  <td>{{ memoire.description }}</td>
+                  <td>{{ memoire.etudiant }}</td>
+                  <td>{{ memoire.encadreur }}</td>
+                  <td><a (click)="onSubmit(memoire.url)" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i>Télécharger</a></td>
                 </tr>
               </tbody>
             </table>
@@ -144,88 +140,16 @@
                 <tr>
                   <th>Sujet</th>
                   <th>Description</th>
-                  <th>Date sortie</th>
                   <th>Professeur</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Blockchain</td>
-                  <td>Introduction générale sur la blockchain, technologie des cryptomonaies</td>
-                  <td>14/01/2022</td>
-                  <td>Mme Kassé</td>
-                  <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
-                </tr>
-                <tr>
-                  <td>les Graphes</td>
-                  <td>Python, l'utilisation des graphes dans la prévision d'actions</td>
-                  <td>04/01/2022</td>
-                  <td>Mr Bass</td>
-                  <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
-                </tr>
-                <tr>
-                  <td>Datatables</td>
-                  <td>Optimisation de l'affichage des tableaux de données en Angular</td>
-                  <td>11/05/2019</td>
-                  <td>Vito Ndiaye</td>
-                  <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
-                </tr>
-                <tr>
-                  <td>GitHub</td>
-                  <td>Création et utilisation d'un compte git pour des projets </td>
-                  <td>14/08/2020</td>
-                  <td>Mr Mbacké</td>
-                  <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
-                </tr>
-                <tr>
-                  <td>IA</td>
-                  <td>Programmation de plusieurs drones pour des vols coordonnés</td>
-                  <td>14/01/2016</td>
-                  <td>Mr Ass Tako</td>
-                  <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
-                </tr>
-                <tr>
-                  <td>Facebook</td>
-                  <td>Fondation de la socièté et modèle de développement</td>
-                  <td>14/01/2021</td>
-                  <td>Mr Ayoba Gueye</td>
-                  <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
-                </tr>
-                <tr>
-                  <td>Réseaux</td>
-                  <td>Création et gestion d'un honeypot</td>
-                  <td>12/01/2021</td>
-                  <td>Mr Abdou Khadre Gueye</td>
-                  <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
-                </tr>
-                <tr>
-                  <td>Système d'exploitation</td>
-                  <td>Etude approfondie du SE linux </td>
-                  <td>14/01/2022</td>
-                  <td>Mr Sidy Traoré</td>
-                  <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
-                </tr>
-                <tr>
-                  <td>Sécurité Informatique</td>
-                  <td>Protection d'un système d'information contre les attaques DDOS</td>
-                  <td>14/01/2021</td>
-                  <td>Mr Saliou Diome</td>
-                  <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
-                </tr>
-                <tr>
-                  <td>Internet Of Things</td>
-                  <td>Création d'un bracelet intelligent pour l'authentification aux différents comptes possèdés</td>
-                  <td>04/05/2011</td>
-                  <td>Mr Ousmane Faye</td>
-                  <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
-                </tr>
-                <tr>
-                  <td>Analytics</td>
-                  <td>Utilisation de l'outil Google Analytics pour l'optimisation du SEO des sites</td>
-                  <td>14/01/2021</td>
-                  <td>Mr SESAF</td>
-                  <td><a href="#" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i></a></td>
+                <tr *ngFor="let article of allArticles">
+                  <td>{{ article.sujet }}</td>
+                  <td>{{ article.description }}</td>
+                  <td>{{ article.professeur.compte.prenom }} {{ article.professeur.compte.nom }}</td>
+                  <td><a (click)="onSubmit(article.url)" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i>Télécharger</a></td>
                 </tr>
               </tbody>
             </table>

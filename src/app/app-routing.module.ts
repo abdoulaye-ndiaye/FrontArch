@@ -3,6 +3,7 @@ import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { AuthGuard } from './services/auth.guard';
 import { AcceuilComponent } from './views/acceuil/acceuil.component';
 import { AjoutRapporteurComponent } from './views/ajout-rapporteur/ajout-rapporteur.component';
+import { UploadArticleComponent } from './views/upload-article/upload-article.component';
 import { ChangerPasswordComponent } from './views/changer-password/changer-password.component';
 import { DemandeAutorisationComponent } from './views/demande-autorisation/demande-autorisation/demande-autorisation.component';
 import { DesComPfeComponent } from './views/des-com-pfe/des-com-pfe.component';
@@ -36,6 +37,8 @@ import { UploadDecisionPfeComponent } from './views/upload-decision-pfe/upload-d
 import { UploadDemandeAutorisationComponent } from './views/upload-demande-autorisation/upload-demande-autorisation.component';
 import { UploadMemoireComponent } from './views/upload-memoire/upload-memoire.component';
 import { UploadRapportComponent } from './views/upload-rapport/upload-rapport.component';
+import { ArticleComponent } from './views/article/article.component';
+import { UploadMemoireFiniComponent } from './views/upload-memoire-fini/upload-memoire-fini.component';
 
 const routes: Routes = [
   {
@@ -375,6 +378,34 @@ const routes: Routes = [
     data: {
       title: 'Note Soutenance',
       expectedProfil: 'PROF'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'upload-article',
+    component: UploadArticleComponent,
+    data: {
+      title: 'Créer Article',
+      expectedProfil: 'PROF'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'article',
+    component: ArticleComponent,
+    data: {
+      title: 'Mes Articles',
+      expectedProfil: 'PROF'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'upload-memoire-fini',
+    component: UploadMemoireFiniComponent,
+    data: {
+      title: 'Upload Memoire Fini',
+      excepteRole: 'ADMIN',
+      expectedProfil: 'ADMIN'
     },
     canActivate:[AuthGuard]
   },

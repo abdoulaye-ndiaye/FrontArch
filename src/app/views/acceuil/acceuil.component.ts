@@ -14,7 +14,8 @@ import { TestBed } from '@angular/core/testing';
 })
 export class AcceuilComponent implements OnInit {
   prof: string;
-  allProjets: any;
+  allMemoiresFinis: any;
+  allArticles:any;
   adminForm: FormGroup;
   submitted = false;
   returnUrl: string;
@@ -23,7 +24,8 @@ export class AcceuilComponent implements OnInit {
   profil = sessionStorage.getItem("profil");
   nom = sessionStorage.getItem("nom");
   prenom = sessionStorage.getItem("prenom");
-
+  nbmemoire:any;
+  nbarticle:any;
 
 
   constructor(
@@ -42,8 +44,9 @@ export class AcceuilComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.authService.getProjets().subscribe(data => {
-      this.allProjets = data;
+    this.authService.getMemoiresFinis().subscribe(data => {
+      this.allMemoiresFinis = data;
+      this.nbmemoire=data.length;
       setTimeout(() => {
         $('#memoire').DataTable({
           pagingType: 'full_numbers',
@@ -51,6 +54,12 @@ export class AcceuilComponent implements OnInit {
           processing: true,
           lengthMenu: [5, 10, 25],
         });
+      }, 1);
+    });
+    this.authService.getArticles().subscribe(data => {
+      this.allArticles = data;
+      this.nbarticle= data.length;
+      setTimeout(() => {
         $('#article').DataTable({
           pagingType: 'full_numbers',
           pageLength: 5,
@@ -61,6 +70,12 @@ export class AcceuilComponent implements OnInit {
     });
 
   }
+  onSubmit(url: string) {
+    // this.wait();
+     this.submitted = true;
+     this.authService.downloadFichier(url);
+    // Swal.close()
+   }
   alert(){
     Swal.fire({
       icon: 'success',

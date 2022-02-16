@@ -1,0 +1,46 @@
+<!-- Navbar-->
+<app-header></app-header>
+
+<app-nav [inputFromParent] = "inputText"></app-nav>
+
+<div class=" app-content my-3 my-md-5">
+    <div class="side-app">
+    </div>
+    <div class="container justify-content-center">
+        <br><br>
+        <div class=" col-md-6">
+            <a class="btn btn-blue " routerLink="/upload-article">Créer un nouveau article</a>
+        </div>
+        <div class="row mr-5 ml-5">
+            <div class="card m-5 p-3">
+              <div class="card-body">
+                <div align="center">MES ARTICLES</div>
+                <table class="table table-bordered table-striped table-hover" id="article">
+                  <thead>
+                    <tr>
+                      <th>Sujet</th>
+                      <th>Description</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <ng-container *ngFor="let article of allArticles">
+                        <tr *ngIf="article.professeur==idProf">
+                            <td>{{article.sujet}}</td>
+                            <td>{{article.description}}</td>
+                            <td><a (click)="onSubmit(article.url)" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i> Telecharger</a></td>
+                          </tr>
+                      </ng-container>
+                  </tbody>
+                </table>
+              </div>
+    
+            </div>
+          </div>
+    </div>
+</div>
+
+
+<!--footer-->
+<app-footer></app-footer>
+<!-- End Footer-->

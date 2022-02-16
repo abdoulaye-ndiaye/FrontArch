@@ -104,6 +104,11 @@
                 class="side-menu__icon fas fa-tasks fa-lg"></i><span class="side-menu__label">Soutencance
                 </span></a>
     </li>
+    <li class="slide">
+      <a class="side-menu__item {{article}}" data-toggle="slide" routerLink="/article"><i
+              class="side-menu__icon fas fa-newspaper fa-lg"></i><span class="side-menu__label">Mes
+              Articles</span></a>
+  </li>
      </div>
      <div *ngIf="specialite==='ADMIN'">
       <li class="slide">
@@ -122,6 +127,11 @@
     <a class="side-menu__item {{registerProf}}" data-toggle="slide" routerLink="/register-prof"><i
             class="side-menu__icon fas fa-user-plus fa-lg"></i><span class="side-menu__label">&nbsp;Register Professeur</span></a>
   </li>
+  <li class="slide">
+    <a class="side-menu__item {{memoireFini}}" data-toggle="slide" routerLink="/upload-memoire-fini"><i
+            class="side-menu__icon fas fa-file-import fa-lg"></i><span class="side-menu__label">Charger
+            Mémoires<br> Soutenus</span></a>
+</li>
      </div>
  
    </ul>

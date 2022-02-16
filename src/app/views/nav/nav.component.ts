@@ -19,7 +19,8 @@ export class NavComponent implements OnInit {
   home="";ajoutRapporteur="";excelEtudiant="";excelProf="";projet="";rapporteurs="";respForm="";
   uploadCertificat="";demandeAutorisation="";uploadMemoire="";uploadRapport="";changerPassword="";
   dossier="";memoire="";pv="";encadreur="";jury="";uploadDemandeAutorisation="";pvSoutenance="";
-  note="";desComPfe="";uploadDecisionPfe="";registerEtudiant="";registerProf="";
+  note="";desComPfe="";uploadDecisionPfe="";registerEtudiant="";registerProf="";article="";
+  memoireFini="";
 
   constructor(
     private router: Router,
@@ -60,6 +61,9 @@ export class NavComponent implements OnInit {
     if (this.inputFromParent=='d-com-pfe'){this.dossier="active";}
     if (this.inputFromParent=='register'){this.registerEtudiant="active";}
     if (this.inputFromParent=='register-prof'){this.registerProf="active";}
+    if (this.inputFromParent=='article'){this.article="active";}
+    if (this.inputFromParent=='memoire-fini'){this.memoireFini="active";}
+
 
 
 

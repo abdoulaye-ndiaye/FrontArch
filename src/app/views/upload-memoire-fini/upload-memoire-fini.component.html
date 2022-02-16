@@ -1,0 +1,109 @@
+<!-- Navbar-->
+<app-header></app-header>
+
+<app-nav [inputFromParent] = "inputText"></app-nav>
+
+
+
+<div class="app-content my-3 my-md-5">
+  <div class="side-app">
+    <br />
+  </div>
+  <div class="container justify-content-center">
+    <div class="row justify-content-center">
+      
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <form  method="post" class="card" enctype="multipart/form-data" [formGroup]="uploadArticleForm" (ngSubmit)="envoyer()">
+                <div class="card-header justify-content-center">
+                    <h3 class="card-title">Chargement de mémoire soutenu</h3>
+                </div>
+                <div class="card-body">
+                            <div class="form-group">
+                                <label class="form-label">Nom Complet Etudiant</label>
+                                <input type="text" class="form-control" formControlName="etudiant" name="example-text-input" placeholder="Entrer le nom de l'étudiant"
+                                [ngClass]="{
+                                    'is-invalid': submitted && f['etudiant'].errors
+                                  }" required>
+                                  <div *ngIf="submitted && f['etudiant'].errors" class="input-group mb-3 invalid-feedback">
+                                    <div *ngIf="f['etudiant'].errors['required']">
+                                      Veuillez saisir le nom de l'étudiant
+                                    </div>
+                                  </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Noms Encadreurs </label>
+                                <input type="text" class="form-control" formControlName="encadreur" name="example-text-input" placeholder="Veuillez séparer le nom des encadreurs par une virgule"
+                                [ngClass]="{
+                                    'is-invalid': submitted && f['encadreur'].errors
+                                  }" required>
+                                  <div *ngIf="submitted && f['encadreur'].errors" class="input-group mb-3 invalid-feedback">
+                                    <div *ngIf="f['encadreur'].errors['required']">
+                                      Veuillez saisir les noms des encadreurs
+                                    </div>
+                                  </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Sujet</label>
+                                <input type="text" class="form-control" formControlName="sujet" name="example-text-input" placeholder="Entrer le nom du projet"
+                                [ngClass]="{
+                                    'is-invalid': submitted && f['sujet'].errors
+                                  }" required>
+                                  <div *ngIf="submitted && f['sujet'].errors" class="input-group mb-3 invalid-feedback">
+                                    <div *ngIf="f['sujet'].errors['required']">
+                                      Veuillez saisir le sujet
+                                    </div>
+                                  </div>
+                            </div>
+                          
+                            <div class="form-group">
+                                <label class="form-label">Description </label>
+                                <textarea class="form-control" formControlName="description" rows="4" placeholder="Donner la description de l'article " 
+                                [ngClass]="{
+                                  'is-invalid': submitted && f['description'].errors
+                                }" required></textarea>
+                                <div *ngIf="submitted && f['description'].errors" class="input-group mb-3 invalid-feedback">
+                                  <div *ngIf="f['description'].errors['required']">
+                                    Veuillez entrer une description du sujet
+                                  </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <input type="file" formControlName="image" class="form-control form-control-lg" (change)="onChange($event)"
+                                [ngClass]="{
+                                    'is-invalid': submitted && f['image'].errors
+                                  }" required>
+                                  <div *ngIf="submitted && f['image'].errors" class="input-group mb-3 invalid-feedback">
+                                    <div *ngIf="f['image'].errors['required']">
+                                      Veuillez choisir un fichier
+                                    </div>
+                                  </div>
+                            </div>
+                            
+                            <br/>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-block btn-blue">
+                                Enregistrer
+                                </button>
+                            </div>
+                        
+                    
+                    
+                </div>
+            </form>
+        </div>
+
+    </div>
+    
+
+  </div>
+</div>
+
+<!--footer-->
+<app-footer></app-footer>
+<!-- End Footer-->
