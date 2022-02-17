@@ -44,83 +44,131 @@
               </div>
 
             </div>
-            <div class="col-md-8">
-              <div class="card mb-3">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Nom Complet</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      {{compte.prenom }} {{compte.nom}}
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Email</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      {{compte.email }}
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Téléphone</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      {{compte.numTel }}
-                    </div>
-                  </div>
-                  <div *ngIf="profil==='PROF'">
-                    <hr>
+            <ng-container *ngIf="profil!=='ADMIN'">
+              <div class="col-md-8">
+                <div class="card mb-3">
+                  <div class="card-body">
                     <div class="row">
                       <div class="col-sm-3">
-                        <h6 class="mb-0">Spécialité</h6>
+                        <h6 class="mb-0">Nom Complet</h6>
                       </div>
                       <div class="col-sm-9 text-secondary">
-                        {{specialite }}
-                      </div>
-                    </div>
-                  </div>
-                  <div *ngIf="profil==='ETUDIANT'">
-                    <hr>
-                    <div class="row">
-                      <div class="col-sm-3">
-                        <h6 class="mb-0">Classe</h6>
-                      </div>
-                      <div class="col-sm-9 text-secondary">
-                        {{classe }}
+                        {{compte.prenom }} {{compte.nom}}
                       </div>
                     </div>
                     <hr>
                     <div class="row">
                       <div class="col-sm-3">
-                        <h6 class="mb-0">Date de Naissance</h6>
+                        <h6 class="mb-0">Email</h6>
                       </div>
                       <div class="col-sm-9 text-secondary">
-                        {{dateNaissance }}
+                        {{compte.email }}
                       </div>
                     </div>
                     <hr>
                     <div class="row">
                       <div class="col-sm-3">
-                        <h6 class="mb-0">Lieu de Naissance</h6>
+                        <h6 class="mb-0">Téléphone</h6>
                       </div>
                       <div class="col-sm-9 text-secondary">
-                        {{lieuNaissance }}
+                        {{compte.numTel }}
+                      </div>
+                    </div>
+                    <div *ngIf="profil==='PROF'">
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Spécialité</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                          {{specialite }}
+                        </div>
+                      </div>
+                    </div>
+                    <div *ngIf="profil==='ETUDIANT'">
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Classe</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                          {{classe }}
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Date de Naissance</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                          {{dateNaissance }}
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Lieu de Naissance</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                          {{lieuNaissance }}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
+  
+  
+  
+  
+  
               </div>
-
-
-
-
-
-            </div>
+            </ng-container>
+            <ng-container *ngIf="profil=='ADMIN'">
+              <div class="card col-md-8 "><br>
+                <div class="row">
+                  <div class="col-xl-6 col-lg-6 colmd-12">
+                    <div class="card bg-primary text-white">
+                      <div class="card-body dash2">
+                        <i class="fe fe-file"></i>
+                        <span class="count-numbers counter">12</span>
+                        <span class="count-name">Mèmoires Finis</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 colmd-12">
+                    <div class="card bg-danger text-white">
+                      <div class="card-body dash2">
+                        <i class="fe fe-file"></i>
+                        <span class="count-numbers counter">599</span>
+                        <span class="count-name">Articles</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xl-6 col-lg-6 colmd-12">
+                    <div class="card bg-warning text-white">
+                      <div class="card-body dash2">
+                        <i class="fe fe-database"></i>
+                        <span class="count-numbers counter">6875</span>
+                        <span class="count-name">Fichiers</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-lg-6 colmd-12">
+                    <div class="card bg-cyan text-white">
+                      <div class="card-body dash2">
+                        <i class="fe fe-users"></i>
+                        <span class="count-numbers counter">35</span>
+                        <span class="count-name">Utilisateurs</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </ng-container>
+           
           </div>
 
         </div>
