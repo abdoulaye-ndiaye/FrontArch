@@ -351,4 +351,16 @@ export class AuthService {
         })
       );
   }
+
+  ForgotPassword(email: string,) {
+    return this.httpClient
+      .post<any>(`${environment.apiUrl}/email`, {
+        email
+      })
+      .pipe(
+        map((userData) => {
+          return userData;
+        })
+      );
+  }
 }

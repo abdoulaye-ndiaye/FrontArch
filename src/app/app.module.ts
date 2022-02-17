@@ -56,6 +56,7 @@ import { RegisterProfComponent } from './views/register-prof/register-prof.compo
 import { UploadArticleComponent } from './views/upload-article/upload-article.component';
 import { ArticleComponent } from './views/article/article.component';
 import { UploadMemoireFiniComponent } from './views/upload-memoire-fini/upload-memoire-fini.component';
+import { MotDePassOublierComponent } from './views/mot-de-pass-oublier/mot-de-pass-oublier.component';
 
 @NgModule({
   
@@ -101,7 +102,8 @@ import { UploadMemoireFiniComponent } from './views/upload-memoire-fini/upload-m
     RegisterProfComponent,
     UploadArticleComponent,
     ArticleComponent,
-    UploadMemoireFiniComponent
+    UploadMemoireFiniComponent,
+    MotDePassOublierComponent
   ],
   imports: [
     SweetAlert2Module.forRoot(),

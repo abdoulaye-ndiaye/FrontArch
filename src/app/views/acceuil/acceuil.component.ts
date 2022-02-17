@@ -71,11 +71,12 @@ export class AcceuilComponent implements OnInit {
 
   }
   onSubmit(url: string) {
-    // this.wait();
+    this.wait();
      this.submitted = true;
      this.authService.downloadFichier(url);
-    // Swal.close()
+    Swal.close()
    }
+
   alert(){
     Swal.fire({
       icon: 'success',
@@ -86,6 +87,13 @@ export class AcceuilComponent implements OnInit {
   }
   refresh(): void {
     window.location.reload();
+}
+wait(){
+  Swal.fire({
+    icon: 'info',
+    title: 'Ouverture en cours !'
+  });
+  Swal.showLoading();
 }
 
 }

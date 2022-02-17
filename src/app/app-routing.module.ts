@@ -39,6 +39,7 @@ import { UploadMemoireComponent } from './views/upload-memoire/upload-memoire.co
 import { UploadRapportComponent } from './views/upload-rapport/upload-rapport.component';
 import { ArticleComponent } from './views/article/article.component';
 import { UploadMemoireFiniComponent } from './views/upload-memoire-fini/upload-memoire-fini.component';
+import { MotDePassOublierComponent } from './views/mot-de-pass-oublier/mot-de-pass-oublier.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,13 @@ const routes: Routes = [
     component: AcceuilComponent,
     data: {
       title: 'Acceuil'
+    }
+  },
+  {
+    path: 'motDePassOublier',
+    component: MotDePassOublierComponent,
+    data: {
+      title: 'Reinitialiser'
     }
   },
   {

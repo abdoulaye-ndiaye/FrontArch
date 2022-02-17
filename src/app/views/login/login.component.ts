@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { error } from '@angular/compiler/src/util';
 
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { data } from 'jquery';
 
 
 @Component({
@@ -32,6 +33,8 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     })
+
+    console.log(this.loginForm.value.email)
   }
 
   get f() { return this.loginForm.controls; }
@@ -68,6 +71,22 @@ export class LoginComponent implements OnInit {
 
     }
   }
+
+  forgotPassword(){
+    this.wait();
+    if (this.loginForm.value.email==''){
+      Swal.close();
+      this.alertBad();
+    }
+    else{
+      this.authService.ForgotPassword(this.loginForm.value.email).subscribe(data=>{
+        Swal.close();
+        this.alertGood();
+      })
+    }
+  }
+
+
   alert(){
     Swal.fire({
       icon: 'success',
@@ -76,6 +95,27 @@ export class LoginComponent implements OnInit {
       timer: 1200
     })
   }
+  alertGood(){
+    Swal.fire({
+      icon: 'success',
+      title: 'Lien envoyé à votre email !',
+      showConfirmButton: false,
+      timer: 1600
+    })
+  }
+  alertBad(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Erreur...',
+      text: 'Veuillez renseignez votre email'
+    })}
+    wait(){
+      Swal.fire({
+        icon: 'info',
+        title: 'Traitement en cours !'
+      });
+      Swal.showLoading();
+    }
   
 }
 

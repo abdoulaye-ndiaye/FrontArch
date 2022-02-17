@@ -26,6 +26,7 @@
     "html-to-pdfmake": "^2.3.9",
     "jquery": "^3.6.0",
     "jspdf": "^2.5.1",
+    "jwt-decode": "^3.1.2",
     "pdfmake": "^0.2.4",
     "rxjs": "~7.4.0",
     "signature_pad": "^4.0.2",
