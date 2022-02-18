@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { data } from 'jquery';
+import { Console } from 'console';
 
 @Component({
   selector: 'app-note',
@@ -51,6 +52,15 @@ export class NoteComponent implements OnInit {
 
     this.authService.getProjets().subscribe(data => {
       this.allProjets = data;
+      console.log(data)
+      setTimeout(() => {
+        $('#projets').DataTable({
+          pagingType: 'full_numbers',
+          pageLength: 5,
+          processing: true,
+          lengthMenu: [5, 10, 25],
+        });
+      }, 1);
     });
   }
 
@@ -60,7 +70,6 @@ export class NoteComponent implements OnInit {
       console.log("invalid form")
     } 
     else {
-      this.test=true;
         this.authService
           .FormulaireNote(
             this.NoteForm.value.valeur,
@@ -70,6 +79,7 @@ export class NoteComponent implements OnInit {
           .subscribe(
             (resultat) => {
               this.alertGood();
+              this.refresh()
               this.submitted = false;
             },
             (error) => {
@@ -83,6 +93,9 @@ export class NoteComponent implements OnInit {
     onChangeProjet(event: any) {
       this.idProjet = event.target.value;
     }
+    refresh(): void {
+      window.location.reload();
+  }
     alertGood(){
       Swal.fire({
         icon: 'success',

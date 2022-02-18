@@ -74,7 +74,7 @@
         <form [formGroup]='uploadRapportForm' (ngSubmit)='envoyer()' enctype="multipart/form-data">
           <div class="form-group files color">
             <h2>Charger votre Rapport </h2>
-            <input type="file" formControlName="image" class="form-control" (change)="onChange($event)">
+            <input type="file" accept=".pdf" formControlName="image" class="form-control" (change)="onChange($event)">
           </div>
           <div class="form-group files color" hidden>
             <h2>Hidden </h2>

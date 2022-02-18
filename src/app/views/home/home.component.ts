@@ -15,6 +15,10 @@ export class HomeComponent implements OnInit {
   classe: string;
   specialite: string;
   profil = sessionStorage.getItem("profil");
+  nbmemoire:number;
+  nbarticle:number;
+  nbcompte:number;
+  nbfichier:number;
 
   constructor(
     private router: Router,
@@ -35,7 +39,21 @@ export class HomeComponent implements OnInit {
 
     });
 
+    this.authService.getMemoiresFinis().subscribe(data => {
+      this.nbmemoire=data.length;
+      this.nbfichier=data.length;
+    });
 
+    this.authService.getArticles().subscribe(data => {
+      this.nbarticle= data.length;
+      this.nbfichier += data.length;
+    });
+
+    this.authService.getComptes().subscribe(data => {
+      this.nbcompte= data.length;
+    });
+
+    
   }
 
 }

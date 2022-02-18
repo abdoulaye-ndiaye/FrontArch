@@ -74,7 +74,7 @@
                   <div class="card-body text-center">
                     <div class="dash3">
                       <h5 class="text-muted">Nombre de téléchargements Mémoires </h5>
-                      <h4 class="counter text-danger">593</h4>
+                      <h4 class="counter text-danger">0</h4>
                     </div>
                   </div>
                 </div>
@@ -90,7 +90,7 @@
                   <div class="card-body text-center">
                     <div class="dash3">
                       <h5 class="text-muted">Nombre de téléchargements Articles</h5>
-                      <h4 class="counter text-info">345</h4>
+                      <h4 class="counter text-info">0</h4>
                     </div>
                   </div>
                 </div>
@@ -113,6 +113,7 @@
                   <th>Etudiant</th>
                   <th>Profs Encadreurs</th>
                   <th>Action</th>
+                  <th><i class="fas fa-download"></i></th>
                 </tr>
               </thead>
               <tbody>
@@ -121,7 +122,8 @@
                   <td>{{ memoire.description }}</td>
                   <td>{{ memoire.etudiant }}</td>
                   <td>{{ memoire.encadreur }}</td>
-                  <td><a (click)="onSubmit(memoire.url)" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i>Télécharger</a></td>
+                  <td><a  (click)="onSubmit(memoire.url);changerNbTelMemoirefini(memoire._id,memoire.nbTelechargement)" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i>Télécharger</a></td>
+                  <td class="h3 justify-content-center counter text-warning">{{memoire.nbTelechargement}}</td>
                 </tr>
               </tbody>
             </table>
@@ -142,14 +144,16 @@
                   <th>Description</th>
                   <th>Professeur</th>
                   <th>Action</th>
+                  <th><i class="fas fa-download"></i></th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let article of allArticles">
-                  <td>{{ article.sujet }}</td>
+                <tr *ngFor="let article of allArticles" >
+                  <td>{{ article.sujet }} </td>
                   <td>{{ article.description }}</td>
                   <td>{{ article.professeur.compte.prenom }} {{ article.professeur.compte.nom }}</td>
-                  <td><a (click)="onSubmit(article.url)" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i>Télécharger</a></td>
+                  <td><a (click)="onSubmit(article.url);changerNbTelArticle(article._id,article.nbTelechargement)" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i>Télécharger</a></td>
+                  <td class="h3 justify-content-center counter text-warning">{{article.nbTelechargement}}</td>
                 </tr>
               </tbody>
             </table>
@@ -167,3 +171,5 @@
     <!-- Back to top -->
     <a href="#top" id="back-to-top" style="display: inline"><i class="fas fa-angle-up"></i></a>
   </div>
+
+ 

@@ -25,7 +25,7 @@
                   </thead>
                   <tbody>
                       <ng-container *ngFor="let article of allArticles">
-                        <tr *ngIf="article.professeur==idProf">
+                        <tr *ngIf="article.professeur._id==idProf">
                             <td>{{article.sujet}}</td>
                             <td>{{article.description}}</td>
                             <td><a (click)="onSubmit(article.url)" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i> Telecharger</a></td>

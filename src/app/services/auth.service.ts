@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -9,26 +10,37 @@ import { map } from 'rxjs/operators';
 export class AuthService {
   constructor(private httpClient: HttpClient) {}
 
+  getDecodedAccessToken(token: string): any {
+    try {
+      return jwt_decode(token);
+    } catch(Error) {
+      return null;
+    }
+  }
   authenticate(email: string, password: string) {
     return this.httpClient
       .post<any>(`${environment.apiUrl}/login`, { email, password })
       .pipe(
         map((userData) => {
-          sessionStorage.setItem('email', userData.email);
+          const token = userData.token as string;
+          const tokenInfo = this.getDecodedAccessToken(token); // decode token
+          
           let tokenStr = 'Bearer ' + userData.token;
           console.log(tokenStr);
-          sessionStorage.setItem('token', tokenStr);
-          sessionStorage.setItem('profil', userData.profil);
-          sessionStorage.setItem('id', userData.id);
-          sessionStorage.setItem('nom', userData.nom);
-          sessionStorage.setItem('prenom', userData.prenom);
-          sessionStorage.setItem('dateNaissance', userData.dateNaissance);
-          sessionStorage.setItem('lieuNaissance', userData.lieuNaissance);
-          sessionStorage.setItem('idEtu', userData.idEtu);
-          sessionStorage.setItem('idProf', userData.idProf);
-          sessionStorage.setItem('idProjet', userData.idProjet);
-          sessionStorage.setItem('classe', userData.classe);
-          sessionStorage.setItem('specialite', userData.specialite);
+          sessionStorage.setItem('token', token);
+          sessionStorage.setItem('email', tokenInfo.email);
+          sessionStorage.setItem('profil', tokenInfo.profil);
+          sessionStorage.setItem('id', tokenInfo._id);
+          sessionStorage.setItem('nom', tokenInfo.nom);
+          sessionStorage.setItem('prenom', tokenInfo.prenom);
+          sessionStorage.setItem('dateNaissance', tokenInfo.dateNaissance);
+          sessionStorage.setItem('lieuNaissance', tokenInfo.lieuNaissance);
+          sessionStorage.setItem('idEtu', tokenInfo.idEtu);
+          sessionStorage.setItem('idProf', tokenInfo.idProf);
+          sessionStorage.setItem('idProjet', tokenInfo.idProjet);
+          sessionStorage.setItem('classe', tokenInfo.classe);
+          sessionStorage.setItem('specialite', tokenInfo.specialite);
+
           return userData;
         })
       );
@@ -167,6 +179,9 @@ export class AuthService {
   }
   getProjets() {
     return this.httpClient.get<any>(`${environment.apiUrl}/projet`);
+  }
+  getProjets2() {
+    return this.httpClient.get<any>(`${environment.apiUrl}/projets`);
   }
   getArticles() {
     return this.httpClient.get<any>(`${environment.apiUrl}/article`);
@@ -356,6 +371,28 @@ export class AuthService {
     return this.httpClient
       .post<any>(`${environment.apiUrl}/email`, {
         email
+      })
+      .pipe(
+        map((userData) => {
+          return userData;
+        })
+      );
+  }
+  changerNbTelMemoirefini(idMemoireFini: string, nbTelechargement: any) {
+    return this.httpClient
+      .put<any>(`${environment.apiUrl}/nbTelechargementMemoireFini/${idMemoireFini}`, {
+        nbTelechargement
+      })
+      .pipe(
+        map((userData) => {
+          return userData;
+        })
+      );
+  }
+  changerNbTelArticle(idArticle: string, nbTelechargement: any) {
+    return this.httpClient
+      .put<any>(`${environment.apiUrl}/nbTelechargementArticle/${idArticle}`, {
+        nbTelechargement
       })
       .pipe(
         map((userData) => {

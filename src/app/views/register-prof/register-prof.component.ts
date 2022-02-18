@@ -19,6 +19,7 @@ export class RegisterProfComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   hide = true;
+  compte:any;
 
   constructor(
     private formBulder: FormBuilder,
@@ -69,8 +70,33 @@ export class RegisterProfComponent implements OnInit {
           else {
             this.authService.verifEmail(this.RegisterForm.value.email).subscribe(
               (data)=>{
+                this.compte=data;
+                if(this.compte!==null){
                 this.alertBadEmail();
-              this.f['email'].reset()
+              this.f['email'].reset()}
+              else{
+                this.authService
+                .RegisterProf(
+                  this.RegisterForm.value.specialite,
+                  this.RegisterForm.value.numTel,
+                  this.RegisterForm.value.nom,
+                  this.RegisterForm.value.prenom,
+                  'PROF',
+                  this.RegisterForm.value.email,
+                  this.RegisterForm.value.password
+                )
+                .subscribe(
+                  (resultat) => {
+                    this.submitted = false;
+                    this.RegisterForm.reset();
+                    this.alertGood();
+                  },
+                  (error) => {
+                    console.log(error);
+                  this.alertBad();
+                  }
+                );
+              }
             },
             (error)=>{
               this.authService

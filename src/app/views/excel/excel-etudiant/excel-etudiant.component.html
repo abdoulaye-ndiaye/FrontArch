@@ -19,7 +19,7 @@
         >
           <div class="form-group ">
             <h2>Charger le fichier Excel pour la création des comptes étudiants</h2>
-                <input type="file" formControlName="image" class="form-control form-control-lg" (change)="onChange($event)">
+                <input type="file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" formControlName="image" class="form-control form-control-lg" (change)="onChange($event)">
           </div>
           <div>
             <button type="submit" class="btn btn-primary px-4 ">

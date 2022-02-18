@@ -40,6 +40,8 @@ import { UploadRapportComponent } from './views/upload-rapport/upload-rapport.co
 import { ArticleComponent } from './views/article/article.component';
 import { UploadMemoireFiniComponent } from './views/upload-memoire-fini/upload-memoire-fini.component';
 import { MotDePassOublierComponent } from './views/mot-de-pass-oublier/mot-de-pass-oublier.component';
+import { CreerRapportComponent } from './views/creer-rapport/creer-rapport.component';
+import { FormRapportComponent } from './views/form-rapport/form-rapport.component';
 
 const routes: Routes = [
   {
@@ -138,6 +140,24 @@ const routes: Routes = [
     component: UploadRapportComponent,
     data: {
       title: 'Upload-Rapport',
+      expectedProfil: 'PROF'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'creer-rapport',
+    component: CreerRapportComponent,
+    data: {
+      title: 'Créer Rapport',
+      expectedProfil: 'PROF'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'form-rapport',
+    component: FormRapportComponent,
+    data: {
+      title: 'formulaire Rapport',
       expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]

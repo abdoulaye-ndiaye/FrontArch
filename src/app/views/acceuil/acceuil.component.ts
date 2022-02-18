@@ -26,6 +26,7 @@ export class AcceuilComponent implements OnInit {
   prenom = sessionStorage.getItem("prenom");
   nbmemoire:any;
   nbarticle:any;
+  
 
 
   constructor(
@@ -40,7 +41,7 @@ export class AcceuilComponent implements OnInit {
     this.alert();
     this.refresh();
   }
-
+ 
 
   ngOnInit(): void {
 
@@ -76,6 +77,19 @@ export class AcceuilComponent implements OnInit {
      this.authService.downloadFichier(url);
     Swal.close()
    }
+  
+   changerNbTelMemoirefini( idMemoireFini: string, nbTelechargement:any){
+    this.authService.changerNbTelMemoirefini(idMemoireFini, nbTelechargement).subscribe(data => {
+
+    });
+   }
+   changerNbTelArticle( idArticle: string, nbTelechargement: any){
+    this.authService.changerNbTelArticle(idArticle,nbTelechargement).subscribe(data => {
+    
+    });
+  }
+
+  
 
   alert(){
     Swal.fire({
