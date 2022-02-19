@@ -82,8 +82,9 @@ export class LoginComponent implements OnInit {
         text: "Un email vous sera envoyé pour la réinitialisation",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
+        confirmButtonColor: '#63b521',
         cancelButtonColor: '#d33',
+        cancelButtonText: 'Annuler',
         confirmButtonText: 'Oui, envoyer !'
       }).then((result) => {
         if (result.isConfirmed) {
@@ -138,8 +139,9 @@ export class LoginComponent implements OnInit {
         text: "Un email vous sera envoyé pour la réinitialisation",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
+        confirmButtonColor: '#63b521',
         cancelButtonColor: '#d33',
+        cancelButtonText: 'Annuler',
         confirmButtonText: 'Oui, envoyer !'
       }).then((result) => {
         if (result.isConfirmed) {

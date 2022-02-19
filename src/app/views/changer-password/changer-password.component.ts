@@ -52,8 +52,19 @@ export class ChangerPasswordComponent implements OnInit {
     if (this.changerPwdForm.invalid) {
       console.log("invalid form")
     } else {
-
-        this.authService.changerPassword(this.a,this.changerPwdForm.value.password)
+      Swal.fire({
+        title: 'Etes-vous sûr ?',
+        text: "Votre mot de passe va être modifié et vous serez déconnecté !",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#63b521',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Annuler',
+        confirmButtonText: 'Oui, modifier !'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.wait()
+          this.authService.changerPassword(this.a,this.changerPwdForm.value.password)
           .subscribe(
             (resultat) => {
               this.submitted = false;
@@ -65,6 +76,10 @@ export class ChangerPasswordComponent implements OnInit {
             }
           );
         this.alertGood();
+          
+        }
+      })
+       
       
     }
   }
@@ -83,5 +98,12 @@ export class ChangerPasswordComponent implements OnInit {
       title: 'Erreur...',
       text: 'Echec de la modification'
     })
+  }
+  wait(){
+    Swal.fire({
+      icon: 'info',
+      title: 'Traitement en cours !'
+    });
+    Swal.showLoading();
   }
 }
