@@ -147,7 +147,7 @@
                 </div>
                 <div class="row">
                   <div class="col-xl-6 col-lg-6 colmd-12">
-                    <div class="card bg-warning text-white">
+                    <div class="card bg-orange text-white">
                       <div class="card-body dash2">
                         <i class="fe fe-database"></i>
                         <span class="count-numbers counter">{{nbfichier}}</span>
@@ -167,6 +167,9 @@
                 </div>
                 
               </div>
+            </ng-container>
+            <ng-container *ngIf="profil=='ADMIN'">
+              
             </ng-container>
            
           </div>

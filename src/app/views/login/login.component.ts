@@ -45,27 +45,27 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
+    this.message='';
     if (this.loginForm.invalid) {
       return;
     } else {
       this.authService.authenticate(this.loginForm.value.email, this.loginForm.value.password).subscribe(
         result => {
-          if (result.code) {
-            this.message = 'Email et/ou mot de passe incorrect !';
-          } else {
-            let tokenStr = "Bearer " + result.token;
-            sessionStorage.setItem("token", tokenStr);
-            sessionStorage.setItem("profil", result.profil);
-            sessionStorage.setItem("id", result.id);
-            sessionStorage.setItem("email", result.email);
             this.alert();
             this.router.navigate(['/home']);
-          }
         },
         error => {
           console.log(error);
-          this.message = 'Email et/ou mot de passe incorrect !';
+          if(error.error.text=='compte bloqué'){
+            this.message= 'Ce compte a été bloqué';
+          }
+          else if(error.error.text=='email invalide'){
+            this.message = 'Email et/ou mot de passe incorrect !';
+          }
+          else if(error.error.text=='mot de passe incorrect'){
+            this.message= 'Email et/ou mot de passe incorrect !';
+          }
+          
         }
       );
 

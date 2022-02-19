@@ -25,8 +25,6 @@ export class AuthService {
           const token = userData.token as string;
           const tokenInfo = this.getDecodedAccessToken(token); // decode token
           
-          let tokenStr = 'Bearer ' + userData.token;
-          console.log(tokenStr);
           sessionStorage.setItem('token', token);
           sessionStorage.setItem('email', tokenInfo.email);
           sessionStorage.setItem('profil', tokenInfo.profil);
@@ -393,6 +391,28 @@ export class AuthService {
     return this.httpClient
       .put<any>(`${environment.apiUrl}/nbTelechargementArticle/${idArticle}`, {
         nbTelechargement
+      })
+      .pipe(
+        map((userData) => {
+          return userData;
+        })
+      );
+  }
+  bloquerCompte(idCompte: string) {
+    return this.httpClient
+      .put<any>(`${environment.apiUrl}/bloquer-compte/${idCompte}`, {
+        
+      })
+      .pipe(
+        map((userData) => {
+          return userData;
+        })
+      );
+  }
+  debloquerCompte(idCompte: string) {
+    return this.httpClient
+      .put<any>(`${environment.apiUrl}/debloquer-compte/${idCompte}`, {
+        
       })
       .pipe(
         map((userData) => {

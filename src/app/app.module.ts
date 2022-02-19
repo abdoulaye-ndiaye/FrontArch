@@ -59,6 +59,7 @@ import { UploadMemoireFiniComponent } from './views/upload-memoire-fini/upload-m
 import { MotDePassOublierComponent } from './views/mot-de-pass-oublier/mot-de-pass-oublier.component';
 import { CreerRapportComponent } from './views/creer-rapport/creer-rapport.component';
 import { FormRapportComponent } from './views/form-rapport/form-rapport.component';
+import { GestionEtudiantsComponent } from './views/gestion-etudiants/gestion-etudiants.component';
 
 @NgModule({
   
@@ -107,7 +108,8 @@ import { FormRapportComponent } from './views/form-rapport/form-rapport.componen
     UploadMemoireFiniComponent,
     MotDePassOublierComponent,
     CreerRapportComponent,
-    FormRapportComponent
+    FormRapportComponent,
+    GestionEtudiantsComponent
   ],
   imports: [
     SweetAlert2Module.forRoot(),
