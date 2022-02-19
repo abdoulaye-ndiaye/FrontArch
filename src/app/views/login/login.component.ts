@@ -73,16 +73,31 @@ export class LoginComponent implements OnInit {
   }
 
   forgotPassword(){
-    this.wait();
     if (this.loginForm.value.email==''){
-      Swal.close();
       this.alertBad();
     }
     else{
-      this.authService.ForgotPassword(this.loginForm.value.email).subscribe(data=>{
-        Swal.close();
-        this.alertGood();
+      Swal.fire({
+        title: 'Etes-vous sûr?',
+        text: "Un email vous sera envoyé pour la réinitialisation",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Oui, envoyer !'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.wait()
+          this.authService.ForgotPassword(this.loginForm.value.email).subscribe(data=>{
+            Swal.fire(
+              'Envoyé!',
+              'Email envoyé avec succès',
+              'success'
+            )
+          })
+        }
       })
+     
     }
   }
 
@@ -115,6 +130,26 @@ export class LoginComponent implements OnInit {
         title: 'Traitement en cours !'
       });
       Swal.showLoading();
+    }
+
+    confirmation(){
+      Swal.fire({
+        title: 'Etes-vous sûr?',
+        text: "Un email vous sera envoyé pour la réinitialisation",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Oui, envoyer !'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire(
+            'Envoyé!',
+            'Email envoyé avec succès',
+            'success'
+          )
+        }
+      })
     }
   
 }

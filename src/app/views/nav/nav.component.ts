@@ -14,6 +14,9 @@ export class NavComponent implements OnInit {
   specialite = sessionStorage.getItem("specialite");
   idEtu = sessionStorage.getItem("idEtu") as string;
   afficheProjet=true;
+  afficheMemoire=true;
+  afficheDemande=true;
+  afficheCertificat=true;
 
 
   home="";ajoutRapporteur="";excelEtudiant="";excelProf="";projet="";rapporteurs="";respForm="";
@@ -74,6 +77,15 @@ export class NavComponent implements OnInit {
       this.authService.getEtudiant(this.idEtu).subscribe(data=>{
         if(data.projet==null){
           this.afficheProjet=false
+        }
+        if(data.projet.memoire==null){
+          this.afficheMemoire=false
+        }
+        if(data.projet.certificat==null){
+          this.afficheCertificat=false
+        }
+        if(data.projet.demandeAutorisation==null){
+          this.afficheDemande=false
         }
       })
     }

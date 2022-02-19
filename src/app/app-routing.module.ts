@@ -262,10 +262,12 @@ const routes: Routes = [
     path: 'dossier',
     component: DossierComponent,
     data: {
-      title: 'Dossiers Etudiants',
+      title: 'Dossiers',
       expectedProfil: 'PROF',
+      expectedProfil2: 'ETUDIANT',
       expectedRole: 'RESP-FORM',
       expectedRole2: 'DIRECTEUR'
+
     },
     canActivate:[AuthGuard]
   },
@@ -275,6 +277,7 @@ const routes: Routes = [
     data: {
       title: 'Memoire Etudiant',
       expectedProfil: 'PROF',
+      expectedProfil2: 'ETUDIANT',
       expectedRole: 'RESP-FORM',
       expectedRole2: 'DIRECTEUR'
     },
@@ -286,6 +289,7 @@ const routes: Routes = [
     data: {
       title: 'Demande Autorisation Etudiant',
       expectedProfil: 'PROF',
+      expectedProfil2: 'ETUDIANT',
       expectedRole: 'RESP-FORM',
       expectedRole2: 'DIRECTEUR'
     },
@@ -329,6 +333,7 @@ const routes: Routes = [
     data: {
       title: 'Rapports Etudiant',
       expectedProfil: 'PROF',
+      expectedProfil2: 'ETUDIANT',
       expectedRole: 'RESP-FORM',
       expectedRole2: 'DIRECTEUR'
     },
@@ -340,6 +345,7 @@ const routes: Routes = [
     data: {
       title: 'Certificat inscription',
       expectedProfil: 'PROF',
+      expectedProfil2: 'ETUDIANT',
       expectedRole: 'RESP-FORM',
       expectedRole2: 'DIRECTEUR'
     },

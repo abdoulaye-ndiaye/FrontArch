@@ -19,6 +19,7 @@ export class DossierComponent implements OnInit {
   show=true;
   test=true;
   specialite=sessionStorage.getItem('specialite') as string;
+  profil= sessionStorage.getItem('profil') as string;
   
   constructor(
     private formBulder: FormBuilder,
@@ -43,7 +44,6 @@ export class DossierComponent implements OnInit {
     });
     
     this.authService.getEtudiant(this.idEtudiant).subscribe(data=>{
-      console.log(data)
       if(data.projet==null){
         this.afficher=false
         this.show=false

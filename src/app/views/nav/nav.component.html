@@ -14,33 +14,51 @@
          <ng-container *ngIf="afficheProjet==true">
           <li>
             <a class="side-menu__item {{projet}}" data-toggle="slide" routerLink="/projet"><i
-                    class="side-menu__icon fas fa-folder fa-lg"></i><span class="side-menu__label">Mon Projet</span></a>
+                    class="side-menu__icon fas fa-project-diagram fa-lg"></i><span class="side-menu__label">&nbsp;Mon Projet</span></a>
+        </li>
+        <li class="slide">
+          <a
+            class="side-menu__item {{dossier}}"
+            data-toggle="slide"
+            [queryParams]="{ idEtudiant: idEtu }"
+            routerLink="/dossier"
+            ><i class="side-menu__icon fas fa-folder-open fa-lg"></i
+            ><span class="side-menu__label">Mes Documents</span></a
+          >
         </li>
         <li class="slide">
           <a class="side-menu__item {{encadreur}}" data-toggle="slide" routerLink="/encadreurs"><i
                   class="side-menu__icon fas fa-tasks fa-lg"></i><span class="side-menu__label">Gestion
                   Encadreurs</span></a>
       </li>
-      <li class="slide">
-        <a class="side-menu__item {{uploadMemoire}}" data-toggle="slide" routerLink="/upload-memoire"><i
-                class="side-menu__icon fas fa-file-import fa-lg"></i><span class="side-menu__label">Charger
-                Mémoire</span></a>
-    </li>
+      <ng-container *ngIf="afficheMemoire==false">
+        <li class="slide">
+          <a class="side-menu__item {{uploadMemoire}}" data-toggle="slide" routerLink="/upload-memoire"><i
+                  class="side-menu__icon fas fa-file-import fa-lg"></i><span class="side-menu__label">Charger
+                  Mémoire</span></a>
+      </li>
+      </ng-container>
+     
       <li class="slide">
         <a class="side-menu__item {{demandeAutorisation}}" data-toggle="slide" routerLink="/demande-autorisation"><i
                 class="side-menu__icon fas fa-file-pdf fa-lg"></i><span class="side-menu__label">Demande
                 autorisation</span></a>
     </li>
-    <li class="slide">
-      <a class="side-menu__item {{uploadDemandeAutorisation}}" data-toggle="slide" routerLink="/upload-demande-autorisation"><i
-              class="side-menu__icon fas fa-file-import fa-lg"></i><span class="side-menu__label"> Charger<br> Demande
-              autorisation</span></a>
-    </li>
+    <ng-container *ngIf="afficheDemande==false">
+      <li class="slide">
+        <a class="side-menu__item {{uploadDemandeAutorisation}}" data-toggle="slide" routerLink="/upload-demande-autorisation"><i
+                class="side-menu__icon fas fa-file-import fa-lg"></i><span class="side-menu__label"> Charger<br> Demande
+                autorisation</span></a>
+      </li>
+    </ng-container>
+   <ng-container *ngIf="afficheCertificat==false">
     <li class="slide">
       <a class="side-menu__item {{uploadCertificat}}" data-toggle="slide" routerLink="/upload-certificat"><i
               class="side-menu__icon fas fa-file-import fa-lg"></i><span class="side-menu__label">Charger<br>
               Certificat d'inscription</span></a>
     </li>
+   </ng-container>
+   
          </ng-container>
          <ng-container *ngIf="afficheProjet==false">
           <li class="slide">

@@ -19,7 +19,13 @@ export class AuthGuard implements CanActivate{
     if(route.data['expectedProfil']){
       expectedProfil=route.data['expectedProfil'];
     }
-    
+
+    let profil2 = sessionStorage.getItem('profil');
+    var expectedProfil2 = profil2;
+    if(route.data['expectedProfil2']){
+      expectedProfil2=route.data['expectedProfil2'];
+    }
+
     let role = sessionStorage.getItem('specialite');
     var expectedRole = role;
     if(route.data['expectedRole']){
@@ -31,7 +37,7 @@ export class AuthGuard implements CanActivate{
       expectedRole=route.data['expectedRole2'];
     }
 
-    if (this.authService.isUserLoggedIn() && profil==expectedProfil && (role==expectedRole || role==expectedRole2 ) )
+    if (this.authService.isUserLoggedIn() && (profil==expectedProfil || profil==expectedProfil2) && (role==expectedRole || role==expectedRole2  ) )
       return true;
 
     this.router.navigate(['acceuil']);

@@ -14,6 +14,8 @@ export class CertificatComponent implements OnInit {
   idEtudiant:string;
   etudiant:any;
   test=false;
+  profil= sessionStorage.getItem('profil');
+
   constructor(
     private formBulder: FormBuilder,
     private route: ActivatedRoute,
