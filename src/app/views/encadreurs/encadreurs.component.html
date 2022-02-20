@@ -50,7 +50,7 @@
                    Liste des Professeurs pas encore encadreur dans le projet
                 </div>
                 <div class="card-body">
-                  <form [formGroup]="ajoutEncadreurForm" >
+                  <form >
                     <table class="table table-bordered table-striped table-hover" id="professeurs">
                     <thead>
                        <tr>
@@ -61,7 +61,7 @@
                       </thead>
                       <tbody >
                         <ng-container *ngFor="let professeur of allProfesseurs">
-                          <tr *ngIf="!(encadreurs.includes(professeur._id))">
+                          <tr *ngIf="(encadreurs.length!==0)&&(!(encadreurs.includes(professeur._id)))">
                               <td>{{professeur.compte.nom}}</td>
                               <td>{{professeur.compte.prenom}}</td>
                               <td><a > <button (click)="onSubmit(professeur._id)" class="btn btn-primary px-3" >Ajouter comme encadreur</button></a>

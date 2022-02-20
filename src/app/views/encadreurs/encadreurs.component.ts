@@ -16,7 +16,6 @@ export class EncadreursComponent implements OnInit {
   profil = sessionStorage.getItem("profil");
   allProfesseurs:any[];
   projet:any;
-  ajoutEncadreurForm : FormGroup;
   submitted = false;
   returnUrl : string;
   message = '';
@@ -32,47 +31,49 @@ export class EncadreursComponent implements OnInit {
     private router : Router,
     private authService : AuthService,
   ) { }
-  get value() {
-    return this.ajoutEncadreurForm.controls;
-  };
+  
 
   ngOnInit(): void {
     
     this.idEtu= sessionStorage.getItem("idEtu") as string;
-    this.ajoutEncadreurForm = this.formBulder.group(
-      {
-        idProf: [''],
-      }); 
+    
       this.authService.getProjetByIdEtudiant(this.idEtu).subscribe(data=>{
         this.idProjet=data._id;
 
         this.authService.getProjet(this.idProjet).subscribe(data => {
           this.projet = data;
           this.encadreurs=this.projet.encadreur;
-          setTimeout(() => {
-            $('#encadreurs').DataTable({
-              pagingType: 'full_numbers',
-              pageLength: 5,
-              processing: true,
-              lengthMenu: [5, 10, 25],
-            });
-          }, 1);
+          
+
+          this.authService.listeProfesseur().subscribe(data => {
+            this.allProfesseurs = data;
+            setTimeout(() => {
+              $('#professeurs').DataTable({
+                pagingType: 'full_numbers',
+                pageLength: 5,
+                processing: true,
+                lengthMenu: [5, 10, 25],
+              });
+            }, 1);
+            setTimeout(() => {
+              $('#encadreurs').DataTable({
+                pagingType: 'full_numbers',
+                pageLength: 5,
+                processing: true,
+                lengthMenu: [5, 10, 25],
+              });
+              
+            }, 1);
+          }) ;
+          
         });
+
+        
       })
 
       
 
-    this.authService.listeProfesseur().subscribe(data => {
-      this.allProfesseurs = data;
-      setTimeout(() => {
-        $('#professeurs').DataTable({
-          pagingType: 'full_numbers',
-          pageLength: 5,
-          processing: true,
-          lengthMenu: [5, 10, 25],
-        });
-      }, 1);
-    }) ;
+  
 
    
     

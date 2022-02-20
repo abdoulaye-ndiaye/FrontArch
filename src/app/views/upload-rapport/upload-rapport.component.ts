@@ -87,7 +87,7 @@ export class UploadRapportComponent implements OnInit {
       if (this.fileSelected) {
         this.wait();
         const body = new FormData();
-        body.append('fichier', this.fileSelected, this.fileSelected.name)
+        body.append('fichier', this.fileSelected, 'Rapport')
         body.append('idProj', this.idProj);
         this.uploadService.upload(body).subscribe(result => {
           Swal.close();

@@ -43,6 +43,7 @@ import { MotDePassOublierComponent } from './views/mot-de-pass-oublier/mot-de-pa
 import { CreerRapportComponent } from './views/creer-rapport/creer-rapport.component';
 import { FormRapportComponent } from './views/form-rapport/form-rapport.component';
 import { GestionEtudiantsComponent } from './views/gestion-etudiants/gestion-etudiants.component';
+import { GestionProfesseursComponent } from './views/gestion-professeurs/gestion-professeurs.component';
 
 const routes: Routes = [
   {
@@ -76,7 +77,6 @@ const routes: Routes = [
     component: RegisterComponent,
     data: {
       title: 'Register Etudiant',
-      excepteRole: 'ADMIN',
       expectedProfil: 'ADMIN'
     },
     canActivate: [AuthGuard]
@@ -86,7 +86,6 @@ const routes: Routes = [
     component: RegisterProfComponent,
     data: {
       title: 'Register Professeur',
-      excepteRole: 'ADMIN',
       expectedProfil: 'ADMIN'
     },
     canActivate: [AuthGuard]
@@ -96,7 +95,15 @@ const routes: Routes = [
     component: GestionEtudiantsComponent,
     data: {
       title: 'Gestion Etudiants',
-      excepteRole: 'ADMIN',
+      expectedProfil: 'ADMIN'
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'gestion-professeurs',
+    component: GestionProfesseursComponent,
+    data: {
+      title: 'Gestion Professeurs',
       expectedProfil: 'ADMIN'
     },
     canActivate: [AuthGuard]

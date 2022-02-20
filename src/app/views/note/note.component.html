@@ -28,7 +28,6 @@
                                     </option>
                                     <ng-container *ngFor="let projet of allProjets" >
                                       <option  *ngIf="((!projet.note)&&(projet.jury)&&(projet.jury.presidentJury._id==idProf))" value="{{ projet._id }}">{{ projet.etudiant.compte.prenom }} {{ projet.etudiant.compte.nom }}({{ projet.sujet }})</option>
-                                      <input  type="hidden" #idProjet formControlName="idProjet" value="{{projet._id}}">
                                     </ng-container>
                                   </select>
                                   <div *ngIf="submitted && f['etudiant'].errors" class="input-group mb-3 invalid-feedback">
