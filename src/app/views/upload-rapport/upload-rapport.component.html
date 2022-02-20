@@ -27,7 +27,7 @@
   .files:after {
     pointer-events: none;
     position: absolute;
-    top: 100px;
+    top: 150px;
     left: 0;
     width: 50px;
     right: 0;
@@ -69,11 +69,34 @@
     <br />
   </div>
   <div class=" container justify-content-center">
+    <h2 align="center">Charger un Rapport pour un étudiant</h2><br>
+
     <div class="row">
       <div class="col-md-6 ">
+
         <form [formGroup]='uploadRapportForm' (ngSubmit)='envoyer()' enctype="multipart/form-data">
+          
+            <div class="form-group">
+                <label>Liste des étudiants dont vous êtes le rapporteur</label>
+                <select aria-label="Default select example" formControlName="etudiant" class="form-control" 
+                (change)="onChangeProjet($event)" [ngClass]="{
+                  'is-invalid': submitted && f['etudiant'].errors
+                }" required>
+                    <option  value="" selected disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      -- Veuillez selectionner l'étudiant --
+                    </option>
+                    <ng-container *ngFor="let projet of allProjets" >
+                      <option  *ngIf="((projet.rapporteur).includes(idProf))" value="{{ projet._id }}">{{ projet.etudiant.compte.prenom }} {{ projet.etudiant.compte.nom }}({{ projet.sujet }})</option>
+                    </ng-container>
+                  </select>
+                  <div *ngIf="submitted && f['etudiant'].errors" class="input-group mb-3 invalid-feedback">
+                    <div *ngIf="f['etudiant'].errors['required']">
+                      Veuillez choisir un étudiant
+                    </div>
+                  </div>
+            </div><br>
+          
           <div class="form-group files color">
-            <h2>Charger votre Rapport </h2>
             <input type="file" accept=".pdf" formControlName="image" class="form-control" (change)="onChange($event)">
           </div>
           <div class="form-group files color" hidden>

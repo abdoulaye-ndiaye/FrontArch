@@ -4,7 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 import { UploadService } from '../../services/upload-rapport/upload.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-upload-rapport',
@@ -23,6 +23,8 @@ export class UploadRapportComponent implements OnInit {
   profil = sessionStorage.getItem("profil");
   idProj:string;
   idEtu:string;
+  allProjets:any;
+  idProf= sessionStorage.getItem('idProf') as string;
 
   constructor(
     private router: Router,
@@ -37,12 +39,12 @@ export class UploadRapportComponent implements OnInit {
 
     this.uploadRapportForm = this.formBuilder.group({
       image: [null],
-      hide: ['rien']
+      etudiant:['', Validators.required]
     })
-    this.idEtu = sessionStorage.getItem('idEtu') as string;
    
-    this.authService.getProjetByIdEtudiant(this.idEtu).subscribe(data=>{
-      this.idProj=data._id;
+    this.authService.getProjets2().subscribe(data=>{
+      console.log(data)
+      this.allProjets=data;
     })
 
   }
@@ -50,7 +52,15 @@ export class UploadRapportComponent implements OnInit {
   get value() {
     return this.uploadRapportForm.controls;
   }
+  get f() {
+    return this.uploadRapportForm.controls;
+  }
 
+
+  onChangeProjet(event: any) {
+    this.idProj = event.target.value;
+    console.log(this.idProj)
+  }
   // Onchange
   onChange(event: any) {
     // if (event.target.files.length > 0) {
@@ -73,7 +83,6 @@ export class UploadRapportComponent implements OnInit {
     this.submitted = true;
     console.log("Bienvenue")
     if (this.uploadRapportForm.invalid) {
-      this.alertBad();
       return;
     } else {
       if (this.fileSelected) {
@@ -84,6 +93,7 @@ export class UploadRapportComponent implements OnInit {
         this.uploadService.upload(body).subscribe(result => {
           Swal.close();
           this.alertGood();
+          this.submitted=false;
           this.uploadRapportForm.reset();
         }, error => {
           console.log(error);

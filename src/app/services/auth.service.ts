@@ -119,7 +119,6 @@ export class AuthService {
 
   isUserLoggedIn() {
     let user = sessionStorage.getItem('token');
-    console.log(!(user === null));
     return !(user === null);
   }
 

@@ -14,6 +14,7 @@ export class RapportComponent implements OnInit {
   idEtudiant:string;
   etudiant:any;
   test=false;
+  rapports:any;
   
   constructor(
     private formBulder: FormBuilder,
@@ -29,7 +30,8 @@ export class RapportComponent implements OnInit {
     }) ;
     this.authService.getEtudiant(this.idEtudiant).subscribe(data=>{
       this.etudiant=data;
-      if(this.etudiant.projet.rapportRapporteur){
+      if(this.etudiant.projet.rapportRapporteur.length!==0){
+        this.rapports=data.projet.rapportRapporteur;
         this.test=true;
       }
     })

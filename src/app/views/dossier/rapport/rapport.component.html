@@ -19,11 +19,14 @@
                 </div>
             </div>
         
-        <div *ngIf="test" class="container" align="center">
-            <a (click)="onSubmit(etudiant.projet.rapportRapporteur.url)" class="justify-content-center">
-                <img src="../../../../assets/icons/icons8-pdf-100.png"/>
-                <div class="justify-content-center">{{etudiant.projet.rapportRapporteur.nomFichier}}</div>
-            </a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <div *ngIf="test" class="container row" align="center">
+            <ng-container *ngFor="let rapport of rapports">
+                <a (click)="onSubmit(rapport.url)" class="justify-content-center">
+                    <img src="../../../../assets/icons/icons8-pdf-100.png"/>
+                    <div class="justify-content-center">{{rapport.nomFichier}}</div>
+                </a>&nbsp;&nbsp;&nbsp;&nbsp;
+            </ng-container>
+           
         </div>
         <div *ngIf="test==false" class="container" align="center"> AUCUN FICHIER</div>
     </div>
