@@ -26,7 +26,8 @@ export class AcceuilComponent implements OnInit {
   prenom = sessionStorage.getItem("prenom");
   nbmemoire:any;
   nbarticle:any;
-  
+  totalMemoire =0;
+  totalArticle =0;
 
 
   constructor(
@@ -48,6 +49,9 @@ export class AcceuilComponent implements OnInit {
     this.authService.getMemoiresFinis().subscribe(data => {
       this.allMemoiresFinis = data;
       this.nbmemoire=data.length;
+      for(let i=0; i<data.length; i++){
+        this.totalMemoire += data[i].nbTelechargement; 
+      }
       setTimeout(() => {
         $('#memoire').DataTable({
           pagingType: 'full_numbers',
@@ -60,6 +64,9 @@ export class AcceuilComponent implements OnInit {
     this.authService.getArticles().subscribe(data => {
       this.allArticles = data;
       this.nbarticle= data.length;
+      for(let i=0; i<data.length; i++){
+        this.totalArticle += data[i].nbTelechargement; 
+      }
       setTimeout(() => {
         $('#article').DataTable({
           pagingType: 'full_numbers',
@@ -80,7 +87,6 @@ export class AcceuilComponent implements OnInit {
   
    changerNbTelMemoirefini( idMemoireFini: string, nbTelechargement:any){
     this.authService.changerNbTelMemoirefini(idMemoireFini, nbTelechargement).subscribe(data => {
-
     });
    }
    changerNbTelArticle( idArticle: string, nbTelechargement: any){
@@ -89,6 +95,7 @@ export class AcceuilComponent implements OnInit {
     });
   }
 
+  
   
 
   alert(){
