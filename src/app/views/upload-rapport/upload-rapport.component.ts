@@ -43,7 +43,6 @@ export class UploadRapportComponent implements OnInit {
     })
    
     this.authService.getProjets2().subscribe(data=>{
-      console.log(data)
       this.allProjets=data;
     })
 

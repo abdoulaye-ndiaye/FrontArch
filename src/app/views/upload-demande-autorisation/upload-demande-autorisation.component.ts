@@ -86,7 +86,7 @@ export class UploadDemandeAutorisationComponent implements OnInit {
         this.uploadService.upload(body).subscribe(result => {
           Swal.close();
           this.alertGood();
-          this.uploadDemandeAutorisationForm.reset()
+          this.router.navigate(['home'])
         }, error => {
           console.log(error);
         });
@@ -104,7 +104,7 @@ export class UploadDemandeAutorisationComponent implements OnInit {
       icon: 'success',
       title: 'Upload réussi !',
       showConfirmButton: false,
-      timer: 1000
+      timer: 1300
     })
   }
   alertBad(){

@@ -28,7 +28,8 @@ export class DComPfeComponent implements OnInit {
     }) ;
     this.authService.getEtudiant(this.idEtudiant).subscribe(data=>{
       this.etudiant=data;
-      if(this.etudiant.projet.demandeAutorisation){
+      console.log(data)
+      if(this.etudiant.projet.decisionPfe){
         this.test=true;
       }
     })

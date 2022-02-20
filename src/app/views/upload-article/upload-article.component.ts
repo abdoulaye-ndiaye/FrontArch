@@ -85,6 +85,7 @@ export class UploadArticleComponent implements OnInit {
           },
           (error) => {
             Swal.close();
+            this.submitted=false;
             this.uploadArticleForm.reset();
             this.alertEchec();
           }

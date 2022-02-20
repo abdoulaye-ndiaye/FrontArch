@@ -89,7 +89,7 @@ export class UploadCertificatComponent implements OnInit {
           (result) => {
             Swal.close();
             this.alertGood();
-            this.uploadCertificatForm.reset();
+            this.router.navigate(['home'])
           },
           (error) => {}
         );
@@ -108,7 +108,7 @@ export class UploadCertificatComponent implements OnInit {
       icon: 'success',
       title: 'Upload réussi !',
       showConfirmButton: false,
-      timer: 1000
+      timer: 1300
     })
   }
   alertBad(){

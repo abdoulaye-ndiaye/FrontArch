@@ -88,6 +88,7 @@ export class UploadMemoireFiniComponent implements OnInit {
           },
           (error) => {
             Swal.close();
+            this.submitted=false;
             this.uploadArticleForm.reset();
             this.alertEchec();
           }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { UploadService } from '../../services/upload-decision-pfe/upload.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 @Component({
   selector: 'app-upload-decision-pfe',
@@ -17,7 +17,7 @@ export class UploadDecisionPfeComponent implements OnInit {
   imageUrl: any;
   submitted = false;
   returnUrl: string;
- 
+  allProjets:any;
   hide = true;
   profil = sessionStorage.getItem('profil');
   idProj:string;
@@ -34,18 +34,25 @@ export class UploadDecisionPfeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.idEtu = sessionStorage.getItem('idEtu') as string;
     this.uploadDecisionPfesForm = this.formBuilder.group({
       image: [null],
-      hide: ['rien'],
+      etudiant: ['',Validators.required]
     });
-    this.authService.getProjetByIdEtudiant(this.idEtu).subscribe(data=>{
-      this.idProj=data._id;
+    this.authService.getProjets2().subscribe(data=>{
+      console.log(data)
+      this.allProjets=data;
     })
   }
 
   get value() {
     return this.uploadDecisionPfesForm.controls;
+  }
+  get f() {
+    return this.uploadDecisionPfesForm.controls;
+  }
+  onChangeProjet(event: any) {
+    this.idProj = event.target.value;
+    console.log(this.idProj)
   }
 
   // Onchange
@@ -82,6 +89,7 @@ export class UploadDecisionPfeComponent implements OnInit {
           (result) => {
             Swal.close();
             this.alertGood();
+            this.submitted=false;
             this.uploadDecisionPfesForm.reset();
           },
           (error) => {}

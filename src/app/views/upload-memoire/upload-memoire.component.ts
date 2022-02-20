@@ -82,7 +82,7 @@ export class UploadMemoireComponent implements OnInit {
           (result) => {
             Swal.close();
             this.alertGood();
-            this.uploadMemoireForm.reset();
+            this.router.navigate(['home'])
           },
           (error) => {
             console.log(error);
@@ -102,7 +102,7 @@ export class UploadMemoireComponent implements OnInit {
       icon: 'success',
       title: 'Upload réussi !',
       showConfirmButton: false,
-      timer: 1000
+      timer: 1300
     })
   }
   alertBad(){
