@@ -24,6 +24,7 @@ export class UploadDemandeAutorisationComponent implements OnInit {
   idProj:string;
   idEtu:string;
 
+
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -35,7 +36,7 @@ export class UploadDemandeAutorisationComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+   
     this.uploadDemandeAutorisationForm = this.formBuilder.group({
       image: [null],
       hide: ['rien']
@@ -121,4 +122,7 @@ export class UploadDemandeAutorisationComponent implements OnInit {
     });
     Swal.showLoading();
   }
+  
+ 
+  
 }

@@ -115,7 +115,7 @@ export class RegisterComponent implements OnInit {
             this.RegisterForm.value.classe,
             this.RegisterForm.value.dateNaissance,
             this.RegisterForm.value.lieuNaissance,
-            this.RegisterForm.value.numTel,
+            this.numTel,
             this.RegisterForm.value.nom,
             this.RegisterForm.value.prenom,
             'ETUDIANT',

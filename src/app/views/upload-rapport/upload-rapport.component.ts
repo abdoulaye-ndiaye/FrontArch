@@ -18,7 +18,6 @@ export class UploadRapportComponent implements OnInit {
   imageUrl: any;
   submitted = false;
   returnUrl: string;
-  message = '';
   hide = true;
   profil = sessionStorage.getItem("profil");
   idProj:string;

@@ -86,18 +86,27 @@
                     </div>
                     <div class="form-group col-md-6">
                       <label for="inputNumTel">Numèro de Télèphone</label>
-                      <input type="text" formControlName="numTel" class="form-control" placeholder="7[0-6-5-7-8]0000000"
+                      <div class="d-flex">
+                      <select aria-label="Default select example" formControlName="indicatif"  class="form-control  col-md-3">
+                        <option selected value="77" >77</option>
+                        <option value="78">78</option>
+                        <option value="70">70</option>
+                        <option value="76">76</option>
+                        <option value="75">75</option>
+                        <option value="33">33</option>
+                      </select>&nbsp;
+                      <input type="number" formControlName="numTel" class="form-control col-md-9" placeholder="0000000"
                         autocomplete="numTel" [ngClass]="{
-                          'is-invalid': submitted && f['numTel'].errors 
-                        }" required />
+                          'is-invalid': submitted && f['numTel'].errors
+                        }" required /></div>
                       <div *ngIf="submitted && f['numTel'] && f['numTel'].errors" class="input-group mb-3 invalid-feedback">
                         <div *ngIf="f['numTel'].errors['required']">
                           veuillez saisir votre numero de telephone
                         </div>
-                       
                         <div *ngIf="f['numTel'].errors['pattern']">
-                            le format du numéro est invalide
-                          </div>
+                          le format du numéro est invalide
+                        </div>
+                       
                       </div>
                     </div>
                   </div>

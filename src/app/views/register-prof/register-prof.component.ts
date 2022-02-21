@@ -20,6 +20,7 @@ export class RegisterProfComponent implements OnInit {
   returnUrl: string;
   hide = true;
   compte:any;
+  numTel:string;
 
   constructor(
     private formBulder: FormBuilder,
@@ -33,7 +34,8 @@ export class RegisterProfComponent implements OnInit {
       this.RegisterForm = this.formBulder.group(
         {
           specialite: ['', Validators.required],
-          numTel: ['', [Validators.required, Validators.pattern("[7][06785][0-9][0-9][0-9][0-9][0-9][0-9][0-9]")]],
+          indicatif:['', Validators.required],
+          numTel: ['', [Validators.required, Validators.pattern("[0-9][0-9][0-9][0-9][0-9][0-9][0-9]")]],
           nom: ['', Validators.required],
           prenom: ['', Validators.required],
           email: ['', [Validators.email, Validators.required]],
@@ -68,6 +70,7 @@ export class RegisterProfComponent implements OnInit {
         console.log("invalid form")
           } 
           else {
+            this.numTel=this.RegisterForm.value.indicatif+''+this.RegisterForm.value.numTel;
             this.authService.verifEmail(this.RegisterForm.value.email).subscribe(
               (data)=>{
                 this.compte=data;
@@ -78,7 +81,7 @@ export class RegisterProfComponent implements OnInit {
                 this.authService
                 .RegisterProf(
                   this.RegisterForm.value.specialite,
-                  this.RegisterForm.value.numTel,
+                  this.numTel,
                   this.RegisterForm.value.nom,
                   this.RegisterForm.value.prenom,
                   'PROF',
@@ -102,7 +105,7 @@ export class RegisterProfComponent implements OnInit {
               this.authService
                 .RegisterProf(
                   this.RegisterForm.value.specialite,
-                  this.RegisterForm.value.numTel,
+                  this.numTel,
                   this.RegisterForm.value.nom,
                   this.RegisterForm.value.prenom,
                   'PROF',
