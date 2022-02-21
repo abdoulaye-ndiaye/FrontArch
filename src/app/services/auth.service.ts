@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
 import jwt_decode from 'jwt-decode';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+
 
 @Injectable({
   providedIn: 'root',
@@ -204,6 +206,7 @@ export class AuthService {
   downloadFichier(url: string): void {
     this.httpClient.get(`${url}`, { responseType: 'blob' }).subscribe((res) => {
       window.open(window.URL.createObjectURL(res));
+      Swal.close()
     });
   }
  

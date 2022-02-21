@@ -53,27 +53,29 @@ export class RapporteursComponent implements OnInit {
       this.encadreurs=data.encadreur;
       this.rapporteurs=this.projet.rapporteur;
       this.etudiant=data.etudiant;
-      setTimeout(() => {
-        $('#rapporteurs').DataTable({
-          pagingType: 'full_numbers',
-          pageLength: 5,
-          processing: true,
-          lengthMenu: [5, 10, 25],
-        });
-      }, 1);
+      this.authService.listeProfesseur().subscribe(data => {
+        this.allProfesseurs = data;
+        setTimeout(() => {
+          $('#professeurs').DataTable({
+            pagingType: 'full_numbers',
+            pageLength: 5,
+            processing: true,
+            lengthMenu: [5, 10, 25],
+          });
+        }, 1);
+        setTimeout(() => {
+          $('#rapporteurs').DataTable({
+            pagingType: 'full_numbers',
+            pageLength: 5,
+            processing: true,
+            lengthMenu: [5, 10, 25],
+          });
+        }, 1); 
+      }) ;
+      
       
     });
-    this.authService.listeProfesseur().subscribe(data => {
-      this.allProfesseurs = data;
-      setTimeout(() => {
-        $('#professeurs').DataTable({
-          pagingType: 'full_numbers',
-          pageLength: 5,
-          processing: true,
-          lengthMenu: [5, 10, 25],
-        });
-      }, 1);
-    }) ;
+   
     
 }
 

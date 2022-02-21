@@ -82,7 +82,7 @@ export class AcceuilComponent implements OnInit {
     this.wait();
      this.submitted = true;
      this.authService.downloadFichier(url);
-    Swal.close()
+    
    }
   
    changerNbTelMemoirefini( idMemoireFini: string, nbTelechargement:any){

@@ -40,7 +40,6 @@ export class MemoireComponent implements OnInit {
     console.log("debut")
     this.submitted = true;
     this.authService.downloadFichier(url);
-   Swal.close()
   }
   wait(){
     Swal.fire({

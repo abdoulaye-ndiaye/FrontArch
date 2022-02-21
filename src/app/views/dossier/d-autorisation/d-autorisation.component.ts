@@ -38,7 +38,7 @@ export class DAutorisationComponent implements OnInit {
     this.wait();
     this.submitted = true;
     this.authService.downloadFichier(url);
-    Swal.close()
+  
   }
   wait(){
     Swal.fire({
