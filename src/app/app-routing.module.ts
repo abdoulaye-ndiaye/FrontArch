@@ -44,6 +44,8 @@ import { CreerRapportComponent } from './views/creer-rapport/creer-rapport.compo
 import { FormRapportComponent } from './views/form-rapport/form-rapport.component';
 import { GestionEtudiantsComponent } from './views/gestion-etudiants/gestion-etudiants.component';
 import { GestionProfesseursComponent } from './views/gestion-professeurs/gestion-professeurs.component';
+import { MemoireEtudiantComponent } from './views/rapporteur/memoire-etudiant/memoire-etudiant.component';
+import { ListeEtudiantRapporteurComponent } from './views/rapporteur/liste-etudiant-rapporteur/liste-etudiant-rapporteur.component';
 
 const routes: Routes = [
   {
@@ -156,6 +158,23 @@ const routes: Routes = [
   {
     path: 'upload-rapport',
     component: UploadRapportComponent,
+    data: {
+      title: 'Upload-Rapport',
+      expectedProfil: 'PROF'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'liste-etudiant-rapporteur',
+    component: ListeEtudiantRapporteurComponent,
+    data: {
+      title: 'Liste-Etudiant-Rapporteur',
+      expectedProfil: 'PROF'
+    },
+    canActivate:[AuthGuard]
+  },{
+    path: 'memoire-etudiant',
+    component: MemoireEtudiantComponent,
     data: {
       title: 'Upload-Rapport',
       expectedProfil: 'PROF'

@@ -168,12 +168,45 @@
                 
               </div>
             </ng-container>
-            <ng-container *ngIf="profil=='ADMIN'">
-              
-            </ng-container>
+            
            
           </div>
-
+          <ng-container *ngIf="profil=='ADMIN'">
+           <div class="row">
+							<div class="col-md-12 col-xl-4">
+								<div class="card">
+									<div class="card-body">
+										<div class="dash-widget text-center">
+											<p>Total Téléchargements</p>
+											<h3 class="counter count-numbers">{{totalArticle+totalMemoire}}</h3>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12 col-xl-4">
+								<div class="card">
+									<div class="card-body">
+										<div class="dash-widget text-center">
+											<p>Total Téléchargements Mémoires</p>
+											<h3 class="counter count-numbers">{{totalMemoire}}</h3>
+											<p class="mb-0 text-muted"><i class="fas fa-arrow-alt-circle-up text-green mr-1"></i> {{totalMemoire/(totalArticle+totalMemoire)*100}}% des Téléchargements</p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12 col-xl-4">
+								<div class="card">
+									<div class="card-body">
+										<div class="dash-widget text-center">
+											<p>Total Téléchargements Articles</p>
+											<h3 class="counter count-numbers">{{totalArticle}}</h3>
+											<p class="mb-0 text-muted"><i class="fas fa-arrow-alt-circle-up text-red mr-1"></i> {{totalArticle/(totalArticle+totalMemoire)*100}}% des Téléchargements</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+          </ng-container>
         </div>
       </div>
 

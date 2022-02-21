@@ -13,18 +13,17 @@
             <div class="col-lg-6">
         <div class="card" >
             <div class="card-header">
-                <a routerLink="/dossier" [queryParams]="{ idEtudiant: etudiant._id }"><i class="fas fa-arrow-left fa-2x"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a routerLink="/liste-etudiant-rapporteur" [queryParams]="{ idEtudiant: etudiant._id }"><i class="fas fa-arrow-left fa-2x"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="justify-content-center">
-                    Certificat d'inscription de {{etudiant.compte.prenom}} {{etudiant.compte.nom}}  Master {{etudiant.classe}}
+                    Memoire de {{etudiant.compte.prenom}} {{etudiant.compte.nom}}  Master {{etudiant.classe}}
                 </div>
             </div>
         
         <div *ngIf="test" class="container" align="center">
-            <a (dblclick)="onSubmit(etudiant.projet.certificat.url)" class="justify-content-center">
+            <a (dblclick)="onSubmit(etudiant.projet.memoire.url)" class="justify-content-center">
                 <img src="../../../../assets/icons/icons8-pdf-100.png"/>
-                <div class="justify-content-center">{{etudiant.projet.certificat.nomFichier}}</div>
+                <div class="justify-content-center">{{etudiant.projet.memoire.nomFichier}}</div>
             </a>
-            <a *ngIf="profil=='ETUDIANT'" class="btn btn-danger btn-sm text-white mb-2"><i class="far fa-trash-alt"> Supprimer</i></a>&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
         <div *ngIf="test==false" class="container" align="center"> AUCUN FICHIER</div>
     </div>

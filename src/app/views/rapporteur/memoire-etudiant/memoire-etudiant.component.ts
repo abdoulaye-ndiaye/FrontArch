@@ -3,17 +3,18 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-
 @Component({
-  selector: 'app-pv',
-  templateUrl: './pv.component.html'
+  selector: 'app-memoire-etudiant',
+  templateUrl: './memoire-etudiant.component.html',
 })
-export class PvComponent implements OnInit {
-  inputText: string = 'pv';
+export class MemoireEtudiantComponent implements OnInit {
+
+  inputText: string = 'memoire-etudiant-rapporteur';
   submitted=false;
   idEtudiant:string;
   etudiant:any;
   test=false;
+  profil=sessionStorage.getItem('profil');
 
   constructor(
     private formBulder: FormBuilder,
@@ -29,13 +30,14 @@ export class PvComponent implements OnInit {
     }) ;
     this.authService.getEtudiant(this.idEtudiant).subscribe(data=>{
       this.etudiant=data;
-      if(this.etudiant.projet.pv){
+      if(this.etudiant.projet.memoire){
         this.test=true;
       }
     })
   }
   onSubmit(url: string) {
     this.wait();
+    console.log("debut")
     this.submitted = true;
     this.authService.downloadFichier(url);
     Swal.close()

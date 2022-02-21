@@ -61,6 +61,9 @@ import { CreerRapportComponent } from './views/creer-rapport/creer-rapport.compo
 import { FormRapportComponent } from './views/form-rapport/form-rapport.component';
 import { GestionEtudiantsComponent } from './views/gestion-etudiants/gestion-etudiants.component';
 import { GestionProfesseursComponent } from './views/gestion-professeurs/gestion-professeurs.component';
+import { MemoireEtudiantComponent } from './views/rapporteur/memoire-etudiant/memoire-etudiant.component';
+import { ListeEtudiantRapporteurComponent } from './views/rapporteur/liste-etudiant-rapporteur/liste-etudiant-rapporteur.component';
+
 
 @NgModule({
   
@@ -111,7 +114,9 @@ import { GestionProfesseursComponent } from './views/gestion-professeurs/gestion
     CreerRapportComponent,
     FormRapportComponent,
     GestionEtudiantsComponent,
-    GestionProfesseursComponent
+    GestionProfesseursComponent,
+    MemoireEtudiantComponent,
+    ListeEtudiantRapporteurComponent,
   ],
   imports: [
     SweetAlert2Module.forRoot(),

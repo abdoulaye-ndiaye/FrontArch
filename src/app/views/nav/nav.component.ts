@@ -23,7 +23,7 @@ export class NavComponent implements OnInit {
   uploadCertificat="";demandeAutorisation="";uploadMemoire="";uploadRapport="";changerPassword="";
   dossier="";memoire="";pv="";encadreur="";jury="";uploadDemandeAutorisation="";pvSoutenance="";
   note="";desComPfe="";uploadDecisionPfe="";registerEtudiant="";registerProf="";article="";
-  memoireFini="";creerRapport="";formRapport="";gestionEtudiants="";gestionProfesseurs="";
+  memoireFini="";creerRapport="";formRapport="";gestionEtudiants="";gestionProfesseurs="";rapporteur="";
 
   constructor(
     private router: Router,
@@ -70,6 +70,8 @@ export class NavComponent implements OnInit {
     if (this.inputFromParent=='form-rapport'){this.creerRapport="active";}
     if (this.inputFromParent=='gestion-etudiants'){this.gestionEtudiants="active";}
     if (this.inputFromParent=='gestion-professeurs'){this.gestionProfesseurs="active";}
+    if (this.inputFromParent=='memoire-etudiant-rapporteur'){this.rapporteur="active";}
+    if (this.inputFromParent=='liste-etudiant-rapporteur'){this.rapporteur="active";}
 
 
 

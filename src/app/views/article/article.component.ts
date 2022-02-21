@@ -35,10 +35,16 @@ export class ArticleComponent implements OnInit {
     });
   }
   onSubmit(url: string) {
-    // this.wait();
+     this.wait();
      this.submitted = true;
      this.authService.downloadFichier(url);
-    // Swal.close()
+     Swal.close()
    }
-
+   wait(){
+    Swal.fire({
+      icon: 'info',
+      title: 'Ouverture en cours !'
+    });
+    Swal.showLoading();
+  }
 }

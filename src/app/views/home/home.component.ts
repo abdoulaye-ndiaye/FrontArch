@@ -19,6 +19,9 @@ export class HomeComponent implements OnInit {
   nbarticle:number;
   nbcompte:number;
   nbfichier:number;
+  total =0;
+  totalMemoire =0;
+  totalArticle =0;
 
   constructor(
     private router: Router,
@@ -41,11 +44,17 @@ export class HomeComponent implements OnInit {
 
     this.authService.getMemoiresFinis().subscribe(data => {
       this.nbmemoire=data.length;
+      for(let i=0; i<data.length; i++){
+        this.totalMemoire += data[i].nbTelechargement; 
+      }
       this.nbfichier=data.length;
     });
 
     this.authService.getArticles().subscribe(data => {
       this.nbarticle= data.length;
+      for(let i=0; i<data.length; i++){
+        this.totalArticle += data[i].nbTelechargement; 
+      }
       this.nbfichier += data.length;
     });
 

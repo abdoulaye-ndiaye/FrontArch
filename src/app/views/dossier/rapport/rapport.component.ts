@@ -37,10 +37,10 @@ export class RapportComponent implements OnInit {
     })
   }
   onSubmit(url: string) {
-   // this.wait();
+    this.wait();
     this.submitted = true;
     this.authService.downloadFichier(url);
-   // Swal.close()
+    Swal.close()
   }
   wait(){
     Swal.fire({
