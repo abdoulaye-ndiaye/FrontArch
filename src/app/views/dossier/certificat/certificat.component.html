@@ -24,7 +24,7 @@
                 <img src="../../../../assets/icons/icons8-pdf-100.png"/>
                 <div class="justify-content-center">{{etudiant.projet.certificat.nomFichier}}</div>
             </a>
-            <a *ngIf="profil=='ETUDIANT'" class="btn btn-danger btn-sm text-white mb-2"><i class="far fa-trash-alt"> Supprimer</i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a (click)="supprimer(etudiant.projet.certificat._id)" *ngIf="profil=='ETUDIANT'" class="btn btn-danger btn-sm text-white mb-2"><i class="far fa-trash-alt"> Supprimer</i></a>&nbsp;&nbsp;&nbsp;&nbsp;
         </div>
         <div *ngIf="test==false" class="container" align="center"> AUCUN FICHIER</div>
     </div>

@@ -422,4 +422,71 @@ export class AuthService {
         })
       );
   }
+
+  supprimerArticle(idArticle:string, idProf:string){
+    return this.httpClient
+    .post<any>(`${environment.apiUrl}/article-delete/${idArticle}`, {
+      idProf
+    })
+    .pipe(
+      map((userData) => {
+        return userData;
+      })
+    );
+  }
+  supprimerCertificat(idCertificat:string, idProj:string){
+    return this.httpClient
+    .post<any>(`${environment.apiUrl}/certificat-delete/${idCertificat}`, {
+      idProj
+    })
+    .pipe(
+      map((userData) => {
+        return userData;
+      })
+    );
+  }
+  supprimerDemandesAutorisation(idDemande:string, idProj:string){
+    return this.httpClient
+    .post<any>(`${environment.apiUrl}/demandesAutorisation-delete/${idDemande}`, {
+      idProj
+    })
+    .pipe(
+      map((userData) => {
+        return userData;
+      })
+    );
+  }
+  supprimerMemoire(idMemoire:string, idProj:string){
+    return this.httpClient
+    .post<any>(`${environment.apiUrl}/memoire-delete/${idMemoire}`, {
+      idProj
+    })
+    .pipe(
+      map((userData) => {
+        return userData;
+      })
+    );
+  }
+  supprimerDecisionPfe(idDecision:string, idProj:string){
+    return this.httpClient
+    .post<any>(`${environment.apiUrl}/decisionPfe-delete/${idDecision}`, {
+      idProj
+    })
+    .pipe(
+      map((userData) => {
+        return userData;
+      })
+    );
+  }
+  supprimerMemoireFini(idMemoireFini:string){
+    return this.httpClient
+    .delete<any>(`${environment.apiUrl}/memoireFini/${idMemoireFini}`, {
+    
+    })
+    .pipe(
+      map((userData) => {
+        return userData;
+      })
+    );
+  }
 }

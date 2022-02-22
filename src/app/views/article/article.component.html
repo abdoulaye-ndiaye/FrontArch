@@ -28,7 +28,7 @@
                         <tr *ngIf="article.professeur._id==idProf">
                             <td>{{article.sujet}}</td>
                             <td>{{article.description}}</td>
-                            <td><a (click)="onSubmit(article.url)" class="btn btn-pill btn-info"><i class="fas fa-file-download"></i> Telecharger</a></td>
+                            <td><a (click)="supprimer(article._id)" class="btn btn-danger btn-sm text-white mb-2"><i class="far fa-trash-alt"> Supprimer</i></a> &nbsp;<a (click)="onSubmit(article.url)" class="btn btn-sm btn-info mb-2"><i class="fas fa-file-download"></i> Telecharger</a></td>
                           </tr>
                       </ng-container>
                   </tbody>

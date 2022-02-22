@@ -14,6 +14,7 @@ export class DAutorisationComponent implements OnInit {
   etudiant:any;
   test=false;
   profil= sessionStorage.getItem('profil');
+  idProj=sessionStorage.getItem('idProjet') as string;
 
   constructor(
     private formBulder: FormBuilder,
@@ -40,6 +41,25 @@ export class DAutorisationComponent implements OnInit {
     this.authService.downloadFichier(url);
   
   }
+  supprimer(idDemande:string){
+    Swal.fire({
+      title: 'Etes-vous sûr?',
+      text: "Votre demande d'autorisation sera supprimé définitivement !!!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#63b521',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Annuler',
+      confirmButtonText: 'Oui, supprimer !'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.waitsuppression()
+        this.authService.supprimerDemandesAutorisation(idDemande,this.idProj).subscribe(data=>{
+          this.refresh()
+        })
+      }
+    })
+  }
   wait(){
     Swal.fire({
       icon: 'info',
@@ -47,4 +67,14 @@ export class DAutorisationComponent implements OnInit {
     });
     Swal.showLoading();
   }
+  waitsuppression(){
+    Swal.fire({
+      icon: 'info',
+      title: 'Suppression en cours !'
+    });
+    Swal.showLoading();
+  }
+  refresh(): void {
+    window.location.reload();
+}
 }

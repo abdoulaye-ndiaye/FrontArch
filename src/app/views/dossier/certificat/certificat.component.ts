@@ -14,6 +14,7 @@ export class CertificatComponent implements OnInit {
   idEtudiant:string;
   etudiant:any;
   test=false;
+  idProj= sessionStorage.getItem('idProjet') as string;
   profil= sessionStorage.getItem('profil');
 
   constructor(
@@ -40,6 +41,25 @@ export class CertificatComponent implements OnInit {
     this.submitted = true;
     this.authService.downloadFichier(url);
   }
+  supprimer(idCertificat:string){
+    Swal.fire({
+      title: 'Etes-vous sûr?',
+      text: "Votre certificat d'inscription sera supprimé définitivement !!!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#63b521',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Annuler',
+      confirmButtonText: 'Oui, supprimer !'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.waitsuppression()
+        this.authService.supprimerCertificat(idCertificat,this.idProj).subscribe(data=>{
+          this.refresh()
+        })
+      }
+    })
+  }
   wait(){
     Swal.fire({
       icon: 'info',
@@ -47,4 +67,14 @@ export class CertificatComponent implements OnInit {
     });
     Swal.showLoading();
   }
+  waitsuppression(){
+    Swal.fire({
+      icon: 'info',
+      title: 'Suppression en cours !'
+    });
+    Swal.showLoading();
+  }
+  refresh(): void {
+    window.location.reload();
+}
 }

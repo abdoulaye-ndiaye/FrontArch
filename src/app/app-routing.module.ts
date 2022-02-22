@@ -46,6 +46,8 @@ import { GestionEtudiantsComponent } from './views/gestion-etudiants/gestion-etu
 import { GestionProfesseursComponent } from './views/gestion-professeurs/gestion-professeurs.component';
 import { MemoireEtudiantComponent } from './views/rapporteur/memoire-etudiant/memoire-etudiant.component';
 import { ListeEtudiantRapporteurComponent } from './views/rapporteur/liste-etudiant-rapporteur/liste-etudiant-rapporteur.component';
+import { UploadPvComponent } from './views/upload-pv/upload-pv.component';
+import { GestionMemoiresFiniComponent } from './views/gestion-memoires-fini/gestion-memoires-fini.component';
 
 const routes: Routes = [
   {
@@ -106,6 +108,15 @@ const routes: Routes = [
     component: GestionProfesseursComponent,
     data: {
       title: 'Gestion Professeurs',
+      expectedProfil: 'ADMIN'
+    },
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'gestion-memoires-fini',
+    component: GestionMemoiresFiniComponent,
+    data: {
+      title: 'Gestion Memoires Finis',
       expectedProfil: 'ADMIN'
     },
     canActivate: [AuthGuard]
@@ -186,6 +197,15 @@ const routes: Routes = [
     component: CreerRapportComponent,
     data: {
       title: 'Créer Rapport',
+      expectedProfil: 'PROF'
+    },
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'upload-pv',
+    component: UploadPvComponent,
+    data: {
+      title: 'Upload PV',
       expectedProfil: 'PROF'
     },
     canActivate:[AuthGuard]

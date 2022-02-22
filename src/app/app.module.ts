@@ -63,6 +63,8 @@ import { GestionEtudiantsComponent } from './views/gestion-etudiants/gestion-etu
 import { GestionProfesseursComponent } from './views/gestion-professeurs/gestion-professeurs.component';
 import { MemoireEtudiantComponent } from './views/rapporteur/memoire-etudiant/memoire-etudiant.component';
 import { ListeEtudiantRapporteurComponent } from './views/rapporteur/liste-etudiant-rapporteur/liste-etudiant-rapporteur.component';
+import { UploadPvComponent } from './views/upload-pv/upload-pv.component';
+import { GestionMemoiresFiniComponent } from './views/gestion-memoires-fini/gestion-memoires-fini.component';
 
 
 @NgModule({
@@ -117,6 +119,8 @@ import { ListeEtudiantRapporteurComponent } from './views/rapporteur/liste-etudi
     GestionProfesseursComponent,
     MemoireEtudiantComponent,
     ListeEtudiantRapporteurComponent,
+    UploadPvComponent,
+    GestionMemoiresFiniComponent,
   ],
   imports: [
     SweetAlert2Module.forRoot(),

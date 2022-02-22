@@ -1,0 +1,120 @@
+<!-- Navbar-->
+<app-header></app-header>
+
+<app-nav [inputFromParent] = "inputText"></app-nav>
+
+
+<style>
+  .files input {
+    outline: 2px dashed #92b0b3;
+    outline-offset: -10px;
+    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    padding: 120px 0px 85px 35%;
+    text-align: center !important;
+    margin: 50;
+    width: 100% !important;
+  }
+
+  .files input:focus {
+    outline: 2px dashed #92b0b3;
+    outline-offset: -10px;
+    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    border: 1px solid #92b0b3;
+  }
+
+  .files:after {
+    pointer-events: none;
+    position: absolute;
+    top: 150px;
+    left: 0;
+    width: 50px;
+    right: 0;
+    height: 56px;
+    content: "";
+    background-image: url("../../../../assets/images/download.png");
+    display: block;
+    margin: 0 auto;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+
+  .color input {
+    background-color: #f1f1f1;
+  }
+
+  .files:before {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    pointer-events: none;
+    width: 100%;
+    right: 0;
+    height: 57px;
+    content: " GLISSEZ VOTRE FICHIER ICI ";
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    color: #2ea591;
+    font-weight: 600;
+    text-transform: capitalize;
+    text-align: center;
+  }
+</style>
+
+<div class=" app-content my-3 my-md-5">
+  <div class="side-app">
+    <br />
+  </div>
+  <div class=" container justify-content-center">
+    <h2 align="center">Charger PV pour un étudiant</h2><br>
+
+    <div class="row">
+      <div class="col-md-6 ">
+
+        <form [formGroup]='uploadRapportForm' (ngSubmit)='envoyer()' enctype="multipart/form-data">
+          
+            <div class="form-group">
+                <label>Liste des étudiants dont vous êtes le Président du Jury et qui ont déja une note</label>
+                <select aria-label="Default select example" formControlName="etudiant" class="form-control" 
+                (change)="onChangeProjet($event)" [ngClass]="{
+                  'is-invalid': submitted && f['etudiant'].errors
+                }" required>
+                    <option  value="" selected disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      -- Veuillez selectionner l'étudiant --
+                    </option>
+                    <ng-container *ngFor="let projet of allProjets" >
+                      <option  *ngIf="((projet.note)&&(projet.jury)&&(projet.jury.presidentJury._id==idProf))" value="{{ projet._id }}">{{ projet.etudiant.compte.prenom }} {{ projet.etudiant.compte.nom }}({{ projet.sujet }})</option>
+                    </ng-container>
+                  </select>
+                  <div *ngIf="submitted && f['etudiant'].errors" class="input-group mb-3 invalid-feedback">
+                    <div *ngIf="f['etudiant'].errors['required']">
+                      Veuillez choisir un étudiant
+                    </div>
+                  </div>
+            </div><br>
+          
+          <div class="form-group files color">
+            <input type="file" accept=".pdf" formControlName="image" class="form-control" (change)="onChange($event)">
+          </div>
+          <div class="form-group files color" hidden>
+            <h2>Hidden </h2>
+            <input type="text" formControlName="hide" class="form-control">
+          </div>
+          <div>
+            <button type="submit" class="btn btn-primary px-4" >Soumettre</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+    <marquee vspace="40" direction="up" scrolldelay="500" style="color: red;">Veuillez vérifier le nom de votre fichier avant de le charger !!!</marquee>   
+
+  </div>
+</div>
+
+<!--footer-->
+<app-footer></app-footer>
+<!-- End Footer-->

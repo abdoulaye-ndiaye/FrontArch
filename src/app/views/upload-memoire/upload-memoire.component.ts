@@ -4,6 +4,8 @@ import { AuthService } from '../../services/auth.service';
 import { UploadService } from '../../services/upload-memoire/upload.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-upload-memoire',
@@ -17,20 +19,22 @@ export class UploadMemoireComponent implements OnInit {
   imageUrl: any;
   submitted = false;
   returnUrl: string;
- 
+  date: string;
   hide = true;
   profil = sessionStorage.getItem('profil');
   idProj:string;
   idEtu:string;
+  nom:string;
 
   constructor(
     private router: Router,
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private uploadService: UploadService
+    private uploadService: UploadService,
+    public datepipe: DatePipe
   ) {
-    
+    this.date=this.datepipe.transform((new Date), 'dd_MM_yyyy_hh_mm_ss') as string;
   }
 
   ngOnInit(): void {
@@ -73,9 +77,10 @@ export class UploadMemoireComponent implements OnInit {
       return;
     } else {
       if (this.fileSelected) {
+        this.nom=this.date+'_'+this.fileSelected.name;
         this.wait();
         const body = new FormData();
-        body.append('fichier', this.fileSelected, this.fileSelected.name);
+        body.append('fichier', this.fileSelected, this.nom);
         body.append('idProj', this.idProj);
 
         this.uploadService.upload(body).subscribe(

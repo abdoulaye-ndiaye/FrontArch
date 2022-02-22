@@ -15,6 +15,7 @@ export class MemoireComponent implements OnInit {
   etudiant:any;
   test=false;
   profil=sessionStorage.getItem('profil');
+  idProj= sessionStorage.getItem('idProjet') as string;
 
   constructor(
     private formBulder: FormBuilder,
@@ -41,6 +42,25 @@ export class MemoireComponent implements OnInit {
     this.submitted = true;
     this.authService.downloadFichier(url);
   }
+  supprimer(idMemoire:string){
+    Swal.fire({
+      title: 'Etes-vous sûr?',
+      text: "Votre memoire sera supprimé définitivement !!!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#63b521',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Annuler',
+      confirmButtonText: 'Oui, supprimer !'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.waitsuppression()
+        this.authService.supprimerMemoire(idMemoire,this.idProj).subscribe(data=>{
+          this.refresh()
+        })
+      }
+    })
+  }
   wait(){
     Swal.fire({
       icon: 'info',
@@ -48,4 +68,14 @@ export class MemoireComponent implements OnInit {
     });
     Swal.showLoading();
   }
+  waitsuppression(){
+    Swal.fire({
+      icon: 'info',
+      title: 'Suppression en cours !'
+    });
+    Swal.showLoading();
+  }
+  refresh(): void {
+    window.location.reload();
+}
 }

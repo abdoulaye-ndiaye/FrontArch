@@ -1,29 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
-import { UploadService } from '../../services/upload-article/upload.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { DatePipe } from '@angular/common';
-
+import { UploadService } from '../../services/upload-pv/upload.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-article',
-  templateUrl: './upload-article.component.html'
+  selector: 'app-upload-pv',
+  templateUrl: './upload-pv.component.html'
 })
-export class UploadArticleComponent implements OnInit {
-  inputText: string = 'article';
+export class UploadPvComponent implements OnInit {
+  inputText: string = 'upload-pv';
   b = false;
-  uploadArticleForm: FormGroup;
+  uploadRapportForm: FormGroup;
   fileSelected: File;
   imageUrl: any;
   submitted = false;
   returnUrl: string;
   hide = true;
-  idProf=sessionStorage.getItem('idProf') as string;
-  nom:string;
+  profil = sessionStorage.getItem("profil");
+  idProj:string;
+  idEtu:string;
+  allProjets:any;
+  idProf= sessionStorage.getItem('idProf') as string;
   date:string;
-
+  nom:string;
 
   constructor(
     private router: Router,
@@ -32,33 +34,42 @@ export class UploadArticleComponent implements OnInit {
     private route: ActivatedRoute,
     private uploadService: UploadService,
     public datepipe: DatePipe
-  ) {
+  ) { 
     this.date=this.datepipe.transform((new Date), 'dd_MM_yyyy_hh_mm_ss') as string;
   }
 
   ngOnInit(): void {
-    this.uploadArticleForm = this.formBuilder.group({
-      image: [null, Validators.required],
-      sujet: ['', Validators.required],
-      description: ['',Validators.required],
 
-    });
-    console.log(this.date)
+    this.uploadRapportForm = this.formBuilder.group({
+      image: [null],
+      etudiant:['', Validators.required]
+    })
+   
+    this.authService.getProjets().subscribe(data=>{
+      this.allProjets=data;
+    })
+
   }
 
   get value() {
-    return this.uploadArticleForm.controls;
+    return this.uploadRapportForm.controls;
   }
-  get f(){
-    return this.uploadArticleForm.controls;
+  get f() {
+    return this.uploadRapportForm.controls;
   }
 
+
+  onChangeProjet(event: any) {
+    this.idProj = event.target.value;
+    console.log(this.idProj)
+  }
   // Onchange
   onChange(event: any) {
     // if (event.target.files.length > 0) {
     //   const file = event.target.files[0];
     //   this.patientForm.get('uploadImg').setValue(file);
     // }
+    console.log("commence ici");
     if (event.target.files[0]) {
       this.fileSelected = event.target.files[0] as File;
       const reader = new FileReader();
@@ -72,35 +83,25 @@ export class UploadArticleComponent implements OnInit {
 
   envoyer() {
     this.submitted = true;
-    if (this.uploadArticleForm.invalid) {
-      console.log("form invalid");
+    console.log("Bienvenue")
+    if (this.uploadRapportForm.invalid) {
       return;
-    } 
-    else {
+    } else {
       if (this.fileSelected) {
         this.nom=this.date+'_'+this.fileSelected.name;
         this.wait();
         const body = new FormData();
-        body.append('fichier', this.fileSelected, this.nom);
-        body.append('idProf', this.idProf);
-        body.append('sujet', this.uploadArticleForm.value.sujet);
-        body.append('description', this.uploadArticleForm.value.description);
-
-        this.uploadService.upload(body).subscribe(
-          (result) => {
-            Swal.close();
-            this.router.navigate(['article']);
-            this.alertGood();
-          },
-          (error) => {
-            Swal.close();
-            this.submitted=false;
-            this.uploadArticleForm.reset();
-            this.alertEchec();
-          }
-        );
-      } 
-      else {
+        body.append('fichier', this.fileSelected, this.nom)
+        body.append('idProj', this.idProj);
+        this.uploadService.upload(body).subscribe(result => {
+          Swal.close();
+          this.alertGood();
+          this.submitted=false;
+          this.uploadRapportForm.reset();
+        }, error => {
+          console.log(error);
+        });
+      } else {
         this.alertBad();
       }
     }
@@ -108,6 +109,7 @@ export class UploadArticleComponent implements OnInit {
 
   refresh(): void {
     window.location.reload();
+
   }
   alertGood(){
     Swal.fire({
@@ -122,13 +124,6 @@ export class UploadArticleComponent implements OnInit {
       icon: 'error',
       title: 'Erreur...',
       text: 'Aucun Fichier choisi !'
-    })
-  }
-  alertEchec(){
-    Swal.fire({
-      icon: 'error',
-      title: 'Erreur...',
-      text: "Echec de l'upload !"
     })
   }
   wait(){

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
-
+import { DatePipe } from '@angular/common';
 import { UploadService } from '../../services/upload-rapport/upload.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -24,6 +24,8 @@ export class UploadRapportComponent implements OnInit {
   idEtu:string;
   allProjets:any;
   idProf= sessionStorage.getItem('idProf') as string;
+  date:string;
+  nom:string;
 
   constructor(
     private router: Router,
@@ -31,7 +33,9 @@ export class UploadRapportComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private uploadService: UploadService,
+    public datepipe: DatePipe
   ) { 
+    this.date=this.datepipe.transform((new Date), 'dd_MM_yyyy_hh_mm_ss') as string;
   }
 
   ngOnInit(): void {
@@ -84,9 +88,10 @@ export class UploadRapportComponent implements OnInit {
       return;
     } else {
       if (this.fileSelected) {
+        this.nom=this.date+'_'+this.fileSelected.name;
         this.wait();
         const body = new FormData();
-        body.append('fichier', this.fileSelected, this.fileSelected.name)
+        body.append('fichier', this.fileSelected, this.nom)
         body.append('idProj', this.idProj);
         this.uploadService.upload(body).subscribe(result => {
           Swal.close();

@@ -14,6 +14,7 @@ export class DComPfeComponent implements OnInit {
   idEtudiant:string;
   etudiant:any;
   test=false;
+  specialite= sessionStorage.getItem('specialite');
   constructor(
     private formBulder: FormBuilder,
     private route: ActivatedRoute,
@@ -39,6 +40,25 @@ export class DComPfeComponent implements OnInit {
     this.submitted = true;
     this.authService.downloadFichier(url);
   }
+  supprimer(idDecision:string, idProj:string){
+    Swal.fire({
+      title: 'Etes-vous sûr?',
+      text: "La décision de la commission des PFE sera supprimé !!!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#63b521',
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'Annuler',
+      confirmButtonText: 'Oui, supprimer !'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.waitsuppression()
+        this.authService.supprimerDecisionPfe(idDecision,idProj).subscribe(data=>{
+          this.refresh()
+        })
+      }
+    })
+  }
   wait(){
     Swal.fire({
       icon: 'info',
@@ -46,5 +66,15 @@ export class DComPfeComponent implements OnInit {
     });
     Swal.showLoading();
   }
+  waitsuppression(){
+    Swal.fire({
+      icon: 'info',
+      title: 'Suppression en cours !'
+    });
+    Swal.showLoading();
+  }
+  refresh(): void {
+    window.location.reload();
+}
 
 }

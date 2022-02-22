@@ -3,17 +3,17 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { data } from 'jquery';
 
 @Component({
-  selector: 'app-article',
-  templateUrl: './article.component.html'
+  selector: 'app-gestion-memoires-fini',
+  templateUrl: './gestion-memoires-fini.component.html'
 })
-export class ArticleComponent implements OnInit {
-  inputText='article';
-  allArticles:any;
-  idProf=sessionStorage.getItem('idProf') as string;
-  submitted=false;
-  
+export class GestionMemoiresFiniComponent implements OnInit {
+  inputText: string = 'gestion-memoires-fini';
+  memoiresFini:any;
+  test=false;
+
   constructor(
     private formBulder: FormBuilder,
     private route: ActivatedRoute,
@@ -22,10 +22,11 @@ export class ArticleComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.authService.getArticles().subscribe(data => {
-      this.allArticles = data;
+    this.authService.getMemoiresFinis().subscribe(data=>{
+      this.memoiresFini=data;
+      console.log(data)
       setTimeout(() => {
-        $('#article').DataTable({
+        $('#etudiants').DataTable({
           language: {
             processing:     "Traitement en cours...",
             search:         "Rechercher&nbsp;:",
@@ -49,23 +50,18 @@ export class ArticleComponent implements OnInit {
             }
         },
           pagingType: 'full_numbers',
-          pageLength: 5,
+          pageLength: 10,
           processing: true,
           lengthMenu: [5, 10, 25],
         });
       }, 1);
-    });
+    })
+
   }
-  onSubmit(url: string) {
-     this.wait();
-     this.submitted = true;
-     this.authService.downloadFichier(url);
-     
-   }
-   supprimer(idArticle:string){
+  supprimer(idMemoireFini :string){
     Swal.fire({
       title: 'Etes-vous sûr?',
-      text: "Votre article sera supprimé définitivement !!!",
+      text: "Le mémoire sera supprimé définitivement !!!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#63b521',
@@ -75,14 +71,13 @@ export class ArticleComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.waitsuppression()
-        this.authService.supprimerArticle(idArticle,this.idProf).subscribe(data=>{
+        this.authService.supprimerMemoireFini(idMemoireFini).subscribe(data=>{
           this.refresh()
         })
       }
     })
-    
-   }
-   wait(){
+  }
+  wait(){
     Swal.fire({
       icon: 'info',
       title: 'Ouverture en cours !'
@@ -98,25 +93,5 @@ export class ArticleComponent implements OnInit {
   }
   refresh(): void {
     window.location.reload();
-}
-confirmation(){
-  Swal.fire({
-    title: 'Etes-vous sûr?',
-    text: "Un email vous sera envoyé pour la réinitialisation",
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#63b521',
-    cancelButtonColor: '#d33',
-    cancelButtonText: 'Annuler',
-    confirmButtonText: 'Oui, envoyer !'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire(
-        'Envoyé!',
-        'Email envoyé avec succès',
-        'success'
-      )
-    }
-  })
 }
 }
