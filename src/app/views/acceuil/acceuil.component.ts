@@ -126,7 +126,7 @@ export class AcceuilComponent implements OnInit {
     this.wait();
      this.submitted = true;
      this.authService.downloadFichier(url);
-    
+      this.refresh()
    }
   
    changerNbTelMemoirefini( idMemoireFini: string, nbTelechargement:any){
