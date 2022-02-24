@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
           code:['', [Validators.required, Validators.pattern("[0-9][0-9][0-9][0-9][0-9][0-9][0-9]")]],
           dateNaissance: ['', Validators.required],
           lieuNaissance: ['', Validators.required],
-          indicatif:['', Validators.required],
+          indicatif:['77', Validators.required],
           numTel: ['', [Validators.required, Validators.pattern("[0-9][0-9][0-9][0-9][0-9][0-9][0-9]")]],
           nom: ['', Validators.required],
           prenom: ['', Validators.required],
@@ -141,6 +141,17 @@ export class RegisterComponent implements OnInit {
   reset(){
     this.submitted=false;
     this.RegisterForm.reset();
+  }
+  public inputValidator(event: any) {
+    //console.log(event.target.value);
+    const pattern = /^[0-9]*$/;   
+    //let inputChar = String.fromCharCode(event.charCode)
+    if (!pattern.test(event.target.value)) {
+      event.target.value = event.target.value.replace(/[^0-9]/g, "");
+      this.beep();
+      //invalid character, prevent input
+
+    }
   }
   alertBadEmail(){
     Swal.fire({

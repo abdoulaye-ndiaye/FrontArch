@@ -23,9 +23,9 @@
                             <label class="form-label">Batiment</label>
                             <input type="text" class="form-control" formControlName="batiment" name="example-text-input" placeholder="Entrer le nom du batiment de la soutenance"
                             [ngClass]="{
-                                'is-invalid': submitted && f['batiment'].errors
+                                'is-invalid': f['batiment'].errors && (f['batiment'].dirty || f['batiment'].touched)
                               }" required>
-                              <div *ngIf="submitted && f['batiment'].errors" class="input-group mb-3 invalid-feedback">
+                              <div *ngIf=" f['batiment'].errors && (f['batiment'].dirty || f['batiment'].touched)" class="input-group mb-3 invalid-feedback">
                                 <div *ngIf="f['batiment'].errors['required']">
                                   Veuillez saisir le nom du batiment de ce jury
                                 </div>
@@ -36,9 +36,9 @@
                             <label class="form-label">Salle de Soutenance </label>
                             <input type="text" class="form-control" formControlName="salleSoutenance"  placeholder="Donner le nom de la salle de soutenance " 
                             [ngClass]="{
-                              'is-invalid': submitted && f['salleSoutenance'].errors
+                              'is-invalid': f['salleSoutenance'].errors && (f['salleSoutenance'].dirty || f['salleSoutenance'].touched)
                             }" required>
-                            <div *ngIf="submitted && f['salleSoutenance'].errors" class="input-group mb-3 invalid-feedback">
+                            <div *ngIf="f['salleSoutenance'].errors && (f['salleSoutenance'].dirty || f['salleSoutenance'].touched)" class="input-group mb-3 invalid-feedback">
                               <div *ngIf="f['salleSoutenance'].errors['required']">
                                 Veuillez entrer le nom de la salle de soutenance de ce jury
                               </div>
@@ -46,14 +46,17 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label">Numéro du jury</label>
-                            <input type="number" class="form-control" formControlName="numJury" name="example-text-input" placeholder="Entrer le numero du jury"
+                            <input type="text" (input)="inputValidator($event)" class="form-control" formControlName="numJury" name="example-text-input" placeholder="Entrer le numero du jury"
                             [ngClass]="{
-                                'is-invalid': submitted && f['numJury'].errors
+                                'is-invalid': f['numJury'].errors && (f['numJury'].dirty || f['numJury'].touched)
                               }" required>
-                              <div *ngIf="submitted && f['numJury'].errors" class="input-group mb-3 invalid-feedback">
+                              <div *ngIf=" f['numJury'].errors && (f['numJury'].dirty || f['numJury'].touched)" class="input-group mb-3 invalid-feedback">
                                 <div *ngIf="f['numJury'].errors['required']">
                                   Veuillez saisir le numero du jury
                                 </div>
+                                <div *ngIf="f['numJury'].errors['pattern']">
+                                  le format du numéro est invalide
+                                </div> 
                               </div>
                         </div>
                        
@@ -63,7 +66,7 @@
                             <label>Président du jury</label>
                             <select aria-label="Default select example" formControlName="president" class="form-control" 
                             [ngClass]="{
-                              'is-invalid': submitted && f['president'].errors
+                              'is-invalid': f['president'].errors && (f['president'].dirty || f['president'].touched)
                             }" required>
                                 <option value="" selected disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                   -- Veuillez selectionner le Président du jury --
@@ -72,7 +75,7 @@
                                   <option *ngIf="((!(encadreurs.includes(prof._id)))&&(!(rapporteurs.includes(prof._id))))" value="{{ prof._id }}">{{ prof.compte.prenom }} {{ prof.compte.nom }}</option>
                                 </ng-container>
                               </select>
-                              <div *ngIf="submitted && f['president'].errors" class="input-group mb-3 invalid-feedback">
+                              <div *ngIf=" f['president'].errors && (f['president'].dirty || f['president'].touched)" class="input-group mb-3 invalid-feedback">
                                 <div *ngIf="f['president'].errors['required']">
                                   Veuillez choisir le Président du Jury
                                 </div>
@@ -92,7 +95,7 @@
                 </div>
                 <br/>
                     <div class="col-lg-6 justify-content-center">
-                        <button *ngIf="test" type="submit" class="btn btn-block btn-blue" >Créer le Jury
+                        <button *ngIf="test" [disabled]="!JuryForm.valid" type="submit" class="btn btn-block btn-blue" >Créer le Jury
                         </button>
                       </div>
             </div>

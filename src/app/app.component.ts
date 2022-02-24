@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SocketioService } from './services/socketio.service';
 
 @Component({
   selector: 'app-root',
@@ -6,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Archivage';
+
+  constructor (private socketService: SocketioService) {
+
+  }
+  
+  ngOnInit() {
+    this.socketService.setupSocketConnection();
+    
+  }
+  ngOnDestroy() {
+    this.socketService.disconnect();
+  }
+
 }

@@ -37,6 +37,7 @@ export class MotDePassOublierComponent implements OnInit {
     }
   }
 
+
   ngOnInit(): void {
     this.route.queryParamMap
     .subscribe(params => {

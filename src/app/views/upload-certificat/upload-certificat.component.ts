@@ -37,6 +37,11 @@ export class UploadCertificatComponent implements OnInit {
     this.date=this.datepipe.transform((new Date), 'dd_MM_yyyy_hh_mm_ss') as string;
   }
 
+
+  get f(){
+    return this.uploadCertificatForm.controls;
+  }
+
   ngOnInit(): void {
     this.idEtu= sessionStorage.getItem("idEtu") as string;
 

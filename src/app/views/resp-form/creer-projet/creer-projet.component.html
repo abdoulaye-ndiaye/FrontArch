@@ -22,9 +22,9 @@
                                     <label class="form-label">Sujet</label>
                                     <input type="text" class="form-control" formControlName="sujet" name="example-text-input" placeholder="Entrer le nom du projet"
                                     [ngClass]="{
-                                        'is-invalid': submitted && f['sujet'].errors
+                                        'is-invalid': f['sujet'].errors && (f['sujet'].dirty || f['sujet'].touched)
                                       }" required>
-                                      <div *ngIf="submitted && f['sujet'].errors" class="input-group mb-3 invalid-feedback">
+                                      <div *ngIf=" f['sujet'].errors && (f['sujet'].dirty || f['sujet'].touched)" class="input-group mb-3 invalid-feedback">
                                         <div *ngIf="f['sujet'].errors['required']">
                                           Veuillez saisir le sujet
                                         </div>
@@ -35,9 +35,9 @@
                                     <label class="form-label">Description </label>
                                     <textarea class="form-control" formControlName="description" rows="4" placeholder="Donner la description du projet " 
                                     [ngClass]="{
-                                      'is-invalid': submitted && f['description'].errors
+                                      'is-invalid': f['description'].errors && (f['description'].dirty || f['description'].touched)
                                     }" required></textarea>
-                                    <div *ngIf="submitted && f['description'].errors" class="input-group mb-3 invalid-feedback">
+                                    <div *ngIf=" f['description'].errors && (f['description'].dirty || f['description'].touched)" class="input-group mb-3 invalid-feedback">
                                       <div *ngIf="f['description'].errors['required']">
                                         Veuillez entrer une description du sujet
                                       </div>
@@ -46,7 +46,7 @@
                                 
                                 <br/>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-block btn-blue">
+                                    <button type="submit" [disabled]="!ProjetForm.valid" class="btn btn-block btn-blue">
                                     Créer le projet
                                     </button>
                                 </div>

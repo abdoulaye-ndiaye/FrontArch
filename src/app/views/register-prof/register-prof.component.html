@@ -25,7 +25,7 @@
                           <div class="input-group">
                             <select aria-label="Default select example" id="specialite" formControlName="specialite" class="form-control" 
                             [ngClass]="{
-                              'is-invalid': submitted && f['specialite'].errors
+                              'is-invalid': f['specialite'].errors && (f['specialite'].dirty || f['specialite'].touched)
                             }" required>
                               <option selected value="" disabled>
                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --- Selectionner une spécialité ---
@@ -34,7 +34,7 @@
                               <option value="DIRECTEUR">RESPONSABLE DE FORMATION</option>
                               <option value="SIMPLE">SIMPLE</option>
                             </select>
-                            <div *ngIf="submitted && f['specialite'].errors" class="input-group mb-3 invalid-feedback">
+                            <div *ngIf=" f['specialite'].errors && (f['specialite'].dirty || f['specialite'].touched)" class="input-group mb-3 invalid-feedback">
                               <div *ngIf="f['specialite'].errors['required']">
                                 Veuillez choisir une spécialité
                               </div>
@@ -46,22 +46,22 @@
                     <div class="form-group col-md-6">
                       <label for="inputNom">Nom</label>
                       <input type="text" formControlName="nom" class="form-control" placeholder="" autocomplete="nom"
-                        [ngClass]="{
-                          'is-invalid': submitted && f['nom'].errors
-                        }" required />
-                      <div *ngIf="submitted && f['nom'].errors" class="input-group mb-3 invalid-feedback">
-                        <div *ngIf="f['nom'].errors['required']">
-                          veuillez saisir votre nom
-                        </div>
+                      [ngClass]="{
+                        'is-invalid': f['nom'].errors && (f['nom'].dirty || f['nom'].touched)
+                      }" required  />
+                    <div *ngIf=" f['nom'].errors && (f['nom'].dirty || f['nom'].touched)" class="input-group mb-3 invalid-feedback">
+                      <div *ngIf="f['nom'].errors['required']">
+                        veuillez saisir votre nom
                       </div>
+                    </div>
                     </div>
                     <div class="form-group col-md-6">
                       <label for="inputPrenom">Prenom</label>
                       <input type="text" formControlName="prenom" class="form-control" placeholder=""
                         autocomplete="prenom" [ngClass]="{
-                          'is-invalid': submitted && f['prenom'].errors
+                          'is-invalid':f['prenom'].errors && (f['prenom'].dirty || f['prenom'].touched)
                         }" required />
-                      <div *ngIf="submitted && f['prenom'].errors" class="input-group mb-3 invalid-feedback">
+                      <div *ngIf=" f['prenom'].errors && (f['prenom'].dirty || f['prenom'].touched)" class="input-group mb-3 invalid-feedback">
                         <div *ngIf="f['prenom'].errors['required']">
                           veuillez saisir votre prenom
                         </div>
@@ -73,9 +73,9 @@
                       <label for="inputEmail4">Email</label>
                       <input type="email" formControlName="email" class="form-control" placeholder="exemple@email.com"
                         autocomplete="email" [ngClass]="{
-                          'is-invalid': submitted && f['email'].errors
+                          'is-invalid': f['email'].errors && (f['email'].dirty || f['email'].touched)
                         }" required />
-                      <div *ngIf="submitted && f['email'].errors" class="input-group mb-3 invalid-feedback">
+                      <div *ngIf=" f['email'].errors && (f['email'].dirty || f['email'].touched)" class="input-group mb-3 invalid-feedback">
                         <div *ngIf="f['email'].errors['required']">
                           veuillez saisir votre email
                         </div>
@@ -95,17 +95,17 @@
                         <option value="75">75</option>
                         <option value="33">33</option>
                       </select>&nbsp;
-                      <input type="number" formControlName="numTel" class="form-control col-md-9" placeholder="0000000"
-                        autocomplete="numTel" [ngClass]="{
-                          'is-invalid': submitted && f['numTel'].errors
-                        }" required /></div>
-                      <div *ngIf="submitted && f['numTel'] && f['numTel'].errors" class="input-group mb-3 invalid-feedback">
-                        <div *ngIf="f['numTel'].errors['required']">
-                          veuillez saisir votre numero de telephone
-                        </div>
-                        <div *ngIf="f['numTel'].errors['pattern']">
-                          le format du numéro est invalide
-                        </div>
+                      <input type="text" (input)="inputValidator($event)" formControlName="numTel" class="form-control col-md-9" placeholder="0000000"
+                      autocomplete="numTel" [ngClass]="{
+                        'is-invalid': f['numTel'].errors && (f['numTel'].dirty || f['numTel'].touched)
+                      }" required ></div>
+                    <div *ngIf=" f['numTel'] && f['numTel'].errors && (f['numTel'].dirty || f['numTel'].touched)" class="input-group mb-3 invalid-feedback">
+                      <div *ngIf="f['numTel'].errors['required']">
+                        veuillez saisir votre numero de telephone
+                      </div>
+                      <div *ngIf="f['numTel'].errors['pattern']">
+                        le format du numéro est invalide
+                      </div>
                        
                       </div>
                     </div>
@@ -114,26 +114,25 @@
                     <div class="form-group col-md-6">
                       <label for="inputPassword4">Mot de pass</label>
                       <input type="password" id="password1" formControlName="password" class="form-control"
-                        placeholder="" autocomplete="new-password" [ngClass]="{
-                          'is-invalid': submitted && f['confirmPassword'].errors
+                        placeholder="**********" autocomplete="new-password" [ngClass]="{
+                          'is-invalid': f['password'].errors && (f['password'].dirty || f['password'].touched)
                         }" required />
-                      <div *ngIf="submitted && f['password'].errors" class="input-group mb-3 invalid-feedback">
+                      <div *ngIf=" f['password'].errors && (f['password'].dirty || f['password'].touched)" class="input-group mb-3 invalid-feedback">
                         <div *ngIf="f['password'].errors['required']">
                           veuillez saisir votre mot de passe
                         </div>
                         <div *ngIf="f['password'].errors['minlength']">
                           Mot de passe inferieur à 6 caractères
                         </div>
-                        
                       </div>
                     </div>
                     <div class="form-group col-md-6">
                       <label for="inputPassword4">Confirmer le mot de pass</label>
                       <input type="password" id="password2" formControlName="confirmPassword" class="form-control"
                         placeholder="" autocomplete="new-password" [ngClass]="{
-                          'is-invalid': submitted && f['confirmPassword'].errors
+                          'is-invalid': f['confirmPassword'].errors && (f['confirmPassword'].dirty || f['confirmPassword'].touched)
                         }" required />
-                      <div *ngIf="submitted && f['confirmPassword'].errors" class="input-group mb-3 invalid-feedback">
+                      <div *ngIf=" f['confirmPassword'].errors && (f['confirmPassword'].dirty || f['confirmPassword'].touched)" class="input-group mb-3 invalid-feedback">
                         <div *ngIf="f['confirmPassword'].errors['required']">
                           veuillez confirmer votre mot de passe
                         </div>

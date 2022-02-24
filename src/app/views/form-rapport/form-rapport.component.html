@@ -22,7 +22,7 @@
                                     <label>Etudiants Rapportés </label>
                                     <select aria-label="Default select example" formControlName="etudiant" class="form-control" 
                                     [ngClass]="{
-                                      'is-invalid': submitted && f['etudiant'].errors
+                                      'is-invalid': f['etudiant'].errors && (f['etudiant'].dirty || f['etudiant'].touched)
                                     }" required>
                                         <option value="" selected disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                           -- Veuillez selectionner l'étudiant --
@@ -31,7 +31,7 @@
                                           <option *ngIf="projet.rapporteur.includes(idProf)" value="{{ projet.etudiant._id }}">{{ projet.etudiant.compte.prenom }} {{ projet.etudiant.compte.nom }}</option>
                                         </ng-container>
                                       </select>
-                                      <div *ngIf="submitted && f['etudiant'].errors" class="input-group mb-3 invalid-feedback">
+                                      <div *ngIf=" f['etudiant'].errors && (f['etudiant'].dirty || f['etudiant'].touched)" class="input-group mb-3 invalid-feedback">
                                         <div *ngIf="f['etudiant'].errors['required']">
                                           Veuillez choisir le Président du Jury
                                         </div>
@@ -45,9 +45,9 @@
                                     <label class="form-label">Résumé</label>
                                     <textarea class="form-control" formControlName="resume" rows="5" placeholder="Donner le résumé du Rapport " 
                                     [ngClass]="{
-                                      'is-invalid': submitted && f['resume'].errors
+                                      'is-invalid': f['resume'].errors && (f['resume'].dirty || f['resume'].touched)
                                     }" required></textarea>
-                                    <div *ngIf="submitted && f['resume'].errors" class="input-group mb-3 invalid-feedback">
+                                    <div *ngIf=" f['resume'].errors && (f['resume'].dirty || f['resume'].touched)" class="input-group mb-3 invalid-feedback">
                                       <div *ngIf="f['resume'].errors['required']">
                                         Veuillez entrer une description du sujet
                                       </div>
@@ -58,9 +58,9 @@
                                     <label class="form-label">Remarque sur le fond </label>
                                     <textarea class="form-control" formControlName="remarqueFond" rows="5" placeholder="Donner la Remarque sur le fond " 
                                     [ngClass]="{
-                                      'is-invalid': submitted && f['remarqueFond'].errors
+                                      'is-invalid':  f['remarqueFond'].errors && (f['remarqueFond'].dirty || f['remarqueFond'].touched)
                                     }" required></textarea>
-                                    <div *ngIf="submitted && f['remarqueFond'].errors" class="input-group mb-3 invalid-feedback">
+                                    <div *ngIf=" f['remarqueFond'].errors && (f['remarqueFond'].dirty || f['remarqueFond'].touched)" class="input-group mb-3 invalid-feedback">
                                       <div *ngIf="f['remarqueFond'].errors['required']">
                                         Veuillez entrer une description du sujet
                                       </div>
@@ -73,9 +73,9 @@
                                     <label class="form-label">Remarque sur la forme </label>
                                     <textarea class="form-control" formControlName="remarqueForme" rows="5" placeholder="Donner la Remarque sur la forme" 
                                     [ngClass]="{
-                                      'is-invalid': submitted && f['remarqueForme'].errors
+                                      'is-invalid':  f['remarqueForme'].errors && (f['remarqueForme'].dirty || f['remarqueForme'].touched)
                                     }" required></textarea>
-                                    <div *ngIf="submitted && f['remarqueForme'].errors" class="input-group mb-3 invalid-feedback">
+                                    <div *ngIf=" f['remarqueForme'].errors && (f['remarqueForme'].dirty || f['remarqueForme'].touched)" class="input-group mb-3 invalid-feedback">
                                       <div *ngIf="f['remarqueForme'].errors['required']">
                                         Veuillez entrer une description du sujet
                                       </div>
@@ -86,9 +86,9 @@
                                     <label class="form-label">Conclusion</label>
                                     <textarea class="form-control" formControlName="conclusion" rows="5" placeholder="Donner la conclusion " 
                                     [ngClass]="{
-                                      'is-invalid': submitted && f['conclusion'].errors
+                                      'is-invalid': f['conclusion'].errors && (f['conclusion'].dirty || f['conclusion'].touched)
                                     }" required></textarea>
-                                    <div *ngIf="submitted && f['conclusion'].errors" class="input-group mb-3 invalid-feedback">
+                                    <div *ngIf=" f['conclusion'].errors && (f['conclusion'].dirty || f['conclusion'].touched)" class="input-group mb-3 invalid-feedback">
                                       <div *ngIf="f['conclusion'].errors['required']">
                                         Veuillez entrer une description du sujet
                                       </div>
@@ -98,7 +98,7 @@
 
                                 <br/>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-block btn-blue">
+                                    <button [disabled]="!RapportForm.valid" type="submit" class="btn btn-block btn-blue">
                                     Génèrer le Rapport
                                     </button>
                                 </div>

@@ -83,7 +83,7 @@
           <label>Liste des étudiants </label>
           <select aria-label="Default select example" formControlName="etudiant" class="form-control" 
           (change)="onChangeProjet($event)" [ngClass]="{
-            'is-invalid': submitted && f['etudiant'].errors
+            'is-invalid': f['etudiant'].errors && (f['etudiant'].dirty || f['etudiant'].touched)
           }" required>
               <option  value="" selected disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 -- Veuillez selectionner l'étudiant --
@@ -92,7 +92,7 @@
                 <option  *ngIf="(projet.memoire!==null)" value="{{ projet._id }}">{{ projet.etudiant.compte.prenom }} {{ projet.etudiant.compte.nom }}({{ projet.sujet }})</option>
               </ng-container>
             </select>
-            <div *ngIf="submitted && f['etudiant'].errors" class="input-group mb-3 invalid-feedback">
+            <div *ngIf="f['etudiant'].errors && (f['etudiant'].dirty || f['etudiant'].touched)" class="input-group mb-3 invalid-feedback">
               <div *ngIf="f['etudiant'].errors['required']">
                 Veuillez choisir un étudiant
               </div>
@@ -113,7 +113,7 @@
             <input type="text" formControlName="hide" class="form-control" />
           </div>
           <div>
-            <button type="submit" class="btn btn-primary px-4">
+            <button [disabled]="!uploadDecisionPfesForm.valid" type="submit" class="btn btn-primary px-4">
               Soumettre
             </button>
           </div>

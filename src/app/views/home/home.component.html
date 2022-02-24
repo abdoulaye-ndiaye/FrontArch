@@ -174,11 +174,12 @@
           <ng-container *ngIf="profil=='ADMIN'">
            <div class="row">
             <div class="col-md-12 col-xl-4">
-              <div class="card bg-warning text-white">
-                <div class="card-body dash2">
-                  <i class="fe fe-download"></i>
-                  <span class="count-numbers counter">{{totalArticle+totalMemoire}}</span>
-                  <br><h4 class="count name">Total Téléchargements</h4>
+              <div class="card">
+                <div class="card-body">
+                  <div class=" dash-widget text-center">
+                    <p>Total Téléchargements </p>
+                    <h3 class="count-numbers counter">{{totalArticle+totalMemoire}}</h3>
+                  </div>
                 </div>
               </div>
             </div>
@@ -188,7 +189,6 @@
 										<div class="dash-widget text-center">
 											<p>Total Téléchargements Mémoires</p>
 											<h3 class="counter count-numbers">{{totalMemoire}}</h3>
-											<p class="mb-0 text-muted"><i class="fas fa-arrow-alt-circle-up text-green mr-1"></i> {{totalMemoire/(totalArticle+totalMemoire)*100}}% des Téléchargements</p>
 										</div>
 									</div>
 								</div>
@@ -199,7 +199,6 @@
 										<div class="dash-widget text-center">
 											<p>Total Téléchargements Articles</p>
 											<h3 class="counter count-numbers">{{totalArticle}}</h3>
-											<p class="mb-0 text-muted"><i class="fas fa-arrow-alt-circle-up text-red mr-1"></i> {{totalArticle/(totalArticle+totalMemoire)*100}}% des Téléchargements</p>
 										</div>
 									</div>
 								</div>

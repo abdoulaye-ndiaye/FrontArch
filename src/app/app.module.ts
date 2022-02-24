@@ -65,6 +65,7 @@ import { MemoireEtudiantComponent } from './views/rapporteur/memoire-etudiant/me
 import { ListeEtudiantRapporteurComponent } from './views/rapporteur/liste-etudiant-rapporteur/liste-etudiant-rapporteur.component';
 import { UploadPvComponent } from './views/upload-pv/upload-pv.component';
 import { GestionMemoiresFiniComponent } from './views/gestion-memoires-fini/gestion-memoires-fini.component';
+import { SocketioService } from './services/socketio.service';
 
 
 @NgModule({
@@ -141,7 +142,8 @@ import { GestionMemoiresFiniComponent } from './views/gestion-memoires-fini/gest
       provide: LocationStrategy,
       useClass: HashLocationStrategy
     },
-    DatePipe
+    DatePipe,
+    SocketioService
   ],
   bootstrap: [AppComponent]
 })

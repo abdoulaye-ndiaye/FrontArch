@@ -25,9 +25,9 @@
                                 <label class="form-label">Nom Complet Etudiant</label>
                                 <input type="text" class="form-control" formControlName="etudiant" name="example-text-input" placeholder="Entrer le nom de l'étudiant"
                                 [ngClass]="{
-                                    'is-invalid': submitted && f['etudiant'].errors
+                                    'is-invalid':  f['etudiant'].errors && (f['etudiant'].dirty || f['etudiant'].touched)
                                   }" required>
-                                  <div *ngIf="submitted && f['etudiant'].errors" class="input-group mb-3 invalid-feedback">
+                                  <div *ngIf=" f['etudiant'].errors && (f['etudiant'].dirty || f['etudiant'].touched)" class="input-group mb-3 invalid-feedback">
                                     <div *ngIf="f['etudiant'].errors['required']">
                                       Veuillez saisir le nom de l'étudiant
                                     </div>
@@ -38,9 +38,9 @@
                                 <label class="form-label">Noms Encadreurs </label>
                                 <input type="text" class="form-control" formControlName="encadreur" name="example-text-input" placeholder="Veuillez séparer le nom des encadreurs par une virgule"
                                 [ngClass]="{
-                                    'is-invalid': submitted && f['encadreur'].errors
+                                    'is-invalid': f['encadreur'].errors && (f['encadreur'].dirty || f['encadreur'].touched)
                                   }" required>
-                                  <div *ngIf="submitted && f['encadreur'].errors" class="input-group mb-3 invalid-feedback">
+                                  <div *ngIf=" f['encadreur'].errors && (f['encadreur'].dirty || f['encadreur'].touched)" class="input-group mb-3 invalid-feedback">
                                     <div *ngIf="f['encadreur'].errors['required']">
                                       Veuillez saisir les noms des encadreurs
                                     </div>
@@ -51,9 +51,9 @@
                                 <label class="form-label">Sujet</label>
                                 <input type="text" class="form-control" formControlName="sujet" name="example-text-input" placeholder="Entrer le nom du projet"
                                 [ngClass]="{
-                                    'is-invalid': submitted && f['sujet'].errors
+                                    'is-invalid': f['sujet'].errors && (f['sujet'].dirty || f['sujet'].touched)
                                   }" required>
-                                  <div *ngIf="submitted && f['sujet'].errors" class="input-group mb-3 invalid-feedback">
+                                  <div *ngIf=" f['sujet'].errors && (f['sujet'].dirty || f['sujet'].touched)" class="input-group mb-3 invalid-feedback">
                                     <div *ngIf="f['sujet'].errors['required']">
                                       Veuillez saisir le sujet
                                     </div>
@@ -64,9 +64,9 @@
                                 <label class="form-label">Description </label>
                                 <textarea class="form-control" formControlName="description" rows="4" placeholder="Donner la description de l'article " 
                                 [ngClass]="{
-                                  'is-invalid': submitted && f['description'].errors
+                                  'is-invalid': f['description'].errors && (f['description'].dirty || f['description'].touched)
                                 }" required></textarea>
-                                <div *ngIf="submitted && f['description'].errors" class="input-group mb-3 invalid-feedback">
+                                <div *ngIf=" f['description'].errors && (f['description'].dirty || f['description'].touched)" class="input-group mb-3 invalid-feedback">
                                   <div *ngIf="f['description'].errors['required']">
                                     Veuillez entrer une description du sujet
                                   </div>
@@ -76,9 +76,9 @@
                             <div class="form-group ">
                                 <input type="file" accept=".pdf" formControlName="image" class="form-control form-control-lg" (change)="onChange($event)"
                                 [ngClass]="{
-                                    'is-invalid': submitted && f['image'].errors
+                                    'is-invalid': f['image'].errors && (f['image'].dirty || f['image'].touched)
                                   }" required>
-                                  <div *ngIf="submitted && f['image'].errors" class="input-group mb-3 invalid-feedback">
+                                  <div *ngIf="f['image'].errors && (f['image'].dirty || f['image'].touched)" class="input-group mb-3 invalid-feedback">
                                     <div *ngIf="f['image'].errors['required']">
                                       Veuillez choisir un fichier
                                     </div>
