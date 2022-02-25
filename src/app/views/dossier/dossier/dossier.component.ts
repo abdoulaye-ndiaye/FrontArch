@@ -18,6 +18,9 @@ export class DossierComponent implements OnInit {
   afficher=true;
   show=true;
   test=true;
+  voir=false;
+  rapporteurs2:any;
+  idProf=sessionStorage.getItem('idProf');
   specialite=sessionStorage.getItem('specialite') as string;
   profil= sessionStorage.getItem('profil') as string;
   
@@ -35,6 +38,13 @@ export class DossierComponent implements OnInit {
     }) ;
     this.authService.getEtudiant(this.idEtudiant).subscribe(data=>{
       this.etudiant=data;
+      this.authService.getProjet(data.projet._id).subscribe(data2=>{
+        this.rapporteurs2=data2.rapporteur;
+        if(this.rapporteurs2.includes(this.idProf)){
+          this.voir=true;
+        }
+
+      })
     })
 
     this.authService.getProjetByIdEtudiant(this.idEtudiant).subscribe(data => {

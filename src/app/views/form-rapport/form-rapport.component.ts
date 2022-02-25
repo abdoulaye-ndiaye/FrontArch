@@ -50,7 +50,6 @@ export class FormRapportComponent implements OnInit {
 
       this.authService.getProjets2().subscribe(data=>{
         this.allProjets=data;
-        console.log(data)
       })
   }
 

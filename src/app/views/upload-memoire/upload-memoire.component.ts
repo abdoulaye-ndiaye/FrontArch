@@ -5,6 +5,7 @@ import { UploadService } from '../../services/upload-memoire/upload.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { DatePipe } from '@angular/common';
+import { SocketioService } from '../../services/socketio.service';
 
 
 @Component({
@@ -32,7 +33,8 @@ export class UploadMemoireComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private uploadService: UploadService,
-    public datepipe: DatePipe
+    public datepipe: DatePipe,
+    private socketService: SocketioService
   ) {
     this.date=this.datepipe.transform((new Date), 'dd_MM_yyyy_hh_mm_ss') as string;
   }
@@ -87,6 +89,7 @@ export class UploadMemoireComponent implements OnInit {
           (result) => {
             Swal.close();
             this.alertGood();
+            this.socketService.nouveauMemoire(this.idProj);
             this.router.navigate(['home'])
           },
           (error) => {

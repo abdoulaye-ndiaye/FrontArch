@@ -128,8 +128,7 @@ export class NoteComponent implements OnInit {
   
     //let inputChar = String.fromCharCode(event.charCode)
     if (!pattern.test(event.target.value)) {
-      event.target.value = event.target.value.replace(/[^0-9.]/g, "");
-      this.beep();
+      event.target.value = event.target.value.replace(/[^0-9.]/g, "");      
       //invalid character, prevent input
 
     }

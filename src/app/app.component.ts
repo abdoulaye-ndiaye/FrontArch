@@ -11,10 +11,14 @@ export class AppComponent {
   constructor (private socketService: SocketioService) {
 
   }
+
+
   
   ngOnInit() {
     this.socketService.setupSocketConnection();
-    
+    this.socketService.ecouteRapport();
+    this.socketService.ecouteMemoire();
+
   }
   ngOnDestroy() {
     this.socketService.disconnect();

@@ -14,8 +14,10 @@ export class MemoireComponent implements OnInit {
   idEtudiant:string;
   etudiant:any;
   test=false;
+  idProf=sessionStorage.getItem('idProf');
   profil=sessionStorage.getItem('profil');
   idProj= sessionStorage.getItem('idProjet') as string;
+
 
   constructor(
     private formBulder: FormBuilder,
@@ -29,8 +31,10 @@ export class MemoireComponent implements OnInit {
     .subscribe(params => {
       this.idEtudiant = params.get('idEtudiant') as string;
     }) ;
+
     this.authService.getEtudiant(this.idEtudiant).subscribe(data=>{
       this.etudiant=data;
+     
       if(this.etudiant.projet.memoire){
         this.test=true;
       }

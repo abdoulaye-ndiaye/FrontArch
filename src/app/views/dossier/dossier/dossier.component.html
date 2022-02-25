@@ -20,10 +20,12 @@
                     </div>
                 
                 <div class="container" align="left">
-                  <ng-container *ngIf="specialite=='RESP-FORM' || profil=='ETUDIANT'">
+                  <ng-container *ngIf="specialite=='RESP-FORM' || profil=='ETUDIANT' || voir==true">
                     <a routerLink="/memoire" [queryParams]="{ idEtudiant: etudiant._id }" class="contenant"><img width="110" src="../../../../assets/icons/icons8-mac-folder-100.png"/>
                       <div class="texte_centrer"><br>Mémoire</div>
                   </a>&nbsp;&nbsp;&nbsp;
+                </ng-container>
+                <ng-container *ngIf="specialite=='RESP-FORM' || profil=='ETUDIANT'">
                   <a routerLink="/rapport" [queryParams]="{ idEtudiant: etudiant._id }" class="contenant"><img width="110" src="../../../../assets/icons/icons8-mac-folder-100.png"/>
                     <div class="texte_centrer"><br>Rapports</div>
                 </a>&nbsp;&nbsp;&nbsp;

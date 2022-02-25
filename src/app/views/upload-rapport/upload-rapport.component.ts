@@ -5,6 +5,8 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { DatePipe } from '@angular/common';
 import { UploadService } from '../../services/upload-rapport/upload.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SocketioService } from '../../services/socketio.service';
+
 
 @Component({
   selector: 'app-upload-rapport',
@@ -33,7 +35,8 @@ export class UploadRapportComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private uploadService: UploadService,
-    public datepipe: DatePipe
+    public datepipe: DatePipe,
+    private socketService: SocketioService
   ) { 
     this.date=this.datepipe.transform((new Date), 'dd_MM_yyyy_hh_mm_ss') as string;
   }
@@ -98,6 +101,7 @@ export class UploadRapportComponent implements OnInit {
           this.alertGood();
           this.submitted=false;
           this.uploadRapportForm.reset();
+          this.socketService.nouveauRapport(this.idProj);
         }, error => {
           console.log(error);
         });
