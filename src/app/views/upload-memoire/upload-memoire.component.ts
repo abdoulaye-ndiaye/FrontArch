@@ -93,6 +93,11 @@ export class UploadMemoireComponent implements OnInit {
             this.router.navigate(['home'])
           },
           (error) => {
+            if(error.error=='erreur connexion firebase'){
+              Swal.close();
+              this.alertBad2();
+              this.uploadMemoireForm.reset();
+            }
             console.log(error);
           }
         );
@@ -126,5 +131,14 @@ export class UploadMemoireComponent implements OnInit {
       title: 'Upload en cours !'
     });
     Swal.showLoading();
+  }
+  alertBad2(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Probléme de connexion !!!',
+      text: 'veuillez vérifier votre connexion internet !',
+      showConfirmButton: false,
+      timer: 2000
+    })
   }
 }

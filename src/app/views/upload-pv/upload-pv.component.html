@@ -74,7 +74,7 @@
     <div class="row">
       <div class="col-md-6 ">
 
-        <form [formGroup]='uploadRapportForm' (ngSubmit)='envoyer()' enctype="multipart/form-data">
+        <form [formGroup]='uploadPvForm' (ngSubmit)='envoyer()' enctype="multipart/form-data">
           
             <div class="form-group">
                 <label>Liste des étudiants dont vous êtes le Président du Jury et qui ont déja une note</label>
@@ -104,7 +104,7 @@
             <input type="text" formControlName="hide" class="form-control">
           </div>
           <div>
-            <button [disabled]="!uploadRapportForm.valid" type="submit" class="btn btn-primary px-4" >Soumettre</button>
+            <button [disabled]="!uploadPvForm.valid" type="submit" class="btn btn-primary px-4" >Soumettre</button>
           </div>
         </form>
       </div>

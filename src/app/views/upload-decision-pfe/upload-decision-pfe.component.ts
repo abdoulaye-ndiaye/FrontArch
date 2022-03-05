@@ -98,7 +98,14 @@ export class UploadDecisionPfeComponent implements OnInit {
             this.submitted=false;
             this.uploadDecisionPfesForm.reset();
           },
-          (error) => {}
+          (error) => {
+            if(error.error=='erreur connexion firebase'){
+              Swal.close();
+              this.alertBad2();
+              this.uploadDecisionPfesForm.reset();
+            }
+            console.log(error)
+          }
         );
       } else {
         this.alertBad();
@@ -130,5 +137,14 @@ export class UploadDecisionPfeComponent implements OnInit {
       title: 'Upload en cours !'
     });
     Swal.showLoading();
+  }
+  alertBad2(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Probléme de connexion !!!',
+      text: 'veuillez vérifier votre connexion internet !',
+      showConfirmButton: false,
+      timer: 2000
+    })
   }
 }

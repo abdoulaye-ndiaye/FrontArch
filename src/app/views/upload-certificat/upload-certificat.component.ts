@@ -94,11 +94,19 @@ export class UploadCertificatComponent implements OnInit {
 
         this.uploadService.upload(body).subscribe(
           (result) => {
+          
             Swal.close();
             this.alertGood();
             this.router.navigate(['home'])
           },
-          (error) => {}
+          (error) => {
+            if(error.error=='erreur connexion firebase'){
+              Swal.close();
+              this.alertBad2();
+              this.uploadCertificatForm.reset();
+            }
+            console.log(error)
+          }
         );
       } else {
         this.alertBad();
@@ -131,6 +139,15 @@ export class UploadCertificatComponent implements OnInit {
       title: 'Upload en cours !'
     });
     Swal.showLoading();
+  }
+  alertBad2(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Probléme de connexion !!!',
+      text: 'veuillez vérifier votre connexion internet !',
+      showConfirmButton: false,
+      timer: 2000
+    })
   }
 
 }

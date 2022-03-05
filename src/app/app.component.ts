@@ -15,6 +15,7 @@ export class AppComponent {
 
   
   ngOnInit() {
+    this.socketService.crash();
     this.socketService.setupSocketConnection();
     this.socketService.ecouteRapport();
     this.socketService.ecouteMemoire();

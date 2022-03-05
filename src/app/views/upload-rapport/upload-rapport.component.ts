@@ -103,6 +103,11 @@ export class UploadRapportComponent implements OnInit {
           this.uploadRapportForm.reset();
           this.socketService.nouveauRapport(this.idProj);
         }, error => {
+          if(error.error=='erreur connexion firebase'){
+            Swal.close();
+            this.alertBad2();
+            this.uploadRapportForm.reset();
+          }
           console.log(error);
         });
       } else {
@@ -136,6 +141,15 @@ export class UploadRapportComponent implements OnInit {
       title: 'Upload en cours !'
     });
     Swal.showLoading();
+  }
+  alertBad2(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Probléme de connexion !!!',
+      text: 'veuillez vérifier votre connexion internet !',
+      showConfirmButton: false,
+      timer: 2000
+    })
   }
 
 }

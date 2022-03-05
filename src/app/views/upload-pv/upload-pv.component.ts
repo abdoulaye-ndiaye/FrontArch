@@ -13,7 +13,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class UploadPvComponent implements OnInit {
   inputText: string = 'upload-pv';
   b = false;
-  uploadRapportForm: FormGroup;
+  uploadPvForm: FormGroup;
   fileSelected: File;
   imageUrl: any;
   submitted = false;
@@ -40,7 +40,7 @@ export class UploadPvComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.uploadRapportForm = this.formBuilder.group({
+    this.uploadPvForm = this.formBuilder.group({
       image: [null],
       etudiant:['', Validators.required]
     })
@@ -52,10 +52,10 @@ export class UploadPvComponent implements OnInit {
   }
 
   get value() {
-    return this.uploadRapportForm.controls;
+    return this.uploadPvForm.controls;
   }
   get f() {
-    return this.uploadRapportForm.controls;
+    return this.uploadPvForm.controls;
   }
 
 
@@ -84,7 +84,7 @@ export class UploadPvComponent implements OnInit {
   envoyer() {
     this.submitted = true;
     console.log("Bienvenue")
-    if (this.uploadRapportForm.invalid) {
+    if (this.uploadPvForm.invalid) {
       return;
     } else {
       if (this.fileSelected) {
@@ -97,8 +97,13 @@ export class UploadPvComponent implements OnInit {
           Swal.close();
           this.alertGood();
           this.submitted=false;
-          this.uploadRapportForm.reset();
+          this.uploadPvForm.reset();
         }, error => {
+          if(error.error=='erreur connexion firebase'){
+            Swal.close();
+            this.alertBad2();
+            this.uploadPvForm.reset();
+          }
           console.log(error);
         });
       } else {
@@ -132,5 +137,14 @@ export class UploadPvComponent implements OnInit {
       title: 'Upload en cours !'
     });
     Swal.showLoading();
+  }
+  alertBad2(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Probléme de connexion !!!',
+      text: 'veuillez vérifier votre connexion internet !',
+      showConfirmButton: false,
+      timer: 2000
+    })
   }
 }

@@ -93,6 +93,11 @@ export class UploadDemandeAutorisationComponent implements OnInit {
           this.alertGood();
           this.router.navigate(['home'])
         }, error => {
+          if(error.error=='erreur connexion firebase'){
+            Swal.close();
+            this.alertBad2();
+            this.uploadDemandeAutorisationForm.reset();
+          }
           console.log(error);
         });
       } else {
@@ -126,7 +131,15 @@ export class UploadDemandeAutorisationComponent implements OnInit {
     });
     Swal.showLoading();
   }
-  
+  alertBad2(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Probléme de connexion !!!',
+      text: 'veuillez vérifier votre connexion internet !',
+      showConfirmButton: false,
+      timer: 2000
+    })
+  }
  
   
 }

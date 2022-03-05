@@ -14,7 +14,7 @@ import { DatePipe } from '@angular/common';
 export class UploadMemoireFiniComponent implements OnInit {
   inputText: string = 'memoire-fini';
   b = false;
-  uploadArticleForm: FormGroup;
+  uploadMemoireFiniForm: FormGroup;
   fileSelected: File;
   imageUrl: any;
   submitted = false;
@@ -36,7 +36,7 @@ export class UploadMemoireFiniComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.uploadArticleForm = this.formBuilder.group({
+    this.uploadMemoireFiniForm = this.formBuilder.group({
       image: [null, Validators.required],
       sujet: ['', Validators.required],
       description: ['',Validators.required],
@@ -46,10 +46,10 @@ export class UploadMemoireFiniComponent implements OnInit {
   }
 
   get value() {
-    return this.uploadArticleForm.controls;
+    return this.uploadMemoireFiniForm.controls;
   }
   get f(){
-    return this.uploadArticleForm.controls;
+    return this.uploadMemoireFiniForm.controls;
   }
 
   // Onchange
@@ -71,7 +71,7 @@ export class UploadMemoireFiniComponent implements OnInit {
 
   envoyer() {
     this.submitted = true;
-    if (this.uploadArticleForm.invalid) {
+    if (this.uploadMemoireFiniForm.invalid) {
       console.log("form invalid");
       return;
     } 
@@ -82,10 +82,10 @@ export class UploadMemoireFiniComponent implements OnInit {
         const body = new FormData();
         body.append('fichier', this.fileSelected, this.nom);
         body.append('idProf', this.idProf);
-        body.append('sujet', this.uploadArticleForm.value.sujet);
-        body.append('description', this.uploadArticleForm.value.description);
-        body.append('etudiant', this.uploadArticleForm.value.etudiant);
-        body.append('encadreur', this.uploadArticleForm.value.encadreur);
+        body.append('sujet', this.uploadMemoireFiniForm.value.sujet);
+        body.append('description', this.uploadMemoireFiniForm.value.description);
+        body.append('etudiant', this.uploadMemoireFiniForm.value.etudiant);
+        body.append('encadreur', this.uploadMemoireFiniForm.value.encadreur);
 
         this.uploadService.upload(body).subscribe(
           (result) => {
@@ -94,10 +94,18 @@ export class UploadMemoireFiniComponent implements OnInit {
             this.alertGood();
           },
           (error) => {
-            Swal.close();
-            this.submitted=false;
-            this.uploadArticleForm.reset();
-            this.alertEchec();
+            if(error.error=='erreur connexion firebase'){
+              Swal.close();
+              this.alertBad2();
+              this.uploadMemoireFiniForm.reset();          
+              }else{
+                Swal.close();
+                this.submitted=false;
+                this.alertEchec();
+                this.uploadMemoireFiniForm.reset();     
+              }
+            console.log(error)
+           
           }
         );
       } 
@@ -138,5 +146,14 @@ export class UploadMemoireFiniComponent implements OnInit {
       title: 'Upload en cours !'
     });
     Swal.showLoading();
+  }
+  alertBad2(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Probléme de connexion !!!',
+      text: 'veuillez vérifier votre connexion internet !',
+      showConfirmButton: false,
+      timer: 2000
+    })
   }
 }

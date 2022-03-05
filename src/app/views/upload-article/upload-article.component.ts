@@ -93,10 +93,17 @@ export class UploadArticleComponent implements OnInit {
             this.alertGood();
           },
           (error) => {
-            Swal.close();
-            this.submitted=false;
-            this.uploadArticleForm.reset();
-            this.alertEchec();
+            if(error.error=='erreur connexion firebase'){
+              Swal.close();
+              this.alertBad2();
+              this.uploadArticleForm.reset();
+            }else{
+              Swal.close();
+              this.submitted=false;
+              this.alertEchec();
+              this.uploadArticleForm.reset();     
+            }
+            console.log(error)
           }
         );
       } 
@@ -137,5 +144,14 @@ export class UploadArticleComponent implements OnInit {
       title: 'Upload en cours !'
     });
     Swal.showLoading();
+  }
+  alertBad2(){
+    Swal.fire({
+      icon: 'error',
+      title: 'Probléme de connexion !!!',
+      text: 'veuillez vérifier votre connexion internet !',
+      showConfirmButton: false,
+      timer: 2000
+    })
   }
 }

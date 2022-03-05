@@ -16,7 +16,7 @@
 
     <div class="row">
         <div class="col-lg-8">
-            <form  method="post" class="card" enctype="multipart/form-data" [formGroup]="uploadArticleForm" (ngSubmit)="envoyer()">
+            <form  method="post" class="card" enctype="multipart/form-data" [formGroup]="uploadMemoireFiniForm" (ngSubmit)="envoyer()">
                 <div class="card-header justify-content-center">
                     <h3 class="card-title">Chargement de mémoire soutenu</h3>
                 </div>
@@ -87,7 +87,7 @@
                             
                             <br/>
                             <div class="text-center">
-                                <button [disabled]="!uploadArticleForm.valid" type="submit" class="btn btn-block btn-blue">
+                                <button [disabled]="!uploadMemoireFiniForm.valid" type="submit" class="btn btn-block btn-blue">
                                 Enregistrer
                                 </button>
                             </div>

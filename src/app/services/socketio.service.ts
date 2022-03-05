@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { AuthService } from './auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { data } from 'jquery';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,14 @@ export class SocketioService {
 
   setupSocketConnection() {
     this.socket = io(environment.apiUrl);
+  }
+  crash(){
+    this.socket.on('crash',(data:string)=>{
+      console.log(data);
+      if(data=='restart'){
+        this.refresh();
+      }
+    })
   }
   ecouteRapport(){
     this.socket.on('rapport', (data: string) => {
