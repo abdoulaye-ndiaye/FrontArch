@@ -33,7 +33,7 @@
                                       </select>
                                       <div *ngIf=" f['etudiant'].errors && (f['etudiant'].dirty || f['etudiant'].touched)" class="input-group mb-3 invalid-feedback">
                                         <div *ngIf="f['etudiant'].errors['required']">
-                                          Veuillez choisir le Président du Jury
+                                          Veuillez choisir l'étudiant
                                         </div>
                                       </div>
                                 </div>
@@ -55,14 +55,14 @@
                                 </div>
                               
                                 <div class="form-group">
-                                    <label class="form-label">Remarque sur le fond </label>
-                                    <textarea class="form-control" formControlName="remarqueFond" rows="5" placeholder="Donner la Remarque sur le fond " 
+                                    <label class="form-label">Remarques sur le fond </label>
+                                    <textarea class="form-control" formControlName="remarqueFond" rows="5" placeholder="Donner les Remarques sur le fond " 
                                     [ngClass]="{
                                       'is-invalid':  f['remarqueFond'].errors && (f['remarqueFond'].dirty || f['remarqueFond'].touched)
                                     }" required></textarea>
                                     <div *ngIf=" f['remarqueFond'].errors && (f['remarqueFond'].dirty || f['remarqueFond'].touched)" class="input-group mb-3 invalid-feedback">
                                       <div *ngIf="f['remarqueFond'].errors['required']">
-                                        Veuillez entrer une description du sujet
+                                        Veuillez entrer les remarques sur le fond
                                       </div>
                                     </div>
                                 </div>
@@ -70,14 +70,14 @@
 
                             <div class="col-md-6 col-lg-6">
                                 <div class="form-group">
-                                    <label class="form-label">Remarque sur la forme </label>
-                                    <textarea class="form-control" formControlName="remarqueForme" rows="5" placeholder="Donner la Remarque sur la forme" 
+                                    <label class="form-label">Remarques sur la forme </label>
+                                    <textarea class="form-control" formControlName="remarqueForme" rows="5" placeholder="Donner les Remarques sur la forme" 
                                     [ngClass]="{
                                       'is-invalid':  f['remarqueForme'].errors && (f['remarqueForme'].dirty || f['remarqueForme'].touched)
                                     }" required></textarea>
                                     <div *ngIf=" f['remarqueForme'].errors && (f['remarqueForme'].dirty || f['remarqueForme'].touched)" class="input-group mb-3 invalid-feedback">
                                       <div *ngIf="f['remarqueForme'].errors['required']">
-                                        Veuillez entrer une description du sujet
+                                        Veuillez entrer les remarques sur la forme
                                       </div>
                                     </div>
                                 </div>
@@ -90,7 +90,7 @@
                                     }" required></textarea>
                                     <div *ngIf=" f['conclusion'].errors && (f['conclusion'].dirty || f['conclusion'].touched)" class="input-group mb-3 invalid-feedback">
                                       <div *ngIf="f['conclusion'].errors['required']">
-                                        Veuillez entrer une description du sujet
+                                        Veuillez entrer la conclusion
                                       </div>
                                     </div>
                                 </div>
