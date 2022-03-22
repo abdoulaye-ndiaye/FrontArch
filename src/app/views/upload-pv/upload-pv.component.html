@@ -77,7 +77,7 @@
         <form [formGroup]='uploadPvForm' (ngSubmit)='envoyer()' enctype="multipart/form-data">
           
             <div class="form-group">
-                <label>Liste des étudiants dont vous êtes le Président du Jury et qui ont déja une note</label>
+                <label>Liste des étudiants soutenus</label>
                 <select aria-label="Default select example" formControlName="etudiant" class="form-control" 
                 (change)="onChangeProjet($event)" [ngClass]="{
                   'is-invalid': f['etudiant'].errors && (f['etudiant'].dirty || f['etudiant'].touched)
