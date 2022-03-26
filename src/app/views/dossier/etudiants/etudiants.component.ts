@@ -10,7 +10,7 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class EtudiantsComponent implements OnInit {
   inputText: string = 'dossier';
-
+  allEtudiantsPast: Array<any> = [];
   allEtudiantsSI: Array<any> = [];
   allEtudiantsSR: Array<any> = [];
 
@@ -28,10 +28,13 @@ export class EtudiantsComponent implements OnInit {
   getEtudiants() {
     this.authService.listeEtudiant().subscribe((data) => {
       this.allEtudiantsSI = (data as any).filter(
-        (item: any) => item.classe === 'SI'
+        (item: any) => item.classe === 'SI' && item.compte.isBlocked==false
       );
       this.allEtudiantsSR = (data as any).filter(
-        (item: any) => item.classe === 'SR'
+        (item: any) => item.classe === 'SR' && item.compte.isBlocked==false
+      );
+      this.allEtudiantsPast = (data as any).filter(
+        (item: any) => item.compte.isBlocked==true
       );
       setTimeout(() => {
         $('#etudiantsSI').DataTable({
@@ -63,6 +66,34 @@ export class EtudiantsComponent implements OnInit {
           lengthMenu: [5, 10, 25],
         });
         $('#etudiantsSR').DataTable({
+          language: {
+            processing:     "Traitement en cours...",
+            search:         "Rechercher&nbsp;:",
+            lengthMenu:    "Afficher _MENU_ &eacute;l&eacute;ments",
+            info:           "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+            infoEmpty:      "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
+            infoFiltered:   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
+            infoPostFix:    "",
+            loadingRecords: "Chargement en cours...",
+            zeroRecords:    "Aucun &eacute;l&eacute;ment &agrave; afficher",
+            emptyTable:     "Aucune donnée disponible dans le tableau",
+            paginate: {
+                first:      "Premier",
+                previous:   "Pr&eacute;c&eacute;dent",
+                next:       "Suivant",
+                last:       "Dernier"
+            },
+            aria: {
+                sortAscending:  ": activer pour trier la colonne par ordre croissant",
+                sortDescending: ": activer pour trier la colonne par ordre décroissant"
+            }
+        },
+          pagingType: 'full_numbers',
+          pageLength: 5,
+          processing: true,
+          lengthMenu: [5, 10, 25],
+        });
+        $('#etudiantsPast').DataTable({
           language: {
             processing:     "Traitement en cours...",
             search:         "Rechercher&nbsp;:",

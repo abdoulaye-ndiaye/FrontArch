@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   submitted = false;
   returnUrl: string;
-
+  compte:any;
   message = '';
   hide = true;
   constructor(
@@ -77,6 +77,13 @@ export class LoginComponent implements OnInit {
       this.alertBad();
     }
     else{
+      this.authService.verifEmail(this.loginForm.value.email).subscribe(
+        (data)=>{
+          this.compte=data;
+          if(this.compte==null){
+          this.alertBadEmail();
+          }
+        else{
       Swal.fire({
         title: 'Etes-vous sûr?',
         text: "Un email vous sera envoyé pour la réinitialisation",
@@ -98,9 +105,10 @@ export class LoginComponent implements OnInit {
           })
         }
       })
-     
     }
+    })
   }
+}
 
 
   alert(){
@@ -151,6 +159,14 @@ export class LoginComponent implements OnInit {
             'success'
           )
         }
+      })
+    }
+
+    alertBadEmail(){
+      Swal.fire({
+        icon: 'error',
+        title: 'Email incorrect !',
+        
       })
     }
   
