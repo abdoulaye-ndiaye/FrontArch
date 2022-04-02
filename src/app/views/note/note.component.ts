@@ -84,6 +84,7 @@ export class NoteComponent implements OnInit {
           pagingType: 'full_numbers',
           pageLength: 5,
           processing: true,
+          responsive: true,
           lengthMenu: [5, 10, 25],
         });
       }, 1);

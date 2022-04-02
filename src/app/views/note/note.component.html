@@ -54,13 +54,23 @@
                               
                                 <div class="form-group">
                                     <label class="form-label">Mention </label>
-                                    <input type="text" class="form-control" formControlName="mention" placeholder="Donner la mention " 
+                                    <select aria-label="Default select example" id="mention" formControlName="mention" class="form-control" 
                                     [ngClass]="{
-                                      'is-invalid':f['mention'].errors && (f['mention'].dirty || f['mention'].touched)
+                                      'is-invalid': f['mention'].errors && (f['mention'].dirty || f['mention'].touched)
                                     }" required>
+                                      <option selected value="" disabled>
+                                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --- Selectionner La mention ---
+                                      </option>
+                                      <option value="Insuffisant">INSUFFISANT</option>
+                                      <option value="Passable">PASSABLE</option>
+                                      <option value="A.bien">ASSEZ BIEN</option>
+                                      <option value="bien">BIEN</option>
+                                      <option value="T.bien">TRES BIEN</option>
+                                      <option value="Excellent">EXCELLENT</option>
+                                    </select>
                                     <div *ngIf=" f['mention'].errors && (f['mention'].dirty || f['mention'].touched)" class="input-group mb-3 invalid-feedback">
                                       <div *ngIf="f['mention'].errors['required']">
-                                        Veuillez entrer une mention
+                                        Veuillez choisir une mention
                                       </div>
                                     </div>
                                 </div>
@@ -80,7 +90,7 @@
           <div class="card m-5 p-3">
             <div class="card-body">
               <div align="center">LISTE DES PROJETS AVEC DEJA UNE NOTE</div>
-              <table class="table table-bordered table-striped table-hover" id="projets">
+              <table class="table   table-bordered table-striped table-hover" id="projets">
                 <thead>
                   <tr>
                     <th>Prenom</th>
