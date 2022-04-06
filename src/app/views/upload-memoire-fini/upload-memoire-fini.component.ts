@@ -90,8 +90,8 @@ export class UploadMemoireFiniComponent implements OnInit {
         this.uploadService.upload(body).subscribe(
           (result) => {
             Swal.close();
-            this.refresh();
             this.alertGood();
+            this.uploadMemoireFiniForm.reset();    
           },
           (error) => {
             if(error.error=='erreur connexion firebase'){

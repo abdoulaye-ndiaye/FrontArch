@@ -13,6 +13,7 @@ export class GestionMemoiresFiniComponent implements OnInit {
   inputText: string = 'gestion-memoires-fini';
   memoiresFini:any;
   test=false;
+  a='0';
 
   constructor(
     private formBulder: FormBuilder,
@@ -20,8 +21,9 @@ export class GestionMemoiresFiniComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
   ) { }
-
+  
   ngOnInit(): void {
+   
     this.authService.getMemoiresFinis().subscribe(data=>{
       this.memoiresFini=data;
       console.log(data)

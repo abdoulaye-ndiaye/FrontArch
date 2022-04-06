@@ -65,6 +65,7 @@ export class SocketioService {
   }
   ecouteMemoire(){
     this.socket.on('memoire', (data: string) => {
+      console.log('bon12')
       this.socket.on('idProj', (data2: string) => {
         this.authService.getProjet(data2).subscribe(data3=>{
           this.rapporteurs=data3.rapporteur;

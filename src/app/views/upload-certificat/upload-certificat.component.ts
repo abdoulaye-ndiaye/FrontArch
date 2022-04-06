@@ -43,16 +43,14 @@ export class UploadCertificatComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.idEtu= sessionStorage.getItem("idEtu") as string;
-
+    this.idProjet= sessionStorage.getItem("idProjet") as string;
+    
     this.uploadCertificatForm = this.formBuilder.group({
       image: [null],
       hide: ['rien']
     })
 
-    this.authService.getProjetByIdEtudiant(this.idEtu).subscribe(data=>{
-      this.idProjet=data._id;
-    })
+   
   }
     
 
@@ -111,7 +109,7 @@ export class UploadCertificatComponent implements OnInit {
       } else {
         this.alertBad();
       }
-    }
+    } 
   }
 
 
