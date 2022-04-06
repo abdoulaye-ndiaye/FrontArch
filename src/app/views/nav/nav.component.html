@@ -26,11 +26,14 @@
             ><span class="side-menu__label">Mes Documents</span></a
           >
         </li>
-        <li class="slide">
-          <a class="side-menu__item {{encadreur}}" data-toggle="slide" routerLink="/encadreurs"><i
-                  class="side-menu__icon fas fa-tasks fa-lg"></i><span class="side-menu__label">Gestion
-                  Encadreurs</span></a>
-      </li>
+        <ng-container *ngIf="!masque.projet.jury">
+          <li class="slide">
+            <a class="side-menu__item {{encadreur}}" data-toggle="slide" routerLink="/encadreurs"><i
+                    class="side-menu__icon fas fa-tasks fa-lg"></i><span class="side-menu__label">Gestion
+                    Encadreurs</span></a>
+        </li>
+        </ng-container>
+       
       <ng-container *ngIf="afficheMemoire==false">
         <li class="slide">
           <a class="side-menu__item {{uploadMemoire}}" data-toggle="slide" routerLink="/upload-memoire"><i

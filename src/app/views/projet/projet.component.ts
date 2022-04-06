@@ -31,6 +31,7 @@ export class ProjetComponent implements OnInit {
       this.encadreurs=data.encadreur;
       this.rapporteurs=data.rapporteur;
       this.projet = data;
+      console.log(data)
       sessionStorage.setItem('idProjet',data._id); 
 
     });

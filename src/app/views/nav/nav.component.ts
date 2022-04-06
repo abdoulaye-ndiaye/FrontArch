@@ -17,6 +17,7 @@ export class NavComponent implements OnInit {
   afficheMemoire=true;
   afficheDemande=true;
   afficheCertificat=true;
+  masque:any;
 
 
   home="";ajoutRapporteur="";excelEtudiant="";excelProf="";projet="";rapporteurs="";respForm="";
@@ -82,6 +83,7 @@ export class NavComponent implements OnInit {
 
     if(this.profil=='ETUDIANT'){
       this.authService.getEtudiant(this.idEtu).subscribe(data=>{
+        this.masque=data;
         if(data.projet==null){
           this.afficheProjet=false
         }
