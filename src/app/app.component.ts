@@ -14,11 +14,11 @@ export class AppComponent {
 
   ngOnInit() {
     this.socketService.setupSocketConnection();
-    this.socketService.ecouteRapport();
     this.socketService.ecouteMemoire();
-    this.socketService.crash();
+    this.socketService.ecouteRapport();
+    
+    //this.socketService.crash();
 
-   
 
   }
   ngOnDestroy() {

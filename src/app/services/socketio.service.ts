@@ -27,14 +27,7 @@ export class SocketioService {
   setupSocketConnection() {
     this.socket = io(environment.apiUrl);
   }
-  crash(){
-    this.socket.on('crash',(data:string)=>{
-      console.log(data);
-      if(data=='restart'){
-        this.refresh();
-      }
-    })
-  }
+ 
   ecouteRapport(){
     this.socket.on('rapport', (data: string) => {
       this.socket.on('idProj', (data2: string) => {
@@ -66,7 +59,7 @@ export class SocketioService {
   ecouteMemoire(){
     this.socket.on('memoire', (data: string) => {
       console.log('bon12')
-      this.socket.on('idProj', (data2: string) => {
+      this.socket.on('idProj1', (data2: string) => {
         this.authService.getProjet(data2).subscribe(data3=>{
           this.rapporteurs=data3.rapporteur;
           console.log(this.rapporteurs);
@@ -108,12 +101,19 @@ export class SocketioService {
   nouveauMemoire(idProj:string){
     this.socket = io(environment.apiUrl);
     this.socket.emit('memoire', 'a chargé son mémoire',idProj);
-    
   }
   disconnect() {
     if (this.socket) {
         this.socket.disconnect();
     }
+}
+crash(){
+  this.socket.on('crash',(data:string)=>{
+    console.log(data);
+    if(data=='restart'){
+      this.refresh();
+    }
+  })
 }
 
 }
